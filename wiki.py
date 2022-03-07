@@ -52,6 +52,7 @@ class WikiSentences:
     def __iter__(self):
         for sentence in self.wiki.get_texts():
             sentence_ = sentence
+            '''
             #clean nested phrases
             sentence = list()
             try:
@@ -82,7 +83,7 @@ class WikiSentences:
             except:
                 pass
             assert ' ' not in sentence
-
+            '''
             if self.lang == 'zh':
                 yield list(jieba.cut(''.join(sentence), cut_all=False))
             else:
