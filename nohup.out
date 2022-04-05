@@ -1,0 +1,20 @@
+[2022-03-22 15:11:23,767] Training model spxM100EMw5
+[2022-03-22 15:11:23,768] collecting all words and their counts
+Importing word2vec_inner...
+CYTHON IMPORTED SUCCESSFULLY!! (Normal)
+cbound : False
+tbound : False
+/home/manni/ner-s2s/word_embedding/wiki.py
+/home/manni/ner-s2s/word_embedding/localgensim/gensim2/models/word2vec.py
+Minimum length of token: 1
+[2022-03-22 15:11:25,732] PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+[2022-03-22 15:12:06,772] PROGRESS: at sentence #10000, processed 39879308 words, keeping 612371 word types
+[2022-03-22 15:12:43,435] PROGRESS: at sentence #20000, processed 75617823 words, keeping 879423 word types
+[2022-03-22 15:13:13,805] PROGRESS: at sentence #30000, processed 104143127 words, keeping 1073861 word types
+[2022-03-22 15:13:41,920] PROGRESS: at sentence #40000, processed 129451193 words, keeping 1240266 word types
+[2022-03-22 15:14:03,094] PROGRESS: at sentence #50000, processed 147710151 words, keeping 1351778 word types
+[2022-03-22 15:14:14,361] PROGRESS: at sentence #60000, processed 158200014 words, keeping 1377046 word types
+[2022-03-22 15:14:25,351] PROGRESS: at sentence #70000, processed 167218450 words, keeping 1403071 word types
+[2022-03-22 15:14:34,675] PROGRESS: at sentence #80000, processed 175771820 words, keeping 1424339 word types
+[2022-03-22 15:14:56,633] PROGRESS: at sentence #90000, processed 195485460 words, keeping 1530944 word types
+[2022-03-22 15:15:23,021] PROGRESS: at sentence #100000, processed 219865276 words, keeping 1671225 word types
