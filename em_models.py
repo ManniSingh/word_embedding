@@ -47,8 +47,6 @@ logging.basicConfig(format='[%(asctime)s] %(message)s', level=logging.INFO)
 os.makedirs('data/', exist_ok=True)
 
 
-# # skip if sentence made
-
 # In[ ]:
 
 

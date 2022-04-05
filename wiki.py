@@ -4,11 +4,11 @@ import math
 import os
 import requests
 import spacy
-nlp = spacy.load("en_core_web_sm")
+#nlp = spacy.load("en_core_web_sm")
 #change word.dep_ to word.pos_ for POS instead
 #import nltk
-from nltk.stem.snowball import SnowballStemmer
-stemmer = SnowballStemmer(language='english')
+#from nltk.stem.snowball import SnowballStemmer
+#stemmer = SnowballStemmer(language='english')
 import re
 import sys
 
@@ -43,14 +43,12 @@ def download_wiki_dump(lang, path):
 class WikiSentences:
     # reference: https://github.com/LasseRegin/gensim-word2vec-model/blob/master/train.py
     # loc = 'lr'| 'num'
-    def __init__(self, wiki_dump_path, lang, lower=False, pos=False, loc=False,tokenizer_func=''):
+    def __init__(self, wiki_dump_path, lang, lower=False, tokenizer_func=''):
         logging.info('Parsing wiki corpus Altered...')
         logging.info('utils.py line 55, Pattern altered to include [ and ] ...')
         self.wiki = WikiCorpus(wiki_dump_path,lower=lower) # orignal
         #self.wiki = WikiCorpus(wiki_dump_path,lower=lower,tokenizer_func=tokenizer_func) # modified
         self.lang = lang
-        self.pos = pos
-        self.loc = loc
     def __iter__(self):
         for sentence in self.wiki.get_texts():
             '''

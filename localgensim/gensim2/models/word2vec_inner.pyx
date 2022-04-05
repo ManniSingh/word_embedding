@@ -40,7 +40,7 @@ except ImportError:
 
 REAL = np.float32
 
-DEF MAX_SENTENCE_LEN = 50000
+DEF MAX_SENTENCE_LEN = 10000
 
 cdef scopy_ptr scopy=<scopy_ptr>PyCObject_AsVoidPtr(fblas.scopy._cpointer)  # y = x
 cdef saxpy_ptr saxpy=<saxpy_ptr>PyCObject_AsVoidPtr(fblas.saxpy._cpointer)  # y += alpha * x
@@ -608,7 +608,7 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
             #sys.exit()
             #####
             
-            print("right context")
+            #print("right context")
             j = i #window boundary pos (Global window counter)
             r = i+1  
             while j < (i + c.window - rand_window): 
@@ -692,7 +692,7 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
             #i+=1 ####################
             #continue #################
             #print("win=",t_start - c.window + rand_window)
-            print("left context")
+            #print("left context")
             l = t_start-1
             j = t_start #window boundary pos (Global window counter)  
             while j > (t_start - c.window + rand_window):
@@ -775,9 +775,9 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
             #print("\n")
         effective_sentences += 1
         #print("\n")
-        print(len(c.sentence_idx))
+        #print("sen_len:",len(c.sentence_idx)," max:",MAX_SENTENCE_LEN)
         c.sentence_idx[effective_sentences] = effective_words #The last index
-        print("effective sents:",effective_sentences)
+        #print("effective sents:",effective_sentences)
 
         if effective_words >= MAX_SENTENCE_LEN:
             break  # TODO: log warning, tally overflow?

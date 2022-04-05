@@ -56,7 +56,7 @@ ARTICLE_MIN_WORDS = 50
 
 # default thresholds for lengths of individual tokens
 TOKEN_MIN_LEN = 1
-TOKEN_MAX_LEN = 20
+TOKEN_MAX_LEN = 30
 
 RE_P0 = re.compile(r'<!--.*?-->', re.DOTALL | re.UNICODE)
 """Comments."""
