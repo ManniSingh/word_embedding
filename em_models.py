@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
 
 import logging
 import os
@@ -21,34 +19,18 @@ from localgensim.gensim2.models import word2vec #remmember to change flags in wo
 
 from tqdm import tqdm
 
-#WIKIXML = '/home/manni/data/wiki/enwiki-20211120-pages-articles-multistream.xml.bz2'
+WIKIXML = '/home/manni/data/wiki/enwiki-20211120-pages-articles-multistream.xml.bz2'
 #WIKIXML = '/home/manni/data/wiki/enwiki-20211120-pages-articles-multistream1.xml-p1p41242.bz2'
-
-
-# In[2]:
-
 
 print(w.__file__)
 print(word2vec.__file__)
-
-
-# In[3]:
-
 
 import sys
 sys.path.append("../../imports/")
 import saver as sv
 
-
-# In[4]:
-
-
 logging.basicConfig(format='[%(asctime)s] %(message)s', level=logging.INFO)
 os.makedirs('data/', exist_ok=True)
-
-
-# In[ ]:
-
 
 # loc = 'num'|'lr'|'ent'
 # pos = True|False
@@ -57,14 +39,10 @@ os.makedirs('data/', exist_ok=True)
 
 # parse wiki dump
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',lower=True) # Orignal
-#wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='EM',lower=True,pos=False,loc=False)
+wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='EM',lower=True)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='DEP',lower=True,pos=False,loc=False)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='UNS',lower=True,pos=False,loc=False)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='UNSEM',lower=True,pos=False,loc=False)
-
-
-# In[ ]:
-
 
 #sv.save(wiki_sentences,"wiki_sentences_pos_sample")
 #sv.save(wiki_sentences,"wiki_sentences_pos")
@@ -77,34 +55,20 @@ os.makedirs('data/', exist_ok=True)
 #sv.save(wiki_sentences,"wiki_sentences_dep2")
 #sv.save(wiki_sentences,"wiki_sentences_uns")
 #sv.save(wiki_sentences,"wiki_sentences_unsem")
-#sv.save(wiki_sentences,"wiki_sentences_em")
+sv.save(wiki_sentences,"wiki_sentences_em")
 
 
 # # Phrase mining
 
-# In[ ]:
-
-
 #from gensim.test.utils import datapath
 #from gensim.models.phrases import Phrases
-
-
-# In[ ]:
-
 
 #phrases = Phrases(sentences, min_count=100, threshold=1)
 #frozen_phrases = phrases.freeze()
 
-
-# In[ ]:
-
-
 #sv.save(phrases,"gensim_phrases")
 
-
 # # Train procedure
-
-# In[5]:
 
 
 #sentences = sv.load("wiki_sentences_no")
@@ -132,25 +96,14 @@ os.makedirs('data/', exist_ok=True)
 #sentences = sv.load("Wiki_sentences_sp_sample")
 #sentences = sv.load("wiki_sentences_uns") #New
 #sentences = sv.load("wiki_sentences_unsem") #New
-#sentences = sv.load("wiki_sentences_em") #New
-sentences = sv.load("wiki_sentences_em_sample") #New
-
-# In[6]:
-
+sentences = sv.load("wiki_sentences_em") #New
+#sentences = sv.load("wiki_sentences_em_sample") #New
 
 print("Minimum length of token:",sentences.wiki.token_min_len)
 
-
-# In[ ]:
-
-
 logging.info('Training model %s', 'spxM100EMw5')
-model = word2vec.Word2Vec(sentences, window=5, sg=1, hs=0, negative=5, size=300, sample=1e-3, workers=1, iter=5, min_count=100)
+model = word2vec.Word2Vec(sentences, window=5, sg=1, hs=0, negative=5, size=300, sample=1e-3, workers=40, iter=5, min_count=100)
 logging.info('Training done.')
-
-sys.exit()
-# In[ ]:
-
 
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_SPX2_mc1_epoch5_300_filtered_sample.txt'
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_w2v_mc1_epoch5_300_sample.txt'
@@ -182,28 +135,14 @@ sys.exit()
 emb_file = '/home/manni/embs/en_wiki_spx_mc100_epoch5_300_em.txt'
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_spx2_mc100_epoch5_300_uns_w1.txt'
 
-
-# In[ ]:
-
-
 vocab = model.wv.vocab
 
-
-# In[ ]:
-
-
-len(vocab)
-
-
-# In[ ]:
-
+print(len(vocab))
 
 vocab.pop('[', None)
 vocab.pop(']', None)
-len(vocab)
+print(len(vocab))
 
-
-# In[ ]:
 
 
 logging.info('Save trained word vectors')
@@ -212,22 +151,4 @@ with open(emb_file, 'w', encoding='utf-8') as f:
     for word in tqdm(vocab, position=0):
         f.write('%s %s\n' % (word, ' '.join([str(v) for v in model.wv[word]])))
 logging.info('Done')
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
