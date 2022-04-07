@@ -8,8 +8,8 @@ import os
 #import wiki_old as w # old wiki
 import wiki as w # changed wiki to include '[]'
  
-#from gensim.models import word2vec # for orignal w2v
-from localgensim.gensim2.models import word2vec #remmember to change flags in word2vec.py  161-162
+from gensim.models import word2vec # for orignal w2v
+#from localgensim.gensim2.models import word2vec #remmember to change flags in word2vec.py  161-162
 
 
 
@@ -38,8 +38,8 @@ os.makedirs('data/', exist_ok=True)
 #w.download_wiki_dump('en', WIKIXML)
 
 # parse wiki dump
-#wiki_sentences = w.WikiSentences(WIKIXML, 'en',lower=True) # Orignal
-wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='EM',lower=True)
+wiki_sentences = w.WikiSentences(WIKIXML, 'en',lower=True) # Orignal
+#wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='EM',lower=True)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='DEP',lower=True,pos=False,loc=False)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='UNS',lower=True,pos=False,loc=False)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='UNSEM',lower=True,pos=False,loc=False)
@@ -51,11 +51,11 @@ wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='EM',lower=True)
 #sv.save(wiki_sentences,"wiki_sentences_sp_loc")
 #sv.save(wiki_sentences,"wiki_sentences_sp_ent")
 #sv.save(wiki_sentences,"wiki_sentences_sp_ent_sample")
-#sv.save(wiki_sentences,"wiki_sentences") # orignal
+sv.save(wiki_sentences,"wiki_sentences") # orignal
 #sv.save(wiki_sentences,"wiki_sentences_dep2")
 #sv.save(wiki_sentences,"wiki_sentences_uns")
 #sv.save(wiki_sentences,"wiki_sentences_unsem")
-sv.save(wiki_sentences,"wiki_sentences_em")
+#sv.save(wiki_sentences,"wiki_sentences_em")
 
 
 # # Phrase mining
@@ -96,12 +96,19 @@ sv.save(wiki_sentences,"wiki_sentences_em")
 #sentences = sv.load("Wiki_sentences_sp_sample")
 #sentences = sv.load("wiki_sentences_uns") #New
 #sentences = sv.load("wiki_sentences_unsem") #New
-sentences = sv.load("wiki_sentences_em") #New
+#sentences = sv.load("wiki_sentences_em") #New
 #sentences = sv.load("wiki_sentences_em_sample") #New
+#sentences = sv.load("wiki_sentences_spx") #New
+sentences = sv.load("wiki_sentences") #New
+
+print("Sample sentence:")
+for sent in sentences:
+    print(sent[:150])
+    break
 
 print("Minimum length of token:",sentences.wiki.token_min_len)
 
-logging.info('Training model %s', 'spxM100EMw5')
+logging.info('Training model %s', 'w2vM100w5')
 model = word2vec.Word2Vec(sentences, window=5, sg=1, hs=0, negative=5, size=300, sample=1e-3, workers=40, iter=5, min_count=100)
 logging.info('Training done.')
 
@@ -132,8 +139,9 @@ logging.info('Training done.')
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_spx2_mc100_epoch5_300_ent_static_w3.txt'
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_spx2_mc100_epoch5_300_uns.txt'
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_spx2_mc100_epoch5_300_unsem.txt'
-emb_file = '/home/manni/embs/en_wiki_spx_mc100_epoch5_300_em.txt'
+#emb_file = '/home/manni/embs/en_wiki_spx_mc100_epoch5_300_em.txt'
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_spx2_mc100_epoch5_300_uns_w1.txt'
+emb_file = '/home/manni/embs/en_wiki_w2v_mc100_epoch5_300.txt'
 
 vocab = model.wv.vocab
 

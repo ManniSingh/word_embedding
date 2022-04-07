@@ -375,6 +375,8 @@ def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, 
 
     """
     # TODO maybe ignore tokens with non-latin characters? (no chinese, arabic, russian etc.)
+    content = content.replace('[','')
+    content = content.replace(']','')
     return [
         utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore')
         if token_min_len <= len(token) <= token_max_len and not token.startswith('_')

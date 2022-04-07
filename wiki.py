@@ -46,8 +46,8 @@ class WikiSentences:
     def __init__(self, wiki_dump_path, lang, lower=False, tokenizer_func=''):
         logging.info('Parsing wiki corpus Altered...')
         logging.info('utils.py line 55, Pattern altered to include [ and ] ...')
-        self.wiki = WikiCorpus(wiki_dump_path,lower=lower) # orignal
-        #self.wiki = WikiCorpus(wiki_dump_path,lower=lower,tokenizer_func=tokenizer_func) # modified
+        #self.wiki = WikiCorpus(wiki_dump_path,lower=lower) # orignal
+        self.wiki = WikiCorpus(wiki_dump_path,lower=lower,tokenizer_func=tokenizer_func) # modified
         self.lang = lang
     def __iter__(self):
         for sentence in self.wiki.get_texts():
