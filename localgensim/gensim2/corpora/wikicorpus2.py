@@ -831,6 +831,8 @@ class WikiCorpus(TextCorpus):
             self.tokenizer_func = tokenize
         elif tokenizer_func == 'EM':
             self.tokenizer_func = tokenizeEM
+        elif tokenizer_func == 'PEM':
+            self.tokenizer_func = tokenizePEM
         elif tokenizer_func == 'DEP':
             self.tokenizer_func = tokenizeDEP
         elif tokenizer_func == 'UNS':
