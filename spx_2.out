@@ -1,0 +1,1284 @@
+/home/manni/ner-s2s/word_embedding/wiki.py
+/home/manni/ner-s2s/word_embedding/localgensim/gensim2/models/word2vec.py
+Sample sentence:
+[2022-04-27 07:47:11,899] Training model spxM100w5
+[2022-04-27 07:47:11,904] collecting all words and their counts
+['anarchism', 'is', 'a', '[', 'political#E', 'philosophy#E', ']', 'and', '[', 'movement#E', ']', 'that', 'is', 'sceptical', 'of', '[', 'authority#E', ']', 'and', 'rejects', 'all', 'involuntary', 'coercive', 'forms', 'of', '[', 'hierarchy#E', ']', 'anarchism', 'calls', 'for', 'the', 'abolition', 'of', 'the', '[', 'state#E', ']', 'which', 'it', 'holds', 'to', 'be', 'unnecessary', 'undesirable', 'and', 'harmful', 'as', 'a', 'historically', '[', 'left#E', 'wing#E', ']', 'movement', 'placed', 'on', 'the', 'farthest', 'left', 'of', 'the', '[', 'political#E', 'spectrum#E', ']', 'it', 'is', 'usually', 'described', 'alongside', '[', 'libertarian#E', 'marxism#E', ']', 'as', 'the', '[', 'libertarian#E', ']', 'wing', '[', 'libertarian#E', 'socialism#E', ']', 'of', 'the', '[', 'socialist#E', 'movement#E', ']', 'and', 'has', 'a', 'strong', 'historical', 'association', 'with', '[', 'anti#E', 'capitalism#E', ']', 'and', '[', 'socialism#E', ']', '[', 'humans#E', ']', 'lived', 'in', 'societies', 'without', 'formal', 'hierarchies', 'long', 'before', 'the', 'establishment', 'of', 'formal', 'states', '[', 'realm#E', ']', 's', 'or', '[', 'empire#E', ']', 's', 'with', 'the', 'rise', 'of', 'organised', 'hierarchical', 'bodies', '[', 'scepticism#E', ']', 'toward', 'authority', 'also', 'rose', 'in', 'the', 'th', 'century', 'a']
+Minimum length of token: 1
+[2022-04-27 07:47:14,159] PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+[2022-04-27 07:47:49,167] PROGRESS: at sentence #10000, processed 39880444 words, keeping 613224 word types
+[2022-04-27 07:48:21,515] PROGRESS: at sentence #20000, processed 75619939 words, keeping 880956 word types
+[2022-04-27 07:48:47,154] PROGRESS: at sentence #30000, processed 104146205 words, keeping 1075996 word types
+[2022-04-27 07:49:10,524] PROGRESS: at sentence #40000, processed 129455043 words, keeping 1242887 word types
+[2022-04-27 07:49:29,134] PROGRESS: at sentence #50000, processed 147714482 words, keeping 1354735 word types
+[2022-04-27 07:49:39,018] PROGRESS: at sentence #60000, processed 158204502 words, keeping 1380144 word types
+[2022-04-27 07:49:48,931] PROGRESS: at sentence #70000, processed 167223115 words, keeping 1406323 word types
+[2022-04-27 07:49:57,267] PROGRESS: at sentence #80000, processed 175776665 words, keeping 1427755 word types
+[2022-04-27 07:50:16,987] PROGRESS: at sentence #90000, processed 195490975 words, keeping 1534828 word types
+[2022-04-27 07:50:40,528] PROGRESS: at sentence #100000, processed 219871518 words, keeping 1675542 word types
+[2022-04-27 07:51:01,209] PROGRESS: at sentence #110000, processed 240964188 words, keeping 1792307 word types
+[2022-04-27 07:51:21,048] PROGRESS: at sentence #120000, processed 260571114 words, keeping 1899250 word types
+[2022-04-27 07:51:40,120] PROGRESS: at sentence #130000, processed 279351474 words, keeping 1994432 word types
+[2022-04-27 07:52:01,748] PROGRESS: at sentence #140000, processed 299465078 words, keeping 2098155 word types
+[2022-04-27 07:52:21,207] PROGRESS: at sentence #150000, processed 317118203 words, keeping 2209340 word types
+[2022-04-27 07:52:44,204] PROGRESS: at sentence #160000, processed 335370961 words, keeping 2310557 word types
+[2022-04-27 07:53:03,261] PROGRESS: at sentence #170000, processed 352408665 words, keeping 2398786 word types
+[2022-04-27 07:53:23,039] PROGRESS: at sentence #180000, processed 368621683 words, keeping 2467147 word types
+[2022-04-27 07:53:39,737] PROGRESS: at sentence #190000, processed 383535447 words, keeping 2544869 word types
+[2022-04-27 07:53:56,285] PROGRESS: at sentence #200000, processed 397960664 words, keeping 2618196 word types
+[2022-04-27 07:54:13,024] PROGRESS: at sentence #210000, processed 412637054 words, keeping 2682779 word types
+[2022-04-27 07:54:29,366] PROGRESS: at sentence #220000, processed 427507934 words, keeping 2744408 word types
+[2022-04-27 07:54:46,208] PROGRESS: at sentence #230000, processed 441453931 words, keeping 2809712 word types
+[2022-04-27 07:55:02,553] PROGRESS: at sentence #240000, processed 455308539 words, keeping 2873231 word types
+[2022-04-27 07:55:19,190] PROGRESS: at sentence #250000, processed 469211529 words, keeping 2929418 word types
+[2022-04-27 07:55:35,438] PROGRESS: at sentence #260000, processed 483019111 words, keeping 2989251 word types
+[2022-04-27 07:55:52,950] PROGRESS: at sentence #270000, processed 495848754 words, keeping 3043562 word types
+[2022-04-27 07:56:14,136] PROGRESS: at sentence #280000, processed 509169810 words, keeping 3103756 word types
+[2022-04-27 07:56:28,104] PROGRESS: at sentence #290000, processed 521522232 words, keeping 3164296 word types
+[2022-04-27 07:56:42,106] PROGRESS: at sentence #300000, processed 533905776 words, keeping 3219340 word types
+[2022-04-27 07:56:57,071] PROGRESS: at sentence #310000, processed 545889840 words, keeping 3275693 word types
+[2022-04-27 07:57:12,748] PROGRESS: at sentence #320000, processed 558175619 words, keeping 3335750 word types
+[2022-04-27 07:57:26,206] PROGRESS: at sentence #330000, processed 570176514 words, keeping 3385317 word types
+[2022-04-27 07:57:40,214] PROGRESS: at sentence #340000, processed 581550136 words, keeping 3431983 word types
+[2022-04-27 07:57:54,462] PROGRESS: at sentence #350000, processed 593492897 words, keeping 3474535 word types
+[2022-04-27 07:58:07,589] PROGRESS: at sentence #360000, processed 604838279 words, keeping 3515634 word types
+[2022-04-27 07:58:20,421] PROGRESS: at sentence #370000, processed 615873829 words, keeping 3558604 word types
+[2022-04-27 07:58:33,995] PROGRESS: at sentence #380000, processed 627081804 words, keeping 3603812 word types
+[2022-04-27 07:58:51,536] PROGRESS: at sentence #390000, processed 637826401 words, keeping 3643159 word types
+[2022-04-27 07:59:05,582] PROGRESS: at sentence #400000, processed 648868194 words, keeping 3684305 word types
+[2022-04-27 07:59:18,860] PROGRESS: at sentence #410000, processed 659618550 words, keeping 3729581 word types
+[2022-04-27 07:59:35,590] PROGRESS: at sentence #420000, processed 670686193 words, keeping 3777463 word types
+[2022-04-27 07:59:47,971] PROGRESS: at sentence #430000, processed 681074988 words, keeping 3815989 word types
+[2022-04-27 08:00:01,990] PROGRESS: at sentence #440000, processed 692128458 words, keeping 3857984 word types
+[2022-04-27 08:00:15,499] PROGRESS: at sentence #450000, processed 702719483 words, keeping 3904351 word types
+[2022-04-27 08:00:30,715] PROGRESS: at sentence #460000, processed 713146308 words, keeping 3945106 word types
+[2022-04-27 08:00:44,076] PROGRESS: at sentence #470000, processed 723734177 words, keeping 3984962 word types
+[2022-04-27 08:00:57,088] PROGRESS: at sentence #480000, processed 733546875 words, keeping 4020945 word types
+[2022-04-27 08:01:10,584] PROGRESS: at sentence #490000, processed 743660151 words, keeping 4060502 word types
+[2022-04-27 08:01:23,255] PROGRESS: at sentence #500000, processed 753734908 words, keeping 4097025 word types
+[2022-04-27 08:01:35,279] PROGRESS: at sentence #510000, processed 763953075 words, keeping 4136080 word types
+[2022-04-27 08:01:51,303] PROGRESS: at sentence #520000, processed 774221110 words, keeping 4174789 word types
+[2022-04-27 08:02:05,050] PROGRESS: at sentence #530000, processed 784241794 words, keeping 4212818 word types
+[2022-04-27 08:02:17,911] PROGRESS: at sentence #540000, processed 793989184 words, keeping 4248229 word types
+[2022-04-27 08:02:32,445] PROGRESS: at sentence #550000, processed 803737043 words, keeping 4288509 word types
+[2022-04-27 08:02:45,211] PROGRESS: at sentence #560000, processed 813348344 words, keeping 4324401 word types
+[2022-04-27 08:02:57,272] PROGRESS: at sentence #570000, processed 822829488 words, keeping 4360023 word types
+[2022-04-27 08:03:09,348] PROGRESS: at sentence #580000, processed 832292740 words, keeping 4392047 word types
+[2022-04-27 08:03:21,216] PROGRESS: at sentence #590000, processed 841207537 words, keeping 4422330 word types
+[2022-04-27 08:03:33,184] PROGRESS: at sentence #600000, processed 850443326 words, keeping 4454589 word types
+[2022-04-27 08:03:45,943] PROGRESS: at sentence #610000, processed 859656743 words, keeping 4489624 word types
+[2022-04-27 08:03:58,033] PROGRESS: at sentence #620000, processed 868655453 words, keeping 4524318 word types
+[2022-04-27 08:04:11,213] PROGRESS: at sentence #630000, processed 877638230 words, keeping 4557404 word types
+[2022-04-27 08:04:22,702] PROGRESS: at sentence #640000, processed 886270633 words, keeping 4592323 word types
+[2022-04-27 08:04:37,104] PROGRESS: at sentence #650000, processed 895151884 words, keeping 4624101 word types
+[2022-04-27 08:04:49,072] PROGRESS: at sentence #660000, processed 903386775 words, keeping 4653347 word types
+[2022-04-27 08:05:01,077] PROGRESS: at sentence #670000, processed 911967288 words, keeping 4684096 word types
+[2022-04-27 08:05:11,874] PROGRESS: at sentence #680000, processed 920221109 words, keeping 4726961 word types
+[2022-04-27 08:05:22,636] PROGRESS: at sentence #690000, processed 928392487 words, keeping 4754578 word types
+[2022-04-27 08:05:34,609] PROGRESS: at sentence #700000, processed 936640033 words, keeping 4782587 word types
+[2022-04-27 08:05:45,896] PROGRESS: at sentence #710000, processed 944991825 words, keeping 4811381 word types
+[2022-04-27 08:05:58,293] PROGRESS: at sentence #720000, processed 953527614 words, keeping 4859138 word types
+[2022-04-27 08:06:11,590] PROGRESS: at sentence #730000, processed 961871548 words, keeping 4889409 word types
+[2022-04-27 08:06:24,018] PROGRESS: at sentence #740000, processed 970218589 words, keeping 4914400 word types
+[2022-04-27 08:06:38,323] PROGRESS: at sentence #750000, processed 979040059 words, keeping 4943718 word types
+[2022-04-27 08:06:51,289] PROGRESS: at sentence #760000, processed 987379721 words, keeping 4972994 word types
+[2022-04-27 08:07:03,381] PROGRESS: at sentence #770000, processed 995508818 words, keeping 5002536 word types
+[2022-04-27 08:07:15,643] PROGRESS: at sentence #780000, processed 1003713691 words, keeping 5029381 word types
+[2022-04-27 08:07:27,678] PROGRESS: at sentence #790000, processed 1011888112 words, keeping 5059156 word types
+[2022-04-27 08:07:39,448] PROGRESS: at sentence #800000, processed 1019686763 words, keeping 5084111 word types
+[2022-04-27 08:07:51,075] PROGRESS: at sentence #810000, processed 1027634508 words, keeping 5114117 word types
+[2022-04-27 08:08:03,010] PROGRESS: at sentence #820000, processed 1035628409 words, keeping 5144219 word types
+[2022-04-27 08:08:15,484] PROGRESS: at sentence #830000, processed 1043562052 words, keeping 5171450 word types
+[2022-04-27 08:08:27,709] PROGRESS: at sentence #840000, processed 1051524230 words, keeping 5198157 word types
+[2022-04-27 08:08:39,891] PROGRESS: at sentence #850000, processed 1059211783 words, keeping 5227680 word types
+[2022-04-27 08:08:51,329] PROGRESS: at sentence #860000, processed 1066962636 words, keeping 5255104 word types
+[2022-04-27 08:09:03,749] PROGRESS: at sentence #870000, processed 1074798434 words, keeping 5282151 word types
+[2022-04-27 08:09:15,619] PROGRESS: at sentence #880000, processed 1082592938 words, keeping 5310466 word types
+[2022-04-27 08:09:26,001] PROGRESS: at sentence #890000, processed 1090065284 words, keeping 5337322 word types
+[2022-04-27 08:09:35,997] PROGRESS: at sentence #900000, processed 1097639363 words, keeping 5361350 word types
+[2022-04-27 08:09:47,459] PROGRESS: at sentence #910000, processed 1105152221 words, keeping 5390703 word types
+[2022-04-27 08:09:59,743] PROGRESS: at sentence #920000, processed 1112856493 words, keeping 5414516 word types
+[2022-04-27 08:10:11,369] PROGRESS: at sentence #930000, processed 1120478245 words, keeping 5439098 word types
+[2022-04-27 08:10:22,543] PROGRESS: at sentence #940000, processed 1128213130 words, keeping 5464719 word types
+[2022-04-27 08:10:33,608] PROGRESS: at sentence #950000, processed 1135406902 words, keeping 5490407 word types
+[2022-04-27 08:10:45,715] PROGRESS: at sentence #960000, processed 1143201774 words, keeping 5513430 word types
+[2022-04-27 08:10:57,903] PROGRESS: at sentence #970000, processed 1150708271 words, keeping 5538569 word types
+[2022-04-27 08:11:09,669] PROGRESS: at sentence #980000, processed 1158459800 words, keeping 5567347 word types
+[2022-04-27 08:11:20,527] PROGRESS: at sentence #990000, processed 1165560126 words, keeping 5594758 word types
+[2022-04-27 08:11:31,806] PROGRESS: at sentence #1000000, processed 1172740263 words, keeping 5631368 word types
+[2022-04-27 08:11:43,414] PROGRESS: at sentence #1010000, processed 1180082095 words, keeping 5660360 word types
+[2022-04-27 08:11:56,673] PROGRESS: at sentence #1020000, processed 1187459374 words, keeping 5691783 word types
+[2022-04-27 08:12:07,368] PROGRESS: at sentence #1030000, processed 1194548489 words, keeping 5716744 word types
+[2022-04-27 08:12:18,504] PROGRESS: at sentence #1040000, processed 1201400804 words, keeping 5745620 word types
+[2022-04-27 08:12:27,116] PROGRESS: at sentence #1050000, processed 1207297253 words, keeping 5776468 word types
+[2022-04-27 08:12:39,263] PROGRESS: at sentence #1060000, processed 1214488731 words, keeping 5810900 word types
+[2022-04-27 08:12:50,816] PROGRESS: at sentence #1070000, processed 1221342859 words, keeping 5834339 word types
+[2022-04-27 08:13:03,475] PROGRESS: at sentence #1080000, processed 1228383644 words, keeping 5859201 word types
+[2022-04-27 08:13:13,270] PROGRESS: at sentence #1090000, processed 1235068512 words, keeping 5881405 word types
+[2022-04-27 08:13:24,015] PROGRESS: at sentence #1100000, processed 1241786832 words, keeping 5903141 word types
+[2022-04-27 08:13:35,184] PROGRESS: at sentence #1110000, processed 1248543184 words, keeping 5925471 word types
+[2022-04-27 08:13:45,710] PROGRESS: at sentence #1120000, processed 1255461396 words, keeping 5946891 word types
+[2022-04-27 08:13:55,373] PROGRESS: at sentence #1130000, processed 1261357847 words, keeping 5967323 word types
+[2022-04-27 08:14:06,146] PROGRESS: at sentence #1140000, processed 1267921185 words, keeping 5991354 word types
+[2022-04-27 08:14:15,816] PROGRESS: at sentence #1150000, processed 1273717558 words, keeping 6011030 word types
+[2022-04-27 08:14:25,083] PROGRESS: at sentence #1160000, processed 1279906632 words, keeping 6034096 word types
+[2022-04-27 08:14:36,103] PROGRESS: at sentence #1170000, processed 1286531740 words, keeping 6055234 word types
+[2022-04-27 08:14:46,812] PROGRESS: at sentence #1180000, processed 1293500209 words, keeping 6077325 word types
+[2022-04-27 08:14:57,110] PROGRESS: at sentence #1190000, processed 1299971236 words, keeping 6098251 word types
+[2022-04-27 08:15:10,573] PROGRESS: at sentence #1200000, processed 1306698139 words, keeping 6120236 word types
+[2022-04-27 08:15:20,834] PROGRESS: at sentence #1210000, processed 1313112174 words, keeping 6142402 word types
+[2022-04-27 08:15:30,902] PROGRESS: at sentence #1220000, processed 1319511174 words, keeping 6165251 word types
+[2022-04-27 08:15:41,601] PROGRESS: at sentence #1230000, processed 1326122666 words, keeping 6191073 word types
+[2022-04-27 08:15:52,591] PROGRESS: at sentence #1240000, processed 1332711686 words, keeping 6211554 word types
+[2022-04-27 08:16:02,913] PROGRESS: at sentence #1250000, processed 1339103046 words, keeping 6232732 word types
+[2022-04-27 08:16:14,290] PROGRESS: at sentence #1260000, processed 1345415874 words, keeping 6256174 word types
+[2022-04-27 08:16:25,442] PROGRESS: at sentence #1270000, processed 1352008450 words, keeping 6281221 word types
+[2022-04-27 08:16:37,082] PROGRESS: at sentence #1280000, processed 1358502533 words, keeping 6303062 word types
+[2022-04-27 08:16:47,944] PROGRESS: at sentence #1290000, processed 1364998195 words, keeping 6322263 word types
+[2022-04-27 08:17:00,004] PROGRESS: at sentence #1300000, processed 1371639869 words, keeping 6344352 word types
+[2022-04-27 08:17:10,841] PROGRESS: at sentence #1310000, processed 1378132620 words, keeping 6362529 word types
+[2022-04-27 08:17:22,195] PROGRESS: at sentence #1320000, processed 1384680415 words, keeping 6383161 word types
+[2022-04-27 08:17:33,869] PROGRESS: at sentence #1330000, processed 1391205254 words, keeping 6403717 word types
+[2022-04-27 08:17:45,231] PROGRESS: at sentence #1340000, processed 1398181005 words, keeping 6426159 word types
+[2022-04-27 08:17:56,806] PROGRESS: at sentence #1350000, processed 1404878643 words, keeping 6449838 word types
+[2022-04-27 08:18:07,473] PROGRESS: at sentence #1360000, processed 1411449711 words, keeping 6471037 word types
+[2022-04-27 08:18:18,860] PROGRESS: at sentence #1370000, processed 1417857410 words, keeping 6496991 word types
+[2022-04-27 08:18:29,352] PROGRESS: at sentence #1380000, processed 1424077760 words, keeping 6516081 word types
+[2022-04-27 08:18:40,146] PROGRESS: at sentence #1390000, processed 1430429901 words, keeping 6535932 word types
+[2022-04-27 08:18:51,637] PROGRESS: at sentence #1400000, processed 1436835500 words, keeping 6558885 word types
+[2022-04-27 08:19:02,025] PROGRESS: at sentence #1410000, processed 1442898914 words, keeping 6576321 word types
+[2022-04-27 08:19:13,889] PROGRESS: at sentence #1420000, processed 1449341912 words, keeping 6596360 word types
+[2022-04-27 08:19:25,027] PROGRESS: at sentence #1430000, processed 1455617082 words, keeping 6619618 word types
+[2022-04-27 08:19:36,779] PROGRESS: at sentence #1440000, processed 1462101202 words, keeping 6642576 word types
+[2022-04-27 08:19:47,494] PROGRESS: at sentence #1450000, processed 1468358661 words, keeping 6664054 word types
+[2022-04-27 08:19:58,204] PROGRESS: at sentence #1460000, processed 1474466253 words, keeping 6688903 word types
+[2022-04-27 08:20:09,168] PROGRESS: at sentence #1470000, processed 1480507592 words, keeping 6707926 word types
+[2022-04-27 08:20:20,394] PROGRESS: at sentence #1480000, processed 1486839279 words, keeping 6729857 word types
+[2022-04-27 08:20:31,898] PROGRESS: at sentence #1490000, processed 1493453923 words, keeping 6748907 word types
+[2022-04-27 08:20:44,666] PROGRESS: at sentence #1500000, processed 1500902029 words, keeping 6771051 word types
+[2022-04-27 08:20:56,335] PROGRESS: at sentence #1510000, processed 1507180788 words, keeping 6788494 word types
+[2022-04-27 08:21:07,695] PROGRESS: at sentence #1520000, processed 1513474451 words, keeping 6806883 word types
+[2022-04-27 08:21:18,674] PROGRESS: at sentence #1530000, processed 1519584228 words, keeping 6825774 word types
+[2022-04-27 08:21:29,808] PROGRESS: at sentence #1540000, processed 1526146586 words, keeping 6845703 word types
+[2022-04-27 08:21:40,382] PROGRESS: at sentence #1550000, processed 1532058294 words, keeping 6864344 word types
+[2022-04-27 08:21:50,302] PROGRESS: at sentence #1560000, processed 1537458915 words, keeping 6882174 word types
+[2022-04-27 08:22:02,496] PROGRESS: at sentence #1570000, processed 1543514723 words, keeping 6904456 word types
+[2022-04-27 08:22:14,689] PROGRESS: at sentence #1580000, processed 1549846485 words, keeping 6923093 word types
+[2022-04-27 08:22:25,848] PROGRESS: at sentence #1590000, processed 1555854859 words, keeping 6940158 word types
+[2022-04-27 08:22:36,793] PROGRESS: at sentence #1600000, processed 1561813929 words, keeping 6961572 word types
+[2022-04-27 08:22:47,552] PROGRESS: at sentence #1610000, processed 1566798075 words, keeping 6979994 word types
+[2022-04-27 08:22:57,881] PROGRESS: at sentence #1620000, processed 1572607212 words, keeping 6998456 word types
+[2022-04-27 08:23:06,336] PROGRESS: at sentence #1630000, processed 1576517954 words, keeping 7011272 word types
+[2022-04-27 08:23:14,649] PROGRESS: at sentence #1640000, processed 1580847392 words, keeping 7022523 word types
+[2022-04-27 08:23:24,664] PROGRESS: at sentence #1650000, processed 1586328211 words, keeping 7039556 word types
+[2022-04-27 08:23:33,478] PROGRESS: at sentence #1660000, processed 1591043811 words, keeping 7057153 word types
+[2022-04-27 08:23:43,575] PROGRESS: at sentence #1670000, processed 1596590439 words, keeping 7076401 word types
+[2022-04-27 08:23:54,048] PROGRESS: at sentence #1680000, processed 1601898903 words, keeping 7096814 word types
+[2022-04-27 08:24:05,303] PROGRESS: at sentence #1690000, processed 1607451335 words, keeping 7117846 word types
+[2022-04-27 08:24:16,476] PROGRESS: at sentence #1700000, processed 1613207106 words, keeping 7135346 word types
+[2022-04-27 08:24:29,846] PROGRESS: at sentence #1710000, processed 1618514921 words, keeping 7154315 word types
+[2022-04-27 08:24:40,223] PROGRESS: at sentence #1720000, processed 1624200219 words, keeping 7172873 word types
+[2022-04-27 08:24:50,653] PROGRESS: at sentence #1730000, processed 1629813557 words, keeping 7188482 word types
+[2022-04-27 08:25:02,070] PROGRESS: at sentence #1740000, processed 1635560368 words, keeping 7208281 word types
+[2022-04-27 08:25:13,337] PROGRESS: at sentence #1750000, processed 1641095948 words, keeping 7225341 word types
+[2022-04-27 08:25:24,300] PROGRESS: at sentence #1760000, processed 1646598315 words, keeping 7248009 word types
+[2022-04-27 08:25:35,679] PROGRESS: at sentence #1770000, processed 1652455725 words, keeping 7276051 word types
+[2022-04-27 08:25:46,736] PROGRESS: at sentence #1780000, processed 1658012238 words, keeping 7291044 word types
+[2022-04-27 08:25:58,147] PROGRESS: at sentence #1790000, processed 1663904138 words, keeping 7307345 word types
+[2022-04-27 08:26:10,986] PROGRESS: at sentence #1800000, processed 1669993638 words, keeping 7325962 word types
+[2022-04-27 08:26:22,315] PROGRESS: at sentence #1810000, processed 1675970682 words, keeping 7347681 word types
+[2022-04-27 08:26:32,743] PROGRESS: at sentence #1820000, processed 1681595660 words, keeping 7365348 word types
+[2022-04-27 08:26:43,044] PROGRESS: at sentence #1830000, processed 1686446708 words, keeping 7380295 word types
+[2022-04-27 08:26:54,735] PROGRESS: at sentence #1840000, processed 1691197878 words, keeping 7402127 word types
+[2022-04-27 08:27:07,560] PROGRESS: at sentence #1850000, processed 1696504379 words, keeping 7431618 word types
+[2022-04-27 08:27:20,145] PROGRESS: at sentence #1860000, processed 1701918071 words, keeping 7458551 word types
+[2022-04-27 08:27:30,457] PROGRESS: at sentence #1870000, processed 1707209119 words, keeping 7475390 word types
+[2022-04-27 08:27:41,309] PROGRESS: at sentence #1880000, processed 1712579102 words, keeping 7493050 word types
+[2022-04-27 08:27:52,121] PROGRESS: at sentence #1890000, processed 1717676851 words, keeping 7510012 word types
+[2022-04-27 08:28:03,656] PROGRESS: at sentence #1900000, processed 1722835876 words, keeping 7525628 word types
+[2022-04-27 08:28:14,932] PROGRESS: at sentence #1910000, processed 1727779831 words, keeping 7540203 word types
+[2022-04-27 08:28:24,776] PROGRESS: at sentence #1920000, processed 1732621122 words, keeping 7555194 word types
+[2022-04-27 08:28:35,392] PROGRESS: at sentence #1930000, processed 1738100386 words, keeping 7573201 word types
+[2022-04-27 08:28:48,718] PROGRESS: at sentence #1940000, processed 1743913301 words, keeping 7592364 word types
+[2022-04-27 08:29:04,758] PROGRESS: at sentence #1950000, processed 1749683138 words, keeping 7607625 word types
+[2022-04-27 08:29:23,142] PROGRESS: at sentence #1960000, processed 1755208359 words, keeping 7621877 word types
+[2022-04-27 08:29:34,295] PROGRESS: at sentence #1970000, processed 1760762718 words, keeping 7638111 word types
+[2022-04-27 08:29:44,623] PROGRESS: at sentence #1980000, processed 1766143545 words, keeping 7654710 word types
+[2022-04-27 08:29:55,479] PROGRESS: at sentence #1990000, processed 1771690407 words, keeping 7671497 word types
+[2022-04-27 08:30:05,460] PROGRESS: at sentence #2000000, processed 1777358647 words, keeping 7688050 word types
+[2022-04-27 08:30:15,695] PROGRESS: at sentence #2010000, processed 1782859881 words, keeping 7703648 word types
+[2022-04-27 08:30:26,826] PROGRESS: at sentence #2020000, processed 1788424587 words, keeping 7717792 word types
+[2022-04-27 08:30:37,549] PROGRESS: at sentence #2030000, processed 1793836756 words, keeping 7734176 word types
+[2022-04-27 08:30:48,351] PROGRESS: at sentence #2040000, processed 1799601604 words, keeping 7750367 word types
+[2022-04-27 08:30:59,670] PROGRESS: at sentence #2050000, processed 1805130006 words, keeping 7766157 word types
+[2022-04-27 08:31:11,506] PROGRESS: at sentence #2060000, processed 1810569980 words, keeping 7781589 word types
+[2022-04-27 08:31:23,622] PROGRESS: at sentence #2070000, processed 1815883235 words, keeping 7798369 word types
+[2022-04-27 08:31:34,447] PROGRESS: at sentence #2080000, processed 1821108102 words, keeping 7814481 word types
+[2022-04-27 08:31:44,704] PROGRESS: at sentence #2090000, processed 1826065468 words, keeping 7829439 word types
+[2022-04-27 08:31:54,470] PROGRESS: at sentence #2100000, processed 1831177964 words, keeping 7845552 word types
+[2022-04-27 08:32:04,279] PROGRESS: at sentence #2110000, processed 1835767812 words, keeping 7860025 word types
+[2022-04-27 08:32:13,215] PROGRESS: at sentence #2120000, processed 1840774191 words, keeping 7890537 word types
+[2022-04-27 08:32:23,993] PROGRESS: at sentence #2130000, processed 1845709415 words, keeping 7906235 word types
+[2022-04-27 08:32:36,088] PROGRESS: at sentence #2140000, processed 1851853892 words, keeping 7923734 word types
+[2022-04-27 08:32:43,141] PROGRESS: at sentence #2150000, processed 1854900569 words, keeping 7933774 word types
+[2022-04-27 08:32:54,587] PROGRESS: at sentence #2160000, processed 1860594994 words, keeping 7950133 word types
+[2022-04-27 08:33:06,657] PROGRESS: at sentence #2170000, processed 1866575267 words, keeping 7966637 word types
+[2022-04-27 08:33:18,504] PROGRESS: at sentence #2180000, processed 1872470871 words, keeping 7984882 word types
+[2022-04-27 08:33:31,068] PROGRESS: at sentence #2190000, processed 1877781973 words, keeping 8003727 word types
+[2022-04-27 08:33:45,012] PROGRESS: at sentence #2200000, processed 1883242341 words, keeping 8021639 word types
+[2022-04-27 08:33:55,131] PROGRESS: at sentence #2210000, processed 1887800093 words, keeping 8036307 word types
+[2022-04-27 08:34:04,540] PROGRESS: at sentence #2220000, processed 1892302350 words, keeping 8050391 word types
+[2022-04-27 08:34:15,466] PROGRESS: at sentence #2230000, processed 1897646001 words, keeping 8065057 word types
+[2022-04-27 08:34:25,977] PROGRESS: at sentence #2240000, processed 1902945261 words, keeping 8082677 word types
+[2022-04-27 08:34:36,421] PROGRESS: at sentence #2250000, processed 1908267816 words, keeping 8100215 word types
+[2022-04-27 08:34:47,079] PROGRESS: at sentence #2260000, processed 1914002233 words, keeping 8117082 word types
+[2022-04-27 08:34:58,599] PROGRESS: at sentence #2270000, processed 1919329582 words, keeping 8135255 word types
+[2022-04-27 08:35:09,485] PROGRESS: at sentence #2280000, processed 1924777620 words, keeping 8154309 word types
+[2022-04-27 08:35:19,759] PROGRESS: at sentence #2290000, processed 1930170663 words, keeping 8169988 word types
+[2022-04-27 08:35:29,856] PROGRESS: at sentence #2300000, processed 1935070261 words, keeping 8183624 word types
+[2022-04-27 08:35:40,564] PROGRESS: at sentence #2310000, processed 1940042095 words, keeping 8198469 word types
+[2022-04-27 08:35:50,796] PROGRESS: at sentence #2320000, processed 1945264741 words, keeping 8217401 word types
+[2022-04-27 08:36:01,619] PROGRESS: at sentence #2330000, processed 1950615979 words, keeping 8235516 word types
+[2022-04-27 08:36:11,973] PROGRESS: at sentence #2340000, processed 1955594359 words, keeping 8251016 word types
+[2022-04-27 08:36:20,245] PROGRESS: at sentence #2350000, processed 1959795831 words, keeping 8265982 word types
+[2022-04-27 08:36:30,083] PROGRESS: at sentence #2360000, processed 1964793852 words, keeping 8283797 word types
+[2022-04-27 08:36:38,116] PROGRESS: at sentence #2370000, processed 1968551805 words, keeping 8294261 word types
+[2022-04-27 08:36:47,367] PROGRESS: at sentence #2380000, processed 1972847284 words, keeping 8309474 word types
+[2022-04-27 08:36:56,603] PROGRESS: at sentence #2390000, processed 1977612735 words, keeping 8330903 word types
+[2022-04-27 08:37:09,339] PROGRESS: at sentence #2400000, processed 1982386423 words, keeping 8361469 word types
+[2022-04-27 08:37:20,821] PROGRESS: at sentence #2410000, processed 1987936746 words, keeping 8377426 word types
+[2022-04-27 08:37:31,482] PROGRESS: at sentence #2420000, processed 1992872021 words, keeping 8395035 word types
+[2022-04-27 08:37:42,572] PROGRESS: at sentence #2430000, processed 1998303371 words, keeping 8414148 word types
+[2022-04-27 08:37:53,345] PROGRESS: at sentence #2440000, processed 2003880118 words, keeping 8430044 word types
+[2022-04-27 08:38:04,077] PROGRESS: at sentence #2450000, processed 2009289203 words, keeping 8444353 word types
+[2022-04-27 08:38:14,690] PROGRESS: at sentence #2460000, processed 2014567893 words, keeping 8459382 word types
+[2022-04-27 08:38:26,581] PROGRESS: at sentence #2470000, processed 2020256276 words, keeping 8475461 word types
+[2022-04-27 08:38:39,992] PROGRESS: at sentence #2480000, processed 2025633018 words, keeping 8492189 word types
+[2022-04-27 08:38:57,245] PROGRESS: at sentence #2490000, processed 2031485927 words, keeping 8509852 word types
+[2022-04-27 08:39:09,322] PROGRESS: at sentence #2500000, processed 2036852532 words, keeping 8526871 word types
+[2022-04-27 08:39:20,540] PROGRESS: at sentence #2510000, processed 2041627088 words, keeping 8549004 word types
+[2022-04-27 08:39:30,589] PROGRESS: at sentence #2520000, processed 2046787357 words, keeping 8569510 word types
+[2022-04-27 08:39:41,899] PROGRESS: at sentence #2530000, processed 2052128981 words, keeping 8586730 word types
+[2022-04-27 08:39:52,907] PROGRESS: at sentence #2540000, processed 2057413397 words, keeping 8606561 word types
+[2022-04-27 08:40:02,348] PROGRESS: at sentence #2550000, processed 2062334347 words, keeping 8622867 word types
+[2022-04-27 08:40:12,117] PROGRESS: at sentence #2560000, processed 2066896123 words, keeping 8639336 word types
+[2022-04-27 08:40:23,419] PROGRESS: at sentence #2570000, processed 2072682540 words, keeping 8655218 word types
+[2022-04-27 08:40:35,060] PROGRESS: at sentence #2580000, processed 2078345754 words, keeping 8671354 word types
+[2022-04-27 08:40:45,988] PROGRESS: at sentence #2590000, processed 2083714559 words, keeping 8688492 word types
+[2022-04-27 08:40:57,086] PROGRESS: at sentence #2600000, processed 2088936875 words, keeping 8710312 word types
+[2022-04-27 08:41:07,225] PROGRESS: at sentence #2610000, processed 2094599188 words, keeping 8727135 word types
+[2022-04-27 08:41:18,535] PROGRESS: at sentence #2620000, processed 2099743802 words, keeping 8743704 word types
+[2022-04-27 08:41:30,794] PROGRESS: at sentence #2630000, processed 2105239424 words, keeping 8761282 word types
+[2022-04-27 08:41:41,373] PROGRESS: at sentence #2640000, processed 2110854434 words, keeping 8776958 word types
+[2022-04-27 08:41:53,265] PROGRESS: at sentence #2650000, processed 2116744966 words, keeping 8791003 word types
+[2022-04-27 08:42:04,016] PROGRESS: at sentence #2660000, processed 2121873187 words, keeping 8805353 word types
+[2022-04-27 08:42:17,574] PROGRESS: at sentence #2670000, processed 2127360521 words, keeping 8820336 word types
+[2022-04-27 08:42:29,090] PROGRESS: at sentence #2680000, processed 2133063974 words, keeping 8836663 word types
+[2022-04-27 08:42:38,853] PROGRESS: at sentence #2690000, processed 2138167347 words, keeping 8855333 word types
+[2022-04-27 08:42:49,418] PROGRESS: at sentence #2700000, processed 2143578477 words, keeping 8872034 word types
+[2022-04-27 08:43:00,939] PROGRESS: at sentence #2710000, processed 2148754702 words, keeping 8890126 word types
+[2022-04-27 08:43:12,538] PROGRESS: at sentence #2720000, processed 2154427784 words, keeping 8908433 word types
+[2022-04-27 08:43:24,620] PROGRESS: at sentence #2730000, processed 2159917634 words, keeping 8924311 word types
+[2022-04-27 08:43:35,504] PROGRESS: at sentence #2740000, processed 2165251793 words, keeping 8939627 word types
+[2022-04-27 08:43:48,568] PROGRESS: at sentence #2750000, processed 2170473028 words, keeping 8953538 word types
+[2022-04-27 08:43:57,794] PROGRESS: at sentence #2760000, processed 2175175252 words, keeping 8966918 word types
+[2022-04-27 08:44:09,023] PROGRESS: at sentence #2770000, processed 2180316472 words, keeping 8982995 word types
+[2022-04-27 08:44:20,167] PROGRESS: at sentence #2780000, processed 2184606215 words, keeping 8995379 word types
+[2022-04-27 08:44:31,893] PROGRESS: at sentence #2790000, processed 2190113808 words, keeping 9016282 word types
+[2022-04-27 08:44:44,241] PROGRESS: at sentence #2800000, processed 2195707989 words, keeping 9069873 word types
+[2022-04-27 08:44:58,392] PROGRESS: at sentence #2810000, processed 2201335350 words, keeping 9089146 word types
+[2022-04-27 08:45:10,862] PROGRESS: at sentence #2820000, processed 2206577435 words, keeping 9108252 word types
+[2022-04-27 08:45:24,079] PROGRESS: at sentence #2830000, processed 2211869663 words, keeping 9126549 word types
+[2022-04-27 08:45:35,333] PROGRESS: at sentence #2840000, processed 2217253911 words, keeping 9143446 word types
+[2022-04-27 08:45:46,139] PROGRESS: at sentence #2850000, processed 2222573076 words, keeping 9158868 word types
+[2022-04-27 08:45:56,679] PROGRESS: at sentence #2860000, processed 2227742690 words, keeping 9175048 word types
+[2022-04-27 08:46:07,409] PROGRESS: at sentence #2870000, processed 2232837615 words, keeping 9189056 word types
+[2022-04-27 08:46:22,459] PROGRESS: at sentence #2880000, processed 2237779788 words, keeping 9206390 word types
+[2022-04-27 08:46:36,965] PROGRESS: at sentence #2890000, processed 2243062048 words, keeping 9224717 word types
+[2022-04-27 08:46:48,537] PROGRESS: at sentence #2900000, processed 2248388362 words, keeping 9253112 word types
+[2022-04-27 08:46:59,280] PROGRESS: at sentence #2910000, processed 2253462983 words, keeping 9274962 word types
+[2022-04-27 08:47:10,755] PROGRESS: at sentence #2920000, processed 2258827968 words, keeping 9289225 word types
+[2022-04-27 08:47:21,947] PROGRESS: at sentence #2930000, processed 2263990299 words, keeping 9304859 word types
+[2022-04-27 08:47:30,861] PROGRESS: at sentence #2940000, processed 2268054263 words, keeping 9315870 word types
+[2022-04-27 08:47:40,592] PROGRESS: at sentence #2950000, processed 2272149145 words, keeping 9327286 word types
+[2022-04-27 08:47:51,015] PROGRESS: at sentence #2960000, processed 2276410404 words, keeping 9338734 word types
+[2022-04-27 08:48:07,828] PROGRESS: at sentence #2970000, processed 2281516348 words, keeping 9353024 word types
+[2022-04-27 08:48:23,034] PROGRESS: at sentence #2980000, processed 2286966965 words, keeping 9370422 word types
+[2022-04-27 08:48:34,622] PROGRESS: at sentence #2990000, processed 2292184442 words, keeping 9389139 word types
+[2022-04-27 08:48:48,660] PROGRESS: at sentence #3000000, processed 2297732886 words, keeping 9405502 word types
+[2022-04-27 08:48:59,883] PROGRESS: at sentence #3010000, processed 2303213941 words, keeping 9421992 word types
+[2022-04-27 08:49:11,525] PROGRESS: at sentence #3020000, processed 2308704064 words, keeping 9438466 word types
+[2022-04-27 08:49:23,312] PROGRESS: at sentence #3030000, processed 2315565978 words, keeping 9456833 word types
+[2022-04-27 08:49:35,128] PROGRESS: at sentence #3040000, processed 2322258237 words, keeping 9476625 word types
+[2022-04-27 08:49:46,363] PROGRESS: at sentence #3050000, processed 2327666663 words, keeping 9493255 word types
+[2022-04-27 08:49:57,957] PROGRESS: at sentence #3060000, processed 2333156494 words, keeping 9511154 word types
+[2022-04-27 08:50:11,405] PROGRESS: at sentence #3070000, processed 2338792777 words, keeping 9529752 word types
+[2022-04-27 08:50:26,342] PROGRESS: at sentence #3080000, processed 2344488865 words, keeping 9545641 word types
+[2022-04-27 08:50:38,485] PROGRESS: at sentence #3090000, processed 2350178602 words, keeping 9562355 word types
+[2022-04-27 08:50:50,487] PROGRESS: at sentence #3100000, processed 2355706321 words, keeping 9579141 word types
+[2022-04-27 08:51:03,096] PROGRESS: at sentence #3110000, processed 2361376528 words, keeping 9595768 word types
+[2022-04-27 08:51:16,172] PROGRESS: at sentence #3120000, processed 2367091590 words, keeping 9611263 word types
+[2022-04-27 08:51:29,175] PROGRESS: at sentence #3130000, processed 2372513454 words, keeping 9629169 word types
+[2022-04-27 08:51:41,658] PROGRESS: at sentence #3140000, processed 2377786518 words, keeping 9645044 word types
+[2022-04-27 08:51:54,765] PROGRESS: at sentence #3150000, processed 2383173845 words, keeping 9663308 word types
+[2022-04-27 08:52:07,161] PROGRESS: at sentence #3160000, processed 2388255224 words, keeping 9681571 word types
+[2022-04-27 08:52:20,768] PROGRESS: at sentence #3170000, processed 2393184621 words, keeping 9700205 word types
+[2022-04-27 08:52:32,333] PROGRESS: at sentence #3180000, processed 2398059238 words, keeping 9715490 word types
+[2022-04-27 08:52:44,101] PROGRESS: at sentence #3190000, processed 2402993710 words, keeping 9730294 word types
+[2022-04-27 08:52:55,845] PROGRESS: at sentence #3200000, processed 2408178739 words, keeping 9748918 word types
+[2022-04-27 08:53:09,709] PROGRESS: at sentence #3210000, processed 2413315531 words, keeping 9764690 word types
+[2022-04-27 08:53:21,288] PROGRESS: at sentence #3220000, processed 2418492103 words, keeping 9780973 word types
+[2022-04-27 08:53:32,838] PROGRESS: at sentence #3230000, processed 2423594759 words, keeping 9798012 word types
+[2022-04-27 08:53:45,339] PROGRESS: at sentence #3240000, processed 2429077715 words, keeping 9814957 word types
+[2022-04-27 08:53:55,927] PROGRESS: at sentence #3250000, processed 2434048711 words, keeping 9829398 word types
+[2022-04-27 08:54:08,254] PROGRESS: at sentence #3260000, processed 2439589266 words, keeping 9846970 word types
+[2022-04-27 08:54:20,423] PROGRESS: at sentence #3270000, processed 2444963435 words, keeping 9861310 word types
+[2022-04-27 08:54:31,895] PROGRESS: at sentence #3280000, processed 2450210679 words, keeping 9875974 word types
+[2022-04-27 08:54:42,252] PROGRESS: at sentence #3290000, processed 2455216703 words, keeping 9890987 word types
+[2022-04-27 08:54:54,868] PROGRESS: at sentence #3300000, processed 2460433144 words, keeping 9906400 word types
+[2022-04-27 08:55:08,754] PROGRESS: at sentence #3310000, processed 2465701477 words, keeping 9920324 word types
+[2022-04-27 08:55:22,847] PROGRESS: at sentence #3320000, processed 2471015489 words, keeping 9934884 word types
+[2022-04-27 08:55:34,278] PROGRESS: at sentence #3330000, processed 2476444597 words, keeping 9950551 word types
+[2022-04-27 08:55:46,488] PROGRESS: at sentence #3340000, processed 2481557254 words, keeping 9968352 word types
+[2022-04-27 08:55:58,385] PROGRESS: at sentence #3350000, processed 2486887423 words, keeping 9985414 word types
+[2022-04-27 08:56:09,534] PROGRESS: at sentence #3360000, processed 2492025412 words, keeping 10000957 word types
+[2022-04-27 08:56:21,806] PROGRESS: at sentence #3370000, processed 2497252972 words, keeping 10016802 word types
+[2022-04-27 08:56:32,340] PROGRESS: at sentence #3380000, processed 2501905702 words, keeping 10031641 word types
+[2022-04-27 08:56:44,091] PROGRESS: at sentence #3390000, processed 2506919724 words, keeping 10044677 word types
+[2022-04-27 08:56:55,910] PROGRESS: at sentence #3400000, processed 2511880965 words, keeping 10060585 word types
+[2022-04-27 08:57:07,563] PROGRESS: at sentence #3410000, processed 2516783451 words, keeping 10075202 word types
+[2022-04-27 08:57:18,580] PROGRESS: at sentence #3420000, processed 2521349720 words, keeping 10088575 word types
+[2022-04-27 08:57:29,583] PROGRESS: at sentence #3430000, processed 2526051287 words, keeping 10104032 word types
+[2022-04-27 08:57:41,326] PROGRESS: at sentence #3440000, processed 2530753810 words, keeping 10117013 word types
+[2022-04-27 08:57:52,907] PROGRESS: at sentence #3450000, processed 2535814138 words, keeping 10130655 word types
+[2022-04-27 08:58:04,222] PROGRESS: at sentence #3460000, processed 2540654014 words, keeping 10150082 word types
+[2022-04-27 08:58:16,526] PROGRESS: at sentence #3470000, processed 2545490987 words, keeping 10165968 word types
+[2022-04-27 08:58:29,427] PROGRESS: at sentence #3480000, processed 2550654513 words, keeping 10182017 word types
+[2022-04-27 08:58:41,149] PROGRESS: at sentence #3490000, processed 2555186852 words, keeping 10195216 word types
+[2022-04-27 08:58:57,277] PROGRESS: at sentence #3500000, processed 2560511865 words, keeping 10210640 word types
+[2022-04-27 08:59:09,145] PROGRESS: at sentence #3510000, processed 2565688590 words, keeping 10225370 word types
+[2022-04-27 08:59:23,533] PROGRESS: at sentence #3520000, processed 2571179801 words, keeping 10241668 word types
+[2022-04-27 08:59:35,153] PROGRESS: at sentence #3530000, processed 2576082529 words, keeping 10256140 word types
+[2022-04-27 08:59:52,140] PROGRESS: at sentence #3540000, processed 2581934065 words, keeping 10272925 word types
+[2022-04-27 09:00:05,102] PROGRESS: at sentence #3550000, processed 2587299469 words, keeping 10288672 word types
+[2022-04-27 09:00:16,439] PROGRESS: at sentence #3560000, processed 2592150406 words, keeping 10302518 word types
+[2022-04-27 09:00:28,239] PROGRESS: at sentence #3570000, processed 2597166093 words, keeping 10316618 word types
+[2022-04-27 09:00:42,511] PROGRESS: at sentence #3580000, processed 2602711933 words, keeping 10332973 word types
+[2022-04-27 09:00:55,781] PROGRESS: at sentence #3590000, processed 2607955964 words, keeping 10345768 word types
+[2022-04-27 09:01:08,114] PROGRESS: at sentence #3600000, processed 2612929003 words, keeping 10359859 word types
+[2022-04-27 09:01:20,624] PROGRESS: at sentence #3610000, processed 2618093977 words, keeping 10373067 word types
+[2022-04-27 09:01:32,554] PROGRESS: at sentence #3620000, processed 2623361346 words, keeping 10387236 word types
+[2022-04-27 09:01:44,661] PROGRESS: at sentence #3630000, processed 2628854557 words, keeping 10401183 word types
+[2022-04-27 09:01:57,437] PROGRESS: at sentence #3640000, processed 2634217565 words, keeping 10414578 word types
+[2022-04-27 09:02:10,147] PROGRESS: at sentence #3650000, processed 2639417185 words, keeping 10427592 word types
+[2022-04-27 09:02:24,644] PROGRESS: at sentence #3660000, processed 2644727108 words, keeping 10443643 word types
+[2022-04-27 09:02:36,637] PROGRESS: at sentence #3670000, processed 2649850973 words, keeping 10457497 word types
+[2022-04-27 09:02:48,340] PROGRESS: at sentence #3680000, processed 2655030351 words, keeping 10470476 word types
+[2022-04-27 09:03:00,780] PROGRESS: at sentence #3690000, processed 2659838561 words, keeping 10487212 word types
+[2022-04-27 09:03:12,085] PROGRESS: at sentence #3700000, processed 2664567613 words, keeping 10502466 word types
+[2022-04-27 09:03:24,421] PROGRESS: at sentence #3710000, processed 2669422899 words, keeping 10520803 word types
+[2022-04-27 09:03:36,433] PROGRESS: at sentence #3720000, processed 2674385164 words, keeping 10535818 word types
+[2022-04-27 09:03:47,696] PROGRESS: at sentence #3730000, processed 2679008400 words, keeping 10551408 word types
+[2022-04-27 09:03:58,590] PROGRESS: at sentence #3740000, processed 2683907378 words, keeping 10567255 word types
+[2022-04-27 09:04:09,414] PROGRESS: at sentence #3750000, processed 2688524596 words, keeping 10581916 word types
+[2022-04-27 09:04:20,645] PROGRESS: at sentence #3760000, processed 2693374808 words, keeping 10594666 word types
+[2022-04-27 09:04:31,437] PROGRESS: at sentence #3770000, processed 2698118991 words, keeping 10609908 word types
+[2022-04-27 09:04:44,112] PROGRESS: at sentence #3780000, processed 2703399193 words, keeping 10627730 word types
+[2022-04-27 09:04:55,941] PROGRESS: at sentence #3790000, processed 2708467977 words, keeping 10641736 word types
+[2022-04-27 09:05:07,194] PROGRESS: at sentence #3800000, processed 2713304033 words, keeping 10654793 word types
+[2022-04-27 09:05:17,573] PROGRESS: at sentence #3810000, processed 2717943786 words, keeping 10666898 word types
+[2022-04-27 09:05:28,412] PROGRESS: at sentence #3820000, processed 2722769104 words, keeping 10682032 word types
+[2022-04-27 09:05:40,639] PROGRESS: at sentence #3830000, processed 2727957668 words, keeping 10697398 word types
+[2022-04-27 09:05:51,657] PROGRESS: at sentence #3840000, processed 2732810573 words, keeping 10710092 word types
+[2022-04-27 09:06:04,096] PROGRESS: at sentence #3850000, processed 2738026532 words, keeping 10723626 word types
+[2022-04-27 09:06:16,010] PROGRESS: at sentence #3860000, processed 2743221296 words, keeping 10737195 word types
+[2022-04-27 09:06:28,313] PROGRESS: at sentence #3870000, processed 2748539537 words, keeping 10751883 word types
+[2022-04-27 09:06:40,906] PROGRESS: at sentence #3880000, processed 2753790801 words, keeping 10767346 word types
+[2022-04-27 09:06:53,488] PROGRESS: at sentence #3890000, processed 2758910351 words, keeping 10784058 word types
+[2022-04-27 09:07:05,030] PROGRESS: at sentence #3900000, processed 2763840444 words, keeping 10798916 word types
+[2022-04-27 09:07:16,840] PROGRESS: at sentence #3910000, processed 2768532827 words, keeping 10814895 word types
+[2022-04-27 09:07:28,823] PROGRESS: at sentence #3920000, processed 2773327518 words, keeping 10828321 word types
+[2022-04-27 09:07:41,077] PROGRESS: at sentence #3930000, processed 2778271406 words, keeping 10841303 word types
+[2022-04-27 09:07:52,893] PROGRESS: at sentence #3940000, processed 2783297379 words, keeping 10854131 word types
+[2022-04-27 09:08:05,079] PROGRESS: at sentence #3950000, processed 2788319918 words, keeping 10871021 word types
+[2022-04-27 09:08:19,702] PROGRESS: at sentence #3960000, processed 2793263159 words, keeping 10883280 word types
+[2022-04-27 09:08:30,558] PROGRESS: at sentence #3970000, processed 2798100295 words, keeping 10896661 word types
+[2022-04-27 09:08:41,420] PROGRESS: at sentence #3980000, processed 2803024097 words, keeping 10912615 word types
+[2022-04-27 09:08:52,339] PROGRESS: at sentence #3990000, processed 2807989728 words, keeping 10927143 word types
+[2022-04-27 09:09:07,970] PROGRESS: at sentence #4000000, processed 2812991114 words, keeping 10942323 word types
+[2022-04-27 09:09:21,650] PROGRESS: at sentence #4010000, processed 2818487317 words, keeping 10965774 word types
+[2022-04-27 09:09:34,765] PROGRESS: at sentence #4020000, processed 2823527810 words, keeping 10978893 word types
+[2022-04-27 09:09:47,007] PROGRESS: at sentence #4030000, processed 2828384582 words, keeping 10991956 word types
+[2022-04-27 09:09:58,367] PROGRESS: at sentence #4040000, processed 2833642103 words, keeping 11006593 word types
+[2022-04-27 09:10:09,824] PROGRESS: at sentence #4050000, processed 2838595581 words, keeping 11018924 word types
+[2022-04-27 09:10:20,738] PROGRESS: at sentence #4060000, processed 2843590482 words, keeping 11031992 word types
+[2022-04-27 09:10:33,237] PROGRESS: at sentence #4070000, processed 2848850454 words, keeping 11044013 word types
+[2022-04-27 09:10:45,438] PROGRESS: at sentence #4080000, processed 2854014223 words, keeping 11057292 word types
+[2022-04-27 09:10:57,762] PROGRESS: at sentence #4090000, processed 2859244667 words, keeping 11071902 word types
+[2022-04-27 09:11:10,128] PROGRESS: at sentence #4100000, processed 2864431846 words, keeping 11084304 word types
+[2022-04-27 09:11:22,769] PROGRESS: at sentence #4110000, processed 2869716375 words, keeping 11096555 word types
+[2022-04-27 09:11:36,812] PROGRESS: at sentence #4120000, processed 2875106684 words, keeping 11109010 word types
+[2022-04-27 09:11:49,082] PROGRESS: at sentence #4130000, processed 2880177650 words, keeping 11121672 word types
+[2022-04-27 09:12:01,431] PROGRESS: at sentence #4140000, processed 2885029774 words, keeping 11136412 word types
+[2022-04-27 09:12:13,552] PROGRESS: at sentence #4150000, processed 2889750992 words, keeping 11149313 word types
+[2022-04-27 09:12:25,282] PROGRESS: at sentence #4160000, processed 2894386576 words, keeping 11160449 word types
+[2022-04-27 09:12:36,542] PROGRESS: at sentence #4170000, processed 2898873708 words, keeping 11172547 word types
+[2022-04-27 09:12:48,796] PROGRESS: at sentence #4180000, processed 2903353169 words, keeping 11186105 word types
+[2022-04-27 09:12:59,393] PROGRESS: at sentence #4190000, processed 2907812133 words, keeping 11197693 word types
+[2022-04-27 09:13:11,864] PROGRESS: at sentence #4200000, processed 2913354138 words, keeping 11213669 word types
+[2022-04-27 09:13:23,985] PROGRESS: at sentence #4210000, processed 2918367599 words, keeping 11227282 word types
+[2022-04-27 09:13:35,955] PROGRESS: at sentence #4220000, processed 2923283235 words, keeping 11238529 word types
+[2022-04-27 09:13:48,558] PROGRESS: at sentence #4230000, processed 2928467159 words, keeping 11252166 word types
+[2022-04-27 09:13:59,523] PROGRESS: at sentence #4240000, processed 2933391131 words, keeping 11264515 word types
+[2022-04-27 09:14:10,816] PROGRESS: at sentence #4250000, processed 2938216341 words, keeping 11276709 word types
+[2022-04-27 09:14:22,127] PROGRESS: at sentence #4260000, processed 2943100562 words, keeping 11290076 word types
+[2022-04-27 09:14:36,482] PROGRESS: at sentence #4270000, processed 2948339819 words, keeping 11303175 word types
+[2022-04-27 09:14:49,240] PROGRESS: at sentence #4280000, processed 2953434362 words, keeping 11317112 word types
+[2022-04-27 09:15:00,896] PROGRESS: at sentence #4290000, processed 2958291285 words, keeping 11330633 word types
+[2022-04-27 09:15:13,121] PROGRESS: at sentence #4300000, processed 2963216023 words, keeping 11346640 word types
+[2022-04-27 09:15:24,965] PROGRESS: at sentence #4310000, processed 2968155562 words, keeping 11361604 word types
+[2022-04-27 09:15:43,270] PROGRESS: at sentence #4320000, processed 2972917709 words, keeping 11374640 word types
+[2022-04-27 09:15:54,514] PROGRESS: at sentence #4330000, processed 2977861970 words, keeping 11387397 word types
+[2022-04-27 09:16:06,374] PROGRESS: at sentence #4340000, processed 2982471644 words, keeping 11400088 word types
+[2022-04-27 09:16:17,940] PROGRESS: at sentence #4350000, processed 2987225934 words, keeping 11414289 word types
+[2022-04-27 09:16:27,585] PROGRESS: at sentence #4360000, processed 2991696401 words, keeping 11425522 word types
+[2022-04-27 09:16:39,551] PROGRESS: at sentence #4370000, processed 2996431246 words, keeping 11439752 word types
+[2022-04-27 09:16:54,632] PROGRESS: at sentence #4380000, processed 3001593493 words, keeping 11454882 word types
+[2022-04-27 09:17:06,042] PROGRESS: at sentence #4390000, processed 3006487359 words, keeping 11468604 word types
+[2022-04-27 09:17:17,683] PROGRESS: at sentence #4400000, processed 3011227880 words, keeping 11483427 word types
+[2022-04-27 09:17:28,581] PROGRESS: at sentence #4410000, processed 3015748280 words, keeping 11495225 word types
+[2022-04-27 09:17:40,671] PROGRESS: at sentence #4420000, processed 3020424613 words, keeping 11513399 word types
+[2022-04-27 09:17:51,636] PROGRESS: at sentence #4430000, processed 3024866525 words, keeping 11524095 word types
+[2022-04-27 09:18:03,349] PROGRESS: at sentence #4440000, processed 3029588661 words, keeping 11536699 word types
+[2022-04-27 09:18:16,279] PROGRESS: at sentence #4450000, processed 3034222632 words, keeping 11548524 word types
+[2022-04-27 09:18:29,462] PROGRESS: at sentence #4460000, processed 3038947010 words, keeping 11561604 word types
+[2022-04-27 09:18:43,146] PROGRESS: at sentence #4470000, processed 3044222336 words, keeping 11576291 word types
+[2022-04-27 09:18:55,511] PROGRESS: at sentence #4480000, processed 3049281167 words, keeping 11589328 word types
+[2022-04-27 09:19:07,004] PROGRESS: at sentence #4490000, processed 3053916337 words, keeping 11601576 word types
+[2022-04-27 09:19:18,516] PROGRESS: at sentence #4500000, processed 3058186837 words, keeping 11614505 word types
+[2022-04-27 09:19:31,161] PROGRESS: at sentence #4510000, processed 3062994141 words, keeping 11627899 word types
+[2022-04-27 09:19:45,060] PROGRESS: at sentence #4520000, processed 3068190264 words, keeping 11641160 word types
+[2022-04-27 09:20:01,442] PROGRESS: at sentence #4530000, processed 3073022017 words, keeping 11654274 word types
+[2022-04-27 09:20:14,358] PROGRESS: at sentence #4540000, processed 3077813249 words, keeping 11667894 word types
+[2022-04-27 09:20:27,674] PROGRESS: at sentence #4550000, processed 3082264448 words, keeping 11679687 word types
+[2022-04-27 09:20:41,044] PROGRESS: at sentence #4560000, processed 3087161632 words, keeping 11693634 word types
+[2022-04-27 09:20:52,704] PROGRESS: at sentence #4570000, processed 3091814801 words, keeping 11704504 word types
+[2022-04-27 09:21:04,608] PROGRESS: at sentence #4580000, processed 3096601241 words, keeping 11717980 word types
+[2022-04-27 09:21:17,399] PROGRESS: at sentence #4590000, processed 3101709921 words, keeping 11729645 word types
+[2022-04-27 09:21:31,394] PROGRESS: at sentence #4600000, processed 3106830464 words, keeping 11742835 word types
+[2022-04-27 09:21:43,277] PROGRESS: at sentence #4610000, processed 3111483714 words, keeping 11755948 word types
+[2022-04-27 09:21:55,361] PROGRESS: at sentence #4620000, processed 3116127050 words, keeping 11769599 word types
+[2022-04-27 09:22:08,087] PROGRESS: at sentence #4630000, processed 3120837595 words, keeping 11783496 word types
+[2022-04-27 09:22:21,341] PROGRESS: at sentence #4640000, processed 3125759220 words, keeping 11797599 word types
+[2022-04-27 09:22:34,960] PROGRESS: at sentence #4650000, processed 3130552304 words, keeping 11811667 word types
+[2022-04-27 09:22:51,167] PROGRESS: at sentence #4660000, processed 3135787624 words, keeping 11836488 word types
+[2022-04-27 09:23:06,795] PROGRESS: at sentence #4670000, processed 3140835749 words, keeping 11850678 word types
+[2022-04-27 09:23:21,115] PROGRESS: at sentence #4680000, processed 3145738429 words, keeping 11863502 word types
+[2022-04-27 09:23:32,838] PROGRESS: at sentence #4690000, processed 3150605454 words, keeping 11876050 word types
+[2022-04-27 09:23:45,163] PROGRESS: at sentence #4700000, processed 3155427166 words, keeping 11889466 word types
+[2022-04-27 09:23:59,941] PROGRESS: at sentence #4710000, processed 3160529071 words, keeping 11903889 word types
+[2022-04-27 09:24:12,566] PROGRESS: at sentence #4720000, processed 3165446064 words, keeping 11917377 word types
+[2022-04-27 09:24:25,002] PROGRESS: at sentence #4730000, processed 3170210516 words, keeping 11931265 word types
+[2022-04-27 09:24:36,916] PROGRESS: at sentence #4740000, processed 3174746627 words, keeping 11945530 word types
+[2022-04-27 09:24:48,973] PROGRESS: at sentence #4750000, processed 3179318210 words, keeping 11960171 word types
+[2022-04-27 09:25:01,207] PROGRESS: at sentence #4760000, processed 3183994586 words, keeping 11976964 word types
+[2022-04-27 09:25:14,591] PROGRESS: at sentence #4770000, processed 3188897975 words, keeping 11992251 word types
+[2022-04-27 09:25:27,003] PROGRESS: at sentence #4780000, processed 3193427983 words, keeping 12012759 word types
+[2022-04-27 09:25:39,426] PROGRESS: at sentence #4790000, processed 3197602666 words, keeping 12035790 word types
+[2022-04-27 09:25:54,201] PROGRESS: at sentence #4800000, processed 3202755748 words, keeping 12048755 word types
+[2022-04-27 09:26:09,046] PROGRESS: at sentence #4810000, processed 3208140411 words, keeping 12063109 word types
+[2022-04-27 09:26:23,511] PROGRESS: at sentence #4820000, processed 3213416590 words, keeping 12076213 word types
+[2022-04-27 09:26:36,557] PROGRESS: at sentence #4830000, processed 3218503704 words, keeping 12089144 word types
+[2022-04-27 09:26:49,280] PROGRESS: at sentence #4840000, processed 3223329345 words, keeping 12100490 word types
+[2022-04-27 09:27:01,458] PROGRESS: at sentence #4850000, processed 3227932443 words, keeping 12112884 word types
+[2022-04-27 09:27:13,759] PROGRESS: at sentence #4860000, processed 3232970296 words, keeping 12130375 word types
+[2022-04-27 09:27:27,996] PROGRESS: at sentence #4870000, processed 3238224064 words, keeping 12142428 word types
+[2022-04-27 09:27:43,347] PROGRESS: at sentence #4880000, processed 3243016222 words, keeping 12153646 word types
+[2022-04-27 09:27:57,539] PROGRESS: at sentence #4890000, processed 3248018204 words, keeping 12166035 word types
+[2022-04-27 09:28:16,265] PROGRESS: at sentence #4900000, processed 3253383388 words, keeping 12178542 word types
+[2022-04-27 09:28:30,406] PROGRESS: at sentence #4910000, processed 3258561130 words, keeping 12191751 word types
+[2022-04-27 09:28:46,122] PROGRESS: at sentence #4920000, processed 3263498522 words, keeping 12204505 word types
+[2022-04-27 09:28:59,100] PROGRESS: at sentence #4930000, processed 3268310304 words, keeping 12214795 word types
+[2022-04-27 09:29:12,365] PROGRESS: at sentence #4940000, processed 3273151040 words, keeping 12227715 word types
+[2022-04-27 09:29:24,062] PROGRESS: at sentence #4950000, processed 3277831609 words, keeping 12238433 word types
+[2022-04-27 09:29:37,223] PROGRESS: at sentence #4960000, processed 3282686166 words, keeping 12249362 word types
+[2022-04-27 09:29:48,858] PROGRESS: at sentence #4970000, processed 3287348378 words, keeping 12260615 word types
+[2022-04-27 09:30:01,043] PROGRESS: at sentence #4980000, processed 3292123227 words, keeping 12273771 word types
+[2022-04-27 09:30:14,207] PROGRESS: at sentence #4990000, processed 3297091368 words, keeping 12285879 word types
+[2022-04-27 09:30:27,861] PROGRESS: at sentence #5000000, processed 3301789022 words, keeping 12298716 word types
+[2022-04-27 09:30:41,479] PROGRESS: at sentence #5010000, processed 3306454475 words, keeping 12310144 word types
+[2022-04-27 09:30:53,571] PROGRESS: at sentence #5020000, processed 3310970528 words, keeping 12322198 word types
+[2022-04-27 09:31:06,256] PROGRESS: at sentence #5030000, processed 3315480385 words, keeping 12332611 word types
+[2022-04-27 09:31:17,995] PROGRESS: at sentence #5040000, processed 3319859405 words, keeping 12343289 word types
+[2022-04-27 09:31:28,126] PROGRESS: at sentence #5050000, processed 3323964395 words, keeping 12356112 word types
+[2022-04-27 09:31:39,619] PROGRESS: at sentence #5060000, processed 3328121760 words, keeping 12366260 word types
+[2022-04-27 09:31:50,000] PROGRESS: at sentence #5070000, processed 3331679566 words, keeping 12377721 word types
+[2022-04-27 09:32:02,123] PROGRESS: at sentence #5080000, processed 3335927832 words, keeping 12390321 word types
+[2022-04-27 09:32:16,587] PROGRESS: at sentence #5090000, processed 3340886971 words, keeping 12403113 word types
+[2022-04-27 09:32:35,109] PROGRESS: at sentence #5100000, processed 3345794594 words, keeping 12415785 word types
+[2022-04-27 09:32:52,586] PROGRESS: at sentence #5110000, processed 3351418442 words, keeping 12470789 word types
+[2022-04-27 09:33:08,388] PROGRESS: at sentence #5120000, processed 3356573294 words, keeping 12484176 word types
+[2022-04-27 09:33:22,936] PROGRESS: at sentence #5130000, processed 3361536114 words, keeping 12496859 word types
+[2022-04-27 09:33:36,886] PROGRESS: at sentence #5140000, processed 3366349424 words, keeping 12507809 word types
+[2022-04-27 09:33:52,721] PROGRESS: at sentence #5150000, processed 3371847065 words, keeping 12519211 word types
+[2022-04-27 09:34:06,183] PROGRESS: at sentence #5160000, processed 3376425164 words, keeping 12531734 word types
+[2022-04-27 09:34:17,346] PROGRESS: at sentence #5170000, processed 3380778389 words, keeping 12541940 word types
+[2022-04-27 09:34:31,037] PROGRESS: at sentence #5180000, processed 3385745227 words, keeping 12556017 word types
+[2022-04-27 09:34:43,733] PROGRESS: at sentence #5190000, processed 3390729446 words, keeping 12567224 word types
+[2022-04-27 09:34:57,065] PROGRESS: at sentence #5200000, processed 3395542374 words, keeping 12579923 word types
+[2022-04-27 09:35:10,251] PROGRESS: at sentence #5210000, processed 3400242224 words, keeping 12592923 word types
+[2022-04-27 09:35:23,880] PROGRESS: at sentence #5220000, processed 3404949407 words, keeping 12605308 word types
+[2022-04-27 09:35:36,646] PROGRESS: at sentence #5230000, processed 3409674905 words, keeping 12617781 word types
+[2022-04-27 09:35:49,985] PROGRESS: at sentence #5240000, processed 3414312680 words, keeping 12628688 word types
+[2022-04-27 09:36:01,634] PROGRESS: at sentence #5250000, processed 3418772413 words, keeping 12640843 word types
+[2022-04-27 09:36:14,144] PROGRESS: at sentence #5260000, processed 3423358507 words, keeping 12654879 word types
+[2022-04-27 09:36:28,642] PROGRESS: at sentence #5270000, processed 3428453522 words, keeping 12670303 word types
+[2022-04-27 09:36:41,201] PROGRESS: at sentence #5280000, processed 3433130590 words, keeping 12683385 word types
+[2022-04-27 09:36:55,268] PROGRESS: at sentence #5290000, processed 3438353679 words, keeping 12696672 word types
+[2022-04-27 09:37:09,023] PROGRESS: at sentence #5300000, processed 3443377356 words, keeping 12711023 word types
+[2022-04-27 09:37:22,419] PROGRESS: at sentence #5310000, processed 3448078530 words, keeping 12725033 word types
+[2022-04-27 09:37:38,189] PROGRESS: at sentence #5320000, processed 3453243848 words, keeping 12738836 word types
+[2022-04-27 09:37:52,335] PROGRESS: at sentence #5330000, processed 3458070251 words, keeping 12752586 word types
+[2022-04-27 09:38:07,864] PROGRESS: at sentence #5340000, processed 3463130222 words, keeping 12767361 word types
+[2022-04-27 09:38:21,655] PROGRESS: at sentence #5350000, processed 3467746216 words, keeping 12781622 word types
+[2022-04-27 09:38:35,814] PROGRESS: at sentence #5360000, processed 3472452086 words, keeping 12796020 word types
+[2022-04-27 09:38:49,551] PROGRESS: at sentence #5370000, processed 3477219721 words, keeping 12809556 word types
+[2022-04-27 09:39:03,066] PROGRESS: at sentence #5380000, processed 3481871635 words, keeping 12825114 word types
+[2022-04-27 09:39:15,376] PROGRESS: at sentence #5390000, processed 3486469611 words, keeping 12836319 word types
+[2022-04-27 09:39:28,219] PROGRESS: at sentence #5400000, processed 3490772873 words, keeping 12849269 word types
+[2022-04-27 09:39:41,861] PROGRESS: at sentence #5410000, processed 3495347626 words, keeping 12862576 word types
+[2022-04-27 09:39:55,358] PROGRESS: at sentence #5420000, processed 3499700314 words, keeping 12876031 word types
+[2022-04-27 09:40:12,628] PROGRESS: at sentence #5430000, processed 3503791327 words, keeping 12886940 word types
+[2022-04-27 09:40:25,371] PROGRESS: at sentence #5440000, processed 3508003640 words, keeping 12900384 word types
+[2022-04-27 09:40:36,916] PROGRESS: at sentence #5450000, processed 3512128171 words, keeping 12913893 word types
+[2022-04-27 09:40:49,852] PROGRESS: at sentence #5460000, processed 3516518548 words, keeping 12929003 word types
+[2022-04-27 09:41:02,852] PROGRESS: at sentence #5470000, processed 3520658203 words, keeping 12941091 word types
+[2022-04-27 09:41:15,456] PROGRESS: at sentence #5480000, processed 3524685125 words, keeping 12953118 word types
+[2022-04-27 09:41:29,508] finished iterating over Wikipedia corpus of 5489528 documents with 3528518848 positions (total 21639335 articles, 3618975798 positions before pruning articles shorter than 50 words)
+[2022-04-27 09:41:29,721] collected 12964931 word types from a corpus of 3528518848 raw words and 5489528 sentences
+[2022-04-27 09:41:29,722] Loading a fresh vocabulary
+[2022-04-27 09:41:36,740] effective_min_count=100 retains 457703 unique words (3% of original 12964931, drops 12507228)
+[2022-04-27 09:41:36,740] effective_min_count=100 leaves 3455399287 word corpus (97% of original 3528518848, drops 73119561)
+[2022-04-27 09:41:38,335] deleting the raw counts dictionary of 12964931 items
+[2022-04-27 09:41:39,079] sample=0.001 downsamples 24 most-common words
+[2022-04-27 09:41:39,079] downsampling leaves estimated 2541216150 word corpus (73.5% of prior 3455399287)
+[2022-04-27 09:41:40,980] estimated required memory for 457703 words and 300 dimensions: 1327338700 bytes
+[2022-04-27 09:41:40,980] resetting layer weights
+[2022-04-27 09:43:00,098] training model with 40 workers on 457703 vocabulary and 300 features, using sg=1 hs=0 sample=0.001 negative=5 window=5
+[2022-04-27 09:49:29,865] EPOCHs No. 1 - PROGRESS: at 1.00% examples, 463970 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 09:53:15,923] EPOCHs No. 1 - PROGRESS: at 2.00% examples, 459905 words/s, in_qsize 9, out_qsize 0
+[2022-04-27 09:57:53,163] EPOCHs No. 1 - PROGRESS: at 3.00% examples, 453103 words/s, in_qsize 2, out_qsize 0
+[2022-04-27 10:01:39,763] EPOCHs No. 1 - PROGRESS: at 4.00% examples, 447922 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:05:12,054] EPOCHs No. 1 - PROGRESS: at 5.00% examples, 441718 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:08:18,427] EPOCHs No. 1 - PROGRESS: at 6.00% examples, 438147 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:11:13,048] EPOCHs No. 1 - PROGRESS: at 7.00% examples, 434770 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:14:01,912] EPOCHs No. 1 - PROGRESS: at 8.00% examples, 431219 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:16:43,609] EPOCHs No. 1 - PROGRESS: at 9.00% examples, 428272 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:19:23,579] EPOCHs No. 1 - PROGRESS: at 10.00% examples, 425124 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:21:52,425] EPOCHs No. 1 - PROGRESS: at 11.00% examples, 422554 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 10:24:12,072] EPOCHs No. 1 - PROGRESS: at 12.00% examples, 420341 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:26:22,135] EPOCHs No. 1 - PROGRESS: at 13.00% examples, 418728 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:28:36,999] EPOCHs No. 1 - PROGRESS: at 14.00% examples, 416646 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:30:46,112] EPOCHs No. 1 - PROGRESS: at 15.00% examples, 414901 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:32:53,591] EPOCHs No. 1 - PROGRESS: at 16.00% examples, 412918 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:34:55,746] EPOCHs No. 1 - PROGRESS: at 17.00% examples, 411469 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:36:57,641] EPOCHs No. 1 - PROGRESS: at 18.00% examples, 409914 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:38:57,802] EPOCHs No. 1 - PROGRESS: at 19.00% examples, 408054 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:40:49,633] EPOCHs No. 1 - PROGRESS: at 20.00% examples, 406500 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:42:34,826] EPOCHs No. 1 - PROGRESS: at 21.00% examples, 405299 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:44:24,923] EPOCHs No. 1 - PROGRESS: at 22.00% examples, 403907 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:46:12,768] EPOCHs No. 1 - PROGRESS: at 23.00% examples, 402591 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:48:04,323] EPOCHs No. 1 - PROGRESS: at 24.00% examples, 401176 words/s, in_qsize 1, out_qsize 0
+[2022-04-27 10:49:58,315] EPOCHs No. 1 - PROGRESS: at 25.00% examples, 399662 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:51:46,159] EPOCHs No. 1 - PROGRESS: at 26.00% examples, 398322 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:53:32,455] EPOCHs No. 1 - PROGRESS: at 27.00% examples, 397152 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:55:27,619] EPOCHs No. 1 - PROGRESS: at 28.00% examples, 395848 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:57:12,306] EPOCHs No. 1 - PROGRESS: at 29.00% examples, 394468 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 10:58:43,128] EPOCHs No. 1 - PROGRESS: at 30.00% examples, 393111 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:00:16,609] EPOCHs No. 1 - PROGRESS: at 31.00% examples, 392126 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:01:56,766] EPOCHs No. 1 - PROGRESS: at 32.00% examples, 390838 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:03:45,546] EPOCHs No. 1 - PROGRESS: at 33.00% examples, 389283 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:05:21,267] EPOCHs No. 1 - PROGRESS: at 34.00% examples, 388007 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:06:54,700] EPOCHs No. 1 - PROGRESS: at 35.00% examples, 386872 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 11:08:45,042] EPOCHs No. 1 - PROGRESS: at 36.00% examples, 385049 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:10:25,262] EPOCHs No. 1 - PROGRESS: at 37.00% examples, 384028 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:12:03,248] EPOCHs No. 1 - PROGRESS: at 38.00% examples, 383029 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:13:35,570] EPOCHs No. 1 - PROGRESS: at 39.00% examples, 382180 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:15:11,212] EPOCHs No. 1 - PROGRESS: at 40.00% examples, 381185 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:16:43,155] EPOCHs No. 1 - PROGRESS: at 41.00% examples, 380343 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:18:20,725] EPOCHs No. 1 - PROGRESS: at 42.00% examples, 379435 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:19:55,104] EPOCHs No. 1 - PROGRESS: at 43.00% examples, 378414 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:21:20,234] EPOCHs No. 1 - PROGRESS: at 44.00% examples, 377651 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:22:58,129] EPOCHs No. 1 - PROGRESS: at 45.00% examples, 376877 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:24:42,533] EPOCHs No. 1 - PROGRESS: at 46.00% examples, 375641 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 11:26:20,636] EPOCHs No. 1 - PROGRESS: at 47.00% examples, 374781 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:27:58,082] EPOCHs No. 1 - PROGRESS: at 48.00% examples, 374089 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:29:41,795] EPOCHs No. 1 - PROGRESS: at 49.00% examples, 373157 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:31:20,535] EPOCHs No. 1 - PROGRESS: at 50.00% examples, 372422 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:32:53,126] EPOCHs No. 1 - PROGRESS: at 51.00% examples, 371716 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:34:36,562] EPOCHs No. 1 - PROGRESS: at 52.00% examples, 370724 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:36:18,219] EPOCHs No. 1 - PROGRESS: at 53.00% examples, 369704 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:37:46,538] EPOCHs No. 1 - PROGRESS: at 54.00% examples, 368911 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:39:37,385] EPOCHs No. 1 - PROGRESS: at 55.00% examples, 367720 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:41:28,698] EPOCHs No. 1 - PROGRESS: at 56.00% examples, 366995 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:43:13,833] EPOCHs No. 1 - PROGRESS: at 57.00% examples, 366299 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:44:53,737] EPOCHs No. 1 - PROGRESS: at 58.00% examples, 365430 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:46:33,603] EPOCHs No. 1 - PROGRESS: at 59.00% examples, 364641 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:48:11,166] EPOCHs No. 1 - PROGRESS: at 60.00% examples, 364044 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:49:53,904] EPOCHs No. 1 - PROGRESS: at 61.00% examples, 363240 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:51:30,609] EPOCHs No. 1 - PROGRESS: at 62.00% examples, 362529 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:53:04,620] EPOCHs No. 1 - PROGRESS: at 63.00% examples, 361790 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:54:48,104] EPOCHs No. 1 - PROGRESS: at 64.00% examples, 360857 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:56:34,917] EPOCHs No. 1 - PROGRESS: at 65.00% examples, 359941 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 11:58:19,640] EPOCHs No. 1 - PROGRESS: at 66.00% examples, 359160 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:00:02,792] EPOCHs No. 1 - PROGRESS: at 67.00% examples, 358437 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:01:37,579] EPOCHs No. 1 - PROGRESS: at 68.00% examples, 357776 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:03:13,452] EPOCHs No. 1 - PROGRESS: at 69.00% examples, 357171 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:04:46,330] EPOCHs No. 1 - PROGRESS: at 70.00% examples, 356661 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:06:27,081] EPOCHs No. 1 - PROGRESS: at 71.00% examples, 356091 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:08:04,772] EPOCHs No. 1 - PROGRESS: at 72.00% examples, 355400 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:09:47,318] EPOCHs No. 1 - PROGRESS: at 73.00% examples, 354633 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:11:25,593] EPOCHs No. 1 - PROGRESS: at 74.00% examples, 354113 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:13:06,937] EPOCHs No. 1 - PROGRESS: at 75.00% examples, 353588 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:14:41,954] EPOCHs No. 1 - PROGRESS: at 76.00% examples, 352974 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:16:18,645] EPOCHs No. 1 - PROGRESS: at 77.00% examples, 352467 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:17:57,295] EPOCHs No. 1 - PROGRESS: at 78.00% examples, 351912 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:19:38,126] EPOCHs No. 1 - PROGRESS: at 79.00% examples, 351187 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:21:14,130] EPOCHs No. 1 - PROGRESS: at 80.00% examples, 350601 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:22:47,755] EPOCHs No. 1 - PROGRESS: at 81.00% examples, 350028 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:24:21,529] EPOCHs No. 1 - PROGRESS: at 82.00% examples, 349542 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:26:08,687] EPOCHs No. 1 - PROGRESS: at 83.00% examples, 348647 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:27:46,140] EPOCHs No. 1 - PROGRESS: at 84.00% examples, 348127 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:29:32,575] EPOCHs No. 1 - PROGRESS: at 85.00% examples, 347295 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:31:16,595] EPOCHs No. 1 - PROGRESS: at 86.00% examples, 346604 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:32:51,964] EPOCHs No. 1 - PROGRESS: at 87.00% examples, 346069 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:34:37,165] EPOCHs No. 1 - PROGRESS: at 88.00% examples, 345410 words/s, in_qsize 2, out_qsize 0
+[2022-04-27 12:36:19,434] EPOCHs No. 1 - PROGRESS: at 89.00% examples, 344823 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:38:12,651] EPOCHs No. 1 - PROGRESS: at 90.00% examples, 343920 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:39:49,767] EPOCHs No. 1 - PROGRESS: at 91.00% examples, 343454 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:41:25,442] EPOCHs No. 1 - PROGRESS: at 92.00% examples, 342821 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:43:03,037] EPOCHs No. 1 - PROGRESS: at 93.00% examples, 342164 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:44:57,810] EPOCHs No. 1 - PROGRESS: at 94.00% examples, 341298 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:46:36,347] EPOCHs No. 1 - PROGRESS: at 95.00% examples, 340819 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:48:14,667] EPOCHs No. 1 - PROGRESS: at 96.00% examples, 340296 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:50:02,689] EPOCHs No. 1 - PROGRESS: at 97.00% examples, 339611 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:51:46,174] EPOCHs No. 1 - PROGRESS: at 98.00% examples, 338971 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:53:25,497] EPOCHs No. 1 - PROGRESS: at 99.00% examples, 338261 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 12:54:56,547] finished iterating over Wikipedia corpus of 5489528 documents with 3528518848 positions (total 21639335 articles, 3618975798 positions before pruning articles shorter than 50 words)
+[2022-04-27 12:54:56,897] worker thread finished; awaiting finish of 39 more threads
+[2022-04-27 12:54:56,928] worker thread finished; awaiting finish of 38 more threads
+[2022-04-27 12:54:56,938] worker thread finished; awaiting finish of 37 more threads
+[2022-04-27 12:54:56,943] worker thread finished; awaiting finish of 36 more threads
+[2022-04-27 12:54:56,948] worker thread finished; awaiting finish of 35 more threads
+[2022-04-27 12:54:56,950] worker thread finished; awaiting finish of 34 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 33 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 32 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 31 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 30 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 29 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 28 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 27 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 26 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 25 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 24 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 23 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 22 more threads
+[2022-04-27 12:54:56,951] worker thread finished; awaiting finish of 21 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 20 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 19 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 18 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 17 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 16 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 15 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 14 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 13 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 12 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 11 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 10 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 9 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 8 more threads
+[2022-04-27 12:54:56,952] worker thread finished; awaiting finish of 7 more threads
+[2022-04-27 12:54:56,953] worker thread finished; awaiting finish of 6 more threads
+[2022-04-27 12:54:56,953] worker thread finished; awaiting finish of 5 more threads
+[2022-04-27 12:54:56,953] worker thread finished; awaiting finish of 4 more threads
+[2022-04-27 12:54:56,953] worker thread finished; awaiting finish of 3 more threads
+[2022-04-27 12:54:56,953] worker thread finished; awaiting finish of 2 more threads
+[2022-04-27 12:54:56,953] worker thread finished; awaiting finish of 1 more threads
+[2022-04-27 12:54:56,956] EPOCHs No. 1 - PROGRESS: at 100.00% examples, 337697 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 12:54:56,956] worker thread finished; awaiting finish of 0 more threads
+[2022-04-27 12:54:56,956] EPOCH - 1 : training on 3528518848 raw words (3889195870 effective words) took 11516.8s, 337697 effective words/s
+[2022-04-27 13:01:29,677] EPOCHs No. 2 - PROGRESS: at 1.00% examples, 460473 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:05:15,258] EPOCHs No. 2 - PROGRESS: at 2.00% examples, 458055 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:09:48,311] EPOCHs No. 2 - PROGRESS: at 3.00% examples, 453946 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:13:34,211] EPOCHs No. 2 - PROGRESS: at 4.00% examples, 448923 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:17:04,188] EPOCHs No. 2 - PROGRESS: at 5.00% examples, 443283 words/s, in_qsize 1, out_qsize 0
+[2022-04-27 13:20:11,125] EPOCHs No. 2 - PROGRESS: at 6.00% examples, 439351 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:23:03,321] EPOCHs No. 2 - PROGRESS: at 7.00% examples, 436468 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:25:46,367] EPOCHs No. 2 - PROGRESS: at 8.00% examples, 434118 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 13:28:25,074] EPOCHs No. 2 - PROGRESS: at 9.00% examples, 431557 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:31:02,810] EPOCHs No. 2 - PROGRESS: at 10.00% examples, 428586 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:33:26,288] EPOCHs No. 2 - PROGRESS: at 11.00% examples, 426762 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:35:47,279] EPOCHs No. 2 - PROGRESS: at 12.00% examples, 424056 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:37:57,740] EPOCHs No. 2 - PROGRESS: at 13.00% examples, 422178 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:40:13,666] EPOCHs No. 2 - PROGRESS: at 14.00% examples, 419744 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:42:22,051] EPOCHs No. 2 - PROGRESS: at 15.00% examples, 417953 words/s, in_qsize 0, out_qsize 2
+[2022-04-27 13:44:26,390] EPOCHs No. 2 - PROGRESS: at 16.00% examples, 416265 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:46:29,456] EPOCHs No. 2 - PROGRESS: at 17.00% examples, 414556 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:48:30,010] EPOCHs No. 2 - PROGRESS: at 18.00% examples, 413039 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:50:29,719] EPOCHs No. 2 - PROGRESS: at 19.00% examples, 411108 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:52:20,934] EPOCHs No. 2 - PROGRESS: at 20.00% examples, 409518 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:54:06,476] EPOCHs No. 2 - PROGRESS: at 21.00% examples, 408178 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:55:58,038] EPOCHs No. 2 - PROGRESS: at 22.00% examples, 406528 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:57:42,804] EPOCHs No. 2 - PROGRESS: at 23.00% examples, 405460 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 13:59:34,149] EPOCHs No. 2 - PROGRESS: at 24.00% examples, 403974 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:01:25,976] EPOCHs No. 2 - PROGRESS: at 25.00% examples, 402588 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 14:03:16,829] EPOCHs No. 2 - PROGRESS: at 26.00% examples, 400867 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:05:02,758] EPOCHs No. 2 - PROGRESS: at 27.00% examples, 399661 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:06:55,764] EPOCHs No. 2 - PROGRESS: at 28.00% examples, 398481 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:08:38,428] EPOCHs No. 2 - PROGRESS: at 29.00% examples, 397211 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:10:07,056] EPOCHs No. 2 - PROGRESS: at 30.00% examples, 395982 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 14:11:43,784] EPOCHs No. 2 - PROGRESS: at 31.00% examples, 394652 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:13:25,685] EPOCHs No. 2 - PROGRESS: at 32.00% examples, 393158 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:15:12,442] EPOCHs No. 2 - PROGRESS: at 33.00% examples, 391706 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:16:48,329] EPOCHs No. 2 - PROGRESS: at 34.00% examples, 390361 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:18:22,462] EPOCHs No. 2 - PROGRESS: at 35.00% examples, 389122 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:20:13,968] EPOCHs No. 2 - PROGRESS: at 36.00% examples, 387151 words/s, in_qsize 1, out_qsize 0
+[2022-04-27 14:21:53,002] EPOCHs No. 2 - PROGRESS: at 37.00% examples, 386173 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:23:29,458] EPOCHs No. 2 - PROGRESS: at 38.00% examples, 385239 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:25:01,615] EPOCHs No. 2 - PROGRESS: at 39.00% examples, 384360 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:26:38,779] EPOCHs No. 2 - PROGRESS: at 40.00% examples, 383216 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:28:08,965] EPOCHs No. 2 - PROGRESS: at 41.00% examples, 382455 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:29:47,022] EPOCHs No. 2 - PROGRESS: at 42.00% examples, 381474 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:31:19,350] EPOCHs No. 2 - PROGRESS: at 43.00% examples, 380549 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:32:45,185] EPOCHs No. 2 - PROGRESS: at 44.00% examples, 379703 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:34:23,591] EPOCHs No. 2 - PROGRESS: at 45.00% examples, 378861 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:36:08,532] EPOCHs No. 2 - PROGRESS: at 46.00% examples, 377551 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:37:46,031] EPOCHs No. 2 - PROGRESS: at 47.00% examples, 376693 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:39:24,247] EPOCHs No. 2 - PROGRESS: at 48.00% examples, 375922 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:41:06,353] EPOCHs No. 2 - PROGRESS: at 49.00% examples, 375050 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:42:42,003] EPOCHs No. 2 - PROGRESS: at 50.00% examples, 374463 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:44:15,440] EPOCHs No. 2 - PROGRESS: at 51.00% examples, 373674 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:45:58,416] EPOCHs No. 2 - PROGRESS: at 52.00% examples, 372673 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:47:42,711] EPOCHs No. 2 - PROGRESS: at 53.00% examples, 371473 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:49:11,525] EPOCHs No. 2 - PROGRESS: at 54.00% examples, 370627 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:51:03,278] EPOCHs No. 2 - PROGRESS: at 55.00% examples, 369355 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:52:50,662] EPOCHs No. 2 - PROGRESS: at 56.00% examples, 368808 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:54:35,557] EPOCHs No. 2 - PROGRESS: at 57.00% examples, 368093 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:56:16,319] EPOCHs No. 2 - PROGRESS: at 58.00% examples, 367152 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:57:57,014] EPOCHs No. 2 - PROGRESS: at 59.00% examples, 366295 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 14:59:38,037] EPOCHs No. 2 - PROGRESS: at 60.00% examples, 365504 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:01:20,904] EPOCHs No. 2 - PROGRESS: at 61.00% examples, 364671 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:02:56,808] EPOCHs No. 2 - PROGRESS: at 62.00% examples, 363977 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:04:29,670] EPOCHs No. 2 - PROGRESS: at 63.00% examples, 363272 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:06:08,498] EPOCHs No. 2 - PROGRESS: at 64.00% examples, 362529 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:07:55,137] EPOCHs No. 2 - PROGRESS: at 65.00% examples, 361595 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:09:39,838] EPOCHs No. 2 - PROGRESS: at 66.00% examples, 360790 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:11:21,848] EPOCHs No. 2 - PROGRESS: at 67.00% examples, 360093 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:12:59,676] EPOCHs No. 2 - PROGRESS: at 68.00% examples, 359278 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:14:35,230] EPOCHs No. 2 - PROGRESS: at 69.00% examples, 358668 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:16:08,333] EPOCHs No. 2 - PROGRESS: at 70.00% examples, 358130 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:17:49,343] EPOCHs No. 2 - PROGRESS: at 71.00% examples, 357529 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:19:27,967] EPOCHs No. 2 - PROGRESS: at 72.00% examples, 356781 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:21:07,125] EPOCHs No. 2 - PROGRESS: at 73.00% examples, 356132 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:22:45,935] EPOCHs No. 2 - PROGRESS: at 74.00% examples, 355572 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:24:28,044] EPOCHs No. 2 - PROGRESS: at 75.00% examples, 354998 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:26:03,328] EPOCHs No. 2 - PROGRESS: at 76.00% examples, 354357 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:27:40,643] EPOCHs No. 2 - PROGRESS: at 77.00% examples, 353809 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:29:17,802] EPOCHs No. 2 - PROGRESS: at 78.00% examples, 353294 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:31:01,622] EPOCHs No. 2 - PROGRESS: at 79.00% examples, 352438 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:32:37,326] EPOCHs No. 2 - PROGRESS: at 80.00% examples, 351850 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:34:10,009] EPOCHs No. 2 - PROGRESS: at 81.00% examples, 351297 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:35:46,358] EPOCHs No. 2 - PROGRESS: at 82.00% examples, 350703 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:37:26,616] EPOCHs No. 2 - PROGRESS: at 83.00% examples, 350040 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:39:05,219] EPOCHs No. 2 - PROGRESS: at 84.00% examples, 349464 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:40:50,492] EPOCHs No. 2 - PROGRESS: at 85.00% examples, 348656 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:42:33,112] EPOCHs No. 2 - PROGRESS: at 86.00% examples, 347995 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:44:09,649] EPOCHs No. 2 - PROGRESS: at 87.00% examples, 347405 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:46:00,153] EPOCHs No. 2 - PROGRESS: at 88.00% examples, 346551 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 15:47:41,313] EPOCHs No. 2 - PROGRESS: at 89.00% examples, 345987 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:49:31,588] EPOCHs No. 2 - PROGRESS: at 90.00% examples, 345166 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:51:09,761] EPOCHs No. 2 - PROGRESS: at 91.00% examples, 344652 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:52:42,315] EPOCHs No. 2 - PROGRESS: at 92.00% examples, 344107 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:54:20,282] EPOCHs No. 2 - PROGRESS: at 93.00% examples, 343424 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:56:11,493] EPOCHs No. 2 - PROGRESS: at 94.00% examples, 342654 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:57:50,831] EPOCHs No. 2 - PROGRESS: at 95.00% examples, 342136 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 15:59:29,738] EPOCHs No. 2 - PROGRESS: at 96.00% examples, 341582 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:01:16,091] EPOCHs No. 2 - PROGRESS: at 97.00% examples, 340931 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:03:00,246] EPOCHs No. 2 - PROGRESS: at 98.00% examples, 340257 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:04:39,011] EPOCHs No. 2 - PROGRESS: at 99.00% examples, 339550 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:06:18,855] finished iterating over Wikipedia corpus of 5489528 documents with 3528518848 positions (total 21639335 articles, 3618975798 positions before pruning articles shorter than 50 words)
+[2022-04-27 16:06:19,272] worker thread finished; awaiting finish of 39 more threads
+[2022-04-27 16:06:19,277] worker thread finished; awaiting finish of 38 more threads
+[2022-04-27 16:06:19,281] worker thread finished; awaiting finish of 37 more threads
+[2022-04-27 16:06:19,281] worker thread finished; awaiting finish of 36 more threads
+[2022-04-27 16:06:19,281] worker thread finished; awaiting finish of 35 more threads
+[2022-04-27 16:06:19,281] worker thread finished; awaiting finish of 34 more threads
+[2022-04-27 16:06:19,281] worker thread finished; awaiting finish of 33 more threads
+[2022-04-27 16:06:19,281] worker thread finished; awaiting finish of 32 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 31 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 30 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 29 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 28 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 27 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 26 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 25 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 24 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 23 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 22 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 21 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 20 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 19 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 18 more threads
+[2022-04-27 16:06:19,282] worker thread finished; awaiting finish of 17 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 16 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 15 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 14 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 13 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 12 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 11 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 10 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 9 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 8 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 7 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 6 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 5 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 4 more threads
+[2022-04-27 16:06:19,283] worker thread finished; awaiting finish of 3 more threads
+[2022-04-27 16:06:19,284] worker thread finished; awaiting finish of 2 more threads
+[2022-04-27 16:06:19,284] worker thread finished; awaiting finish of 1 more threads
+[2022-04-27 16:06:19,296] EPOCHs No. 2 - PROGRESS: at 100.00% examples, 338713 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 16:06:19,296] worker thread finished; awaiting finish of 0 more threads
+[2022-04-27 16:06:19,296] EPOCH - 2 : training on 3528518848 raw words (3889206269 effective words) took 11482.3s, 338713 effective words/s
+[2022-04-27 16:12:54,332] EPOCHs No. 3 - PROGRESS: at 1.00% examples, 457767 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:16:42,810] EPOCHs No. 3 - PROGRESS: at 2.00% examples, 454207 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:21:25,946] EPOCHs No. 3 - PROGRESS: at 3.00% examples, 446285 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:25:14,973] EPOCHs No. 3 - PROGRESS: at 4.00% examples, 441619 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:28:46,998] EPOCHs No. 3 - PROGRESS: at 5.00% examples, 436546 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:31:55,687] EPOCHs No. 3 - PROGRESS: at 6.00% examples, 432993 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:34:47,779] EPOCHs No. 3 - PROGRESS: at 7.00% examples, 430815 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:37:36,328] EPOCHs No. 3 - PROGRESS: at 8.00% examples, 427727 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:40:19,464] EPOCHs No. 3 - PROGRESS: at 9.00% examples, 424774 words/s, in_qsize 1, out_qsize 0
+[2022-04-27 16:42:58,652] EPOCHs No. 3 - PROGRESS: at 10.00% examples, 422054 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:45:26,694] EPOCHs No. 3 - PROGRESS: at 11.00% examples, 419839 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:47:46,111] EPOCHs No. 3 - PROGRESS: at 12.00% examples, 417831 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:49:58,222] EPOCHs No. 3 - PROGRESS: at 13.00% examples, 416027 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 16:52:15,853] EPOCHs No. 3 - PROGRESS: at 14.00% examples, 413674 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:54:25,138] EPOCHs No. 3 - PROGRESS: at 15.00% examples, 412054 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:56:35,748] EPOCHs No. 3 - PROGRESS: at 16.00% examples, 409775 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 16:58:38,044] EPOCHs No. 3 - PROGRESS: at 17.00% examples, 408441 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:00:41,039] EPOCHs No. 3 - PROGRESS: at 18.00% examples, 406873 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:02:42,524] EPOCHs No. 3 - PROGRESS: at 19.00% examples, 404975 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:04:32,984] EPOCHs No. 3 - PROGRESS: at 20.00% examples, 403690 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:06:19,923] EPOCHs No. 3 - PROGRESS: at 21.00% examples, 402383 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:08:10,267] EPOCHs No. 3 - PROGRESS: at 22.00% examples, 401061 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:09:58,428] EPOCHs No. 3 - PROGRESS: at 23.00% examples, 399802 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:11:50,025] EPOCHs No. 3 - PROGRESS: at 24.00% examples, 398471 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:13:44,476] EPOCHs No. 3 - PROGRESS: at 25.00% examples, 396998 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:15:33,145] EPOCHs No. 3 - PROGRESS: at 26.00% examples, 395657 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:17:21,546] EPOCHs No. 3 - PROGRESS: at 27.00% examples, 394367 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:19:16,742] EPOCHs No. 3 - PROGRESS: at 28.00% examples, 393142 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:20:59,599] EPOCHs No. 3 - PROGRESS: at 29.00% examples, 391994 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:22:29,204] EPOCHs No. 3 - PROGRESS: at 30.00% examples, 390799 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:24:06,378] EPOCHs No. 3 - PROGRESS: at 31.00% examples, 389558 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:25:49,272] EPOCHs No. 3 - PROGRESS: at 32.00% examples, 388109 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:27:33,000] EPOCHs No. 3 - PROGRESS: at 33.00% examples, 387027 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:29:11,127] EPOCHs No. 3 - PROGRESS: at 34.00% examples, 385614 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:30:46,672] EPOCHs No. 3 - PROGRESS: at 35.00% examples, 384370 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:32:39,370] EPOCHs No. 3 - PROGRESS: at 36.00% examples, 382438 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:34:22,094] EPOCHs No. 3 - PROGRESS: at 37.00% examples, 381293 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:36:02,147] EPOCHs No. 3 - PROGRESS: at 38.00% examples, 380205 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:37:37,230] EPOCHs No. 3 - PROGRESS: at 39.00% examples, 379218 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:39:13,692] EPOCHs No. 3 - PROGRESS: at 40.00% examples, 378227 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:40:46,319] EPOCHs No. 3 - PROGRESS: at 41.00% examples, 377392 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:42:24,436] EPOCHs No. 3 - PROGRESS: at 42.00% examples, 376506 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:43:59,984] EPOCHs No. 3 - PROGRESS: at 43.00% examples, 375465 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:45:29,590] EPOCHs No. 3 - PROGRESS: at 44.00% examples, 374466 words/s, in_qsize 1, out_qsize 0
+[2022-04-27 17:47:08,611] EPOCHs No. 3 - PROGRESS: at 45.00% examples, 373683 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:48:53,285] EPOCHs No. 3 - PROGRESS: at 46.00% examples, 372495 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:50:30,313] EPOCHs No. 3 - PROGRESS: at 47.00% examples, 371756 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:52:10,916] EPOCHs No. 3 - PROGRESS: at 48.00% examples, 370931 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:53:52,924] EPOCHs No. 3 - PROGRESS: at 49.00% examples, 370154 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:55:32,623] EPOCHs No. 3 - PROGRESS: at 50.00% examples, 369417 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:57:04,848] EPOCHs No. 3 - PROGRESS: at 51.00% examples, 368778 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 17:58:49,655] EPOCHs No. 3 - PROGRESS: at 52.00% examples, 367765 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:00:30,866] EPOCHs No. 3 - PROGRESS: at 53.00% examples, 366821 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:01:59,935] EPOCHs No. 3 - PROGRESS: at 54.00% examples, 366031 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:03:50,934] EPOCHs No. 3 - PROGRESS: at 55.00% examples, 364887 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:05:42,254] EPOCHs No. 3 - PROGRESS: at 56.00% examples, 364212 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:07:29,219] EPOCHs No. 3 - PROGRESS: at 57.00% examples, 363469 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:09:12,308] EPOCHs No. 3 - PROGRESS: at 58.00% examples, 362489 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:10:53,306] EPOCHs No. 3 - PROGRESS: at 59.00% examples, 361690 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:12:28,708] EPOCHs No. 3 - PROGRESS: at 60.00% examples, 361239 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:14:11,932] EPOCHs No. 3 - PROGRESS: at 61.00% examples, 360456 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:15:49,806] EPOCHs No. 3 - PROGRESS: at 62.00% examples, 359731 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:17:25,372] EPOCHs No. 3 - PROGRESS: at 63.00% examples, 358960 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:19:11,017] EPOCHs No. 3 - PROGRESS: at 64.00% examples, 357974 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:20:56,336] EPOCHs No. 3 - PROGRESS: at 65.00% examples, 357169 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:22:41,023] EPOCHs No. 3 - PROGRESS: at 66.00% examples, 356431 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:24:24,204] EPOCHs No. 3 - PROGRESS: at 67.00% examples, 355746 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:26:00,604] EPOCHs No. 3 - PROGRESS: at 68.00% examples, 355052 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:27:36,829] EPOCHs No. 3 - PROGRESS: at 69.00% examples, 354468 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:29:11,863] EPOCHs No. 3 - PROGRESS: at 70.00% examples, 353902 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:30:51,774] EPOCHs No. 3 - PROGRESS: at 71.00% examples, 353402 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:32:31,433] EPOCHs No. 3 - PROGRESS: at 72.00% examples, 352668 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:34:13,609] EPOCHs No. 3 - PROGRESS: at 73.00% examples, 351953 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:35:52,402] EPOCHs No. 3 - PROGRESS: at 74.00% examples, 351446 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:37:34,948] EPOCHs No. 3 - PROGRESS: at 75.00% examples, 350908 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:39:10,474] EPOCHs No. 3 - PROGRESS: at 76.00% examples, 350307 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:40:48,063] EPOCHs No. 3 - PROGRESS: at 77.00% examples, 349797 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:42:25,791] EPOCHs No. 3 - PROGRESS: at 78.00% examples, 349309 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:44:07,233] EPOCHs No. 3 - PROGRESS: at 79.00% examples, 348595 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:45:42,716] EPOCHs No. 3 - PROGRESS: at 80.00% examples, 348058 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:47:14,735] EPOCHs No. 3 - PROGRESS: at 81.00% examples, 347572 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:48:52,288] EPOCHs No. 3 - PROGRESS: at 82.00% examples, 346978 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:50:37,158] EPOCHs No. 3 - PROGRESS: at 83.00% examples, 346197 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:52:15,697] EPOCHs No. 3 - PROGRESS: at 84.00% examples, 345668 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:54:00,140] EPOCHs No. 3 - PROGRESS: at 85.00% examples, 344937 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:55:42,852] EPOCHs No. 3 - PROGRESS: at 86.00% examples, 344318 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:57:20,261] EPOCHs No. 3 - PROGRESS: at 87.00% examples, 343739 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 18:59:05,128] EPOCHs No. 3 - PROGRESS: at 88.00% examples, 343120 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:00:46,666] EPOCHs No. 3 - PROGRESS: at 89.00% examples, 342583 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:02:38,010] EPOCHs No. 3 - PROGRESS: at 90.00% examples, 341770 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:04:13,886] EPOCHs No. 3 - PROGRESS: at 91.00% examples, 341366 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:05:49,099] EPOCHs No. 3 - PROGRESS: at 92.00% examples, 340770 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:07:26,172] EPOCHs No. 3 - PROGRESS: at 93.00% examples, 340152 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:09:22,929] EPOCHs No. 3 - PROGRESS: at 94.00% examples, 339251 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:11:03,373] EPOCHs No. 3 - PROGRESS: at 95.00% examples, 338735 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 19:12:41,331] EPOCHs No. 3 - PROGRESS: at 96.00% examples, 338244 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:14:28,098] EPOCHs No. 3 - PROGRESS: at 97.00% examples, 337620 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:16:11,355] EPOCHs No. 3 - PROGRESS: at 98.00% examples, 337009 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:17:52,369] EPOCHs No. 3 - PROGRESS: at 99.00% examples, 336270 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:19:24,885] finished iterating over Wikipedia corpus of 5489528 documents with 3528518848 positions (total 21639335 articles, 3618975798 positions before pruning articles shorter than 50 words)
+[2022-04-27 19:19:25,325] worker thread finished; awaiting finish of 39 more threads
+[2022-04-27 19:19:25,325] worker thread finished; awaiting finish of 38 more threads
+[2022-04-27 19:19:25,325] worker thread finished; awaiting finish of 37 more threads
+[2022-04-27 19:19:25,325] worker thread finished; awaiting finish of 36 more threads
+[2022-04-27 19:19:25,325] worker thread finished; awaiting finish of 35 more threads
+[2022-04-27 19:19:25,325] worker thread finished; awaiting finish of 34 more threads
+[2022-04-27 19:19:25,325] worker thread finished; awaiting finish of 33 more threads
+[2022-04-27 19:19:25,345] worker thread finished; awaiting finish of 32 more threads
+[2022-04-27 19:19:25,346] worker thread finished; awaiting finish of 31 more threads
+[2022-04-27 19:19:25,350] worker thread finished; awaiting finish of 30 more threads
+[2022-04-27 19:19:25,355] worker thread finished; awaiting finish of 29 more threads
+[2022-04-27 19:19:25,355] worker thread finished; awaiting finish of 28 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 27 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 26 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 25 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 24 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 23 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 22 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 21 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 20 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 19 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 18 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 17 more threads
+[2022-04-27 19:19:25,356] worker thread finished; awaiting finish of 16 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 15 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 14 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 13 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 12 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 11 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 10 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 9 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 8 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 7 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 6 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 5 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 4 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 3 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 2 more threads
+[2022-04-27 19:19:25,357] worker thread finished; awaiting finish of 1 more threads
+[2022-04-27 19:19:25,370] EPOCHs No. 3 - PROGRESS: at 100.00% examples, 335680 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 19:19:25,370] worker thread finished; awaiting finish of 0 more threads
+[2022-04-27 19:19:25,370] EPOCH - 3 : training on 3528518848 raw words (3889208823 effective words) took 11586.1s, 335680 effective words/s
+[2022-04-27 19:25:59,778] EPOCHs No. 4 - PROGRESS: at 1.00% examples, 458511 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:29:48,248] EPOCHs No. 4 - PROGRESS: at 2.00% examples, 454694 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:34:27,754] EPOCHs No. 4 - PROGRESS: at 3.00% examples, 448389 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:38:12,116] EPOCHs No. 4 - PROGRESS: at 4.00% examples, 445132 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:41:40,629] EPOCHs No. 4 - PROGRESS: at 5.00% examples, 440624 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:44:48,350] EPOCHs No. 4 - PROGRESS: at 6.00% examples, 436808 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:47:40,905] EPOCHs No. 4 - PROGRESS: at 7.00% examples, 434105 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:50:27,044] EPOCHs No. 4 - PROGRESS: at 8.00% examples, 431250 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:53:03,931] EPOCHs No. 4 - PROGRESS: at 9.00% examples, 429317 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:55:43,473] EPOCHs No. 4 - PROGRESS: at 10.00% examples, 426173 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 19:58:09,818] EPOCHs No. 4 - PROGRESS: at 11.00% examples, 423985 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:00:28,418] EPOCHs No. 4 - PROGRESS: at 12.00% examples, 421863 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:02:39,838] EPOCHs No. 4 - PROGRESS: at 13.00% examples, 419945 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 20:04:54,670] EPOCHs No. 4 - PROGRESS: at 14.00% examples, 417805 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:07:04,071] EPOCHs No. 4 - PROGRESS: at 15.00% examples, 415963 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 20:09:10,237] EPOCHs No. 4 - PROGRESS: at 16.00% examples, 414111 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:11:13,283] EPOCHs No. 4 - PROGRESS: at 17.00% examples, 412499 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:13:14,030] EPOCHs No. 4 - PROGRESS: at 18.00% examples, 411042 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:15:11,703] EPOCHs No. 4 - PROGRESS: at 19.00% examples, 409440 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:17:04,863] EPOCHs No. 4 - PROGRESS: at 20.00% examples, 407680 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:18:50,297] EPOCHs No. 4 - PROGRESS: at 21.00% examples, 406413 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:20:38,334] EPOCHs No. 4 - PROGRESS: at 22.00% examples, 405211 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:22:26,556] EPOCHs No. 4 - PROGRESS: at 23.00% examples, 403814 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:24:19,479] EPOCHs No. 4 - PROGRESS: at 24.00% examples, 402218 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:26:09,928] EPOCHs No. 4 - PROGRESS: at 25.00% examples, 401025 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:27:57,114] EPOCHs No. 4 - PROGRESS: at 26.00% examples, 399708 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:29:44,003] EPOCHs No. 4 - PROGRESS: at 27.00% examples, 398444 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:31:38,464] EPOCHs No. 4 - PROGRESS: at 28.00% examples, 397166 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:33:21,439] EPOCHs No. 4 - PROGRESS: at 29.00% examples, 395903 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:34:52,157] EPOCHs No. 4 - PROGRESS: at 30.00% examples, 394522 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:36:30,751] EPOCHs No. 4 - PROGRESS: at 31.00% examples, 393071 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:38:12,678] EPOCHs No. 4 - PROGRESS: at 32.00% examples, 391612 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:39:57,703] EPOCHs No. 4 - PROGRESS: at 33.00% examples, 390340 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:41:32,720] EPOCHs No. 4 - PROGRESS: at 34.00% examples, 389095 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:43:08,583] EPOCHs No. 4 - PROGRESS: at 35.00% examples, 387750 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:45:00,315] EPOCHs No. 4 - PROGRESS: at 36.00% examples, 385799 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:46:36,180] EPOCHs No. 4 - PROGRESS: at 37.00% examples, 385082 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:48:15,379] EPOCHs No. 4 - PROGRESS: at 38.00% examples, 383974 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:49:48,187] EPOCHs No. 4 - PROGRESS: at 39.00% examples, 383073 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:51:27,800] EPOCHs No. 4 - PROGRESS: at 40.00% examples, 381785 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:53:02,225] EPOCHs No. 4 - PROGRESS: at 41.00% examples, 380762 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:54:38,168] EPOCHs No. 4 - PROGRESS: at 42.00% examples, 379955 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:56:08,455] EPOCHs No. 4 - PROGRESS: at 43.00% examples, 379192 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:57:34,698] EPOCHs No. 4 - PROGRESS: at 44.00% examples, 378344 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 20:59:13,943] EPOCHs No. 4 - PROGRESS: at 45.00% examples, 377473 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:01:00,495] EPOCHs No. 4 - PROGRESS: at 46.00% examples, 376092 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:02:35,252] EPOCHs No. 4 - PROGRESS: at 47.00% examples, 375427 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:04:13,371] EPOCHs No. 4 - PROGRESS: at 48.00% examples, 374683 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:05:56,916] EPOCHs No. 4 - PROGRESS: at 49.00% examples, 373749 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:07:33,511] EPOCHs No. 4 - PROGRESS: at 50.00% examples, 373128 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:09:05,470] EPOCHs No. 4 - PROGRESS: at 51.00% examples, 372446 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:10:49,798] EPOCHs No. 4 - PROGRESS: at 52.00% examples, 371391 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:12:34,264] EPOCHs No. 4 - PROGRESS: at 53.00% examples, 370207 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:14:02,960] EPOCHs No. 4 - PROGRESS: at 54.00% examples, 369386 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:15:54,403] EPOCHs No. 4 - PROGRESS: at 55.00% examples, 368155 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 21:17:41,004] EPOCHs No. 4 - PROGRESS: at 56.00% examples, 367667 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:19:25,876] EPOCHs No. 4 - PROGRESS: at 57.00% examples, 366972 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:21:09,282] EPOCHs No. 4 - PROGRESS: at 58.00% examples, 365917 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 21:22:48,536] EPOCHs No. 4 - PROGRESS: at 59.00% examples, 365151 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:24:30,598] EPOCHs No. 4 - PROGRESS: at 60.00% examples, 364328 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:26:14,130] EPOCHs No. 4 - PROGRESS: at 61.00% examples, 363481 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:27:50,532] EPOCHs No. 4 - PROGRESS: at 62.00% examples, 362781 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:29:24,085] EPOCHs No. 4 - PROGRESS: at 63.00% examples, 362060 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:31:03,673] EPOCHs No. 4 - PROGRESS: at 64.00% examples, 361300 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:32:48,676] EPOCHs No. 4 - PROGRESS: at 65.00% examples, 360459 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:34:33,263] EPOCHs No. 4 - PROGRESS: at 66.00% examples, 359676 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:36:18,092] EPOCHs No. 4 - PROGRESS: at 67.00% examples, 358872 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:37:53,125] EPOCHs No. 4 - PROGRESS: at 68.00% examples, 358195 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:39:34,350] EPOCHs No. 4 - PROGRESS: at 69.00% examples, 357357 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:41:07,119] EPOCHs No. 4 - PROGRESS: at 70.00% examples, 356850 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:42:46,962] EPOCHs No. 4 - PROGRESS: at 71.00% examples, 356314 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:44:23,845] EPOCHs No. 4 - PROGRESS: at 72.00% examples, 355654 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:46:02,270] EPOCHs No. 4 - PROGRESS: at 73.00% examples, 355049 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:47:42,092] EPOCHs No. 4 - PROGRESS: at 74.00% examples, 354463 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:49:24,026] EPOCHs No. 4 - PROGRESS: at 75.00% examples, 353909 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:50:59,532] EPOCHs No. 4 - PROGRESS: at 76.00% examples, 353273 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:52:36,375] EPOCHs No. 4 - PROGRESS: at 77.00% examples, 352756 words/s, in_qsize 0, out_qsize 2
+[2022-04-27 21:54:13,383] EPOCHs No. 4 - PROGRESS: at 78.00% examples, 352260 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:56:00,641] EPOCHs No. 4 - PROGRESS: at 79.00% examples, 351290 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:57:37,298] EPOCHs No. 4 - PROGRESS: at 80.00% examples, 350679 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 21:59:09,271] EPOCHs No. 4 - PROGRESS: at 81.00% examples, 350166 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:00:45,009] EPOCHs No. 4 - PROGRESS: at 82.00% examples, 349607 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:02:24,832] EPOCHs No. 4 - PROGRESS: at 83.00% examples, 348972 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:04:03,757] EPOCHs No. 4 - PROGRESS: at 84.00% examples, 348397 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:05:49,316] EPOCHs No. 4 - PROGRESS: at 85.00% examples, 347592 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 22:07:32,398] EPOCHs No. 4 - PROGRESS: at 86.00% examples, 346929 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:09:09,846] EPOCHs No. 4 - PROGRESS: at 87.00% examples, 346320 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:10:54,297] EPOCHs No. 4 - PROGRESS: at 88.00% examples, 345684 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:12:42,274] EPOCHs No. 4 - PROGRESS: at 89.00% examples, 344904 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:14:33,604] EPOCHs No. 4 - PROGRESS: at 90.00% examples, 344062 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:16:11,436] EPOCHs No. 4 - PROGRESS: at 91.00% examples, 343571 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:17:45,904] EPOCHs No. 4 - PROGRESS: at 92.00% examples, 342975 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:19:23,392] EPOCHs No. 4 - PROGRESS: at 93.00% examples, 342320 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:21:12,192] EPOCHs No. 4 - PROGRESS: at 94.00% examples, 341639 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:22:52,464] EPOCHs No. 4 - PROGRESS: at 95.00% examples, 341103 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:24:30,988] EPOCHs No. 4 - PROGRESS: at 96.00% examples, 340572 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:26:16,716] EPOCHs No. 4 - PROGRESS: at 97.00% examples, 339951 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:28:00,677] EPOCHs No. 4 - PROGRESS: at 98.00% examples, 339294 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:29:39,447] EPOCHs No. 4 - PROGRESS: at 99.00% examples, 338597 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:31:18,753] finished iterating over Wikipedia corpus of 5489528 documents with 3528518848 positions (total 21639335 articles, 3618975798 positions before pruning articles shorter than 50 words)
+[2022-04-27 22:31:19,215] worker thread finished; awaiting finish of 39 more threads
+[2022-04-27 22:31:19,221] worker thread finished; awaiting finish of 38 more threads
+[2022-04-27 22:31:19,226] worker thread finished; awaiting finish of 37 more threads
+[2022-04-27 22:31:19,230] worker thread finished; awaiting finish of 36 more threads
+[2022-04-27 22:31:19,230] worker thread finished; awaiting finish of 35 more threads
+[2022-04-27 22:31:19,230] worker thread finished; awaiting finish of 34 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 33 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 32 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 31 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 30 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 29 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 28 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 27 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 26 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 25 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 24 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 23 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 22 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 21 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 20 more threads
+[2022-04-27 22:31:19,231] worker thread finished; awaiting finish of 19 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 18 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 17 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 16 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 15 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 14 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 13 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 12 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 11 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 10 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 9 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 8 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 7 more threads
+[2022-04-27 22:31:19,232] worker thread finished; awaiting finish of 6 more threads
+[2022-04-27 22:31:19,233] worker thread finished; awaiting finish of 5 more threads
+[2022-04-27 22:31:19,233] worker thread finished; awaiting finish of 4 more threads
+[2022-04-27 22:31:19,233] worker thread finished; awaiting finish of 3 more threads
+[2022-04-27 22:31:19,233] worker thread finished; awaiting finish of 2 more threads
+[2022-04-27 22:31:19,233] worker thread finished; awaiting finish of 1 more threads
+[2022-04-27 22:31:19,245] EPOCHs No. 4 - PROGRESS: at 100.00% examples, 337784 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 22:31:19,245] worker thread finished; awaiting finish of 0 more threads
+[2022-04-27 22:31:19,245] EPOCH - 4 : training on 3528518848 raw words (3889196025 effective words) took 11513.9s, 337784 effective words/s
+[2022-04-27 22:38:00,250] EPOCHs No. 5 - PROGRESS: at 1.00% examples, 450973 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:41:54,707] EPOCHs No. 5 - PROGRESS: at 2.00% examples, 445676 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:46:38,721] EPOCHs No. 5 - PROGRESS: at 3.00% examples, 440066 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:50:31,117] EPOCHs No. 5 - PROGRESS: at 4.00% examples, 435397 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:54:02,115] EPOCHs No. 5 - PROGRESS: at 5.00% examples, 431691 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 22:57:15,241] EPOCHs No. 5 - PROGRESS: at 6.00% examples, 427540 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:00:13,090] EPOCHs No. 5 - PROGRESS: at 7.00% examples, 424514 words/s, in_qsize 6, out_qsize 0
+[2022-04-27 23:03:03,147] EPOCHs No. 5 - PROGRESS: at 8.00% examples, 421702 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:05:48,539] EPOCHs No. 5 - PROGRESS: at 9.00% examples, 418792 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:08:30,144] EPOCHs No. 5 - PROGRESS: at 10.00% examples, 416089 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:11:01,034] EPOCHs No. 5 - PROGRESS: at 11.00% examples, 413779 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:13:22,327] EPOCHs No. 5 - PROGRESS: at 12.00% examples, 411827 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:15:37,680] EPOCHs No. 5 - PROGRESS: at 13.00% examples, 409846 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:17:56,741] EPOCHs No. 5 - PROGRESS: at 14.00% examples, 407621 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:20:09,255] EPOCHs No. 5 - PROGRESS: at 15.00% examples, 405840 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:22:18,579] EPOCHs No. 5 - PROGRESS: at 16.00% examples, 404032 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 23:24:22,385] EPOCHs No. 5 - PROGRESS: at 17.00% examples, 402745 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:26:26,988] EPOCHs No. 5 - PROGRESS: at 18.00% examples, 401215 words/s, in_qsize 0, out_qsize 1
+[2022-04-27 23:28:26,956] EPOCHs No. 5 - PROGRESS: at 19.00% examples, 399720 words/s, in_qsize 1, out_qsize 0
+[2022-04-27 23:30:22,685] EPOCHs No. 5 - PROGRESS: at 20.00% examples, 398022 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:32:09,994] EPOCHs No. 5 - PROGRESS: at 21.00% examples, 396859 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:34:00,210] EPOCHs No. 5 - PROGRESS: at 22.00% examples, 395731 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:35:48,782] EPOCHs No. 5 - PROGRESS: at 23.00% examples, 394595 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:37:41,507] EPOCHs No. 5 - PROGRESS: at 24.00% examples, 393315 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:39:36,033] EPOCHs No. 5 - PROGRESS: at 25.00% examples, 391998 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:41:25,153] EPOCHs No. 5 - PROGRESS: at 26.00% examples, 390760 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:43:16,128] EPOCHs No. 5 - PROGRESS: at 27.00% examples, 389376 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:45:10,344] EPOCHs No. 5 - PROGRESS: at 28.00% examples, 388382 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:46:54,345] EPOCHs No. 5 - PROGRESS: at 29.00% examples, 387258 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:48:27,480] EPOCHs No. 5 - PROGRESS: at 30.00% examples, 385875 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:50:05,210] EPOCHs No. 5 - PROGRESS: at 31.00% examples, 384705 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:51:46,108] EPOCHs No. 5 - PROGRESS: at 32.00% examples, 383535 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:53:32,339] EPOCHs No. 5 - PROGRESS: at 33.00% examples, 382368 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:55:13,973] EPOCHs No. 5 - PROGRESS: at 34.00% examples, 380797 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:56:50,644] EPOCHs No. 5 - PROGRESS: at 35.00% examples, 379577 words/s, in_qsize 0, out_qsize 0
+[2022-04-27 23:58:44,125] EPOCHs No. 5 - PROGRESS: at 36.00% examples, 377713 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:00:25,007] EPOCHs No. 5 - PROGRESS: at 37.00% examples, 376802 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:02:05,758] EPOCHs No. 5 - PROGRESS: at 38.00% examples, 375760 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:03:39,561] EPOCHs No. 5 - PROGRESS: at 39.00% examples, 374948 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:05:17,285] EPOCHs No. 5 - PROGRESS: at 40.00% examples, 373957 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:06:51,954] EPOCHs No. 5 - PROGRESS: at 41.00% examples, 373068 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:08:28,725] EPOCHs No. 5 - PROGRESS: at 42.00% examples, 372350 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:10:01,822] EPOCHs No. 5 - PROGRESS: at 43.00% examples, 371541 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:11:28,802] EPOCHs No. 5 - PROGRESS: at 44.00% examples, 370775 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:13:10,025] EPOCHs No. 5 - PROGRESS: at 45.00% examples, 369924 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:14:58,216] EPOCHs No. 5 - PROGRESS: at 46.00% examples, 368602 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:16:36,917] EPOCHs No. 5 - PROGRESS: at 47.00% examples, 367833 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:18:16,166] EPOCHs No. 5 - PROGRESS: at 48.00% examples, 367155 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:19:56,635] EPOCHs No. 5 - PROGRESS: at 49.00% examples, 366533 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:21:41,042] EPOCHs No. 5 - PROGRESS: at 50.00% examples, 365598 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:23:15,922] EPOCHs No. 5 - PROGRESS: at 51.00% examples, 364873 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:24:59,701] EPOCHs No. 5 - PROGRESS: at 52.00% examples, 363984 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:26:42,954] EPOCHs No. 5 - PROGRESS: at 53.00% examples, 362998 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:28:11,209] EPOCHs No. 5 - PROGRESS: at 54.00% examples, 362307 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:30:04,004] EPOCHs No. 5 - PROGRESS: at 55.00% examples, 361142 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:32:00,384] EPOCHs No. 5 - PROGRESS: at 56.00% examples, 360279 words/s, in_qsize 0, out_qsize 1
+[2022-04-28 00:33:45,117] EPOCHs No. 5 - PROGRESS: at 57.00% examples, 359711 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:35:28,980] EPOCHs No. 5 - PROGRESS: at 58.00% examples, 358755 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:37:08,781] EPOCHs No. 5 - PROGRESS: at 59.00% examples, 358071 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:38:47,586] EPOCHs No. 5 - PROGRESS: at 60.00% examples, 357511 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:40:32,628] EPOCHs No. 5 - PROGRESS: at 61.00% examples, 356702 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:42:09,654] EPOCHs No. 5 - PROGRESS: at 62.00% examples, 356069 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:43:43,836] EPOCHs No. 5 - PROGRESS: at 63.00% examples, 355412 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:45:31,082] EPOCHs No. 5 - PROGRESS: at 64.00% examples, 354412 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:47:18,398] EPOCHs No. 5 - PROGRESS: at 65.00% examples, 353574 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:49:03,113] EPOCHs No. 5 - PROGRESS: at 66.00% examples, 352888 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:50:48,791] EPOCHs No. 5 - PROGRESS: at 67.00% examples, 352148 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:52:25,633] EPOCHs No. 5 - PROGRESS: at 68.00% examples, 351484 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:54:03,281] EPOCHs No. 5 - PROGRESS: at 69.00% examples, 350887 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:55:36,541] EPOCHs No. 5 - PROGRESS: at 70.00% examples, 350438 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:57:16,958] EPOCHs No. 5 - PROGRESS: at 71.00% examples, 349963 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 00:58:57,876] EPOCHs No. 5 - PROGRESS: at 72.00% examples, 349224 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:00:37,590] EPOCHs No. 5 - PROGRESS: at 73.00% examples, 348651 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:02:22,770] EPOCHs No. 5 - PROGRESS: at 74.00% examples, 347940 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:04:04,956] EPOCHs No. 5 - PROGRESS: at 75.00% examples, 347459 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:05:41,675] EPOCHs No. 5 - PROGRESS: at 76.00% examples, 346856 words/s, in_qsize 1, out_qsize 0
+[2022-04-28 01:07:19,251] EPOCHs No. 5 - PROGRESS: at 77.00% examples, 346387 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:08:58,478] EPOCHs No. 5 - PROGRESS: at 78.00% examples, 345884 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:10:40,376] EPOCHs No. 5 - PROGRESS: at 79.00% examples, 345197 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:12:16,461] EPOCHs No. 5 - PROGRESS: at 80.00% examples, 344677 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:13:50,888] EPOCHs No. 5 - PROGRESS: at 81.00% examples, 344143 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:15:29,232] EPOCHs No. 5 - PROGRESS: at 82.00% examples, 343561 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:17:10,261] EPOCHs No. 5 - PROGRESS: at 83.00% examples, 342957 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:18:56,463] EPOCHs No. 5 - PROGRESS: at 84.00% examples, 342203 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:20:43,337] EPOCHs No. 5 - PROGRESS: at 85.00% examples, 341433 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:22:25,464] EPOCHs No. 5 - PROGRESS: at 86.00% examples, 340874 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:24:02,565] EPOCHs No. 5 - PROGRESS: at 87.00% examples, 340344 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:25:47,635] EPOCHs No. 5 - PROGRESS: at 88.00% examples, 339758 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:27:29,939] EPOCHs No. 5 - PROGRESS: at 89.00% examples, 339234 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:29:22,933] EPOCHs No. 5 - PROGRESS: at 90.00% examples, 338412 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:31:01,632] EPOCHs No. 5 - PROGRESS: at 91.00% examples, 337953 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:32:34,670] EPOCHs No. 5 - PROGRESS: at 92.00% examples, 337460 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:34:14,280] EPOCHs No. 5 - PROGRESS: at 93.00% examples, 336799 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:36:10,460] EPOCHs No. 5 - PROGRESS: at 94.00% examples, 335960 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:37:51,227] EPOCHs No. 5 - PROGRESS: at 95.00% examples, 335469 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:39:30,625] EPOCHs No. 5 - PROGRESS: at 96.00% examples, 334969 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:41:17,018] EPOCHs No. 5 - PROGRESS: at 97.00% examples, 334392 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:43:00,326] EPOCHs No. 5 - PROGRESS: at 98.00% examples, 333814 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:44:38,446] EPOCHs No. 5 - PROGRESS: at 99.00% examples, 333193 words/s, in_qsize 0, out_qsize 0
+[2022-04-28 01:46:10,466] finished iterating over Wikipedia corpus of 5489528 documents with 3528518848 positions (total 21639335 articles, 3618975798 positions before pruning articles shorter than 50 words)
+[2022-04-28 01:46:10,934] worker thread finished; awaiting finish of 39 more threads
+[2022-04-28 01:46:10,939] worker thread finished; awaiting finish of 38 more threads
+[2022-04-28 01:46:10,944] worker thread finished; awaiting finish of 37 more threads
+[2022-04-28 01:46:10,949] worker thread finished; awaiting finish of 36 more threads
+[2022-04-28 01:46:10,952] worker thread finished; awaiting finish of 35 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 34 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 33 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 32 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 31 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 30 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 29 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 28 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 27 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 26 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 25 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 24 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 23 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 22 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 21 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 20 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 19 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 18 more threads
+[2022-04-28 01:46:10,953] worker thread finished; awaiting finish of 17 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 16 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 15 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 14 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 13 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 12 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 11 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 10 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 9 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 8 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 7 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 6 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 5 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 4 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 3 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 2 more threads
+[2022-04-28 01:46:10,954] worker thread finished; awaiting finish of 1 more threads
+[2022-04-28 01:46:10,982] EPOCHs No. 5 - PROGRESS: at 100.00% examples, 332646 words/s, in_qsize 0, out_qsize 1
+[2022-04-28 01:46:10,983] worker thread finished; awaiting finish of 0 more threads
+[2022-04-28 01:46:10,983] EPOCH - 5 : training on 3528518848 raw words (3889201141 effective words) took 11691.7s, 332646 effective words/s
+[2022-04-28 01:46:10,983] training on a 17642594240 raw words (19446008128 effective words) took 57790.9s, 336489 effective words/s
+[2022-04-28 01:46:10,983] Training done.
+[2022-04-28 01:46:10,984] Save trained word vectors
+  0%|          | 0/457701 [00:00<?, ?it/s]  0%|          | 446/457701 [00:00<01:42, 4455.43it/s]  0%|          | 942/457701 [00:00<01:39, 4594.65it/s]  0%|          | 1430/457701 [00:00<01:37, 4675.19it/s]  0%|          | 1910/457701 [00:00<01:36, 4711.75it/s]  1%|          | 2408/457701 [00:00<01:35, 4787.23it/s]  1%|          | 2897/457701 [00:00<01:34, 4817.46it/s]  1%|          | 3380/457701 [00:00<01:34, 4819.09it/s]  1%|          | 3869/457701 [00:00<01:33, 4839.03it/s]  1%|          | 4352/457701 [00:00<01:33, 4833.98it/s]  1%|          | 4846/457701 [00:01<01:33, 4864.92it/s]  1%|          | 5335/457701 [00:01<01:32, 4871.37it/s]  1%|▏         | 5836/457701 [00:01<01:32, 4909.37it/s]  1%|▏         | 6321/457701 [00:01<01:32, 4860.05it/s]  1%|▏         | 6818/457701 [00:01<01:32, 4891.07it/s]  2%|▏         | 7305/457701 [00:01<01:33, 4837.14it/s]  2%|▏         | 7804/457701 [00:01<01:32, 4880.73it/s]  2%|▏         | 8291/457701 [00:01<01:32, 4873.13it/s]  2%|▏         | 8788/457701 [00:01<01:31, 4901.62it/s]  2%|▏         | 9283/457701 [00:01<01:31, 4914.60it/s]  2%|▏         | 9776/457701 [00:02<01:31, 4917.42it/s]  2%|▏         | 10268/457701 [00:02<01:32, 4854.86it/s]  2%|▏         | 10754/457701 [00:02<01:32, 4839.06it/s]  2%|▏         | 11238/457701 [00:02<01:34, 4742.49it/s]  3%|▎         | 11728/457701 [00:02<01:33, 4787.14it/s]  3%|▎         | 12211/457701 [00:02<01:32, 4799.84it/s]  3%|▎         | 12700/457701 [00:02<01:32, 4823.97it/s]  3%|▎         | 13191/457701 [00:02<01:31, 4847.24it/s]  3%|▎         | 13682/457701 [00:02<01:31, 4864.24it/s]  3%|▎         | 14169/457701 [00:02<01:31, 4865.09it/s]  3%|▎         | 14664/457701 [00:03<01:30, 4889.40it/s]  3%|▎         | 15154/457701 [00:03<01:30, 4881.17it/s]  3%|▎         | 15651/457701 [00:03<01:30, 4906.82it/s]  4%|▎         | 16142/457701 [00:03<01:32, 4755.87it/s]  4%|▎         | 16619/457701 [00:03<01:33, 4741.46it/s]  4%|▎         | 17113/457701 [00:03<01:31, 4796.89it/s]  4%|▍         | 17603/457701 [00:03<01:31, 4825.98it/s]  4%|▍         | 18087/457701 [00:03<01:32, 4748.80it/s]  4%|▍         | 18563/457701 [00:03<01:36, 4569.88it/s]  4%|▍         | 19043/457701 [00:03<01:34, 4635.96it/s]  4%|▍         | 19529/457701 [00:04<01:33, 4700.86it/s]  4%|▍         | 20006/457701 [00:04<01:32, 4718.79it/s]  4%|▍         | 20480/457701 [00:04<01:32, 4722.24it/s]  5%|▍         | 20981/457701 [00:04<01:30, 4802.55it/s]  5%|▍         | 21474/457701 [00:04<01:30, 4837.97it/s]  5%|▍         | 21959/457701 [00:04<01:31, 4786.19it/s]  5%|▍         | 22451/457701 [00:04<01:30, 4824.85it/s]  5%|▌         | 22952/457701 [00:04<01:29, 4878.28it/s]  5%|▌         | 23449/457701 [00:04<01:28, 4905.12it/s]  5%|▌         | 23940/457701 [00:04<01:28, 4905.62it/s]  5%|▌         | 24436/457701 [00:05<01:28, 4920.60it/s]  5%|▌         | 24938/457701 [00:05<01:27, 4947.23it/s]  6%|▌         | 25440/457701 [00:05<01:27, 4967.92it/s]  6%|▌         | 25937/457701 [00:05<01:27, 4944.75it/s]  6%|▌         | 26439/457701 [00:05<01:26, 4967.03it/s]  6%|▌         | 26941/457701 [00:05<01:26, 4980.39it/s]  6%|▌         | 27441/457701 [00:05<01:26, 4983.34it/s]  6%|▌         | 27940/457701 [00:05<01:26, 4977.01it/s]  6%|▌         | 28438/457701 [00:05<01:26, 4968.20it/s]  6%|▋         | 28937/457701 [00:05<01:26, 4971.90it/s]  6%|▋         | 29444/457701 [00:06<01:25, 5000.89it/s]  7%|▋         | 29945/457701 [00:06<01:25, 4995.45it/s]  7%|▋         | 30445/457701 [00:06<01:25, 4988.80it/s]  7%|▋         | 30948/457701 [00:06<01:25, 5000.76it/s]  7%|▋         | 31449/457701 [00:06<01:25, 4994.41it/s]  7%|▋         | 31949/457701 [00:06<01:25, 4984.92it/s]  7%|▋         | 32448/457701 [00:06<01:26, 4892.39it/s]  7%|▋         | 32946/457701 [00:06<01:26, 4915.50it/s]  7%|▋         | 33449/457701 [00:06<01:25, 4947.32it/s]  7%|▋         | 33947/457701 [00:06<01:25, 4955.15it/s]  8%|▊         | 34452/457701 [00:07<01:24, 4980.96it/s]  8%|▊         | 34951/457701 [00:07<01:24, 4974.68it/s]  8%|▊         | 35450/457701 [00:07<01:24, 4977.71it/s]  8%|▊         | 35948/457701 [00:07<01:24, 4978.36it/s]  8%|▊         | 36451/457701 [00:07<01:24, 4990.91it/s]  8%|▊         | 36954/457701 [00:07<01:24, 5000.08it/s]  8%|▊         | 37455/457701 [00:07<01:24, 5002.37it/s]  8%|▊         | 37956/457701 [00:07<01:24, 4990.16it/s]  8%|▊         | 38461/457701 [00:07<01:23, 5006.58it/s]  9%|▊         | 38963/457701 [00:07<01:23, 5009.61it/s]  9%|▊         | 39464/457701 [00:08<01:23, 5008.75it/s]  9%|▊         | 39965/457701 [00:08<01:23, 4993.62it/s]  9%|▉         | 40465/457701 [00:08<01:23, 4968.82it/s]  9%|▉         | 40965/457701 [00:08<01:23, 4975.31it/s]  9%|▉         | 41463/457701 [00:08<01:23, 4968.77it/s]  9%|▉         | 41966/457701 [00:08<01:23, 4986.98it/s]  9%|▉         | 42465/457701 [00:08<01:23, 4983.89it/s]  9%|▉         | 42964/457701 [00:08<01:23, 4981.98it/s]  9%|▉         | 43469/457701 [00:08<01:22, 5002.19it/s] 10%|▉         | 43970/457701 [00:08<01:22, 4987.05it/s] 10%|▉         | 44469/457701 [00:09<01:24, 4908.27it/s] 10%|▉         | 44970/457701 [00:09<01:23, 4938.27it/s] 10%|▉         | 45475/457701 [00:09<01:22, 4971.26it/s] 10%|█         | 45978/457701 [00:09<01:22, 4986.88it/s] 10%|█         | 46480/457701 [00:09<01:22, 4994.81it/s] 10%|█         | 46984/457701 [00:09<01:22, 5006.54it/s] 10%|█         | 47485/457701 [00:09<01:21, 5006.03it/s] 10%|█         | 47986/457701 [00:09<01:21, 5006.69it/s] 11%|█         | 48487/457701 [00:09<01:22, 4976.62it/s] 11%|█         | 48985/457701 [00:09<01:22, 4970.89it/s] 11%|█         | 49483/457701 [00:10<01:27, 4638.87it/s] 11%|█         | 49995/457701 [00:10<01:25, 4770.78it/s] 11%|█         | 50491/457701 [00:10<01:24, 4825.43it/s] 11%|█         | 50994/457701 [00:10<01:23, 4882.52it/s] 11%|█         | 51489/457701 [00:10<01:22, 4901.79it/s] 11%|█▏        | 51981/457701 [00:10<01:22, 4892.20it/s] 11%|█▏        | 52483/457701 [00:10<01:22, 4928.84it/s] 12%|█▏        | 52977/457701 [00:10<01:22, 4924.53it/s] 12%|█▏        | 53479/457701 [00:10<01:21, 4950.47it/s] 12%|█▏        | 53975/457701 [00:11<01:22, 4872.04it/s] 12%|█▏        | 54480/457701 [00:11<01:21, 4922.85it/s] 12%|█▏        | 54979/457701 [00:11<01:21, 4941.67it/s] 12%|█▏        | 55483/457701 [00:11<01:20, 4968.27it/s] 12%|█▏        | 55985/457701 [00:11<01:20, 4983.03it/s] 12%|█▏        | 56487/457701 [00:11<01:20, 4992.19it/s] 12%|█▏        | 56987/457701 [00:11<01:22, 4878.03it/s] 13%|█▎        | 57489/457701 [00:11<01:21, 4919.64it/s] 13%|█▎        | 57982/457701 [00:11<01:21, 4899.76it/s] 13%|█▎        | 58487/457701 [00:11<01:20, 4942.56it/s] 13%|█▎        | 58982/457701 [00:12<01:20, 4934.92it/s] 13%|█▎        | 59479/457701 [00:12<01:20, 4944.86it/s] 13%|█▎        | 59974/457701 [00:12<01:20, 4932.00it/s] 13%|█▎        | 60477/457701 [00:12<01:20, 4959.24it/s] 13%|█▎        | 60975/457701 [00:12<01:19, 4965.41it/s] 13%|█▎        | 61480/457701 [00:12<01:19, 4987.83it/s] 14%|█▎        | 61979/457701 [00:12<01:20, 4892.44it/s] 14%|█▎        | 62487/457701 [00:12<01:19, 4944.72it/s] 14%|█▍        | 62987/457701 [00:12<01:19, 4959.69it/s] 14%|█▍        | 63493/457701 [00:12<01:19, 4986.77it/s] 14%|█▍        | 64001/457701 [00:13<01:18, 5012.52it/s] 14%|█▍        | 64503/457701 [00:13<01:18, 5010.27it/s] 14%|█▍        | 65005/457701 [00:13<01:18, 5003.63it/s] 14%|█▍        | 65506/457701 [00:13<01:18, 4990.22it/s] 14%|█▍        | 66006/457701 [00:13<01:18, 4977.53it/s] 15%|█▍        | 66508/457701 [00:13<01:18, 4987.92it/s] 15%|█▍        | 67010/457701 [00:13<01:18, 4997.40it/s] 15%|█▍        | 67511/457701 [00:13<01:18, 4999.28it/s] 15%|█▍        | 68011/457701 [00:13<01:19, 4918.84it/s] 15%|█▍        | 68510/457701 [00:13<01:18, 4939.71it/s] 15%|█▌        | 69012/457701 [00:14<01:18, 4962.44it/s] 15%|█▌        | 69516/457701 [00:14<01:17, 4982.75it/s] 15%|█▌        | 70015/457701 [00:14<01:18, 4948.86it/s] 15%|█▌        | 70519/457701 [00:14<01:17, 4973.23it/s] 16%|█▌        | 71022/457701 [00:14<01:17, 4989.90it/s] 16%|█▌        | 71522/457701 [00:14<01:17, 4986.77it/s] 16%|█▌        | 72021/457701 [00:14<01:17, 4968.43it/s] 16%|█▌        | 72522/457701 [00:14<01:17, 4978.41it/s] 16%|█▌        | 73022/457701 [00:14<01:17, 4984.14it/s] 16%|█▌        | 73521/457701 [00:14<01:17, 4979.91it/s] 16%|█▌        | 74020/457701 [00:15<01:17, 4971.39it/s] 16%|█▋        | 74524/457701 [00:15<01:16, 4989.29it/s] 16%|█▋        | 75029/457701 [00:15<01:16, 5005.69it/s] 17%|█▋        | 75536/457701 [00:15<01:16, 5022.42it/s] 17%|█▋        | 76039/457701 [00:15<01:16, 5002.35it/s] 17%|█▋        | 76547/457701 [00:15<01:15, 5023.83it/s] 17%|█▋        | 77050/457701 [00:15<01:15, 5020.92it/s] 17%|█▋        | 77553/457701 [00:15<01:15, 5018.60it/s] 17%|█▋        | 78055/457701 [00:15<01:17, 4893.90it/s] 17%|█▋        | 78566/457701 [00:15<01:16, 4954.40it/s] 17%|█▋        | 79063/457701 [00:16<01:16, 4950.82it/s] 17%|█▋        | 79559/457701 [00:16<01:16, 4949.51it/s] 17%|█▋        | 80064/457701 [00:16<01:15, 4978.85it/s] 18%|█▊        | 80565/457701 [00:16<01:15, 4985.82it/s] 18%|█▊        | 81064/457701 [00:16<01:15, 4986.47it/s] 18%|█▊        | 81566/457701 [00:16<01:15, 4994.20it/s] 18%|█▊        | 82071/457701 [00:16<01:15, 5008.03it/s] 18%|█▊        | 82577/457701 [00:16<01:14, 5021.50it/s] 18%|█▊        | 83083/457701 [00:16<01:14, 5030.65it/s] 18%|█▊        | 83587/457701 [00:16<01:14, 5006.57it/s] 18%|█▊        | 84088/457701 [00:17<01:14, 5001.59it/s] 18%|█▊        | 84592/457701 [00:17<01:14, 5011.84it/s] 19%|█▊        | 85094/457701 [00:17<01:14, 5012.21it/s] 19%|█▊        | 85596/457701 [00:17<01:14, 4999.99it/s] 19%|█▉        | 86097/457701 [00:17<01:14, 4968.81it/s] 19%|█▉        | 86596/457701 [00:17<01:14, 4973.76it/s] 19%|█▉        | 87100/457701 [00:17<01:14, 4991.18it/s] 19%|█▉        | 87600/457701 [00:17<01:14, 4987.90it/s] 19%|█▉        | 88101/457701 [00:17<01:14, 4992.79it/s] 19%|█▉        | 88601/457701 [00:17<01:14, 4983.87it/s] 19%|█▉        | 89105/457701 [00:18<01:13, 4998.40it/s] 20%|█▉        | 89605/457701 [00:18<01:13, 4989.21it/s] 20%|█▉        | 90104/457701 [00:18<01:14, 4908.30it/s] 20%|█▉        | 90604/457701 [00:18<01:14, 4935.35it/s] 20%|█▉        | 91100/457701 [00:18<01:14, 4940.28it/s] 20%|██        | 91597/457701 [00:18<01:13, 4949.02it/s] 20%|██        | 92100/457701 [00:18<01:13, 4970.52it/s] 20%|██        | 92598/457701 [00:18<01:13, 4965.44it/s] 20%|██        | 93098/457701 [00:18<01:13, 4972.82it/s] 20%|██        | 93603/457701 [00:18<01:12, 4992.97it/s] 21%|██        | 94103/457701 [00:19<01:13, 4951.74it/s] 21%|██        | 94604/457701 [00:19<01:13, 4967.45it/s] 21%|██        | 95105/457701 [00:19<01:12, 4979.20it/s] 21%|██        | 95603/457701 [00:19<01:12, 4977.54it/s] 21%|██        | 96109/457701 [00:19<01:12, 5000.52it/s] 21%|██        | 96611/457701 [00:19<01:12, 5005.81it/s] 21%|██        | 97112/457701 [00:19<01:12, 5000.59it/s] 21%|██▏       | 97613/457701 [00:19<01:12, 4991.81it/s] 21%|██▏       | 98113/457701 [00:19<01:12, 4963.41it/s] 22%|██▏       | 98613/457701 [00:19<01:12, 4971.70it/s] 22%|██▏       | 99111/457701 [00:20<01:17, 4642.18it/s] 22%|██▏       | 99620/457701 [00:20<01:15, 4767.86it/s] 22%|██▏       | 100120/457701 [00:20<01:13, 4833.77it/s] 22%|██▏       | 100621/457701 [00:20<01:13, 4884.22it/s] 22%|██▏       | 101125/457701 [00:20<01:12, 4929.09it/s] 22%|██▏       | 101626/457701 [00:20<01:11, 4951.09it/s] 22%|██▏       | 102123/457701 [00:20<01:12, 4937.42it/s] 22%|██▏       | 102624/457701 [00:20<01:11, 4955.96it/s] 23%|██▎       | 103121/457701 [00:20<01:12, 4858.57it/s] 23%|██▎       | 103626/457701 [00:21<01:12, 4912.61it/s] 23%|██▎       | 104121/457701 [00:21<01:11, 4921.86it/s] 23%|██▎       | 104622/457701 [00:21<01:11, 4946.24it/s] 23%|██▎       | 105122/457701 [00:21<01:11, 4961.09it/s] 23%|██▎       | 105626/457701 [00:21<01:10, 4982.05it/s] 23%|██▎       | 106125/457701 [00:21<01:11, 4884.97it/s] 23%|██▎       | 106621/457701 [00:21<01:11, 4906.36it/s] 23%|██▎       | 107113/457701 [00:21<01:11, 4894.55it/s] 24%|██▎       | 107616/457701 [00:21<01:10, 4933.09it/s] 24%|██▎       | 108119/457701 [00:21<01:10, 4960.47it/s] 24%|██▎       | 108616/457701 [00:22<01:10, 4938.57it/s] 24%|██▍       | 109124/457701 [00:22<01:10, 4978.71it/s] 24%|██▍       | 109623/457701 [00:22<01:10, 4939.24it/s] 24%|██▍       | 110126/457701 [00:22<01:10, 4963.32it/s] 24%|██▍       | 110624/457701 [00:22<01:09, 4968.13it/s] 24%|██▍       | 111129/457701 [00:22<01:09, 4991.03it/s] 24%|██▍       | 111629/457701 [00:22<01:11, 4872.97it/s] 24%|██▍       | 112129/457701 [00:22<01:10, 4909.90it/s] 25%|██▍       | 112625/457701 [00:22<01:10, 4921.99it/s] 25%|██▍       | 113124/457701 [00:22<01:09, 4940.70it/s] 25%|██▍       | 113622/457701 [00:23<01:09, 4951.69it/s] 25%|██▍       | 114120/457701 [00:23<01:09, 4957.73it/s] 25%|██▌       | 114617/457701 [00:23<01:09, 4960.34it/s] 25%|██▌       | 115120/457701 [00:23<01:08, 4978.08it/s] 25%|██▌       | 115618/457701 [00:23<01:09, 4950.52it/s] 25%|██▌       | 116118/457701 [00:23<01:08, 4963.70it/s] 25%|██▌       | 116618/457701 [00:23<01:08, 4971.70it/s] 26%|██▌       | 117120/457701 [00:23<01:08, 4984.90it/s] 26%|██▌       | 117619/457701 [00:23<01:09, 4885.14it/s] 26%|██▌       | 118118/457701 [00:23<01:09, 4914.35it/s] 26%|██▌       | 118615/457701 [00:24<01:08, 4929.53it/s] 26%|██▌       | 119119/457701 [00:24<01:08, 4961.73it/s] 26%|██▌       | 119616/457701 [00:24<01:08, 4935.12it/s] 26%|██▌       | 120113/457701 [00:24<01:08, 4944.59it/s] 26%|██▋       | 120609/457701 [00:24<01:08, 4948.28it/s] 26%|██▋       | 121105/457701 [00:24<01:07, 4950.68it/s] 27%|██▋       | 121601/457701 [00:24<01:08, 4942.63it/s] 27%|██▋       | 122106/457701 [00:24<01:07, 4972.39it/s] 27%|██▋       | 122604/457701 [00:24<01:07, 4971.48it/s] 27%|██▋       | 123109/457701 [00:24<01:07, 4991.95it/s] 27%|██▋       | 123609/457701 [00:25<01:07, 4958.40it/s] 27%|██▋       | 124109/457701 [00:25<01:07, 4968.95it/s] 27%|██▋       | 124611/457701 [00:25<01:06, 4981.98it/s] 27%|██▋       | 125112/457701 [00:25<01:06, 4988.36it/s] 27%|██▋       | 125615/457701 [00:25<01:06, 5000.57it/s] 28%|██▊       | 126117/457701 [00:25<01:06, 5006.13it/s] 28%|██▊       | 126618/457701 [00:25<01:06, 5000.25it/s] 28%|██▊       | 127119/457701 [00:25<01:06, 4989.76it/s] 28%|██▊       | 127618/457701 [00:25<01:07, 4874.10it/s] 28%|██▊       | 128114/457701 [00:25<01:07, 4897.37it/s] 28%|██▊       | 128610/457701 [00:26<01:06, 4915.67it/s] 28%|██▊       | 129107/457701 [00:26<01:06, 4931.45it/s] 28%|██▊       | 129605/457701 [00:26<01:06, 4943.72it/s] 28%|██▊       | 130106/457701 [00:26<01:06, 4961.50it/s] 29%|██▊       | 130604/457701 [00:26<01:05, 4964.33it/s] 29%|██▊       | 131105/457701 [00:26<01:05, 4977.76it/s] 29%|██▉       | 131603/457701 [00:26<01:05, 4970.11it/s] 29%|██▉       | 132105/457701 [00:26<01:05, 4982.02it/s] 29%|██▉       | 132604/457701 [00:26<01:05, 4984.27it/s] 29%|██▉       | 133103/457701 [00:26<01:05, 4984.66it/s] 29%|██▉       | 133606/457701 [00:27<01:04, 4997.57it/s] 29%|██▉       | 134119/457701 [00:27<01:04, 5034.19it/s] 29%|██▉       | 134637/457701 [00:27<01:03, 5074.30it/s] 30%|██▉       | 135145/457701 [00:27<01:03, 5040.82it/s] 30%|██▉       | 135650/457701 [00:27<01:04, 4993.61it/s] 30%|██▉       | 136151/457701 [00:27<01:04, 4996.38it/s] 30%|██▉       | 136651/457701 [00:27<01:04, 4984.98it/s] 30%|██▉       | 137152/457701 [00:27<01:04, 4989.65it/s] 30%|███       | 137653/457701 [00:27<01:04, 4994.63it/s] 30%|███       | 138153/457701 [00:27<01:03, 4994.56it/s] 30%|███       | 138653/457701 [00:28<01:03, 4989.94it/s] 30%|███       | 139153/457701 [00:28<01:03, 4988.59it/s] 31%|███       | 139652/457701 [00:28<01:05, 4891.51it/s] 31%|███       | 140149/457701 [00:28<01:04, 4912.84it/s] 31%|███       | 140654/457701 [00:28<01:04, 4951.09it/s] 31%|███       | 141152/457701 [00:28<01:03, 4959.61it/s] 31%|███       | 141653/457701 [00:28<01:03, 4971.88it/s] 31%|███       | 142156/457701 [00:28<01:03, 4987.93it/s] 31%|███       | 142658/457701 [00:28<01:03, 4995.99it/s] 31%|███▏      | 143158/457701 [00:28<01:03, 4983.21it/s] 31%|███▏      | 143657/457701 [00:29<01:03, 4946.83it/s] 31%|███▏      | 144155/457701 [00:29<01:03, 4956.46it/s] 32%|███▏      | 144660/457701 [00:29<01:02, 4983.03it/s] 32%|███▏      | 145161/457701 [00:29<01:02, 4988.26it/s] 32%|███▏      | 145660/457701 [00:29<01:02, 4983.25it/s] 32%|███▏      | 146159/457701 [00:29<01:02, 4980.90it/s] 32%|███▏      | 146660/457701 [00:29<01:02, 4988.43it/s] 32%|███▏      | 147159/457701 [00:29<01:02, 4977.01it/s] 32%|███▏      | 147657/457701 [00:29<01:02, 4944.41it/s] 32%|███▏      | 148156/457701 [00:29<01:02, 4956.95it/s] 32%|███▏      | 148652/457701 [00:30<01:06, 4634.59it/s] 33%|███▎      | 149156/457701 [00:30<01:04, 4747.21it/s] 33%|███▎      | 149660/457701 [00:30<01:03, 4831.24it/s] 33%|███▎      | 150162/457701 [00:30<01:02, 4885.38it/s] 33%|███▎      | 150659/457701 [00:30<01:02, 4909.98it/s] 33%|███▎      | 151160/457701 [00:30<01:02, 4938.25it/s] 33%|███▎      | 151655/457701 [00:30<01:02, 4909.77it/s] 33%|███▎      | 152155/457701 [00:30<01:01, 4935.98it/s] 33%|███▎      | 152650/457701 [00:30<01:03, 4840.05it/s] 33%|███▎      | 153152/457701 [00:31<01:02, 4890.16it/s] 34%|███▎      | 153656/457701 [00:31<01:01, 4933.30it/s] 34%|███▎      | 154154/457701 [00:31<01:01, 4945.42it/s] 34%|███▍      | 154654/457701 [00:31<01:01, 4959.53it/s] 34%|███▍      | 155151/457701 [00:31<01:00, 4962.14it/s] 34%|███▍      | 155648/457701 [00:31<01:02, 4856.08it/s] 34%|███▍      | 156144/457701 [00:31<01:01, 4885.06it/s] 34%|███▍      | 156634/457701 [00:31<01:01, 4884.03it/s] 34%|███▍      | 157138/457701 [00:31<01:00, 4928.48it/s] 34%|███▍      | 157634/457701 [00:31<01:00, 4935.71it/s] 35%|███▍      | 158131/457701 [00:32<01:00, 4943.93it/s] 35%|███▍      | 158626/457701 [00:32<01:00, 4926.27it/s] 35%|███▍      | 159121/457701 [00:32<01:00, 4931.51it/s] 35%|███▍      | 159620/457701 [00:32<01:00, 4947.97it/s] 35%|███▍      | 160119/457701 [00:32<01:00, 4957.86it/s] 35%|███▌      | 160615/457701 [00:32<01:01, 4844.14it/s] 35%|███▌      | 161108/457701 [00:32<01:00, 4867.75it/s] 35%|███▌      | 161611/457701 [00:32<01:00, 4915.04it/s] 35%|███▌      | 162115/457701 [00:32<00:59, 4949.16it/s] 36%|███▌      | 162616/457701 [00:32<00:59, 4964.94it/s] 36%|███▌      | 163119/457701 [00:33<00:59, 4984.09it/s] 36%|███▌      | 163618/457701 [00:33<00:59, 4978.45it/s] 36%|███▌      | 164116/457701 [00:33<00:59, 4970.66it/s] 36%|███▌      | 164614/457701 [00:33<00:59, 4959.39it/s] 36%|███▌      | 165111/457701 [00:33<00:59, 4958.79it/s] 36%|███▌      | 165607/457701 [00:33<00:58, 4953.37it/s] 36%|███▋      | 166114/457701 [00:33<00:58, 4987.17it/s] 36%|███▋      | 166613/457701 [00:33<00:59, 4896.94it/s] 37%|███▋      | 167120/457701 [00:33<00:58, 4947.10it/s] 37%|███▋      | 167619/457701 [00:33<00:58, 4956.96it/s] 37%|███▋      | 168121/457701 [00:34<00:58, 4972.74it/s] 37%|███▋      | 168619/457701 [00:34<00:58, 4931.29it/s] 37%|███▋      | 169128/457701 [00:34<00:57, 4977.29it/s] 37%|███▋      | 169626/457701 [00:34<00:57, 4975.75it/s] 37%|███▋      | 170126/457701 [00:34<00:57, 4980.33it/s] 37%|███▋      | 170625/457701 [00:34<00:58, 4910.34it/s] 37%|███▋      | 171117/457701 [00:34<01:00, 4707.64it/s] 37%|███▋      | 171611/457701 [00:34<00:59, 4772.73it/s] 38%|███▊      | 172105/457701 [00:34<00:59, 4820.28it/s] 38%|███▊      | 172589/457701 [00:34<00:59, 4822.57it/s] 38%|███▊      | 173085/457701 [00:35<00:58, 4861.86it/s] 38%|███▊      | 173580/457701 [00:35<00:58, 4886.44it/s] 38%|███▊      | 174070/457701 [00:35<00:58, 4888.38it/s] 38%|███▊      | 174562/457701 [00:35<00:57, 4897.74it/s] 38%|███▊      | 175059/457701 [00:35<00:57, 4919.14it/s] 38%|███▊      | 175554/457701 [00:35<00:57, 4925.99it/s] 38%|███▊      | 176052/457701 [00:35<00:57, 4941.05it/s] 39%|███▊      | 176547/457701 [00:35<00:57, 4928.28it/s] 39%|███▊      | 177040/457701 [00:35<00:58, 4793.57it/s] 39%|███▉      | 177533/457701 [00:35<00:57, 4833.24it/s] 39%|███▉      | 178018/457701 [00:36<00:57, 4835.95it/s] 39%|███▉      | 178513/457701 [00:36<00:57, 4867.45it/s] 39%|███▉      | 179009/457701 [00:36<00:56, 4892.07it/s] 39%|███▉      | 179506/457701 [00:36<00:56, 4914.43it/s] 39%|███▉      | 180002/457701 [00:36<00:56, 4925.28it/s] 39%|███▉      | 180495/457701 [00:36<00:56, 4917.54it/s] 40%|███▉      | 180987/457701 [00:36<00:56, 4908.72it/s] 40%|███▉      | 181483/457701 [00:36<00:56, 4923.74it/s] 40%|███▉      | 181978/457701 [00:36<00:55, 4929.74it/s] 40%|███▉      | 182472/457701 [00:36<00:55, 4926.76it/s] 40%|███▉      | 182966/457701 [00:37<00:55, 4928.73it/s] 40%|████      | 183461/457701 [00:37<00:55, 4932.57it/s] 40%|████      | 183955/457701 [00:37<00:55, 4927.08it/s] 40%|████      | 184448/457701 [00:37<00:55, 4923.71it/s] 40%|████      | 184941/457701 [00:37<00:55, 4884.61it/s] 41%|████      | 185437/457701 [00:37<00:55, 4905.58it/s] 41%|████      | 185932/457701 [00:37<00:55, 4917.95it/s] 41%|████      | 186424/457701 [00:37<00:55, 4913.22it/s] 41%|████      | 186916/457701 [00:37<00:55, 4907.79it/s] 41%|████      | 187415/457701 [00:37<00:54, 4929.38it/s] 41%|████      | 187908/457701 [00:38<00:54, 4920.31it/s] 41%|████      | 188406/457701 [00:38<00:54, 4935.72it/s] 41%|████▏     | 188900/457701 [00:38<00:55, 4842.50it/s] 41%|████▏     | 189391/457701 [00:38<00:55, 4861.13it/s] 41%|████▏     | 189884/457701 [00:38<00:54, 4881.32it/s] 42%|████▏     | 190375/457701 [00:38<00:54, 4887.00it/s] 42%|████▏     | 190868/457701 [00:38<00:54, 4899.54it/s] 42%|████▏     | 191364/457701 [00:38<00:54, 4915.48it/s] 42%|████▏     | 191859/457701 [00:38<00:53, 4923.12it/s] 42%|████▏     | 192352/457701 [00:39<00:53, 4920.19it/s] 42%|████▏     | 192845/457701 [00:39<00:53, 4922.22it/s] 42%|████▏     | 193345/457701 [00:39<00:53, 4943.45it/s] 42%|████▏     | 193845/457701 [00:39<00:53, 4960.01it/s] 42%|████▏     | 194345/457701 [00:39<00:52, 4970.50it/s] 43%|████▎     | 194846/457701 [00:39<00:52, 4979.86it/s] 43%|████▎     | 195345/457701 [00:39<00:52, 4962.64it/s] 43%|████▎     | 195846/457701 [00:39<00:52, 4974.41it/s] 43%|████▎     | 196344/457701 [00:39<00:52, 4954.35it/s] 43%|████▎     | 196840/457701 [00:39<00:52, 4942.36it/s] 43%|████▎     | 197338/457701 [00:40<00:52, 4952.82it/s] 43%|████▎     | 197834/457701 [00:40<00:55, 4721.80it/s] 43%|████▎     | 198331/457701 [00:40<00:54, 4793.12it/s] 43%|████▎     | 198836/457701 [00:40<00:53, 4866.53it/s] 44%|████▎     | 199336/457701 [00:40<00:52, 4903.71it/s] 44%|████▎     | 199836/457701 [00:40<00:52, 4931.86it/s] 44%|████▍     | 200348/457701 [00:40<00:51, 4985.74it/s] 44%|████▍     | 200848/457701 [00:40<00:51, 4961.12it/s] 44%|████▍     | 201349/457701 [00:40<00:51, 4973.04it/s] 44%|████▍     | 201847/457701 [00:40<00:52, 4873.34it/s] 44%|████▍     | 202346/457701 [00:41<00:52, 4907.20it/s] 44%|████▍     | 202847/457701 [00:41<00:51, 4936.99it/s] 44%|████▍     | 203348/457701 [00:41<00:51, 4956.40it/s] 45%|████▍     | 203852/457701 [00:41<00:50, 4978.72it/s] 45%|████▍     | 204356/457701 [00:41<00:50, 4995.36it/s] 45%|████▍     | 204856/457701 [00:41<00:51, 4876.45it/s] 45%|████▍     | 205354/457701 [00:41<00:51, 4904.61it/s] 45%|████▍     | 205846/457701 [00:41<00:51, 4896.81it/s] 45%|████▌     | 206346/457701 [00:41<00:51, 4927.13it/s] 45%|████▌     | 206840/457701 [00:41<00:50, 4919.78it/s] 45%|████▌     | 207340/457701 [00:42<00:50, 4940.88it/s] 45%|████▌     | 207835/457701 [00:42<00:50, 4924.07it/s] 46%|████▌     | 208342/457701 [00:42<00:50, 4965.32it/s] 46%|████▌     | 208842/457701 [00:42<00:50, 4973.37it/s] 46%|████▌     | 209344/457701 [00:42<00:49, 4986.26it/s] 46%|████▌     | 209843/457701 [00:42<00:50, 4897.57it/s] 46%|████▌     | 210355/457701 [00:42<00:49, 4959.85it/s] 46%|████▌     | 210865/457701 [00:42<00:49, 4999.41it/s] 46%|████▌     | 211368/457701 [00:42<00:49, 5007.87it/s] 46%|████▋     | 211870/457701 [00:42<00:49, 4992.00it/s] 46%|████▋     | 212371/457701 [00:43<00:49, 4995.90it/s] 47%|████▋     | 212871/457701 [00:43<00:49, 4992.39it/s] 47%|████▋     | 213371/457701 [00:43<00:49, 4975.81it/s] 47%|████▋     | 213869/457701 [00:43<00:49, 4955.53it/s] 47%|████▋     | 214367/457701 [00:43<00:49, 4959.92it/s] 47%|████▋     | 214868/457701 [00:43<00:48, 4972.22it/s] 47%|████▋     | 215371/457701 [00:43<00:48, 4988.59it/s] 47%|████▋     | 215870/457701 [00:43<00:49, 4897.20it/s] 47%|████▋     | 216375/457701 [00:43<00:48, 4939.71it/s] 47%|████▋     | 216876/457701 [00:43<00:48, 4958.86it/s] 47%|████▋     | 217378/457701 [00:44<00:48, 4976.36it/s] 48%|████▊     | 217876/457701 [00:44<00:48, 4952.21it/s] 48%|████▊     | 218382/457701 [00:44<00:48, 4983.04it/s] 48%|████▊     | 218884/457701 [00:44<00:47, 4993.91it/s] 48%|████▊     | 219388/457701 [00:44<00:47, 5004.76it/s] 48%|████▊     | 219889/457701 [00:44<00:47, 4996.04it/s] 48%|████▊     | 220396/457701 [00:44<00:47, 5015.75it/s] 48%|████▊     | 220898/457701 [00:44<00:47, 5013.58it/s] 48%|████▊     | 221400/457701 [00:44<00:47, 5009.78it/s] 48%|████▊     | 221902/457701 [00:44<00:47, 4983.90it/s] 49%|████▊     | 222407/457701 [00:45<00:47, 5000.61it/s] 49%|████▊     | 222908/457701 [00:45<00:46, 4999.38it/s] 49%|████▉     | 223409/457701 [00:45<00:46, 5000.10it/s] 49%|████▉     | 223911/457701 [00:45<00:46, 5003.21it/s] 49%|████▉     | 224413/457701 [00:45<00:46, 5006.66it/s] 49%|████▉     | 224916/457701 [00:45<00:46, 5011.22it/s] 49%|████▉     | 225419/457701 [00:45<00:46, 5015.13it/s] 49%|████▉     | 225921/457701 [00:45<00:47, 4881.48it/s] 49%|████▉     | 226423/457701 [00:45<00:47, 4919.49it/s] 50%|████▉     | 226921/457701 [00:45<00:46, 4935.48it/s] 50%|████▉     | 227419/457701 [00:46<00:46, 4948.50it/s] 50%|████▉     | 227917/457701 [00:46<00:46, 4956.98it/s] 50%|████▉     | 228419/457701 [00:46<00:46, 4973.74it/s] 50%|█████     | 228920/457701 [00:46<00:45, 4983.89it/s] 50%|█████     | 229425/457701 [00:46<00:45, 5001.97it/s] 50%|█████     | 229926/457701 [00:46<00:45, 4989.72it/s] 50%|█████     | 230434/457701 [00:46<00:45, 5014.38it/s] 50%|█████     | 230936/457701 [00:46<00:45, 5005.49it/s] 51%|█████     | 231437/457701 [00:46<00:45, 5000.45it/s] 51%|█████     | 231950/457701 [00:46<00:44, 5037.61it/s] 51%|█████     | 232454/457701 [00:47<00:44, 5013.62it/s] 51%|█████     | 232956/457701 [00:47<00:44, 5008.43it/s] 51%|█████     | 233457/457701 [00:47<00:44, 5004.52it/s] 51%|█████     | 233958/457701 [00:47<00:44, 4976.79it/s] 51%|█████     | 234461/457701 [00:47<00:44, 4991.33it/s] 51%|█████▏    | 234962/457701 [00:47<00:44, 4996.19it/s] 51%|█████▏    | 235466/457701 [00:47<00:44, 5006.74it/s] 52%|█████▏    | 235967/457701 [00:47<00:44, 4997.37it/s] 52%|█████▏    | 236467/457701 [00:47<00:44, 4990.77it/s] 52%|█████▏    | 236972/457701 [00:47<00:44, 5007.19it/s] 52%|█████▏    | 237473/457701 [00:48<00:44, 4994.91it/s] 52%|█████▏    | 237973/457701 [00:48<00:44, 4912.93it/s] 52%|█████▏    | 238474/457701 [00:48<00:44, 4939.67it/s] 52%|█████▏    | 238973/457701 [00:48<00:44, 4951.85it/s] 52%|█████▏    | 239475/457701 [00:48<00:43, 4970.54it/s] 52%|█████▏    | 239979/457701 [00:48<00:43, 4990.93it/s] 53%|█████▎    | 240479/457701 [00:48<00:43, 4987.55it/s] 53%|█████▎    | 240979/457701 [00:48<00:43, 4990.80it/s] 53%|█████▎    | 241480/457701 [00:48<00:43, 4995.00it/s] 53%|█████▎    | 241980/457701 [00:48<00:43, 4963.93it/s] 53%|█████▎    | 242487/457701 [00:49<00:43, 4992.71it/s] 53%|█████▎    | 242994/457701 [00:49<00:42, 5013.86it/s] 53%|█████▎    | 243497/457701 [00:49<00:42, 5018.65it/s] 53%|█████▎    | 243999/457701 [00:49<00:42, 5010.79it/s] 53%|█████▎    | 244501/457701 [00:49<00:42, 5003.09it/s] 54%|█████▎    | 245006/457701 [00:49<00:42, 5015.89it/s] 54%|█████▎    | 245508/457701 [00:49<00:42, 5005.51it/s] 54%|█████▎    | 246009/457701 [00:49<00:42, 4978.41it/s] 54%|█████▍    | 246513/457701 [00:49<00:42, 4996.18it/s] 54%|█████▍    | 247013/457701 [00:50<00:42, 4987.65it/s] 54%|█████▍    | 247512/457701 [00:50<00:43, 4811.28it/s] 54%|█████▍    | 248013/457701 [00:50<00:43, 4866.61it/s] 54%|█████▍    | 248512/457701 [00:50<00:42, 4902.28it/s] 54%|█████▍    | 249013/457701 [00:50<00:42, 4932.64it/s] 55%|█████▍    | 249507/457701 [00:50<00:42, 4931.49it/s] 55%|█████▍    | 250001/457701 [00:50<00:42, 4893.92it/s] 55%|█████▍    | 250499/457701 [00:50<00:42, 4917.28it/s] 55%|█████▍    | 251001/457701 [00:50<00:41, 4944.87it/s] 55%|█████▍    | 251497/457701 [00:50<00:41, 4946.55it/s] 55%|█████▌    | 252002/457701 [00:51<00:41, 4974.73it/s] 55%|█████▌    | 252508/457701 [00:51<00:41, 4997.33it/s] 55%|█████▌    | 253008/457701 [00:51<00:42, 4800.87it/s] 55%|█████▌    | 253501/457701 [00:51<00:42, 4836.57it/s] 55%|█████▌    | 254006/457701 [00:51<00:41, 4896.60it/s] 56%|█████▌    | 254501/457701 [00:51<00:41, 4911.38it/s] 56%|█████▌    | 254997/457701 [00:51<00:41, 4923.89it/s] 56%|█████▌    | 255495/457701 [00:51<00:40, 4939.58it/s] 56%|█████▌    | 255998/457701 [00:51<00:40, 4964.39it/s] 56%|█████▌    | 256495/457701 [00:51<00:40, 4953.97it/s] 56%|█████▌    | 256992/457701 [00:52<00:40, 4957.35it/s] 56%|█████▋    | 257488/457701 [00:52<00:40, 4946.75it/s] 56%|█████▋    | 257983/457701 [00:52<00:41, 4827.38it/s] 56%|█████▋    | 258477/457701 [00:52<00:41, 4858.90it/s] 57%|█████▋    | 258966/457701 [00:52<00:40, 4866.87it/s] 57%|█████▋    | 259454/457701 [00:52<00:41, 4819.55it/s] 57%|█████▋    | 259937/457701 [00:52<00:41, 4819.82it/s] 57%|█████▋    | 260440/457701 [00:52<00:40, 4880.58it/s] 57%|█████▋    | 260934/457701 [00:52<00:40, 4898.01it/s] 57%|█████▋    | 261425/457701 [00:52<00:40, 4871.30it/s] 57%|█████▋    | 261925/457701 [00:53<00:39, 4909.12it/s] 57%|█████▋    | 262417/457701 [00:53<00:40, 4821.51it/s] 57%|█████▋    | 262913/457701 [00:53<00:40, 4860.49it/s] 58%|█████▊    | 263411/457701 [00:53<00:39, 4894.74it/s] 58%|█████▊    | 263913/457701 [00:53<00:39, 4929.36it/s] 58%|█████▊    | 264407/457701 [00:53<00:39, 4906.33it/s] 58%|█████▊    | 264905/457701 [00:53<00:39, 4926.55it/s] 58%|█████▊    | 265398/457701 [00:53<00:39, 4847.15it/s] 58%|█████▊    | 265901/457701 [00:53<00:39, 4899.51it/s] 58%|█████▊    | 266392/457701 [00:53<00:39, 4883.38it/s] 58%|█████▊    | 266894/457701 [00:54<00:38, 4921.69it/s] 58%|█████▊    | 267387/457701 [00:54<00:38, 4904.92it/s] 59%|█████▊    | 267882/457701 [00:54<00:38, 4917.74it/s] 59%|█████▊    | 268376/457701 [00:54<00:38, 4922.20it/s] 59%|█████▊    | 268875/457701 [00:54<00:38, 4941.95it/s] 59%|█████▉    | 269381/457701 [00:54<00:37, 4975.15it/s] 59%|█████▉    | 269879/457701 [00:54<00:37, 4966.74it/s] 59%|█████▉    | 270376/457701 [00:54<00:38, 4850.05it/s] 59%|█████▉    | 270870/457701 [00:54<00:38, 4875.38it/s] 59%|█████▉    | 271366/457701 [00:54<00:38, 4899.97it/s] 59%|█████▉    | 271858/457701 [00:55<00:37, 4903.99it/s] 60%|█████▉    | 272360/457701 [00:55<00:37, 4937.10it/s] 60%|█████▉    | 272863/457701 [00:55<00:37, 4962.06it/s] 60%|█████▉    | 273363/457701 [00:55<00:37, 4971.83it/s] 60%|█████▉    | 273861/457701 [00:55<00:36, 4972.11it/s] 60%|█████▉    | 274359/457701 [00:55<00:36, 4956.04it/s] 60%|██████    | 274858/457701 [00:55<00:36, 4964.58it/s] 60%|██████    | 275355/457701 [00:55<00:36, 4953.50it/s] 60%|██████    | 275858/457701 [00:55<00:36, 4975.89it/s] 60%|██████    | 276356/457701 [00:55<00:37, 4882.74it/s] 60%|██████    | 276851/457701 [00:56<00:36, 4900.38it/s] 61%|██████    | 277357/457701 [00:56<00:36, 4944.30it/s] 61%|██████    | 277858/457701 [00:56<00:36, 4963.00it/s] 61%|██████    | 278355/457701 [00:56<00:36, 4937.36it/s] 61%|██████    | 278855/457701 [00:56<00:36, 4954.44it/s] 61%|██████    | 279351/457701 [00:56<00:36, 4951.15it/s] 61%|██████    | 279858/457701 [00:56<00:35, 4984.61it/s] 61%|██████▏   | 280357/457701 [00:56<00:35, 4963.62it/s] 61%|██████▏   | 280855/457701 [00:56<00:35, 4965.58it/s] 61%|██████▏   | 281352/457701 [00:56<00:35, 4958.57it/s] 62%|██████▏   | 281853/457701 [00:57<00:35, 4972.19it/s] 62%|██████▏   | 282351/457701 [00:57<00:35, 4922.21it/s] 62%|██████▏   | 282849/457701 [00:57<00:35, 4937.88it/s] 62%|██████▏   | 283348/457701 [00:57<00:35, 4952.91it/s] 62%|██████▏   | 283849/457701 [00:57<00:34, 4967.73it/s] 62%|██████▏   | 284346/457701 [00:57<00:34, 4964.88it/s] 62%|██████▏   | 284849/457701 [00:57<00:34, 4981.94it/s] 62%|██████▏   | 285348/457701 [00:57<00:34, 4970.24it/s] 62%|██████▏   | 285849/457701 [00:57<00:34, 4979.32it/s] 63%|██████▎   | 286347/457701 [00:58<00:35, 4853.71it/s] 63%|██████▎   | 286846/457701 [00:58<00:34, 4892.96it/s] 63%|██████▎   | 287346/457701 [00:58<00:34, 4922.13it/s] 63%|██████▎   | 287841/457701 [00:58<00:34, 4929.80it/s] 63%|██████▎   | 288341/457701 [00:58<00:34, 4947.86it/s] 63%|██████▎   | 288837/457701 [00:58<00:34, 4944.59it/s] 63%|██████▎   | 289338/457701 [00:58<00:33, 4961.17it/s] 63%|██████▎   | 289835/457701 [00:58<00:33, 4952.01it/s] 63%|██████▎   | 290331/457701 [00:58<00:33, 4947.45it/s] 64%|██████▎   | 290834/457701 [00:58<00:33, 4969.34it/s] 64%|██████▎   | 291332/457701 [00:59<00:33, 4964.40it/s] 64%|██████▍   | 291829/457701 [00:59<00:33, 4959.15it/s] 64%|██████▍   | 292327/457701 [00:59<00:33, 4965.17it/s] 64%|██████▍   | 292827/457701 [00:59<00:33, 4973.63it/s] 64%|██████▍   | 293325/457701 [00:59<00:33, 4972.51it/s] 64%|██████▍   | 293825/457701 [00:59<00:32, 4979.59it/s] 64%|██████▍   | 294323/457701 [00:59<00:33, 4939.81it/s] 64%|██████▍   | 294823/457701 [00:59<00:32, 4956.58it/s] 65%|██████▍   | 295322/457701 [00:59<00:32, 4965.73it/s] 65%|██████▍   | 295821/457701 [00:59<00:32, 4970.03it/s] 65%|██████▍   | 296319/457701 [01:00<00:32, 4962.54it/s] 65%|██████▍   | 296816/457701 [01:00<00:33, 4773.44it/s] 65%|██████▍   | 297315/457701 [01:00<00:33, 4834.25it/s] 65%|██████▌   | 297800/457701 [01:00<00:33, 4703.06it/s] 65%|██████▌   | 298272/457701 [01:00<00:34, 4684.32it/s] 65%|██████▌   | 298755/457701 [01:00<00:33, 4725.38it/s] 65%|██████▌   | 299246/457701 [01:00<00:33, 4778.40it/s] 65%|██████▌   | 299737/457701 [01:00<00:32, 4816.91it/s] 66%|██████▌   | 300232/457701 [01:00<00:32, 4853.42it/s] 66%|██████▌   | 300718/457701 [01:00<00:32, 4783.54it/s] 66%|██████▌   | 301215/457701 [01:01<00:32, 4836.02it/s] 66%|██████▌   | 301710/457701 [01:01<00:32, 4869.07it/s] 66%|██████▌   | 302207/457701 [01:01<00:31, 4896.21it/s] 66%|██████▌   | 302700/457701 [01:01<00:31, 4903.90it/s] 66%|██████▌   | 303191/457701 [01:01<00:31, 4891.34it/s] 66%|██████▋   | 303686/457701 [01:01<00:31, 4907.70it/s] 66%|██████▋   | 304177/457701 [01:01<00:31, 4839.53it/s] 67%|██████▋   | 304672/457701 [01:01<00:31, 4869.99it/s] 67%|██████▋   | 305161/457701 [01:01<00:31, 4874.65it/s] 67%|██████▋   | 305652/457701 [01:01<00:31, 4883.35it/s] 67%|██████▋   | 306141/457701 [01:02<00:31, 4881.62it/s] 67%|██████▋   | 306642/457701 [01:02<00:30, 4918.34it/s] 67%|██████▋   | 307134/457701 [01:02<00:30, 4909.92it/s] 67%|██████▋   | 307633/457701 [01:02<00:30, 4931.94it/s] 67%|██████▋   | 308135/457701 [01:02<00:30, 4957.15it/s] 67%|██████▋   | 308631/457701 [01:02<00:30, 4954.28it/s] 68%|██████▊   | 309127/457701 [01:02<00:30, 4824.88it/s] 68%|██████▊   | 309631/457701 [01:02<00:30, 4886.17it/s] 68%|██████▊   | 310137/457701 [01:02<00:29, 4934.12it/s] 68%|██████▊   | 310646/457701 [01:02<00:29, 4979.04it/s] 68%|██████▊   | 311152/457701 [01:03<00:29, 5001.97it/s] 68%|██████▊   | 311656/457701 [01:03<00:29, 5011.65it/s] 68%|██████▊   | 312161/457701 [01:03<00:28, 5020.48it/s] 68%|██████▊   | 312672/457701 [01:03<00:28, 5044.60it/s] 68%|██████▊   | 313177/457701 [01:03<00:28, 4988.68it/s] 69%|██████▊   | 313677/457701 [01:03<00:28, 4992.01it/s] 69%|██████▊   | 314177/457701 [01:03<00:28, 4969.37it/s] 69%|██████▉   | 314675/457701 [01:03<00:28, 4960.40it/s] 69%|██████▉   | 315172/457701 [01:03<00:29, 4853.55it/s] 69%|██████▉   | 315669/457701 [01:03<00:29, 4885.71it/s] 69%|██████▉   | 316167/457701 [01:04<00:28, 4912.59it/s] 69%|██████▉   | 316664/457701 [01:04<00:28, 4926.77it/s] 69%|██████▉   | 317157/457701 [01:04<00:28, 4891.81it/s] 69%|██████▉   | 317659/457701 [01:04<00:28, 4927.12it/s] 70%|██████▉   | 318160/457701 [01:04<00:28, 4949.61it/s] 70%|██████▉   | 318657/457701 [01:04<00:28, 4954.93it/s] 70%|██████▉   | 319153/457701 [01:04<00:28, 4893.29it/s] 70%|██████▉   | 319643/457701 [01:09<06:42, 342.80it/s]  70%|██████▉   | 320134/457701 [01:09<04:49, 475.47it/s] 70%|███████   | 320630/457701 [01:09<03:30, 652.42it/s] 70%|███████   | 321111/457701 [01:09<02:35, 880.74it/s] 70%|███████   | 321612/457701 [01:09<01:56, 1170.04it/s] 70%|███████   | 322113/457701 [01:09<01:29, 1519.30it/s] 70%|███████   | 322611/457701 [01:09<01:10, 1919.42it/s] 71%|███████   | 323104/457701 [01:09<00:57, 2349.57it/s] 71%|███████   | 323603/457701 [01:10<00:48, 2792.70it/s] 71%|███████   | 324091/457701 [01:10<00:43, 3088.49it/s] 71%|███████   | 324587/457701 [01:10<00:38, 3481.67it/s] 71%|███████   | 325061/457701 [01:10<00:35, 3763.70it/s] 71%|███████   | 325550/457701 [01:10<00:32, 4042.63it/s] 71%|███████   | 326036/457701 [01:10<00:30, 4250.62it/s] 71%|███████▏  | 326515/457701 [01:10<00:29, 4373.80it/s] 71%|███████▏  | 326998/457701 [01:10<00:29, 4500.25it/s] 72%|███████▏  | 327493/457701 [01:10<00:28, 4624.46it/s] 72%|███████▏  | 327976/457701 [01:10<00:27, 4675.09it/s] 72%|███████▏  | 328474/457701 [01:11<00:27, 4761.11it/s] 72%|███████▏  | 328961/457701 [01:11<00:27, 4734.84it/s] 72%|███████▏  | 329453/457701 [01:11<00:26, 4787.66it/s] 72%|███████▏  | 329953/457701 [01:11<00:26, 4849.08it/s] 72%|███████▏  | 330451/457701 [01:11<00:26, 4886.40it/s] 72%|███████▏  | 330943/457701 [01:11<00:25, 4885.35it/s] 72%|███████▏  | 331436/457701 [01:11<00:25, 4896.91it/s] 73%|███████▎  | 331929/457701 [01:11<00:26, 4823.55it/s] 73%|███████▎  | 332424/457701 [01:11<00:25, 4858.99it/s] 73%|███████▎  | 332920/457701 [01:11<00:25, 4888.24it/s] 73%|███████▎  | 333410/457701 [01:12<00:25, 4880.24it/s] 73%|███████▎  | 333899/457701 [01:12<00:25, 4876.89it/s] 73%|███████▎  | 334388/457701 [01:12<00:25, 4870.31it/s] 73%|███████▎  | 334888/457701 [01:12<00:25, 4906.90it/s] 73%|███████▎  | 335379/457701 [01:12<00:24, 4896.55it/s] 73%|███████▎  | 335880/457701 [01:12<00:24, 4928.67it/s] 73%|███████▎  | 336379/457701 [01:12<00:24, 4946.61it/s] 74%|███████▎  | 336874/457701 [01:12<00:24, 4935.74it/s] 74%|███████▎  | 337368/457701 [01:12<00:24, 4818.21it/s] 74%|███████▍  | 337862/457701 [01:12<00:24, 4852.93it/s] 74%|███████▍  | 338353/457701 [01:13<00:24, 4867.64it/s] 74%|███████▍  | 338852/457701 [01:13<00:24, 4903.65it/s] 74%|███████▍  | 339347/457701 [01:13<00:24, 4914.58it/s] 74%|███████▍  | 339848/457701 [01:13<00:23, 4942.44it/s] 74%|███████▍  | 340343/457701 [01:13<00:23, 4932.87it/s] 74%|███████▍  | 340841/457701 [01:13<00:23, 4946.75it/s] 75%|███████▍  | 341336/457701 [01:13<00:23, 4903.10it/s] 75%|███████▍  | 341834/457701 [01:13<00:23, 4924.44it/s] 75%|███████▍  | 342327/457701 [01:13<00:23, 4909.05it/s] 75%|███████▍  | 342823/457701 [01:13<00:23, 4923.12it/s] 75%|███████▌  | 343316/457701 [01:14<00:23, 4834.99it/s] 75%|███████▌  | 343811/457701 [01:14<00:23, 4866.76it/s] 75%|███████▌  | 344312/457701 [01:14<00:23, 4907.05it/s] 75%|███████▌  | 344806/457701 [01:14<00:22, 4915.92it/s] 75%|███████▌  | 345298/457701 [01:14<00:22, 4901.08it/s] 76%|███████▌  | 345797/457701 [01:14<00:22, 4927.29it/s] 76%|███████▌  | 346295/457701 [01:14<00:22, 4940.32it/s] 76%|███████▌  | 346807/457701 [01:14<00:22, 4992.87it/s] 76%|███████▌  | 347307/457701 [01:14<00:22, 4951.29it/s] 76%|███████▌  | 347803/457701 [01:14<00:22, 4948.23it/s] 76%|███████▌  | 348302/457701 [01:15<00:22, 4960.10it/s] 76%|███████▌  | 348799/457701 [01:15<00:22, 4948.06it/s] 76%|███████▋  | 349294/457701 [01:15<00:22, 4912.77it/s] 76%|███████▋  | 349792/457701 [01:15<00:21, 4930.87it/s] 77%|███████▋  | 350286/457701 [01:15<00:21, 4931.73it/s] 77%|███████▋  | 350780/457701 [01:15<00:21, 4924.63it/s] 77%|███████▋  | 351279/457701 [01:15<00:21, 4943.53it/s] 77%|███████▋  | 351774/457701 [01:15<00:21, 4928.01it/s] 77%|███████▋  | 352267/457701 [01:15<00:21, 4924.11it/s] 77%|███████▋  | 352762/457701 [01:15<00:21, 4929.71it/s] 77%|███████▋  | 353255/457701 [01:16<00:21, 4812.05it/s] 77%|███████▋  | 353747/457701 [01:16<00:21, 4841.35it/s] 77%|███████▋  | 354242/457701 [01:16<00:21, 4870.82it/s] 78%|███████▊  | 354738/457701 [01:16<00:21, 4896.54it/s] 78%|███████▊  | 355230/457701 [01:16<00:20, 4901.99it/s] 78%|███████▊  | 355729/457701 [01:16<00:20, 4925.27it/s] 78%|███████▊  | 356222/457701 [01:16<00:20, 4921.55it/s] 78%|███████▊  | 356715/457701 [01:16<00:20, 4920.14it/s] 78%|███████▊  | 357215/457701 [01:16<00:20, 4942.00it/s] 78%|███████▊  | 357710/457701 [01:16<00:20, 4933.50it/s] 78%|███████▊  | 358204/457701 [01:17<00:20, 4930.39it/s] 78%|███████▊  | 358702/457701 [01:17<00:20, 4943.74it/s] 78%|███████▊  | 359199/457701 [01:17<00:19, 4950.85it/s] 79%|███████▊  | 359695/457701 [01:17<00:19, 4952.16it/s] 79%|███████▊  | 360193/457701 [01:17<00:19, 4958.97it/s] 79%|███████▉  | 360689/457701 [01:17<00:19, 4946.06it/s] 79%|███████▉  | 361184/457701 [01:17<00:19, 4913.87it/s] 79%|███████▉  | 361679/457701 [01:17<00:19, 4922.77it/s] 79%|███████▉  | 362172/457701 [01:17<00:19, 4918.58it/s] 79%|███████▉  | 362666/457701 [01:18<00:19, 4924.14it/s] 79%|███████▉  | 363163/457701 [01:18<00:19, 4936.93it/s] 79%|███████▉  | 363657/457701 [01:18<00:19, 4930.94it/s] 80%|███████▉  | 364154/457701 [01:18<00:18, 4940.07it/s] 80%|███████▉  | 364650/457701 [01:18<00:18, 4943.82it/s] 80%|███████▉  | 365145/457701 [01:18<00:19, 4844.67it/s] 80%|███████▉  | 365637/457701 [01:18<00:18, 4866.40it/s] 80%|███████▉  | 366132/457701 [01:18<00:18, 4888.58it/s] 80%|████████  | 366629/457701 [01:18<00:18, 4912.27it/s] 80%|████████  | 367124/457701 [01:18<00:18, 4921.52it/s] 80%|████████  | 367623/457701 [01:19<00:18, 4940.45it/s] 80%|████████  | 368119/457701 [01:19<00:18, 4945.19it/s] 81%|████████  | 368614/457701 [01:19<00:18, 4937.61it/s] 81%|████████  | 369108/457701 [01:19<00:18, 4919.07it/s] 81%|████████  | 369607/457701 [01:19<00:17, 4937.71it/s] 81%|████████  | 370102/457701 [01:19<00:17, 4940.28it/s] 81%|████████  | 370597/457701 [01:19<00:17, 4939.79it/s] 81%|████████  | 371092/457701 [01:19<00:17, 4941.36it/s] 81%|████████  | 371587/457701 [01:19<00:17, 4933.11it/s] 81%|████████▏ | 372089/457701 [01:19<00:17, 4957.22it/s] 81%|████████▏ | 372585/457701 [01:20<00:17, 4951.79it/s] 82%|████████▏ | 373081/457701 [01:20<00:17, 4714.75it/s] 82%|████████▏ | 373581/457701 [01:20<00:17, 4796.82it/s] 82%|████████▏ | 374079/457701 [01:20<00:17, 4849.27it/s] 82%|████████▏ | 374580/457701 [01:20<00:16, 4893.59it/s] 82%|████████▏ | 375083/457701 [01:20<00:16, 4931.15it/s] 82%|████████▏ | 375578/457701 [01:20<00:17, 4789.73it/s] 82%|████████▏ | 376075/457701 [01:20<00:16, 4840.24it/s] 82%|████████▏ | 376571/457701 [01:20<00:16, 4872.68it/s] 82%|████████▏ | 377061/457701 [01:20<00:16, 4880.32it/s] 82%|████████▏ | 377552/457701 [01:21<00:16, 4887.41it/s] 83%|████████▎ | 378042/457701 [01:21<00:16, 4797.09it/s] 83%|████████▎ | 378534/457701 [01:21<00:16, 4831.42it/s] 83%|████████▎ | 379026/457701 [01:21<00:16, 4856.48it/s] 83%|████████▎ | 379520/457701 [01:21<00:16, 4880.64it/s] 83%|████████▎ | 380009/457701 [01:21<00:15, 4863.52it/s] 83%|████████▎ | 380498/457701 [01:21<00:15, 4869.53it/s] 83%|████████▎ | 380986/457701 [01:21<00:15, 4807.12it/s] 83%|████████▎ | 381479/457701 [01:21<00:15, 4841.54it/s] 83%|████████▎ | 381964/457701 [01:21<00:15, 4831.81it/s] 84%|████████▎ | 382465/457701 [01:22<00:15, 4883.46it/s] 84%|████████▎ | 382954/457701 [01:22<00:15, 4845.18it/s] 84%|████████▍ | 383454/457701 [01:22<00:15, 4889.85it/s] 84%|████████▍ | 383944/457701 [01:22<00:15, 4870.88it/s] 84%|████████▍ | 384437/457701 [01:22<00:14, 4887.27it/s] 84%|████████▍ | 384932/457701 [01:22<00:14, 4905.77it/s] 84%|████████▍ | 385431/457701 [01:22<00:14, 4928.62it/s] 84%|████████▍ | 385924/457701 [01:22<00:14, 4820.48it/s] 84%|████████▍ | 386415/457701 [01:22<00:14, 4845.91it/s] 85%|████████▍ | 386915/457701 [01:22<00:14, 4889.93it/s] 85%|████████▍ | 387406/457701 [01:23<00:14, 4895.74it/s] 85%|████████▍ | 387899/457701 [01:23<00:14, 4904.55it/s] 85%|████████▍ | 388396/457701 [01:23<00:14, 4921.25it/s] 85%|████████▍ | 388896/457701 [01:23<00:13, 4941.87it/s] 85%|████████▌ | 389391/457701 [01:23<00:13, 4933.85it/s] 85%|████████▌ | 389885/457701 [01:23<00:13, 4923.59it/s] 85%|████████▌ | 390381/457701 [01:23<00:13, 4932.46it/s] 85%|████████▌ | 390875/457701 [01:23<00:13, 4932.55it/s] 86%|████████▌ | 391369/457701 [01:23<00:13, 4926.70it/s] 86%|████████▌ | 391862/457701 [01:23<00:13, 4849.63it/s] 86%|████████▌ | 392353/457701 [01:24<00:13, 4864.91it/s] 86%|████████▌ | 392854/457701 [01:24<00:13, 4905.07it/s] 86%|████████▌ | 393345/457701 [01:24<00:13, 4902.33it/s] 86%|████████▌ | 393837/457701 [01:24<00:13, 4905.52it/s] 86%|████████▌ | 394328/457701 [01:24<00:12, 4887.52it/s] 86%|████████▋ | 394828/457701 [01:24<00:12, 4918.13it/s] 86%|████████▋ | 395325/457701 [01:24<00:12, 4930.91it/s] 86%|████████▋ | 395832/457701 [01:24<00:12, 4969.75it/s] 87%|████████▋ | 396330/457701 [01:24<00:12, 4931.54it/s] 87%|████████▋ | 396827/457701 [01:24<00:12, 4940.51it/s] 87%|████████▋ | 397322/457701 [01:25<00:12, 4942.83it/s] 87%|████████▋ | 397822/457701 [01:25<00:12, 4957.30it/s] 87%|████████▋ | 398318/457701 [01:25<00:12, 4921.00it/s] 87%|████████▋ | 398813/457701 [01:25<00:11, 4927.69it/s] 87%|████████▋ | 399313/457701 [01:25<00:11, 4948.47it/s] 87%|████████▋ | 399808/457701 [01:25<00:11, 4935.00it/s] 87%|████████▋ | 400306/457701 [01:25<00:11, 4946.64it/s] 88%|████████▊ | 400801/457701 [01:25<00:11, 4933.18it/s] 88%|████████▊ | 401295/457701 [01:25<00:11, 4927.61it/s] 88%|████████▊ | 401802/457701 [01:25<00:11, 4966.67it/s] 88%|████████▊ | 402299/457701 [01:26<00:11, 4837.41it/s] 88%|████████▊ | 402787/457701 [01:26<00:11, 4847.83it/s] 88%|████████▊ | 403288/457701 [01:26<00:11, 4893.88it/s] 88%|████████▊ | 403778/457701 [01:26<00:11, 4891.15it/s] 88%|████████▊ | 404274/457701 [01:26<00:10, 4909.09it/s] 88%|████████▊ | 404766/457701 [01:26<00:10, 4904.40it/s] 89%|████████▊ | 405262/457701 [01:26<00:10, 4919.61it/s] 89%|████████▊ | 405758/457701 [01:26<00:10, 4929.92it/s] 89%|████████▉ | 406253/457701 [01:26<00:10, 4933.71it/s] 89%|████████▉ | 406748/457701 [01:26<00:10, 4938.16it/s] 89%|████████▉ | 407242/457701 [01:27<00:10, 4932.06it/s] 89%|████████▉ | 407741/457701 [01:27<00:10, 4948.93it/s] 89%|████████▉ | 408236/457701 [01:27<00:10, 4943.14it/s] 89%|████████▉ | 408731/457701 [01:27<00:09, 4932.39it/s] 89%|████████▉ | 409229/457701 [01:27<00:09, 4944.80it/s] 90%|████████▉ | 409724/457701 [01:27<00:09, 4935.64it/s] 90%|████████▉ | 410218/457701 [01:27<00:09, 4893.94it/s] 90%|████████▉ | 410719/457701 [01:27<00:09, 4927.36it/s] 90%|████████▉ | 411212/457701 [01:27<00:09, 4915.91it/s] 90%|████████▉ | 411708/457701 [01:28<00:09, 4927.99it/s] 90%|█████████ | 412201/457701 [01:28<00:09, 4928.06it/s] 90%|█████████ | 412694/457701 [01:28<00:09, 4919.48it/s] 90%|█████████ | 413187/457701 [01:28<00:09, 4922.01it/s] 90%|█████████ | 413680/457701 [01:28<00:08, 4922.68it/s] 90%|█████████ | 414173/457701 [01:28<00:09, 4832.59it/s] 91%|█████████ | 414667/457701 [01:28<00:08, 4863.94it/s] 91%|█████████ | 415169/457701 [01:28<00:08, 4907.39it/s] 91%|█████████ | 415661/457701 [01:28<00:08, 4909.20it/s] 91%|█████████ | 416153/457701 [01:28<00:08, 4912.03it/s] 91%|█████████ | 416651/457701 [01:29<00:08, 4929.48it/s] 91%|█████████ | 417145/457701 [01:29<00:08, 4925.79it/s] 91%|█████████ | 417646/457701 [01:29<00:08, 4949.20it/s] 91%|█████████▏| 418142/457701 [01:29<00:08, 4909.17it/s] 91%|█████████▏| 418639/457701 [01:29<00:07, 4926.00it/s] 92%|█████████▏| 419135/457701 [01:29<00:07, 4935.21it/s] 92%|█████████▏| 419629/457701 [01:29<00:07, 4936.27it/s] 92%|█████████▏| 420123/457701 [01:29<00:07, 4917.00it/s] 92%|█████████▏| 420620/457701 [01:29<00:07, 4931.19it/s] 92%|█████████▏| 421118/457701 [01:29<00:07, 4944.94it/s] 92%|█████████▏| 421613/457701 [01:30<00:07, 4941.24it/s] 92%|█████████▏| 422108/457701 [01:30<00:07, 4770.06it/s] 92%|█████████▏| 422605/457701 [01:30<00:07, 4827.59it/s] 92%|█████████▏| 423099/457701 [01:30<00:07, 4858.46it/s] 93%|█████████▎| 423596/457701 [01:30<00:06, 4890.96it/s] 93%|█████████▎| 424086/457701 [01:30<00:07, 4744.36it/s] 93%|█████████▎| 424578/457701 [01:30<00:06, 4795.39it/s] 93%|█████████▎| 425081/457701 [01:30<00:06, 4862.65it/s] 93%|█████████▎| 425581/457701 [01:30<00:06, 4901.03it/s] 93%|█████████▎| 426072/457701 [01:30<00:06, 4893.99it/s] 93%|█████████▎| 426566/457701 [01:31<00:06, 4907.18it/s] 93%|█████████▎| 427058/457701 [01:31<00:06, 4800.12it/s] 93%|█████████▎| 427551/457701 [01:31<00:06, 4835.96it/s] 94%|█████████▎| 428048/457701 [01:31<00:06, 4872.70it/s] 94%|█████████▎| 428544/457701 [01:31<00:05, 4897.92it/s] 94%|█████████▎| 429035/457701 [01:31<00:05, 4888.26it/s] 94%|█████████▍| 429527/457701 [01:31<00:05, 4897.18it/s] 94%|█████████▍| 430017/457701 [01:31<00:05, 4811.45it/s] 94%|█████████▍| 430507/457701 [01:31<00:05, 4837.46it/s] 94%|█████████▍| 430992/457701 [01:31<00:05, 4827.00it/s] 94%|█████████▍| 431494/457701 [01:32<00:05, 4882.96it/s] 94%|█████████▍| 431983/457701 [01:32<00:05, 4867.23it/s] 94%|█████████▍| 432479/457701 [01:32<00:05, 4893.63it/s] 95%|█████████▍| 432969/457701 [01:32<00:05, 4865.90it/s] 95%|█████████▍| 433461/457701 [01:32<00:04, 4881.23it/s] 95%|█████████▍| 433951/457701 [01:32<00:04, 4885.75it/s] 95%|█████████▍| 434455/457701 [01:32<00:04, 4928.45it/s] 95%|█████████▌| 434949/457701 [01:32<00:04, 4798.12it/s] 95%|█████████▌| 435436/457701 [01:32<00:04, 4816.69it/s] 95%|█████████▌| 435932/457701 [01:32<00:04, 4857.04it/s] 95%|█████████▌| 436433/457701 [01:33<00:04, 4900.30it/s] 95%|█████████▌| 436924/457701 [01:33<00:04, 4890.96it/s] 96%|█████████▌| 437424/457701 [01:33<00:04, 4923.16it/s] 96%|█████████▌| 437917/457701 [01:33<00:04, 4916.81it/s] 96%|█████████▌| 438409/457701 [01:33<00:03, 4916.26it/s] 96%|█████████▌| 438901/457701 [01:33<00:03, 4894.33it/s] 96%|█████████▌| 439398/457701 [01:33<00:03, 4915.47it/s] 96%|█████████▌| 439890/457701 [01:33<00:03, 4915.17it/s] 96%|█████████▌| 440389/457701 [01:33<00:03, 4934.67it/s] 96%|█████████▋| 440883/457701 [01:33<00:03, 4858.59it/s] 96%|█████████▋| 441378/457701 [01:34<00:03, 4885.00it/s] 97%|█████████▋| 441876/457701 [01:34<00:03, 4912.49it/s] 97%|█████████▋| 442371/457701 [01:34<00:03, 4922.25it/s] 97%|█████████▋| 442864/457701 [01:34<00:03, 4911.23it/s] 97%|█████████▋| 443359/457701 [01:34<00:02, 4921.02it/s] 97%|█████████▋| 443855/457701 [01:34<00:02, 4931.54it/s] 97%|█████████▋| 444351/457701 [01:34<00:02, 4939.27it/s] 97%|█████████▋| 444845/457701 [01:34<00:02, 4882.52it/s] 97%|█████████▋| 445334/457701 [01:38<00:31, 387.67it/s]  97%|█████████▋| 445825/457701 [01:38<00:22, 535.65it/s] 98%|█████████▊| 446316/457701 [01:38<00:15, 731.02it/s] 98%|█████████▊| 446797/457701 [01:39<00:11, 980.42it/s] 98%|█████████▊| 447289/457701 [01:39<00:08, 1290.39it/s] 98%|█████████▊| 447787/457701 [01:39<00:05, 1658.93it/s] 98%|█████████▊| 448276/457701 [01:39<00:04, 2069.01it/s] 98%|█████████▊| 448769/457701 [01:39<00:03, 2504.56it/s] 98%|█████████▊| 449263/457701 [01:39<00:02, 2938.86it/s] 98%|█████████▊| 449756/457701 [01:39<00:02, 3342.98it/s] 98%|█████████▊| 450246/457701 [01:39<00:02, 3693.63it/s] 98%|█████████▊| 450734/457701 [01:39<00:01, 3925.43it/s] 99%|█████████▊| 451222/457701 [01:39<00:01, 4169.83it/s] 99%|█████████▊| 451704/457701 [01:40<00:01, 4217.43it/s] 99%|█████████▉| 452172/457701 [01:40<00:01, 4257.12it/s] 99%|█████████▉| 452645/457701 [01:40<00:01, 4387.33it/s] 99%|█████████▉| 453145/457701 [01:40<00:01, 4552.55it/s] 99%|█████████▉| 453645/457701 [01:40<00:00, 4676.09it/s] 99%|█████████▉| 454142/457701 [01:40<00:00, 4760.45it/s] 99%|█████████▉| 454646/457701 [01:40<00:00, 4840.63it/s] 99%|█████████▉| 455138/457701 [01:40<00:00, 4848.56it/s]100%|█████████▉| 455628/457701 [01:40<00:00, 4805.93it/s]100%|█████████▉| 456113/457701 [01:40<00:00, 4816.69it/s]100%|█████████▉| 456601/457701 [01:41<00:00, 4834.54it/s]100%|█████████▉| 457087/457701 [01:41<00:00, 4805.30it/s]100%|█████████▉| 457572/457701 [01:41<00:00, 4816.88it/s]100%|██████████| 457701/457701 [01:41<00:00, 4517.48it/s]
+[2022-04-28 01:47:53,231] Done
+457703
+457701

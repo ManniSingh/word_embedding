@@ -396,31 +396,26 @@ def tokenizeEM(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN
         keyword_processor.add_keyword(ent, ents_[i])    
     sentence = keyword_processor.replace_keywords(sent)
     return sentence.split()
-    _sentence = list()
-    i = 0
-    while i<len(sentence):
-        if sentence[i] == '[':
-            _sentence.append(sentence[i])
-            i+=1
-            if i == len(sentence):
-                break
-            while sentence[i] != ']':
-                _sentence.append(sentence[i]+'#E')
-                i+=1
-                if i == len(sentence):
-                    break
-        else:
-            _sentence.append(sentence[i])
-            i+=1
-    sentence = ' '.join(_sentence)
-    phrases = set(re.findall(r"\[\s[\w\d\#\s]+\]",sentence))
-    sentence = sentence.replace('[','')
-    sentence = sentence.replace(']','')
-    for phrase in phrases:
-        phrase = phrase.lstrip('[').rstrip(']')
-        sentence = re.sub(phrase, ' [ '+phrase+' ] ', sentence)
-    sentence = sentence.split()
-    return sentence
+
+def tokenizePEM(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, lower=True):
+    sentence =  [utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore')
+               if token_min_len <= len(token) <= token_max_len and not token.startswith('_')]
+    #Tagging Entity words
+    keyword_processor = KeywordProcessor()
+    sent = ' '.join(sentence)
+    ents = set(re.findall(r'\[\s[\w\s]+\]',sent)) #finds [ X X X ]
+    _ents = [ent.replace(' ','#E ') for ent in ents]
+    ents_ = [ent.replace('[#E','[') for ent in _ents]
+    res = list()
+    for i,ent in enumerate(ents):
+        a = ents_[i]
+        b = ents_[i].replace('E','P')
+        con = a+b
+        con = con.replace('][','')
+        keyword_processor.add_keyword(ent, con)    
+    sentence = keyword_processor.replace_keywords(sent)
+    return sentence.split()
+    
 
 def tokenizeDEP(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, lower=True):
     sentence =  [utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore')
