@@ -1982,6 +1982,8 @@ static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_enumerate;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_RuntimeError;
+static const char __pyx_k_E[] = "#E";
+static const char __pyx_k_P[] = "#P";
 static const char __pyx_k_c[] = "c";
 static const char __pyx_k_i[] = "i";
 static const char __pyx_k_j[] = "j";
@@ -2030,11 +2032,13 @@ static const char __pyx_k_sscal[] = "sscal";
 static const char __pyx_k_token[] = "token";
 static const char __pyx_k_vocab[] = "vocab";
 static const char __pyx_k_import[] = "__import__";
+static const char __pyx_k_pwords[] = "pwords";
 static const char __pyx_k_random[] = "random";
 static const char __pyx_k_result[] = "result";
 static const char __pyx_k_sample[] = "sample";
 static const char __pyx_k_target[] = "target";
 static const char __pyx_k_window[] = "window";
+static const char __pyx_k_c_index[] = "c_index";
 static const char __pyx_k_context[] = "context";
 static const char __pyx_k_float32[] = "float32";
 static const char __pyx_k_id2word[] = "id2word";
@@ -2042,6 +2046,7 @@ static const char __pyx_k_idx_end[] = "idx_end";
 static const char __pyx_k_our_dot[] = "our_dot";
 static const char __pyx_k_randint[] = "randint";
 static const char __pyx_k_syn1neg[] = "syn1neg";
+static const char __pyx_k_t_index[] = "t_index";
 static const char __pyx_k_t_start[] = "t_start";
 static const char __pyx_k_targets[] = "targets";
 static const char __pyx_k_vectors[] = "vectors";
@@ -2101,6 +2106,7 @@ static const char __pyx_k_gensim2_models_word2vec_inner_py[] = "gensim2/models/w
 static const char __pyx_k_ndarray_is_not_Fortran_contiguou[] = "ndarray is not Fortran contiguous";
 static const char __pyx_k_numpy_core_umath_failed_to_impor[] = "numpy.core.umath failed to import";
 static const char __pyx_k_Format_string_allocated_too_shor_2[] = "Format string allocated too short.";
+static PyObject *__pyx_kp_s_E;
 static PyObject *__pyx_n_s_EXP_TABLE;
 static PyObject *__pyx_n_s_FAST_VERSION;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor;
@@ -2108,6 +2114,7 @@ static PyObject *__pyx_kp_u_Format_string_allocated_too_shor_2;
 static PyObject *__pyx_n_s_ImportError;
 static PyObject *__pyx_n_s_MAX_WORDS_IN_BATCH;
 static PyObject *__pyx_kp_u_Non_native_byte_order_not_suppor;
+static PyObject *__pyx_kp_s_P;
 static PyObject *__pyx_n_s_REAL;
 static PyObject *__pyx_n_s_RuntimeError;
 static PyObject *__pyx_n_s_ValueError;
@@ -2116,6 +2123,7 @@ static PyObject *__pyx_kp_s__2;
 static PyObject *__pyx_kp_s__3;
 static PyObject *__pyx_n_s_alpha;
 static PyObject *__pyx_n_s_c;
+static PyObject *__pyx_n_s_c_index;
 static PyObject *__pyx_n_s_cbow_mean;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_code;
@@ -2166,6 +2174,7 @@ static PyObject *__pyx_n_s_our_dot;
 static PyObject *__pyx_n_s_our_saxpy;
 static PyObject *__pyx_n_s_p_res;
 static PyObject *__pyx_n_s_point;
+static PyObject *__pyx_n_s_pwords;
 static PyObject *__pyx_n_s_pyx_capi;
 static PyObject *__pyx_n_s_r;
 static PyObject *__pyx_n_s_rand_sizes;
@@ -2196,6 +2205,7 @@ static PyObject *__pyx_n_s_sscal;
 static PyObject *__pyx_n_s_syn1;
 static PyObject *__pyx_n_s_syn1neg;
 static PyObject *__pyx_n_s_sys;
+static PyObject *__pyx_n_s_t_index;
 static PyObject *__pyx_n_s_t_start;
 static PyObject *__pyx_n_s_target;
 static PyObject *__pyx_kp_s_target_phrase_mistmatch;
@@ -4820,8 +4830,11 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
   PyObject *__pyx_v_rand_sizes = NULL;
   PyObject *__pyx_v_word = NULL;
   PyObject *__pyx_v_targets = NULL;
+  PyObject *__pyx_v_pwords = NULL;
   PyObject *__pyx_v_t_start = NULL;
   PyObject *__pyx_v_rand_window = NULL;
+  PyObject *__pyx_v_t_index = NULL;
+  PyObject *__pyx_v_c_index = NULL;
   PyObject *__pyx_v_r = NULL;
   PyObject *__pyx_v_right_con = NULL;
   PyObject *__pyx_v_right_phrase = NULL;
@@ -5211,8 +5224,8 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                 continue
  *             #Collecting phrase words in a list
  *             targets = list()             # <<<<<<<<<<<<<<
+ *             pwords = list()
  *             if sent[i] == '[':
- *                 t_start = i
  */
       __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 565, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
@@ -5222,29 +5235,41 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
       /* "gensim2/models/word2vec_inner.pyx":566
  *             #Collecting phrase words in a list
  *             targets = list()
+ *             pwords = list()             # <<<<<<<<<<<<<<
+ *             if sent[i] == '[':
+ *                 t_start = i
+ */
+      __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 566, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_XDECREF_SET(__pyx_v_pwords, ((PyObject*)__pyx_t_9));
+      __pyx_t_9 = 0;
+
+      /* "gensim2/models/word2vec_inner.pyx":567
+ *             targets = list()
+ *             pwords = list()
  *             if sent[i] == '[':             # <<<<<<<<<<<<<<
  *                 t_start = i
  *                 i+=1
  */
-      __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 566, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 567, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 566, __pyx_L1_error)
+      __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 567, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       if (__pyx_t_5) {
 
-        /* "gensim2/models/word2vec_inner.pyx":567
- *             targets = list()
+        /* "gensim2/models/word2vec_inner.pyx":568
+ *             pwords = list()
  *             if sent[i] == '[':
  *                 t_start = i             # <<<<<<<<<<<<<<
  *                 i+=1
  *                 #print("Phrase Start:",t_start)
  */
-        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 567, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 568, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_XDECREF_SET(__pyx_v_t_start, __pyx_t_9);
         __pyx_t_9 = 0;
 
-        /* "gensim2/models/word2vec_inner.pyx":568
+        /* "gensim2/models/word2vec_inner.pyx":569
  *             if sent[i] == '[':
  *                 t_start = i
  *                 i+=1             # <<<<<<<<<<<<<<
@@ -5253,7 +5278,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
         __pyx_v_i = (__pyx_v_i + 1);
 
-        /* "gensim2/models/word2vec_inner.pyx":570
+        /* "gensim2/models/word2vec_inner.pyx":571
  *                 i+=1
  *                 #print("Phrase Start:",t_start)
  *                 if i>=end:             # <<<<<<<<<<<<<<
@@ -5263,7 +5288,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
         __pyx_t_5 = ((__pyx_v_i >= __pyx_v_end) != 0);
         if (__pyx_t_5) {
 
-          /* "gensim2/models/word2vec_inner.pyx":571
+          /* "gensim2/models/word2vec_inner.pyx":572
  *                 #print("Phrase Start:",t_start)
  *                 if i>=end:
  *                     break             # <<<<<<<<<<<<<<
@@ -5272,7 +5297,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
           goto __pyx_L7_break;
 
-          /* "gensim2/models/word2vec_inner.pyx":570
+          /* "gensim2/models/word2vec_inner.pyx":571
  *                 i+=1
  *                 #print("Phrase Start:",t_start)
  *                 if i>=end:             # <<<<<<<<<<<<<<
@@ -5281,7 +5306,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
         }
 
-        /* "gensim2/models/word2vec_inner.pyx":572
+        /* "gensim2/models/word2vec_inner.pyx":573
  *                 if i>=end:
  *                     break
  *                 while sent[i] != ']':             # <<<<<<<<<<<<<<
@@ -5289,64 +5314,128 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                     if sent[i] in vlookup:
  */
         while (1) {
-          __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 572, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 573, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__3, Py_NE)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 572, __pyx_L1_error)
+          __pyx_t_5 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__3, Py_NE)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 573, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           if (!__pyx_t_5) break;
 
-          /* "gensim2/models/word2vec_inner.pyx":574
+          /* "gensim2/models/word2vec_inner.pyx":575
  *                 while sent[i] != ']':
  *                     #if sent[i] in vlookup and sent[i][0].isupper() and sent[i][1:].islower(): #SP (capital words only)
  *                     if sent[i] in vlookup:             # <<<<<<<<<<<<<<
- *                         targets.append(vlookup[sent[i]].index)
- *                     i+=1
+ *                         if '#E' in sent[i]:
+ *                             targets.append(vlookup[sent[i]].index)
  */
-          __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_t_9, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_t_9, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __pyx_t_6 = (__pyx_t_5 != 0);
           if (__pyx_t_6) {
 
-            /* "gensim2/models/word2vec_inner.pyx":575
+            /* "gensim2/models/word2vec_inner.pyx":576
  *                     #if sent[i] in vlookup and sent[i][0].isupper() and sent[i][1:].islower(): #SP (capital words only)
  *                     if sent[i] in vlookup:
- *                         targets.append(vlookup[sent[i]].index)             # <<<<<<<<<<<<<<
+ *                         if '#E' in sent[i]:             # <<<<<<<<<<<<<<
+ *                             targets.append(vlookup[sent[i]].index)
+ *                         if '#P' in sent[i]:
+ */
+            __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 576, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_9);
+            __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_kp_s_E, __pyx_t_9, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 576, __pyx_L1_error)
+            __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+            __pyx_t_5 = (__pyx_t_6 != 0);
+            if (__pyx_t_5) {
+
+              /* "gensim2/models/word2vec_inner.pyx":577
+ *                     if sent[i] in vlookup:
+ *                         if '#E' in sent[i]:
+ *                             targets.append(vlookup[sent[i]].index)             # <<<<<<<<<<<<<<
+ *                         if '#P' in sent[i]:
+ *                             pwords.append(vlookup[sent[i]].index)
+ */
+              __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 577, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_9);
+              __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_t_9); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 577, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_13);
+              __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+              __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 577, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_9);
+              __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+              __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_targets, __pyx_t_9); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 577, __pyx_L1_error)
+              __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+
+              /* "gensim2/models/word2vec_inner.pyx":576
+ *                     #if sent[i] in vlookup and sent[i][0].isupper() and sent[i][1:].islower(): #SP (capital words only)
+ *                     if sent[i] in vlookup:
+ *                         if '#E' in sent[i]:             # <<<<<<<<<<<<<<
+ *                             targets.append(vlookup[sent[i]].index)
+ *                         if '#P' in sent[i]:
+ */
+            }
+
+            /* "gensim2/models/word2vec_inner.pyx":578
+ *                         if '#E' in sent[i]:
+ *                             targets.append(vlookup[sent[i]].index)
+ *                         if '#P' in sent[i]:             # <<<<<<<<<<<<<<
+ *                             pwords.append(vlookup[sent[i]].index)
+ *                     i+=1
+ */
+            __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 578, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_9);
+            __pyx_t_5 = (__Pyx_PySequence_ContainsTF(__pyx_kp_s_P, __pyx_t_9, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 578, __pyx_L1_error)
+            __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+            __pyx_t_6 = (__pyx_t_5 != 0);
+            if (__pyx_t_6) {
+
+              /* "gensim2/models/word2vec_inner.pyx":579
+ *                             targets.append(vlookup[sent[i]].index)
+ *                         if '#P' in sent[i]:
+ *                             pwords.append(vlookup[sent[i]].index)             # <<<<<<<<<<<<<<
  *                     i+=1
  *                     if i>=end:
  */
-            __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 575, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_9);
-            __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_t_9); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 575, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_13);
-            __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-            __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 575, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_9);
-            __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-            __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_targets, __pyx_t_9); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 575, __pyx_L1_error)
-            __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+              __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 579, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_9);
+              __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_t_9); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 579, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_13);
+              __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+              __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 579, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_9);
+              __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+              __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_pwords, __pyx_t_9); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 579, __pyx_L1_error)
+              __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":574
+              /* "gensim2/models/word2vec_inner.pyx":578
+ *                         if '#E' in sent[i]:
+ *                             targets.append(vlookup[sent[i]].index)
+ *                         if '#P' in sent[i]:             # <<<<<<<<<<<<<<
+ *                             pwords.append(vlookup[sent[i]].index)
+ *                     i+=1
+ */
+            }
+
+            /* "gensim2/models/word2vec_inner.pyx":575
  *                 while sent[i] != ']':
  *                     #if sent[i] in vlookup and sent[i][0].isupper() and sent[i][1:].islower(): #SP (capital words only)
  *                     if sent[i] in vlookup:             # <<<<<<<<<<<<<<
- *                         targets.append(vlookup[sent[i]].index)
- *                     i+=1
+ *                         if '#E' in sent[i]:
+ *                             targets.append(vlookup[sent[i]].index)
  */
           }
 
-          /* "gensim2/models/word2vec_inner.pyx":576
- *                     if sent[i] in vlookup:
- *                         targets.append(vlookup[sent[i]].index)
+          /* "gensim2/models/word2vec_inner.pyx":580
+ *                         if '#P' in sent[i]:
+ *                             pwords.append(vlookup[sent[i]].index)
  *                     i+=1             # <<<<<<<<<<<<<<
  *                     if i>=end:
  *                         break
  */
           __pyx_v_i = (__pyx_v_i + 1);
 
-          /* "gensim2/models/word2vec_inner.pyx":577
- *                         targets.append(vlookup[sent[i]].index)
+          /* "gensim2/models/word2vec_inner.pyx":581
+ *                             pwords.append(vlookup[sent[i]].index)
  *                     i+=1
  *                     if i>=end:             # <<<<<<<<<<<<<<
  *                         break
@@ -5355,7 +5444,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
           __pyx_t_6 = ((__pyx_v_i >= __pyx_v_end) != 0);
           if (__pyx_t_6) {
 
-            /* "gensim2/models/word2vec_inner.pyx":578
+            /* "gensim2/models/word2vec_inner.pyx":582
  *                     i+=1
  *                     if i>=end:
  *                         break             # <<<<<<<<<<<<<<
@@ -5364,8 +5453,8 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
             goto __pyx_L15_break;
 
-            /* "gensim2/models/word2vec_inner.pyx":577
- *                         targets.append(vlookup[sent[i]].index)
+            /* "gensim2/models/word2vec_inner.pyx":581
+ *                             pwords.append(vlookup[sent[i]].index)
  *                     i+=1
  *                     if i>=end:             # <<<<<<<<<<<<<<
  *                         break
@@ -5375,7 +5464,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
         }
         __pyx_L15_break:;
 
-        /* "gensim2/models/word2vec_inner.pyx":580
+        /* "gensim2/models/word2vec_inner.pyx":584
  *                         break
  *                 #i is ']' now
  *                 if i<end:             # <<<<<<<<<<<<<<
@@ -5385,7 +5474,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
         __pyx_t_6 = ((__pyx_v_i < __pyx_v_end) != 0);
         if (__pyx_t_6) {
 
-          /* "gensim2/models/word2vec_inner.pyx":581
+          /* "gensim2/models/word2vec_inner.pyx":585
  *                 #i is ']' now
  *                 if i<end:
  *                     assert sent[i]==']',"target phrase mistmatch"             # <<<<<<<<<<<<<<
@@ -5394,18 +5483,18 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
           #ifndef CYTHON_WITHOUT_ASSERTIONS
           if (unlikely(!Py_OptimizeFlag)) {
-            __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 581, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_sent, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 585, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
-            __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 581, __pyx_L1_error)
+            __pyx_t_6 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 585, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
             if (unlikely(!__pyx_t_6)) {
               PyErr_SetObject(PyExc_AssertionError, __pyx_kp_s_target_phrase_mistmatch);
-              __PYX_ERR(0, 581, __pyx_L1_error)
+              __PYX_ERR(0, 585, __pyx_L1_error)
             }
           }
           #endif
 
-          /* "gensim2/models/word2vec_inner.pyx":580
+          /* "gensim2/models/word2vec_inner.pyx":584
  *                         break
  *                 #i is ']' now
  *                 if i<end:             # <<<<<<<<<<<<<<
@@ -5414,9 +5503,9 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
         }
 
-        /* "gensim2/models/word2vec_inner.pyx":566
- *             #Collecting phrase words in a list
+        /* "gensim2/models/word2vec_inner.pyx":567
  *             targets = list()
+ *             pwords = list()
  *             if sent[i] == '[':             # <<<<<<<<<<<<<<
  *                 t_start = i
  *                 i+=1
@@ -5424,7 +5513,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
         goto __pyx_L12;
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":588
+      /* "gensim2/models/word2vec_inner.pyx":592
  *                 #continue
  *                 # uncomment below 2 lines in case of non-exclusive and comment out above 2 lines!
  *                 targets.append(word.index)             # <<<<<<<<<<<<<<
@@ -5432,26 +5521,26 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *             if i>=end:
  */
       /*else*/ {
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 588, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 592, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_targets, __pyx_t_9); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 588, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_targets, __pyx_t_9); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 592, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "gensim2/models/word2vec_inner.pyx":589
+        /* "gensim2/models/word2vec_inner.pyx":593
  *                 # uncomment below 2 lines in case of non-exclusive and comment out above 2 lines!
  *                 targets.append(word.index)
  *                 t_start = i             # <<<<<<<<<<<<<<
  *             if i>=end:
  *                 break
  */
-        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 589, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 593, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_XDECREF_SET(__pyx_v_t_start, __pyx_t_9);
         __pyx_t_9 = 0;
       }
       __pyx_L12:;
 
-      /* "gensim2/models/word2vec_inner.pyx":590
+      /* "gensim2/models/word2vec_inner.pyx":594
  *                 targets.append(word.index)
  *                 t_start = i
  *             if i>=end:             # <<<<<<<<<<<<<<
@@ -5461,7 +5550,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
       __pyx_t_6 = ((__pyx_v_i >= __pyx_v_end) != 0);
       if (__pyx_t_6) {
 
-        /* "gensim2/models/word2vec_inner.pyx":591
+        /* "gensim2/models/word2vec_inner.pyx":595
  *                 t_start = i
  *             if i>=end:
  *                 break             # <<<<<<<<<<<<<<
@@ -5470,7 +5559,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
         goto __pyx_L7_break;
 
-        /* "gensim2/models/word2vec_inner.pyx":590
+        /* "gensim2/models/word2vec_inner.pyx":594
  *                 targets.append(word.index)
  *                 t_start = i
  *             if i>=end:             # <<<<<<<<<<<<<<
@@ -5479,7 +5568,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":593
+      /* "gensim2/models/word2vec_inner.pyx":597
  *                 break
  *             #print(targets)
  *             if not targets or len(targets)>5:             # <<<<<<<<<<<<<<
@@ -5491,15 +5580,15 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
       if (!__pyx_t_15) {
       } else {
         __pyx_t_6 = __pyx_t_15;
-        goto __pyx_L21_bool_binop_done;
+        goto __pyx_L23_bool_binop_done;
       }
-      __pyx_t_7 = PyList_GET_SIZE(__pyx_v_targets); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 593, __pyx_L1_error)
+      __pyx_t_7 = PyList_GET_SIZE(__pyx_v_targets); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 597, __pyx_L1_error)
       __pyx_t_15 = ((__pyx_t_7 > 5) != 0);
       __pyx_t_6 = __pyx_t_15;
-      __pyx_L21_bool_binop_done:;
+      __pyx_L23_bool_binop_done:;
       if (__pyx_t_6) {
 
-        /* "gensim2/models/word2vec_inner.pyx":596
+        /* "gensim2/models/word2vec_inner.pyx":600
  *             #if not targets or len(targets) < 2 or len(targets) > 5: # Strict N-gram phrase where N>=2.
  *             #if len(targets) != 2:  # Strict N-gram phrase where N=2.
  *                 i+=1             # <<<<<<<<<<<<<<
@@ -5508,7 +5597,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
         __pyx_v_i = (__pyx_v_i + 1);
 
-        /* "gensim2/models/word2vec_inner.pyx":597
+        /* "gensim2/models/word2vec_inner.pyx":601
  *             #if len(targets) != 2:  # Strict N-gram phrase where N=2.
  *                 i+=1
  *                 continue             # <<<<<<<<<<<<<<
@@ -5517,7 +5606,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
         goto __pyx_L6_continue;
 
-        /* "gensim2/models/word2vec_inner.pyx":593
+        /* "gensim2/models/word2vec_inner.pyx":597
  *                 break
  *             #print(targets)
  *             if not targets or len(targets)>5:             # <<<<<<<<<<<<<<
@@ -5526,20 +5615,205 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":599
+      /* "gensim2/models/word2vec_inner.pyx":603
  *                 continue
  *             #print(i,len(rand_sizes))
  *             rand_window = rand_sizes[i] # Random size of window reduction             # <<<<<<<<<<<<<<
  *             #print(rand_window)
  *             #print("index=",i)
  */
-      __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_rand_sizes, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 599, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_GetItemInt(__pyx_v_rand_sizes, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 603, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_XDECREF_SET(__pyx_v_rand_window, __pyx_t_9);
       __pyx_t_9 = 0;
 
-      /* "gensim2/models/word2vec_inner.pyx":612
- * 
+      /* "gensim2/models/word2vec_inner.pyx":615
+ *             #####
+ *             # phrase word embeddings
+ *             if len(pwords)>1:             # <<<<<<<<<<<<<<
+ *                 for t_index in pwords:
+ *                     for c_index in pwords:
+ */
+      __pyx_t_7 = PyList_GET_SIZE(__pyx_v_pwords); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 615, __pyx_L1_error)
+      __pyx_t_6 = ((__pyx_t_7 > 1) != 0);
+      if (__pyx_t_6) {
+
+        /* "gensim2/models/word2vec_inner.pyx":616
+ *             # phrase word embeddings
+ *             if len(pwords)>1:
+ *                 for t_index in pwords:             # <<<<<<<<<<<<<<
+ *                     for c_index in pwords:
+ *                         if t_index != c_index:
+ */
+        __pyx_t_9 = __pyx_v_pwords; __Pyx_INCREF(__pyx_t_9); __pyx_t_7 = 0;
+        for (;;) {
+          if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_9)) break;
+          #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+          __pyx_t_13 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_13); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 616, __pyx_L1_error)
+          #else
+          __pyx_t_13 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 616, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_13);
+          #endif
+          __Pyx_XDECREF_SET(__pyx_v_t_index, __pyx_t_13);
+          __pyx_t_13 = 0;
+
+          /* "gensim2/models/word2vec_inner.pyx":617
+ *             if len(pwords)>1:
+ *                 for t_index in pwords:
+ *                     for c_index in pwords:             # <<<<<<<<<<<<<<
+ *                         if t_index != c_index:
+ *                             c.indexes[effective_words] = t_index
+ */
+          __pyx_t_13 = __pyx_v_pwords; __Pyx_INCREF(__pyx_t_13); __pyx_t_16 = 0;
+          for (;;) {
+            if (__pyx_t_16 >= PyList_GET_SIZE(__pyx_t_13)) break;
+            #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+            __pyx_t_2 = PyList_GET_ITEM(__pyx_t_13, __pyx_t_16); __Pyx_INCREF(__pyx_t_2); __pyx_t_16++; if (unlikely(0 < 0)) __PYX_ERR(0, 617, __pyx_L1_error)
+            #else
+            __pyx_t_2 = PySequence_ITEM(__pyx_t_13, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 617, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_2);
+            #endif
+            __Pyx_XDECREF_SET(__pyx_v_c_index, __pyx_t_2);
+            __pyx_t_2 = 0;
+
+            /* "gensim2/models/word2vec_inner.pyx":618
+ *                 for t_index in pwords:
+ *                     for c_index in pwords:
+ *                         if t_index != c_index:             # <<<<<<<<<<<<<<
+ *                             c.indexes[effective_words] = t_index
+ *                             c.contexts[effective_words] = c_index
+ */
+            __pyx_t_2 = PyObject_RichCompare(__pyx_v_t_index, __pyx_v_c_index, Py_NE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 618, __pyx_L1_error)
+            __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 618, __pyx_L1_error)
+            __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+            if (__pyx_t_6) {
+
+              /* "gensim2/models/word2vec_inner.pyx":619
+ *                     for c_index in pwords:
+ *                         if t_index != c_index:
+ *                             c.indexes[effective_words] = t_index             # <<<<<<<<<<<<<<
+ *                             c.contexts[effective_words] = c_index
+ *                             effective_words += 1
+ */
+              __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_t_index); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 619, __pyx_L1_error)
+              (__pyx_v_c.indexes[__pyx_v_effective_words]) = __pyx_t_17;
+
+              /* "gensim2/models/word2vec_inner.pyx":620
+ *                         if t_index != c_index:
+ *                             c.indexes[effective_words] = t_index
+ *                             c.contexts[effective_words] = c_index             # <<<<<<<<<<<<<<
+ *                             effective_words += 1
+ *                         if effective_words >= MAX_SENTENCE_LEN:
+ */
+              __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_c_index); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 620, __pyx_L1_error)
+              (__pyx_v_c.contexts[__pyx_v_effective_words]) = __pyx_t_17;
+
+              /* "gensim2/models/word2vec_inner.pyx":621
+ *                             c.indexes[effective_words] = t_index
+ *                             c.contexts[effective_words] = c_index
+ *                             effective_words += 1             # <<<<<<<<<<<<<<
+ *                         if effective_words >= MAX_SENTENCE_LEN:
+ *                             break
+ */
+              __pyx_v_effective_words = (__pyx_v_effective_words + 1);
+
+              /* "gensim2/models/word2vec_inner.pyx":618
+ *                 for t_index in pwords:
+ *                     for c_index in pwords:
+ *                         if t_index != c_index:             # <<<<<<<<<<<<<<
+ *                             c.indexes[effective_words] = t_index
+ *                             c.contexts[effective_words] = c_index
+ */
+            }
+
+            /* "gensim2/models/word2vec_inner.pyx":622
+ *                             c.contexts[effective_words] = c_index
+ *                             effective_words += 1
+ *                         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
+ *                             break
+ *                 if effective_words >= MAX_SENTENCE_LEN:
+ */
+            __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
+            if (__pyx_t_6) {
+
+              /* "gensim2/models/word2vec_inner.pyx":623
+ *                             effective_words += 1
+ *                         if effective_words >= MAX_SENTENCE_LEN:
+ *                             break             # <<<<<<<<<<<<<<
+ *                 if effective_words >= MAX_SENTENCE_LEN:
+ *                                 break
+ */
+              goto __pyx_L29_break;
+
+              /* "gensim2/models/word2vec_inner.pyx":622
+ *                             c.contexts[effective_words] = c_index
+ *                             effective_words += 1
+ *                         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
+ *                             break
+ *                 if effective_words >= MAX_SENTENCE_LEN:
+ */
+            }
+
+            /* "gensim2/models/word2vec_inner.pyx":617
+ *             if len(pwords)>1:
+ *                 for t_index in pwords:
+ *                     for c_index in pwords:             # <<<<<<<<<<<<<<
+ *                         if t_index != c_index:
+ *                             c.indexes[effective_words] = t_index
+ */
+          }
+          __pyx_L29_break:;
+          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+
+          /* "gensim2/models/word2vec_inner.pyx":616
+ *             # phrase word embeddings
+ *             if len(pwords)>1:
+ *                 for t_index in pwords:             # <<<<<<<<<<<<<<
+ *                     for c_index in pwords:
+ *                         if t_index != c_index:
+ */
+        }
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+
+        /* "gensim2/models/word2vec_inner.pyx":624
+ *                         if effective_words >= MAX_SENTENCE_LEN:
+ *                             break
+ *                 if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
+ *                                 break
+ *             #print("right context")
+ */
+        __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
+        if (__pyx_t_6) {
+
+          /* "gensim2/models/word2vec_inner.pyx":625
+ *                             break
+ *                 if effective_words >= MAX_SENTENCE_LEN:
+ *                                 break             # <<<<<<<<<<<<<<
+ *             #print("right context")
+ *             j = i #window boundary pos (Global window counter)
+ */
+          goto __pyx_L7_break;
+
+          /* "gensim2/models/word2vec_inner.pyx":624
+ *                         if effective_words >= MAX_SENTENCE_LEN:
+ *                             break
+ *                 if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
+ *                                 break
+ *             #print("right context")
+ */
+        }
+
+        /* "gensim2/models/word2vec_inner.pyx":615
+ *             #####
+ *             # phrase word embeddings
+ *             if len(pwords)>1:             # <<<<<<<<<<<<<<
+ *                 for t_index in pwords:
+ *                     for c_index in pwords:
+ */
+      }
+
+      /* "gensim2/models/word2vec_inner.pyx":627
+ *                                 break
  *             #print("right context")
  *             j = i #window boundary pos (Global window counter)             # <<<<<<<<<<<<<<
  *             r = i+1
@@ -5547,19 +5821,19 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
       __pyx_v_j = __pyx_v_i;
 
-      /* "gensim2/models/word2vec_inner.pyx":613
+      /* "gensim2/models/word2vec_inner.pyx":628
  *             #print("right context")
  *             j = i #window boundary pos (Global window counter)
  *             r = i+1             # <<<<<<<<<<<<<<
  *             while j < (i + c.window - rand_window):
  *             #while j < (i + c.window): # incase of no random window reduction
  */
-      __pyx_t_9 = __Pyx_PyInt_From_long((__pyx_v_i + 1)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 613, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_From_long((__pyx_v_i + 1)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 628, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_XDECREF_SET(__pyx_v_r, __pyx_t_9);
       __pyx_t_9 = 0;
 
-      /* "gensim2/models/word2vec_inner.pyx":614
+      /* "gensim2/models/word2vec_inner.pyx":629
  *             j = i #window boundary pos (Global window counter)
  *             r = i+1
  *             while j < (i + c.window - rand_window):             # <<<<<<<<<<<<<<
@@ -5567,71 +5841,71 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                 if r<end:
  */
       while (1) {
-        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_j); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 614, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_j); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 629, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_13 = __Pyx_PyInt_From_int((__pyx_v_i + __pyx_v_c.window)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 614, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyInt_From_int((__pyx_v_i + __pyx_v_c.window)); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 629, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_2 = PyNumber_Subtract(__pyx_t_13, __pyx_v_rand_window); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 614, __pyx_L1_error)
+        __pyx_t_2 = PyNumber_Subtract(__pyx_t_13, __pyx_v_rand_window); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 629, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_13 = PyObject_RichCompare(__pyx_t_9, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 614, __pyx_L1_error)
+        __pyx_t_13 = PyObject_RichCompare(__pyx_t_9, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 629, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 614, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 629, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         if (!__pyx_t_6) break;
 
-        /* "gensim2/models/word2vec_inner.pyx":616
+        /* "gensim2/models/word2vec_inner.pyx":631
  *             while j < (i + c.window - rand_window):
  *             #while j < (i + c.window): # incase of no random window reduction
  *                 if r<end:             # <<<<<<<<<<<<<<
  *                     right_con = sent[r]
  *                     if right_con not in vlookup :
  */
-        __pyx_t_13 = PyInt_FromSsize_t(__pyx_v_end); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 616, __pyx_L1_error)
+        __pyx_t_13 = PyInt_FromSsize_t(__pyx_v_end); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 631, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_2 = PyObject_RichCompare(__pyx_v_r, __pyx_t_13, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
+        __pyx_t_2 = PyObject_RichCompare(__pyx_v_r, __pyx_t_13, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 631, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 616, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 631, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         if (__pyx_t_6) {
 
-          /* "gensim2/models/word2vec_inner.pyx":617
+          /* "gensim2/models/word2vec_inner.pyx":632
  *             #while j < (i + c.window): # incase of no random window reduction
  *                 if r<end:
  *                     right_con = sent[r]             # <<<<<<<<<<<<<<
  *                     if right_con not in vlookup :
  *                         r+=1
  */
-          __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_r); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 617, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_r); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 632, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_XDECREF_SET(__pyx_v_right_con, __pyx_t_2);
           __pyx_t_2 = 0;
 
-          /* "gensim2/models/word2vec_inner.pyx":618
+          /* "gensim2/models/word2vec_inner.pyx":633
  *                 if r<end:
  *                     right_con = sent[r]
  *                     if right_con not in vlookup :             # <<<<<<<<<<<<<<
  *                         r+=1
  *                         j+=1
  */
-          __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_v_right_con, __pyx_v_vlookup, Py_NE)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 618, __pyx_L1_error)
+          __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_v_right_con, __pyx_v_vlookup, Py_NE)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 633, __pyx_L1_error)
           __pyx_t_15 = (__pyx_t_6 != 0);
           if (__pyx_t_15) {
 
-            /* "gensim2/models/word2vec_inner.pyx":619
+            /* "gensim2/models/word2vec_inner.pyx":634
  *                     right_con = sent[r]
  *                     if right_con not in vlookup :
  *                         r+=1             # <<<<<<<<<<<<<<
  *                         j+=1
  *                         continue
  */
-            __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_r, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 619, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_r, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 634, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF_SET(__pyx_v_r, __pyx_t_2);
             __pyx_t_2 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":620
+            /* "gensim2/models/word2vec_inner.pyx":635
  *                     if right_con not in vlookup :
  *                         r+=1
  *                         j+=1             # <<<<<<<<<<<<<<
@@ -5640,16 +5914,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
             __pyx_v_j = (__pyx_v_j + 1);
 
-            /* "gensim2/models/word2vec_inner.pyx":621
+            /* "gensim2/models/word2vec_inner.pyx":636
  *                         r+=1
  *                         j+=1
  *                         continue             # <<<<<<<<<<<<<<
  *                     ###### static context #######
  *                     '''
  */
-            goto __pyx_L23_continue;
+            goto __pyx_L33_continue;
 
-            /* "gensim2/models/word2vec_inner.pyx":618
+            /* "gensim2/models/word2vec_inner.pyx":633
  *                 if r<end:
  *                     right_con = sent[r]
  *                     if right_con not in vlookup :             # <<<<<<<<<<<<<<
@@ -5658,53 +5932,53 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
           }
 
-          /* "gensim2/models/word2vec_inner.pyx":641
+          /* "gensim2/models/word2vec_inner.pyx":656
  *                     '''
  *                     ###### dynamic context ######
  *                     if right_con == '[':             # <<<<<<<<<<<<<<
  *                         r+=1
  *                         if r>=end :
  */
-          __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_v_right_con, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 641, __pyx_L1_error)
+          __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_v_right_con, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 656, __pyx_L1_error)
           if (__pyx_t_15) {
 
-            /* "gensim2/models/word2vec_inner.pyx":642
+            /* "gensim2/models/word2vec_inner.pyx":657
  *                     ###### dynamic context ######
  *                     if right_con == '[':
  *                         r+=1             # <<<<<<<<<<<<<<
  *                         if r>=end :
  *                             break
  */
-            __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_r, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 642, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_r, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 657, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF_SET(__pyx_v_r, __pyx_t_2);
             __pyx_t_2 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":643
+            /* "gensim2/models/word2vec_inner.pyx":658
  *                     if right_con == '[':
  *                         r+=1
  *                         if r>=end :             # <<<<<<<<<<<<<<
  *                             break
  *                         right_phrase = list()
  */
-            __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_end); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 643, __pyx_L1_error)
+            __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_end); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 658, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
-            __pyx_t_13 = PyObject_RichCompare(__pyx_v_r, __pyx_t_2, Py_GE); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 643, __pyx_L1_error)
+            __pyx_t_13 = PyObject_RichCompare(__pyx_v_r, __pyx_t_2, Py_GE); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 658, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-            __pyx_t_15 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 643, __pyx_L1_error)
+            __pyx_t_15 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 658, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
             if (__pyx_t_15) {
 
-              /* "gensim2/models/word2vec_inner.pyx":644
+              /* "gensim2/models/word2vec_inner.pyx":659
  *                         r+=1
  *                         if r>=end :
  *                             break             # <<<<<<<<<<<<<<
  *                         right_phrase = list()
  *                         while sent[r] != ']':
  */
-              goto __pyx_L24_break;
+              goto __pyx_L34_break;
 
-              /* "gensim2/models/word2vec_inner.pyx":643
+              /* "gensim2/models/word2vec_inner.pyx":658
  *                     if right_con == '[':
  *                         r+=1
  *                         if r>=end :             # <<<<<<<<<<<<<<
@@ -5713,19 +5987,19 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":645
+            /* "gensim2/models/word2vec_inner.pyx":660
  *                         if r>=end :
  *                             break
  *                         right_phrase = list()             # <<<<<<<<<<<<<<
  *                         while sent[r] != ']':
  *                             #if sent[r] in vlookup and sent[r][0].isupper() and sent[r][1:].islower(): #SP (capital words)
  */
-            __pyx_t_13 = PyList_New(0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 645, __pyx_L1_error)
+            __pyx_t_13 = PyList_New(0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 660, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_XDECREF_SET(__pyx_v_right_phrase, ((PyObject*)__pyx_t_13));
             __pyx_t_13 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":646
+            /* "gensim2/models/word2vec_inner.pyx":661
  *                             break
  *                         right_phrase = list()
  *                         while sent[r] != ']':             # <<<<<<<<<<<<<<
@@ -5733,45 +6007,45 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                             if sent[r] in vlookup :
  */
             while (1) {
-              __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_r); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 646, __pyx_L1_error)
+              __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_r); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 661, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_13);
-              __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_t_13, __pyx_kp_s__3, Py_NE)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 646, __pyx_L1_error)
+              __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_t_13, __pyx_kp_s__3, Py_NE)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 661, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
               if (!__pyx_t_15) break;
 
-              /* "gensim2/models/word2vec_inner.pyx":648
+              /* "gensim2/models/word2vec_inner.pyx":663
  *                         while sent[r] != ']':
  *                             #if sent[r] in vlookup and sent[r][0].isupper() and sent[r][1:].islower(): #SP (capital words)
  *                             if sent[r] in vlookup :             # <<<<<<<<<<<<<<
  *                                 right_phrase.append(vlookup[sent[r]].index)
  *                             r+=1
  */
-              __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_r); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 648, __pyx_L1_error)
+              __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_r); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 663, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_13);
-              __pyx_t_15 = (__Pyx_PySequence_ContainsTF(__pyx_t_13, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 648, __pyx_L1_error)
+              __pyx_t_15 = (__Pyx_PySequence_ContainsTF(__pyx_t_13, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 663, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
               __pyx_t_6 = (__pyx_t_15 != 0);
               if (__pyx_t_6) {
 
-                /* "gensim2/models/word2vec_inner.pyx":649
+                /* "gensim2/models/word2vec_inner.pyx":664
  *                             #if sent[r] in vlookup and sent[r][0].isupper() and sent[r][1:].islower(): #SP (capital words)
  *                             if sent[r] in vlookup :
  *                                 right_phrase.append(vlookup[sent[r]].index)             # <<<<<<<<<<<<<<
  *                             r+=1
  *                             if r>=end :
  */
-                __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_r); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 649, __pyx_L1_error)
+                __pyx_t_13 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_r); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 664, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_13);
-                __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 649, __pyx_L1_error)
+                __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 664, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-                __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_index); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 649, __pyx_L1_error)
+                __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_index); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 664, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_13);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_right_phrase, __pyx_t_13); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 649, __pyx_L1_error)
+                __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_right_phrase, __pyx_t_13); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 664, __pyx_L1_error)
                 __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-                /* "gensim2/models/word2vec_inner.pyx":648
+                /* "gensim2/models/word2vec_inner.pyx":663
  *                         while sent[r] != ']':
  *                             #if sent[r] in vlookup and sent[r][0].isupper() and sent[r][1:].islower(): #SP (capital words)
  *                             if sent[r] in vlookup :             # <<<<<<<<<<<<<<
@@ -5780,43 +6054,43 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
               }
 
-              /* "gensim2/models/word2vec_inner.pyx":650
+              /* "gensim2/models/word2vec_inner.pyx":665
  *                             if sent[r] in vlookup :
  *                                 right_phrase.append(vlookup[sent[r]].index)
  *                             r+=1             # <<<<<<<<<<<<<<
  *                             if r>=end :
  *                                 break
  */
-              __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_r, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 650, __pyx_L1_error)
+              __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_r, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 665, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_13);
               __Pyx_DECREF_SET(__pyx_v_r, __pyx_t_13);
               __pyx_t_13 = 0;
 
-              /* "gensim2/models/word2vec_inner.pyx":651
+              /* "gensim2/models/word2vec_inner.pyx":666
  *                                 right_phrase.append(vlookup[sent[r]].index)
  *                             r+=1
  *                             if r>=end :             # <<<<<<<<<<<<<<
  *                                 break
  *                         if right_phrase and len(right_phrase)<=5:
  */
-              __pyx_t_13 = PyInt_FromSsize_t(__pyx_v_end); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 651, __pyx_L1_error)
+              __pyx_t_13 = PyInt_FromSsize_t(__pyx_v_end); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 666, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_13);
-              __pyx_t_2 = PyObject_RichCompare(__pyx_v_r, __pyx_t_13, Py_GE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 651, __pyx_L1_error)
+              __pyx_t_2 = PyObject_RichCompare(__pyx_v_r, __pyx_t_13, Py_GE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 666, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-              __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 651, __pyx_L1_error)
+              __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 666, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               if (__pyx_t_6) {
 
-                /* "gensim2/models/word2vec_inner.pyx":652
+                /* "gensim2/models/word2vec_inner.pyx":667
  *                             r+=1
  *                             if r>=end :
  *                                 break             # <<<<<<<<<<<<<<
  *                         if right_phrase and len(right_phrase)<=5:
  *                             #Random word in the context phrase!
  */
-                goto __pyx_L30_break;
+                goto __pyx_L40_break;
 
-                /* "gensim2/models/word2vec_inner.pyx":651
+                /* "gensim2/models/word2vec_inner.pyx":666
  *                                 right_phrase.append(vlookup[sent[r]].index)
  *                             r+=1
  *                             if r>=end :             # <<<<<<<<<<<<<<
@@ -5825,9 +6099,9 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
               }
             }
-            __pyx_L30_break:;
+            __pyx_L40_break:;
 
-            /* "gensim2/models/word2vec_inner.pyx":653
+            /* "gensim2/models/word2vec_inner.pyx":668
  *                             if r>=end :
  *                                 break
  *                         if right_phrase and len(right_phrase)<=5:             # <<<<<<<<<<<<<<
@@ -5838,15 +6112,15 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
             if (__pyx_t_15) {
             } else {
               __pyx_t_6 = __pyx_t_15;
-              goto __pyx_L34_bool_binop_done;
+              goto __pyx_L44_bool_binop_done;
             }
-            __pyx_t_7 = PyList_GET_SIZE(__pyx_v_right_phrase); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 653, __pyx_L1_error)
+            __pyx_t_7 = PyList_GET_SIZE(__pyx_v_right_phrase); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 668, __pyx_L1_error)
             __pyx_t_15 = ((__pyx_t_7 <= 5) != 0);
             __pyx_t_6 = __pyx_t_15;
-            __pyx_L34_bool_binop_done:;
+            __pyx_L44_bool_binop_done:;
             if (__pyx_t_6) {
 
-              /* "gensim2/models/word2vec_inner.pyx":657
+              /* "gensim2/models/word2vec_inner.pyx":672
  *                             #context = [random.choice(right_phrase)]
  *                             # all words in the right context
  *                             context = right_phrase             # <<<<<<<<<<<<<<
@@ -5856,7 +6130,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
               __Pyx_INCREF(__pyx_v_right_phrase);
               __Pyx_XDECREF_SET(__pyx_v_context, __pyx_v_right_phrase);
 
-              /* "gensim2/models/word2vec_inner.pyx":658
+              /* "gensim2/models/word2vec_inner.pyx":673
  *                             # all words in the right context
  *                             context = right_phrase
  *                             for target in targets:             # <<<<<<<<<<<<<<
@@ -5867,15 +6141,15 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
               for (;;) {
                 if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_13 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_13); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 658, __pyx_L1_error)
+                __pyx_t_13 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_13); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 673, __pyx_L1_error)
                 #else
-                __pyx_t_13 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 658, __pyx_L1_error)
+                __pyx_t_13 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 673, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_13);
                 #endif
                 __Pyx_XDECREF_SET(__pyx_v_target, __pyx_t_13);
                 __pyx_t_13 = 0;
 
-                /* "gensim2/models/word2vec_inner.pyx":659
+                /* "gensim2/models/word2vec_inner.pyx":674
  *                             context = right_phrase
  *                             for target in targets:
  *                                 for con in context:             # <<<<<<<<<<<<<<
@@ -5886,35 +6160,35 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
                 for (;;) {
                   if (__pyx_t_16 >= PyList_GET_SIZE(__pyx_t_13)) break;
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                  __pyx_t_9 = PyList_GET_ITEM(__pyx_t_13, __pyx_t_16); __Pyx_INCREF(__pyx_t_9); __pyx_t_16++; if (unlikely(0 < 0)) __PYX_ERR(0, 659, __pyx_L1_error)
+                  __pyx_t_9 = PyList_GET_ITEM(__pyx_t_13, __pyx_t_16); __Pyx_INCREF(__pyx_t_9); __pyx_t_16++; if (unlikely(0 < 0)) __PYX_ERR(0, 674, __pyx_L1_error)
                   #else
-                  __pyx_t_9 = PySequence_ITEM(__pyx_t_13, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 659, __pyx_L1_error)
+                  __pyx_t_9 = PySequence_ITEM(__pyx_t_13, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 674, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_9);
                   #endif
                   __Pyx_XDECREF_SET(__pyx_v_con, __pyx_t_9);
                   __pyx_t_9 = 0;
 
-                  /* "gensim2/models/word2vec_inner.pyx":660
+                  /* "gensim2/models/word2vec_inner.pyx":675
  *                             for target in targets:
  *                                 for con in context:
  *                                     c.indexes[effective_words] = target             # <<<<<<<<<<<<<<
  *                                     c.contexts[effective_words] = con
  *                                     #print("target:",id2word[target],"context:",id2word[context])
  */
-                  __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_target); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 660, __pyx_L1_error)
+                  __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_target); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 675, __pyx_L1_error)
                   (__pyx_v_c.indexes[__pyx_v_effective_words]) = __pyx_t_17;
 
-                  /* "gensim2/models/word2vec_inner.pyx":661
+                  /* "gensim2/models/word2vec_inner.pyx":676
  *                                 for con in context:
  *                                     c.indexes[effective_words] = target
  *                                     c.contexts[effective_words] = con             # <<<<<<<<<<<<<<
  *                                     #print("target:",id2word[target],"context:",id2word[context])
  *                                     effective_words += 1
  */
-                  __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_con); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 661, __pyx_L1_error)
+                  __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_con); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 676, __pyx_L1_error)
                   (__pyx_v_c.contexts[__pyx_v_effective_words]) = __pyx_t_17;
 
-                  /* "gensim2/models/word2vec_inner.pyx":663
+                  /* "gensim2/models/word2vec_inner.pyx":678
  *                                     c.contexts[effective_words] = con
  *                                     #print("target:",id2word[target],"context:",id2word[context])
  *                                     effective_words += 1             # <<<<<<<<<<<<<<
@@ -5923,7 +6197,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
                   __pyx_v_effective_words = (__pyx_v_effective_words + 1);
 
-                  /* "gensim2/models/word2vec_inner.pyx":664
+                  /* "gensim2/models/word2vec_inner.pyx":679
  *                                     #print("target:",id2word[target],"context:",id2word[context])
  *                                     effective_words += 1
  *                                     if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -5933,16 +6207,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
                   __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
                   if (__pyx_t_6) {
 
-                    /* "gensim2/models/word2vec_inner.pyx":665
+                    /* "gensim2/models/word2vec_inner.pyx":680
  *                                     effective_words += 1
  *                                     if effective_words >= MAX_SENTENCE_LEN:
  *                                         break             # <<<<<<<<<<<<<<
  *                                 if effective_words >= MAX_SENTENCE_LEN:
  *                                         break
  */
-                    goto __pyx_L39_break;
+                    goto __pyx_L49_break;
 
-                    /* "gensim2/models/word2vec_inner.pyx":664
+                    /* "gensim2/models/word2vec_inner.pyx":679
  *                                     #print("target:",id2word[target],"context:",id2word[context])
  *                                     effective_words += 1
  *                                     if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -5951,7 +6225,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
                   }
 
-                  /* "gensim2/models/word2vec_inner.pyx":659
+                  /* "gensim2/models/word2vec_inner.pyx":674
  *                             context = right_phrase
  *                             for target in targets:
  *                                 for con in context:             # <<<<<<<<<<<<<<
@@ -5959,10 +6233,10 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                                     c.contexts[effective_words] = con
  */
                 }
-                __pyx_L39_break:;
+                __pyx_L49_break:;
                 __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-                /* "gensim2/models/word2vec_inner.pyx":666
+                /* "gensim2/models/word2vec_inner.pyx":681
  *                                     if effective_words >= MAX_SENTENCE_LEN:
  *                                         break
  *                                 if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -5972,16 +6246,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
                 __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
                 if (__pyx_t_6) {
 
-                  /* "gensim2/models/word2vec_inner.pyx":667
+                  /* "gensim2/models/word2vec_inner.pyx":682
  *                                         break
  *                                 if effective_words >= MAX_SENTENCE_LEN:
  *                                         break             # <<<<<<<<<<<<<<
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break
  */
-                  goto __pyx_L37_break;
+                  goto __pyx_L47_break;
 
-                  /* "gensim2/models/word2vec_inner.pyx":666
+                  /* "gensim2/models/word2vec_inner.pyx":681
  *                                     if effective_words >= MAX_SENTENCE_LEN:
  *                                         break
  *                                 if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -5990,7 +6264,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
                 }
 
-                /* "gensim2/models/word2vec_inner.pyx":658
+                /* "gensim2/models/word2vec_inner.pyx":673
  *                             # all words in the right context
  *                             context = right_phrase
  *                             for target in targets:             # <<<<<<<<<<<<<<
@@ -5998,10 +6272,10 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                                     c.indexes[effective_words] = target
  */
               }
-              __pyx_L37_break:;
+              __pyx_L47_break:;
               __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-              /* "gensim2/models/word2vec_inner.pyx":653
+              /* "gensim2/models/word2vec_inner.pyx":668
  *                             if r>=end :
  *                                 break
  *                         if right_phrase and len(right_phrase)<=5:             # <<<<<<<<<<<<<<
@@ -6010,7 +6284,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":668
+            /* "gensim2/models/word2vec_inner.pyx":683
  *                                 if effective_words >= MAX_SENTENCE_LEN:
  *                                         break
  *                         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6020,16 +6294,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
             __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
             if (__pyx_t_6) {
 
-              /* "gensim2/models/word2vec_inner.pyx":669
+              /* "gensim2/models/word2vec_inner.pyx":684
  *                                         break
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break             # <<<<<<<<<<<<<<
  *                         r+=1 # word after ']'
  *                     else:
  */
-              goto __pyx_L24_break;
+              goto __pyx_L34_break;
 
-              /* "gensim2/models/word2vec_inner.pyx":668
+              /* "gensim2/models/word2vec_inner.pyx":683
  *                                 if effective_words >= MAX_SENTENCE_LEN:
  *                                         break
  *                         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6038,29 +6312,29 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":670
+            /* "gensim2/models/word2vec_inner.pyx":685
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break
  *                         r+=1 # word after ']'             # <<<<<<<<<<<<<<
  *                     else:
  *                         context = vlookup[right_con].index
  */
-            __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_r, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 670, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_r, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 685, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF_SET(__pyx_v_r, __pyx_t_2);
             __pyx_t_2 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":641
+            /* "gensim2/models/word2vec_inner.pyx":656
  *                     '''
  *                     ###### dynamic context ######
  *                     if right_con == '[':             # <<<<<<<<<<<<<<
  *                         r+=1
  *                         if r>=end :
  */
-            goto __pyx_L27;
+            goto __pyx_L37;
           }
 
-          /* "gensim2/models/word2vec_inner.pyx":672
+          /* "gensim2/models/word2vec_inner.pyx":687
  *                         r+=1 # word after ']'
  *                     else:
  *                         context = vlookup[right_con].index             # <<<<<<<<<<<<<<
@@ -6068,15 +6342,15 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                             c.indexes[effective_words] = target
  */
           /*else*/ {
-            __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_v_right_con); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 672, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_v_right_con); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 687, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
-            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_index); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 672, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_index); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 687, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_XDECREF_SET(__pyx_v_context, __pyx_t_13);
             __pyx_t_13 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":673
+            /* "gensim2/models/word2vec_inner.pyx":688
  *                     else:
  *                         context = vlookup[right_con].index
  *                         for target in targets:             # <<<<<<<<<<<<<<
@@ -6087,35 +6361,35 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
             for (;;) {
               if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_13)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_2 = PyList_GET_ITEM(__pyx_t_13, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 673, __pyx_L1_error)
+              __pyx_t_2 = PyList_GET_ITEM(__pyx_t_13, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 688, __pyx_L1_error)
               #else
-              __pyx_t_2 = PySequence_ITEM(__pyx_t_13, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 673, __pyx_L1_error)
+              __pyx_t_2 = PySequence_ITEM(__pyx_t_13, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 688, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_2);
               #endif
               __Pyx_XDECREF_SET(__pyx_v_target, __pyx_t_2);
               __pyx_t_2 = 0;
 
-              /* "gensim2/models/word2vec_inner.pyx":674
+              /* "gensim2/models/word2vec_inner.pyx":689
  *                         context = vlookup[right_con].index
  *                         for target in targets:
  *                             c.indexes[effective_words] = target             # <<<<<<<<<<<<<<
  *                             c.contexts[effective_words] = context
  *                             #print("target:",id2word[target],"context:",id2word[context])
  */
-              __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_target); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 674, __pyx_L1_error)
+              __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_target); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 689, __pyx_L1_error)
               (__pyx_v_c.indexes[__pyx_v_effective_words]) = __pyx_t_17;
 
-              /* "gensim2/models/word2vec_inner.pyx":675
+              /* "gensim2/models/word2vec_inner.pyx":690
  *                         for target in targets:
  *                             c.indexes[effective_words] = target
  *                             c.contexts[effective_words] = context             # <<<<<<<<<<<<<<
  *                             #print("target:",id2word[target],"context:",id2word[context])
  *                             effective_words += 1
  */
-              __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_context); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 675, __pyx_L1_error)
+              __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_context); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 690, __pyx_L1_error)
               (__pyx_v_c.contexts[__pyx_v_effective_words]) = __pyx_t_17;
 
-              /* "gensim2/models/word2vec_inner.pyx":677
+              /* "gensim2/models/word2vec_inner.pyx":692
  *                             c.contexts[effective_words] = context
  *                             #print("target:",id2word[target],"context:",id2word[context])
  *                             effective_words += 1             # <<<<<<<<<<<<<<
@@ -6124,7 +6398,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
               __pyx_v_effective_words = (__pyx_v_effective_words + 1);
 
-              /* "gensim2/models/word2vec_inner.pyx":678
+              /* "gensim2/models/word2vec_inner.pyx":693
  *                             #print("target:",id2word[target],"context:",id2word[context])
  *                             effective_words += 1
  *                             if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6134,16 +6408,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
               __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
               if (__pyx_t_6) {
 
-                /* "gensim2/models/word2vec_inner.pyx":680
+                /* "gensim2/models/word2vec_inner.pyx":695
  *                             if effective_words >= MAX_SENTENCE_LEN:
  *                                 #print("Sentence break")
  *                                 break             # <<<<<<<<<<<<<<
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break
  */
-                goto __pyx_L44_break;
+                goto __pyx_L54_break;
 
-                /* "gensim2/models/word2vec_inner.pyx":678
+                /* "gensim2/models/word2vec_inner.pyx":693
  *                             #print("target:",id2word[target],"context:",id2word[context])
  *                             effective_words += 1
  *                             if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6152,7 +6426,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
               }
 
-              /* "gensim2/models/word2vec_inner.pyx":673
+              /* "gensim2/models/word2vec_inner.pyx":688
  *                     else:
  *                         context = vlookup[right_con].index
  *                         for target in targets:             # <<<<<<<<<<<<<<
@@ -6160,10 +6434,10 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                             c.contexts[effective_words] = context
  */
             }
-            __pyx_L44_break:;
+            __pyx_L54_break:;
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":681
+            /* "gensim2/models/word2vec_inner.pyx":696
  *                                 #print("Sentence break")
  *                                 break
  *                         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6173,16 +6447,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
             __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
             if (__pyx_t_6) {
 
-              /* "gensim2/models/word2vec_inner.pyx":682
+              /* "gensim2/models/word2vec_inner.pyx":697
  *                                 break
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break             # <<<<<<<<<<<<<<
  *                         r+=1
  *                 else:
  */
-              goto __pyx_L24_break;
+              goto __pyx_L34_break;
 
-              /* "gensim2/models/word2vec_inner.pyx":681
+              /* "gensim2/models/word2vec_inner.pyx":696
  *                                 #print("Sentence break")
  *                                 break
  *                         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6191,31 +6465,31 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":683
+            /* "gensim2/models/word2vec_inner.pyx":698
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break
  *                         r+=1             # <<<<<<<<<<<<<<
  *                 else:
  *                     break
  */
-            __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_r, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 683, __pyx_L1_error)
+            __pyx_t_13 = __Pyx_PyInt_AddObjC(__pyx_v_r, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 698, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_DECREF_SET(__pyx_v_r, __pyx_t_13);
             __pyx_t_13 = 0;
           }
-          __pyx_L27:;
+          __pyx_L37:;
 
-          /* "gensim2/models/word2vec_inner.pyx":616
+          /* "gensim2/models/word2vec_inner.pyx":631
  *             while j < (i + c.window - rand_window):
  *             #while j < (i + c.window): # incase of no random window reduction
  *                 if r<end:             # <<<<<<<<<<<<<<
  *                     right_con = sent[r]
  *                     if right_con not in vlookup :
  */
-          goto __pyx_L25;
+          goto __pyx_L35;
         }
 
-        /* "gensim2/models/word2vec_inner.pyx":685
+        /* "gensim2/models/word2vec_inner.pyx":700
  *                         r+=1
  *                 else:
  *                     break             # <<<<<<<<<<<<<<
@@ -6223,11 +6497,11 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *             #print("right=",j)
  */
         /*else*/ {
-          goto __pyx_L24_break;
+          goto __pyx_L34_break;
         }
-        __pyx_L25:;
+        __pyx_L35:;
 
-        /* "gensim2/models/word2vec_inner.pyx":686
+        /* "gensim2/models/word2vec_inner.pyx":701
  *                 else:
  *                     break
  *                 j+=1             # <<<<<<<<<<<<<<
@@ -6235,11 +6509,11 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *             if effective_words >= MAX_SENTENCE_LEN:
  */
         __pyx_v_j = (__pyx_v_j + 1);
-        __pyx_L23_continue:;
+        __pyx_L33_continue:;
       }
-      __pyx_L24_break:;
+      __pyx_L34_break:;
 
-      /* "gensim2/models/word2vec_inner.pyx":688
+      /* "gensim2/models/word2vec_inner.pyx":703
  *                 j+=1
  *             #print("right=",j)
  *             if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6249,7 +6523,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
       __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
       if (__pyx_t_6) {
 
-        /* "gensim2/models/word2vec_inner.pyx":689
+        /* "gensim2/models/word2vec_inner.pyx":704
  *             #print("right=",j)
  *             if effective_words >= MAX_SENTENCE_LEN:
  *                 break             # <<<<<<<<<<<<<<
@@ -6258,7 +6532,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
         goto __pyx_L7_break;
 
-        /* "gensim2/models/word2vec_inner.pyx":688
+        /* "gensim2/models/word2vec_inner.pyx":703
  *                 j+=1
  *             #print("right=",j)
  *             if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6267,29 +6541,29 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":696
+      /* "gensim2/models/word2vec_inner.pyx":711
  *             #print("win=",t_start - c.window + rand_window)
  *             #print("left context")
  *             l = t_start-1             # <<<<<<<<<<<<<<
  *             j = t_start #window boundary pos (Global window counter)
  *             while j > (t_start - c.window + rand_window):
  */
-      __pyx_t_13 = __Pyx_PyInt_SubtractObjC(__pyx_v_t_start, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 696, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyInt_SubtractObjC(__pyx_v_t_start, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 711, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_XDECREF_SET(__pyx_v_l, __pyx_t_13);
       __pyx_t_13 = 0;
 
-      /* "gensim2/models/word2vec_inner.pyx":697
+      /* "gensim2/models/word2vec_inner.pyx":712
  *             #print("left context")
  *             l = t_start-1
  *             j = t_start #window boundary pos (Global window counter)             # <<<<<<<<<<<<<<
  *             while j > (t_start - c.window + rand_window):
  *             #while j > (t_start - c.window):
  */
-      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_v_t_start); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 697, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_v_t_start); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 712, __pyx_L1_error)
       __pyx_v_j = __pyx_t_12;
 
-      /* "gensim2/models/word2vec_inner.pyx":698
+      /* "gensim2/models/word2vec_inner.pyx":713
  *             l = t_start-1
  *             j = t_start #window boundary pos (Global window counter)
  *             while j > (t_start - c.window + rand_window):             # <<<<<<<<<<<<<<
@@ -6297,71 +6571,71 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                 if l>=0:
  */
       while (1) {
-        __pyx_t_13 = __Pyx_PyInt_From_int(__pyx_v_j); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 698, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyInt_From_int(__pyx_v_j); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 713, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_c.window); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 698, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_c.window); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 713, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_9 = PyNumber_Subtract(__pyx_v_t_start, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 698, __pyx_L1_error)
+        __pyx_t_9 = PyNumber_Subtract(__pyx_v_t_start, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 713, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = PyNumber_Add(__pyx_t_9, __pyx_v_rand_window); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 698, __pyx_L1_error)
+        __pyx_t_2 = PyNumber_Add(__pyx_t_9, __pyx_v_rand_window); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 713, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = PyObject_RichCompare(__pyx_t_13, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 698, __pyx_L1_error)
+        __pyx_t_9 = PyObject_RichCompare(__pyx_t_13, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 713, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 698, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 713, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         if (!__pyx_t_6) break;
 
-        /* "gensim2/models/word2vec_inner.pyx":700
+        /* "gensim2/models/word2vec_inner.pyx":715
  *             while j > (t_start - c.window + rand_window):
  *             #while j > (t_start - c.window):
  *                 if l>=0:             # <<<<<<<<<<<<<<
  *                     left_con = sent[l]
  *                     if left_con not in vlookup :
  */
-        __pyx_t_9 = PyObject_RichCompare(__pyx_v_l, __pyx_int_0, Py_GE); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 700, __pyx_L1_error)
-        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 700, __pyx_L1_error)
+        __pyx_t_9 = PyObject_RichCompare(__pyx_v_l, __pyx_int_0, Py_GE); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 715, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 715, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         if (__pyx_t_6) {
 
-          /* "gensim2/models/word2vec_inner.pyx":701
+          /* "gensim2/models/word2vec_inner.pyx":716
  *             #while j > (t_start - c.window):
  *                 if l>=0:
  *                     left_con = sent[l]             # <<<<<<<<<<<<<<
  *                     if left_con not in vlookup :
  *                         l-=1
  */
-          __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_l); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 701, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_l); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 716, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_XDECREF_SET(__pyx_v_left_con, __pyx_t_9);
           __pyx_t_9 = 0;
 
-          /* "gensim2/models/word2vec_inner.pyx":702
+          /* "gensim2/models/word2vec_inner.pyx":717
  *                 if l>=0:
  *                     left_con = sent[l]
  *                     if left_con not in vlookup :             # <<<<<<<<<<<<<<
  *                         l-=1
  *                         j-=1
  */
-          __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_v_left_con, __pyx_v_vlookup, Py_NE)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 702, __pyx_L1_error)
+          __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_v_left_con, __pyx_v_vlookup, Py_NE)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 717, __pyx_L1_error)
           __pyx_t_15 = (__pyx_t_6 != 0);
           if (__pyx_t_15) {
 
-            /* "gensim2/models/word2vec_inner.pyx":703
+            /* "gensim2/models/word2vec_inner.pyx":718
  *                     left_con = sent[l]
  *                     if left_con not in vlookup :
  *                         l-=1             # <<<<<<<<<<<<<<
  *                         j-=1
  *                         continue
  */
-            __pyx_t_9 = __Pyx_PyInt_SubtractObjC(__pyx_v_l, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 703, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_PyInt_SubtractObjC(__pyx_v_l, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 718, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_DECREF_SET(__pyx_v_l, __pyx_t_9);
             __pyx_t_9 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":704
+            /* "gensim2/models/word2vec_inner.pyx":719
  *                     if left_con not in vlookup :
  *                         l-=1
  *                         j-=1             # <<<<<<<<<<<<<<
@@ -6370,16 +6644,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
             __pyx_v_j = (__pyx_v_j - 1);
 
-            /* "gensim2/models/word2vec_inner.pyx":705
+            /* "gensim2/models/word2vec_inner.pyx":720
  *                         l-=1
  *                         j-=1
  *                         continue             # <<<<<<<<<<<<<<
  *                     ###### static context #######
  *                     '''
  */
-            goto __pyx_L48_continue;
+            goto __pyx_L58_continue;
 
-            /* "gensim2/models/word2vec_inner.pyx":702
+            /* "gensim2/models/word2vec_inner.pyx":717
  *                 if l>=0:
  *                     left_con = sent[l]
  *                     if left_con not in vlookup :             # <<<<<<<<<<<<<<
@@ -6388,50 +6662,50 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
           }
 
-          /* "gensim2/models/word2vec_inner.pyx":725
+          /* "gensim2/models/word2vec_inner.pyx":740
  *                     '''
  *                     ###### dynamic context ######
  *                     if left_con == ']':             # <<<<<<<<<<<<<<
  *                         l-=1
  *                         if l<0:
  */
-          __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_v_left_con, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 725, __pyx_L1_error)
+          __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_v_left_con, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 740, __pyx_L1_error)
           if (__pyx_t_15) {
 
-            /* "gensim2/models/word2vec_inner.pyx":726
+            /* "gensim2/models/word2vec_inner.pyx":741
  *                     ###### dynamic context ######
  *                     if left_con == ']':
  *                         l-=1             # <<<<<<<<<<<<<<
  *                         if l<0:
  *                             break
  */
-            __pyx_t_9 = __Pyx_PyInt_SubtractObjC(__pyx_v_l, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 726, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_PyInt_SubtractObjC(__pyx_v_l, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 741, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_DECREF_SET(__pyx_v_l, __pyx_t_9);
             __pyx_t_9 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":727
+            /* "gensim2/models/word2vec_inner.pyx":742
  *                     if left_con == ']':
  *                         l-=1
  *                         if l<0:             # <<<<<<<<<<<<<<
  *                             break
  *                         left_phrase = list()
  */
-            __pyx_t_9 = PyObject_RichCompare(__pyx_v_l, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 727, __pyx_L1_error)
-            __pyx_t_15 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 727, __pyx_L1_error)
+            __pyx_t_9 = PyObject_RichCompare(__pyx_v_l, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 742, __pyx_L1_error)
+            __pyx_t_15 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 742, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
             if (__pyx_t_15) {
 
-              /* "gensim2/models/word2vec_inner.pyx":728
+              /* "gensim2/models/word2vec_inner.pyx":743
  *                         l-=1
  *                         if l<0:
  *                             break             # <<<<<<<<<<<<<<
  *                         left_phrase = list()
  *                         while sent[l] != '[':
  */
-              goto __pyx_L49_break;
+              goto __pyx_L59_break;
 
-              /* "gensim2/models/word2vec_inner.pyx":727
+              /* "gensim2/models/word2vec_inner.pyx":742
  *                     if left_con == ']':
  *                         l-=1
  *                         if l<0:             # <<<<<<<<<<<<<<
@@ -6440,19 +6714,19 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":729
+            /* "gensim2/models/word2vec_inner.pyx":744
  *                         if l<0:
  *                             break
  *                         left_phrase = list()             # <<<<<<<<<<<<<<
  *                         while sent[l] != '[':
  *                             #if sent[l] in vlookup and sent[l][0].isupper() and sent[l][1:].islower(): #SP (capital words)
  */
-            __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 729, __pyx_L1_error)
+            __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 744, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_XDECREF_SET(__pyx_v_left_phrase, ((PyObject*)__pyx_t_9));
             __pyx_t_9 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":730
+            /* "gensim2/models/word2vec_inner.pyx":745
  *                             break
  *                         left_phrase = list()
  *                         while sent[l] != '[':             # <<<<<<<<<<<<<<
@@ -6460,45 +6734,45 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                             if sent[l] in vlookup :
  */
             while (1) {
-              __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_l); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 730, __pyx_L1_error)
+              __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_l); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 745, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_9);
-              __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__2, Py_NE)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 730, __pyx_L1_error)
+              __pyx_t_15 = (__Pyx_PyString_Equals(__pyx_t_9, __pyx_kp_s__2, Py_NE)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 745, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
               if (!__pyx_t_15) break;
 
-              /* "gensim2/models/word2vec_inner.pyx":732
+              /* "gensim2/models/word2vec_inner.pyx":747
  *                         while sent[l] != '[':
  *                             #if sent[l] in vlookup and sent[l][0].isupper() and sent[l][1:].islower(): #SP (capital words)
  *                             if sent[l] in vlookup :             # <<<<<<<<<<<<<<
  *                                 left_phrase.append(vlookup[sent[l]].index)
  *                             l-=1
  */
-              __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_l); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 732, __pyx_L1_error)
+              __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_l); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 747, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_9);
-              __pyx_t_15 = (__Pyx_PySequence_ContainsTF(__pyx_t_9, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 732, __pyx_L1_error)
+              __pyx_t_15 = (__Pyx_PySequence_ContainsTF(__pyx_t_9, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_15 < 0)) __PYX_ERR(0, 747, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
               __pyx_t_6 = (__pyx_t_15 != 0);
               if (__pyx_t_6) {
 
-                /* "gensim2/models/word2vec_inner.pyx":733
+                /* "gensim2/models/word2vec_inner.pyx":748
  *                             #if sent[l] in vlookup and sent[l][0].isupper() and sent[l][1:].islower(): #SP (capital words)
  *                             if sent[l] in vlookup :
  *                                 left_phrase.append(vlookup[sent[l]].index)             # <<<<<<<<<<<<<<
  *                             l-=1
  *                             if l<0:
  */
-                __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_l); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 733, __pyx_L1_error)
+                __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_sent, __pyx_v_l); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 748, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_9);
-                __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 733, __pyx_L1_error)
+                __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_t_9); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 748, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-                __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 733, __pyx_L1_error)
+                __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 748, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_9);
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_left_phrase, __pyx_t_9); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 733, __pyx_L1_error)
+                __pyx_t_14 = __Pyx_PyList_Append(__pyx_v_left_phrase, __pyx_t_9); if (unlikely(__pyx_t_14 == ((int)-1))) __PYX_ERR(0, 748, __pyx_L1_error)
                 __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-                /* "gensim2/models/word2vec_inner.pyx":732
+                /* "gensim2/models/word2vec_inner.pyx":747
  *                         while sent[l] != '[':
  *                             #if sent[l] in vlookup and sent[l][0].isupper() and sent[l][1:].islower(): #SP (capital words)
  *                             if sent[l] in vlookup :             # <<<<<<<<<<<<<<
@@ -6507,40 +6781,40 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
               }
 
-              /* "gensim2/models/word2vec_inner.pyx":734
+              /* "gensim2/models/word2vec_inner.pyx":749
  *                             if sent[l] in vlookup :
  *                                 left_phrase.append(vlookup[sent[l]].index)
  *                             l-=1             # <<<<<<<<<<<<<<
  *                             if l<0:
  *                                 break
  */
-              __pyx_t_9 = __Pyx_PyInt_SubtractObjC(__pyx_v_l, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 734, __pyx_L1_error)
+              __pyx_t_9 = __Pyx_PyInt_SubtractObjC(__pyx_v_l, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 749, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_9);
               __Pyx_DECREF_SET(__pyx_v_l, __pyx_t_9);
               __pyx_t_9 = 0;
 
-              /* "gensim2/models/word2vec_inner.pyx":735
+              /* "gensim2/models/word2vec_inner.pyx":750
  *                                 left_phrase.append(vlookup[sent[l]].index)
  *                             l-=1
  *                             if l<0:             # <<<<<<<<<<<<<<
  *                                 break
  *                         if left_phrase and len(left_phrase)<=5:
  */
-              __pyx_t_9 = PyObject_RichCompare(__pyx_v_l, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 735, __pyx_L1_error)
-              __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 735, __pyx_L1_error)
+              __pyx_t_9 = PyObject_RichCompare(__pyx_v_l, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_9); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 750, __pyx_L1_error)
+              __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 750, __pyx_L1_error)
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
               if (__pyx_t_6) {
 
-                /* "gensim2/models/word2vec_inner.pyx":736
+                /* "gensim2/models/word2vec_inner.pyx":751
  *                             l-=1
  *                             if l<0:
  *                                 break             # <<<<<<<<<<<<<<
  *                         if left_phrase and len(left_phrase)<=5:
  *                             # a random word in context phrase
  */
-                goto __pyx_L55_break;
+                goto __pyx_L65_break;
 
-                /* "gensim2/models/word2vec_inner.pyx":735
+                /* "gensim2/models/word2vec_inner.pyx":750
  *                                 left_phrase.append(vlookup[sent[l]].index)
  *                             l-=1
  *                             if l<0:             # <<<<<<<<<<<<<<
@@ -6549,9 +6823,9 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
               }
             }
-            __pyx_L55_break:;
+            __pyx_L65_break:;
 
-            /* "gensim2/models/word2vec_inner.pyx":737
+            /* "gensim2/models/word2vec_inner.pyx":752
  *                             if l<0:
  *                                 break
  *                         if left_phrase and len(left_phrase)<=5:             # <<<<<<<<<<<<<<
@@ -6562,15 +6836,15 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
             if (__pyx_t_15) {
             } else {
               __pyx_t_6 = __pyx_t_15;
-              goto __pyx_L59_bool_binop_done;
+              goto __pyx_L69_bool_binop_done;
             }
-            __pyx_t_7 = PyList_GET_SIZE(__pyx_v_left_phrase); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 737, __pyx_L1_error)
+            __pyx_t_7 = PyList_GET_SIZE(__pyx_v_left_phrase); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 752, __pyx_L1_error)
             __pyx_t_15 = ((__pyx_t_7 <= 5) != 0);
             __pyx_t_6 = __pyx_t_15;
-            __pyx_L59_bool_binop_done:;
+            __pyx_L69_bool_binop_done:;
             if (__pyx_t_6) {
 
-              /* "gensim2/models/word2vec_inner.pyx":741
+              /* "gensim2/models/word2vec_inner.pyx":756
  *                             #context = [random.choice(left_phrase)]
  *                             # all words in left phrase
  *                             context = left_phrase             # <<<<<<<<<<<<<<
@@ -6580,7 +6854,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
               __Pyx_INCREF(__pyx_v_left_phrase);
               __Pyx_XDECREF_SET(__pyx_v_context, __pyx_v_left_phrase);
 
-              /* "gensim2/models/word2vec_inner.pyx":742
+              /* "gensim2/models/word2vec_inner.pyx":757
  *                             # all words in left phrase
  *                             context = left_phrase
  *                             for target in targets:             # <<<<<<<<<<<<<<
@@ -6591,15 +6865,15 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
               for (;;) {
                 if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_9)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_2 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 742, __pyx_L1_error)
+                __pyx_t_2 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 757, __pyx_L1_error)
                 #else
-                __pyx_t_2 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 742, __pyx_L1_error)
+                __pyx_t_2 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 757, __pyx_L1_error)
                 __Pyx_GOTREF(__pyx_t_2);
                 #endif
                 __Pyx_XDECREF_SET(__pyx_v_target, __pyx_t_2);
                 __pyx_t_2 = 0;
 
-                /* "gensim2/models/word2vec_inner.pyx":743
+                /* "gensim2/models/word2vec_inner.pyx":758
  *                             context = left_phrase
  *                             for target in targets:
  *                                 for con in context:             # <<<<<<<<<<<<<<
@@ -6610,35 +6884,35 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
                 for (;;) {
                   if (__pyx_t_16 >= PyList_GET_SIZE(__pyx_t_2)) break;
                   #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                  __pyx_t_13 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_16); __Pyx_INCREF(__pyx_t_13); __pyx_t_16++; if (unlikely(0 < 0)) __PYX_ERR(0, 743, __pyx_L1_error)
+                  __pyx_t_13 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_16); __Pyx_INCREF(__pyx_t_13); __pyx_t_16++; if (unlikely(0 < 0)) __PYX_ERR(0, 758, __pyx_L1_error)
                   #else
-                  __pyx_t_13 = PySequence_ITEM(__pyx_t_2, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 743, __pyx_L1_error)
+                  __pyx_t_13 = PySequence_ITEM(__pyx_t_2, __pyx_t_16); __pyx_t_16++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 758, __pyx_L1_error)
                   __Pyx_GOTREF(__pyx_t_13);
                   #endif
                   __Pyx_XDECREF_SET(__pyx_v_con, __pyx_t_13);
                   __pyx_t_13 = 0;
 
-                  /* "gensim2/models/word2vec_inner.pyx":744
+                  /* "gensim2/models/word2vec_inner.pyx":759
  *                             for target in targets:
  *                                 for con in context:
  *                                     c.indexes[effective_words] = target             # <<<<<<<<<<<<<<
  *                                     c.contexts[effective_words] = con
  *                                     #print("target:",id2word[target],"context:",id2word[context])
  */
-                  __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_target); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 744, __pyx_L1_error)
+                  __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_target); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 759, __pyx_L1_error)
                   (__pyx_v_c.indexes[__pyx_v_effective_words]) = __pyx_t_17;
 
-                  /* "gensim2/models/word2vec_inner.pyx":745
+                  /* "gensim2/models/word2vec_inner.pyx":760
  *                                 for con in context:
  *                                     c.indexes[effective_words] = target
  *                                     c.contexts[effective_words] = con             # <<<<<<<<<<<<<<
  *                                     #print("target:",id2word[target],"context:",id2word[context])
  *                                     effective_words += 1
  */
-                  __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_con); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 745, __pyx_L1_error)
+                  __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_con); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 760, __pyx_L1_error)
                   (__pyx_v_c.contexts[__pyx_v_effective_words]) = __pyx_t_17;
 
-                  /* "gensim2/models/word2vec_inner.pyx":747
+                  /* "gensim2/models/word2vec_inner.pyx":762
  *                                     c.contexts[effective_words] = con
  *                                     #print("target:",id2word[target],"context:",id2word[context])
  *                                     effective_words += 1             # <<<<<<<<<<<<<<
@@ -6647,7 +6921,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
                   __pyx_v_effective_words = (__pyx_v_effective_words + 1);
 
-                  /* "gensim2/models/word2vec_inner.pyx":748
+                  /* "gensim2/models/word2vec_inner.pyx":763
  *                                     #print("target:",id2word[target],"context:",id2word[context])
  *                                     effective_words += 1
  *                                     if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6657,16 +6931,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
                   __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
                   if (__pyx_t_6) {
 
-                    /* "gensim2/models/word2vec_inner.pyx":749
+                    /* "gensim2/models/word2vec_inner.pyx":764
  *                                     effective_words += 1
  *                                     if effective_words >= MAX_SENTENCE_LEN:
  *                                         break             # <<<<<<<<<<<<<<
  *                                 if effective_words >= MAX_SENTENCE_LEN:
  *                                         break
  */
-                    goto __pyx_L64_break;
+                    goto __pyx_L74_break;
 
-                    /* "gensim2/models/word2vec_inner.pyx":748
+                    /* "gensim2/models/word2vec_inner.pyx":763
  *                                     #print("target:",id2word[target],"context:",id2word[context])
  *                                     effective_words += 1
  *                                     if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6675,7 +6949,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
                   }
 
-                  /* "gensim2/models/word2vec_inner.pyx":743
+                  /* "gensim2/models/word2vec_inner.pyx":758
  *                             context = left_phrase
  *                             for target in targets:
  *                                 for con in context:             # <<<<<<<<<<<<<<
@@ -6683,10 +6957,10 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                                     c.contexts[effective_words] = con
  */
                 }
-                __pyx_L64_break:;
+                __pyx_L74_break:;
                 __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-                /* "gensim2/models/word2vec_inner.pyx":750
+                /* "gensim2/models/word2vec_inner.pyx":765
  *                                     if effective_words >= MAX_SENTENCE_LEN:
  *                                         break
  *                                 if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6696,16 +6970,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
                 __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
                 if (__pyx_t_6) {
 
-                  /* "gensim2/models/word2vec_inner.pyx":751
+                  /* "gensim2/models/word2vec_inner.pyx":766
  *                                         break
  *                                 if effective_words >= MAX_SENTENCE_LEN:
  *                                         break             # <<<<<<<<<<<<<<
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break
  */
-                  goto __pyx_L62_break;
+                  goto __pyx_L72_break;
 
-                  /* "gensim2/models/word2vec_inner.pyx":750
+                  /* "gensim2/models/word2vec_inner.pyx":765
  *                                     if effective_words >= MAX_SENTENCE_LEN:
  *                                         break
  *                                 if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6714,7 +6988,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
                 }
 
-                /* "gensim2/models/word2vec_inner.pyx":742
+                /* "gensim2/models/word2vec_inner.pyx":757
  *                             # all words in left phrase
  *                             context = left_phrase
  *                             for target in targets:             # <<<<<<<<<<<<<<
@@ -6722,10 +6996,10 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                                     c.indexes[effective_words] = target
  */
               }
-              __pyx_L62_break:;
+              __pyx_L72_break:;
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-              /* "gensim2/models/word2vec_inner.pyx":737
+              /* "gensim2/models/word2vec_inner.pyx":752
  *                             if l<0:
  *                                 break
  *                         if left_phrase and len(left_phrase)<=5:             # <<<<<<<<<<<<<<
@@ -6734,7 +7008,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":752
+            /* "gensim2/models/word2vec_inner.pyx":767
  *                                 if effective_words >= MAX_SENTENCE_LEN:
  *                                         break
  *                         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6744,16 +7018,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
             __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
             if (__pyx_t_6) {
 
-              /* "gensim2/models/word2vec_inner.pyx":753
+              /* "gensim2/models/word2vec_inner.pyx":768
  *                                         break
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break             # <<<<<<<<<<<<<<
  *                         l-=1 # word before '['
  *                     else:
  */
-              goto __pyx_L49_break;
+              goto __pyx_L59_break;
 
-              /* "gensim2/models/word2vec_inner.pyx":752
+              /* "gensim2/models/word2vec_inner.pyx":767
  *                                 if effective_words >= MAX_SENTENCE_LEN:
  *                                         break
  *                         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6762,29 +7036,29 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":754
+            /* "gensim2/models/word2vec_inner.pyx":769
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break
  *                         l-=1 # word before '['             # <<<<<<<<<<<<<<
  *                     else:
  *                         context = vlookup[left_con].index
  */
-            __pyx_t_9 = __Pyx_PyInt_SubtractObjC(__pyx_v_l, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 754, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_PyInt_SubtractObjC(__pyx_v_l, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 769, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_DECREF_SET(__pyx_v_l, __pyx_t_9);
             __pyx_t_9 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":725
+            /* "gensim2/models/word2vec_inner.pyx":740
  *                     '''
  *                     ###### dynamic context ######
  *                     if left_con == ']':             # <<<<<<<<<<<<<<
  *                         l-=1
  *                         if l<0:
  */
-            goto __pyx_L52;
+            goto __pyx_L62;
           }
 
-          /* "gensim2/models/word2vec_inner.pyx":756
+          /* "gensim2/models/word2vec_inner.pyx":771
  *                         l-=1 # word before '['
  *                     else:
  *                         context = vlookup[left_con].index             # <<<<<<<<<<<<<<
@@ -6792,15 +7066,15 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                             c.indexes[effective_words] = target
  */
           /*else*/ {
-            __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_v_left_con); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 756, __pyx_L1_error)
+            __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_v_left_con); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 771, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_9);
-            __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 756, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 771, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
             __Pyx_XDECREF_SET(__pyx_v_context, __pyx_t_2);
             __pyx_t_2 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":757
+            /* "gensim2/models/word2vec_inner.pyx":772
  *                     else:
  *                         context = vlookup[left_con].index
  *                         for target in targets:             # <<<<<<<<<<<<<<
@@ -6811,35 +7085,35 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
             for (;;) {
               if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
               #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-              __pyx_t_9 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_9); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 757, __pyx_L1_error)
+              __pyx_t_9 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_9); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 772, __pyx_L1_error)
               #else
-              __pyx_t_9 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 757, __pyx_L1_error)
+              __pyx_t_9 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 772, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_9);
               #endif
               __Pyx_XDECREF_SET(__pyx_v_target, __pyx_t_9);
               __pyx_t_9 = 0;
 
-              /* "gensim2/models/word2vec_inner.pyx":758
+              /* "gensim2/models/word2vec_inner.pyx":773
  *                         context = vlookup[left_con].index
  *                         for target in targets:
  *                             c.indexes[effective_words] = target             # <<<<<<<<<<<<<<
  *                             c.contexts[effective_words] = context
  *                             #print("target:",id2word[target],"context:",id2word[context])
  */
-              __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_target); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 758, __pyx_L1_error)
+              __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_target); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 773, __pyx_L1_error)
               (__pyx_v_c.indexes[__pyx_v_effective_words]) = __pyx_t_17;
 
-              /* "gensim2/models/word2vec_inner.pyx":759
+              /* "gensim2/models/word2vec_inner.pyx":774
  *                         for target in targets:
  *                             c.indexes[effective_words] = target
  *                             c.contexts[effective_words] = context             # <<<<<<<<<<<<<<
  *                             #print("target:",id2word[target],"context:",id2word[context])
  *                             effective_words += 1
  */
-              __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_context); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 759, __pyx_L1_error)
+              __pyx_t_17 = __Pyx_PyInt_As_npy_uint32(__pyx_v_context); if (unlikely((__pyx_t_17 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 774, __pyx_L1_error)
               (__pyx_v_c.contexts[__pyx_v_effective_words]) = __pyx_t_17;
 
-              /* "gensim2/models/word2vec_inner.pyx":761
+              /* "gensim2/models/word2vec_inner.pyx":776
  *                             c.contexts[effective_words] = context
  *                             #print("target:",id2word[target],"context:",id2word[context])
  *                             effective_words += 1             # <<<<<<<<<<<<<<
@@ -6848,7 +7122,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
               __pyx_v_effective_words = (__pyx_v_effective_words + 1);
 
-              /* "gensim2/models/word2vec_inner.pyx":762
+              /* "gensim2/models/word2vec_inner.pyx":777
  *                             #print("target:",id2word[target],"context:",id2word[context])
  *                             effective_words += 1
  *                             if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6858,16 +7132,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
               __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
               if (__pyx_t_6) {
 
-                /* "gensim2/models/word2vec_inner.pyx":763
+                /* "gensim2/models/word2vec_inner.pyx":778
  *                             effective_words += 1
  *                             if effective_words >= MAX_SENTENCE_LEN:
  *                                 break             # <<<<<<<<<<<<<<
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break
  */
-                goto __pyx_L69_break;
+                goto __pyx_L79_break;
 
-                /* "gensim2/models/word2vec_inner.pyx":762
+                /* "gensim2/models/word2vec_inner.pyx":777
  *                             #print("target:",id2word[target],"context:",id2word[context])
  *                             effective_words += 1
  *                             if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6876,7 +7150,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
               }
 
-              /* "gensim2/models/word2vec_inner.pyx":757
+              /* "gensim2/models/word2vec_inner.pyx":772
  *                     else:
  *                         context = vlookup[left_con].index
  *                         for target in targets:             # <<<<<<<<<<<<<<
@@ -6884,10 +7158,10 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *                             c.contexts[effective_words] = context
  */
             }
-            __pyx_L69_break:;
+            __pyx_L79_break:;
             __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":764
+            /* "gensim2/models/word2vec_inner.pyx":779
  *                             if effective_words >= MAX_SENTENCE_LEN:
  *                                 break
  *                         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6897,16 +7171,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
             __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
             if (__pyx_t_6) {
 
-              /* "gensim2/models/word2vec_inner.pyx":765
+              /* "gensim2/models/word2vec_inner.pyx":780
  *                                 break
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break             # <<<<<<<<<<<<<<
  *                         l-=1
  *                 else:
  */
-              goto __pyx_L49_break;
+              goto __pyx_L59_break;
 
-              /* "gensim2/models/word2vec_inner.pyx":764
+              /* "gensim2/models/word2vec_inner.pyx":779
  *                             if effective_words >= MAX_SENTENCE_LEN:
  *                                 break
  *                         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6915,31 +7189,31 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":766
+            /* "gensim2/models/word2vec_inner.pyx":781
  *                         if effective_words >= MAX_SENTENCE_LEN:
  *                             break
  *                         l-=1             # <<<<<<<<<<<<<<
  *                 else:
  *                     break
  */
-            __pyx_t_2 = __Pyx_PyInt_SubtractObjC(__pyx_v_l, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 766, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyInt_SubtractObjC(__pyx_v_l, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 781, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF_SET(__pyx_v_l, __pyx_t_2);
             __pyx_t_2 = 0;
           }
-          __pyx_L52:;
+          __pyx_L62:;
 
-          /* "gensim2/models/word2vec_inner.pyx":700
+          /* "gensim2/models/word2vec_inner.pyx":715
  *             while j > (t_start - c.window + rand_window):
  *             #while j > (t_start - c.window):
  *                 if l>=0:             # <<<<<<<<<<<<<<
  *                     left_con = sent[l]
  *                     if left_con not in vlookup :
  */
-          goto __pyx_L50;
+          goto __pyx_L60;
         }
 
-        /* "gensim2/models/word2vec_inner.pyx":768
+        /* "gensim2/models/word2vec_inner.pyx":783
  *                         l-=1
  *                 else:
  *                     break             # <<<<<<<<<<<<<<
@@ -6947,11 +7221,11 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *             #print("left=",j)
  */
         /*else*/ {
-          goto __pyx_L49_break;
+          goto __pyx_L59_break;
         }
-        __pyx_L50:;
+        __pyx_L60:;
 
-        /* "gensim2/models/word2vec_inner.pyx":769
+        /* "gensim2/models/word2vec_inner.pyx":784
  *                 else:
  *                     break
  *                 j-=1             # <<<<<<<<<<<<<<
@@ -6959,11 +7233,11 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  *             #sys.exit(0)
  */
         __pyx_v_j = (__pyx_v_j - 1);
-        __pyx_L48_continue:;
+        __pyx_L58_continue:;
       }
-      __pyx_L49_break:;
+      __pyx_L59_break:;
 
-      /* "gensim2/models/word2vec_inner.pyx":772
+      /* "gensim2/models/word2vec_inner.pyx":787
  *             #print("left=",j)
  *             #sys.exit(0)
  *             i+=1             # <<<<<<<<<<<<<<
@@ -6972,7 +7246,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
       __pyx_v_i = (__pyx_v_i + 1);
 
-      /* "gensim2/models/word2vec_inner.pyx":773
+      /* "gensim2/models/word2vec_inner.pyx":788
  *             #sys.exit(0)
  *             i+=1
  *             if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6982,7 +7256,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
       __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
       if (__pyx_t_6) {
 
-        /* "gensim2/models/word2vec_inner.pyx":774
+        /* "gensim2/models/word2vec_inner.pyx":789
  *             i+=1
  *             if effective_words >= MAX_SENTENCE_LEN:
  *                 break             # <<<<<<<<<<<<<<
@@ -6991,7 +7265,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
         goto __pyx_L7_break;
 
-        /* "gensim2/models/word2vec_inner.pyx":773
+        /* "gensim2/models/word2vec_inner.pyx":788
  *             #sys.exit(0)
  *             i+=1
  *             if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -7003,7 +7277,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
     }
     __pyx_L7_break:;
 
-    /* "gensim2/models/word2vec_inner.pyx":776
+    /* "gensim2/models/word2vec_inner.pyx":791
  *                 break
  *             #print("\n")
  *         effective_sentences += 1             # <<<<<<<<<<<<<<
@@ -7012,7 +7286,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
     __pyx_v_effective_sentences = (__pyx_v_effective_sentences + 1);
 
-    /* "gensim2/models/word2vec_inner.pyx":779
+    /* "gensim2/models/word2vec_inner.pyx":794
  *         #print("\n")
  *         #print("sen_len:",len(c.sentence_idx)," max:",MAX_SENTENCE_LEN)
  *         c.sentence_idx[effective_sentences] = effective_words #The last index             # <<<<<<<<<<<<<<
@@ -7021,7 +7295,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
     (__pyx_v_c.sentence_idx[__pyx_v_effective_sentences]) = __pyx_v_effective_words;
 
-    /* "gensim2/models/word2vec_inner.pyx":782
+    /* "gensim2/models/word2vec_inner.pyx":797
  *         #print("effective sents:",effective_sentences)
  * 
  *         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -7031,7 +7305,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
     __pyx_t_6 = ((__pyx_v_effective_words >= 0x2710) != 0);
     if (__pyx_t_6) {
 
-      /* "gensim2/models/word2vec_inner.pyx":783
+      /* "gensim2/models/word2vec_inner.pyx":798
  * 
  *         if effective_words >= MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?             # <<<<<<<<<<<<<<
@@ -7040,7 +7314,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
       goto __pyx_L4_break;
 
-      /* "gensim2/models/word2vec_inner.pyx":782
+      /* "gensim2/models/word2vec_inner.pyx":797
  *         #print("effective sents:",effective_sentences)
  * 
  *         if effective_words >= MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -7061,7 +7335,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":794
+  /* "gensim2/models/word2vec_inner.pyx":809
  *     #    c.reduced_windows[i] = item
  * 
  *     assert effective_words <= MAX_SENTENCE_LEN             # <<<<<<<<<<<<<<
@@ -7072,12 +7346,12 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_effective_words <= 0x2710) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 794, __pyx_L1_error)
+      __PYX_ERR(0, 809, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "gensim2/models/word2vec_inner.pyx":797
+  /* "gensim2/models/word2vec_inner.pyx":812
  * 
  *     # release GIL & train on all sentences
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -7092,7 +7366,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
       #endif
       /*try:*/ {
 
-        /* "gensim2/models/word2vec_inner.pyx":798
+        /* "gensim2/models/word2vec_inner.pyx":813
  *     # release GIL & train on all sentences
  *     with nogil:
  *         for sent_idx in range(effective_sentences):             # <<<<<<<<<<<<<<
@@ -7104,7 +7378,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
         for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
           __pyx_v_sent_idx = __pyx_t_19;
 
-          /* "gensim2/models/word2vec_inner.pyx":799
+          /* "gensim2/models/word2vec_inner.pyx":814
  *     with nogil:
  *         for sent_idx in range(effective_sentences):
  *             idx_start = c.sentence_idx[sent_idx]             # <<<<<<<<<<<<<<
@@ -7113,7 +7387,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
           __pyx_v_idx_start = (__pyx_v_c.sentence_idx[__pyx_v_sent_idx]);
 
-          /* "gensim2/models/word2vec_inner.pyx":800
+          /* "gensim2/models/word2vec_inner.pyx":815
  *         for sent_idx in range(effective_sentences):
  *             idx_start = c.sentence_idx[sent_idx]
  *             idx_end = c.sentence_idx[sent_idx + 1]             # <<<<<<<<<<<<<<
@@ -7122,7 +7396,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  */
           __pyx_v_idx_end = (__pyx_v_c.sentence_idx[(__pyx_v_sent_idx + 1)]);
 
-          /* "gensim2/models/word2vec_inner.pyx":801
+          /* "gensim2/models/word2vec_inner.pyx":816
  *             idx_start = c.sentence_idx[sent_idx]
  *             idx_end = c.sentence_idx[sent_idx + 1]
  *             for i in range(idx_start, idx_end):             # <<<<<<<<<<<<<<
@@ -7134,7 +7408,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
           for (__pyx_t_22 = __pyx_v_idx_start; __pyx_t_22 < __pyx_t_21; __pyx_t_22+=1) {
             __pyx_v_i = __pyx_t_22;
 
-            /* "gensim2/models/word2vec_inner.pyx":804
+            /* "gensim2/models/word2vec_inner.pyx":819
  *                 # Normal case: c.indexes[i], c.contexts[i]
  *                 # Reverse case: c.contexts[i], c.indexes[i]
  *                 c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg, c.size,             # <<<<<<<<<<<<<<
@@ -7146,7 +7420,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
         }
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":797
+      /* "gensim2/models/word2vec_inner.pyx":812
  * 
  *     # release GIL & train on all sentences
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -7159,25 +7433,25 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
           __Pyx_FastGIL_Forget();
           Py_BLOCK_THREADS
           #endif
-          goto __pyx_L76;
+          goto __pyx_L86;
         }
-        __pyx_L76:;
+        __pyx_L86:;
       }
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":807
+  /* "gensim2/models/word2vec_inner.pyx":822
  *                                                          c.indexes[i], c.contexts[i], c.alpha, c.work, c.next_random,
  *                                                          c.word_locks, c.compute_loss, &c.running_training_loss)
  *     model.running_training_loss = c.running_training_loss             # <<<<<<<<<<<<<<
  *     return effective_words
  * 
  */
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_c.running_training_loss); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 807, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_c.running_training_loss); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_model, __pyx_n_s_running_training_loss, __pyx_t_1) < 0) __PYX_ERR(0, 807, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_model, __pyx_n_s_running_training_loss, __pyx_t_1) < 0) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":808
+  /* "gensim2/models/word2vec_inner.pyx":823
  *                                                          c.word_locks, c.compute_loss, &c.running_training_loss)
  *     model.running_training_loss = c.running_training_loss
  *     return effective_words             # <<<<<<<<<<<<<<
@@ -7185,7 +7459,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_effective_words); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 808, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_effective_words); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 823, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7217,8 +7491,11 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
   __Pyx_XDECREF(__pyx_v_rand_sizes);
   __Pyx_XDECREF(__pyx_v_word);
   __Pyx_XDECREF(__pyx_v_targets);
+  __Pyx_XDECREF(__pyx_v_pwords);
   __Pyx_XDECREF(__pyx_v_t_start);
   __Pyx_XDECREF(__pyx_v_rand_window);
+  __Pyx_XDECREF(__pyx_v_t_index);
+  __Pyx_XDECREF(__pyx_v_c_index);
   __Pyx_XDECREF(__pyx_v_r);
   __Pyx_XDECREF(__pyx_v_right_con);
   __Pyx_XDECREF(__pyx_v_right_phrase);
@@ -7233,7 +7510,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_train_batch_sg(CYTHO
   return __pyx_r;
 }
 
-/* "gensim2/models/word2vec_inner.pyx":811
+/* "gensim2/models/word2vec_inner.pyx":826
  * 
  * 
  * def train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss):             # <<<<<<<<<<<<<<
@@ -7289,35 +7566,35 @@ static PyObject *__pyx_pw_7gensim2_6models_14word2vec_inner_3train_batch_cbow(Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_sentences)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, 1); __PYX_ERR(0, 811, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, 1); __PYX_ERR(0, 826, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_alpha)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, 2); __PYX_ERR(0, 811, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, 2); __PYX_ERR(0, 826, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_work)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, 3); __PYX_ERR(0, 811, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, 3); __PYX_ERR(0, 826, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_neu1)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, 4); __PYX_ERR(0, 811, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, 4); __PYX_ERR(0, 826, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_compute_loss)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, 5); __PYX_ERR(0, 811, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, 5); __PYX_ERR(0, 826, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "train_batch_cbow") < 0)) __PYX_ERR(0, 811, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "train_batch_cbow") < 0)) __PYX_ERR(0, 826, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 6) {
       goto __pyx_L5_argtuple_error;
@@ -7338,7 +7615,7 @@ static PyObject *__pyx_pw_7gensim2_6models_14word2vec_inner_3train_batch_cbow(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 811, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 826, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("gensim2.models.word2vec_inner.train_batch_cbow", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7394,7 +7671,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("train_batch_cbow", 0);
 
-  /* "gensim2/models/word2vec_inner.pyx":839
+  /* "gensim2/models/word2vec_inner.pyx":854
  *     cdef Word2VecConfig c
  *     cdef int i, j, k
  *     cdef int effective_words = 0, effective_sentences = 0             # <<<<<<<<<<<<<<
@@ -7404,7 +7681,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
   __pyx_v_effective_words = 0;
   __pyx_v_effective_sentences = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":842
+  /* "gensim2/models/word2vec_inner.pyx":857
  *     cdef int sent_idx, idx_start, idx_end
  * 
  *     init_w2v_config(&c, model, alpha, compute_loss, _work, _neu1)             # <<<<<<<<<<<<<<
@@ -7413,26 +7690,26 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2._neu1 = __pyx_v__neu1;
-  __pyx_t_1 = __pyx_f_7gensim2_6models_14word2vec_inner_init_w2v_config((&__pyx_v_c), __pyx_v_model, __pyx_v_alpha, __pyx_v_compute_loss, __pyx_v__work, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 842, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_7gensim2_6models_14word2vec_inner_init_w2v_config((&__pyx_v_c), __pyx_v_model, __pyx_v_alpha, __pyx_v_compute_loss, __pyx_v__work, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 857, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":845
+  /* "gensim2/models/word2vec_inner.pyx":860
  * 
  *     # prepare C structures so we can go "full C" and release the Python GIL
  *     vlookup = model.wv.vocab             # <<<<<<<<<<<<<<
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 845, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 860, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_vocab); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 845, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_vocab); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 860, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_vlookup = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":846
+  /* "gensim2/models/word2vec_inner.pyx":861
  *     # prepare C structures so we can go "full C" and release the Python GIL
  *     vlookup = model.wv.vocab
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0             # <<<<<<<<<<<<<<
@@ -7441,7 +7718,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
   (__pyx_v_c.sentence_idx[0]) = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":847
+  /* "gensim2/models/word2vec_inner.pyx":862
  *     vlookup = model.wv.vocab
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:             # <<<<<<<<<<<<<<
@@ -7452,26 +7729,26 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
     __pyx_t_3 = __pyx_v_sentences; __Pyx_INCREF(__pyx_t_3); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_sentences); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 847, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_sentences); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 862, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 847, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 862, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_5)) {
       if (likely(PyList_CheckExact(__pyx_t_3))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 847, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 862, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 847, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 862, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 847, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 862, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 847, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 862, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -7481,7 +7758,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 847, __pyx_L1_error)
+          else __PYX_ERR(0, 862, __pyx_L1_error)
         }
         break;
       }
@@ -7490,18 +7767,18 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
     __Pyx_XDECREF_SET(__pyx_v_sent, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "gensim2/models/word2vec_inner.pyx":848
+    /* "gensim2/models/word2vec_inner.pyx":863
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:
  *         if not sent:             # <<<<<<<<<<<<<<
  *             continue  # ignore empty sentences; leave effective_sentences unchanged
  *         for token in sent:
  */
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_sent); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 848, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_sent); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 863, __pyx_L1_error)
     __pyx_t_7 = ((!__pyx_t_6) != 0);
     if (__pyx_t_7) {
 
-      /* "gensim2/models/word2vec_inner.pyx":849
+      /* "gensim2/models/word2vec_inner.pyx":864
  *     for sent in sentences:
  *         if not sent:
  *             continue  # ignore empty sentences; leave effective_sentences unchanged             # <<<<<<<<<<<<<<
@@ -7510,7 +7787,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
       goto __pyx_L3_continue;
 
-      /* "gensim2/models/word2vec_inner.pyx":848
+      /* "gensim2/models/word2vec_inner.pyx":863
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:
  *         if not sent:             # <<<<<<<<<<<<<<
@@ -7519,7 +7796,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
     }
 
-    /* "gensim2/models/word2vec_inner.pyx":850
+    /* "gensim2/models/word2vec_inner.pyx":865
  *         if not sent:
  *             continue  # ignore empty sentences; leave effective_sentences unchanged
  *         for token in sent:             # <<<<<<<<<<<<<<
@@ -7530,26 +7807,26 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
       __pyx_t_1 = __pyx_v_sent; __Pyx_INCREF(__pyx_t_1); __pyx_t_8 = 0;
       __pyx_t_9 = NULL;
     } else {
-      __pyx_t_8 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_sent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 850, __pyx_L1_error)
+      __pyx_t_8 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_sent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 865, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_9 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 850, __pyx_L1_error)
+      __pyx_t_9 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 865, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_9)) {
         if (likely(PyList_CheckExact(__pyx_t_1))) {
           if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_10 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_8); __Pyx_INCREF(__pyx_t_10); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 850, __pyx_L1_error)
+          __pyx_t_10 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_8); __Pyx_INCREF(__pyx_t_10); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 865, __pyx_L1_error)
           #else
-          __pyx_t_10 = PySequence_ITEM(__pyx_t_1, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 850, __pyx_L1_error)
+          __pyx_t_10 = PySequence_ITEM(__pyx_t_1, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 865, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           #endif
         } else {
           if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_8); __Pyx_INCREF(__pyx_t_10); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 850, __pyx_L1_error)
+          __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_8); __Pyx_INCREF(__pyx_t_10); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 865, __pyx_L1_error)
           #else
-          __pyx_t_10 = PySequence_ITEM(__pyx_t_1, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 850, __pyx_L1_error)
+          __pyx_t_10 = PySequence_ITEM(__pyx_t_1, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 865, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           #endif
         }
@@ -7559,7 +7836,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 850, __pyx_L1_error)
+            else __PYX_ERR(0, 865, __pyx_L1_error)
           }
           break;
         }
@@ -7568,16 +7845,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
       __Pyx_XDECREF_SET(__pyx_v_token, __pyx_t_10);
       __pyx_t_10 = 0;
 
-      /* "gensim2/models/word2vec_inner.pyx":851
+      /* "gensim2/models/word2vec_inner.pyx":866
  *             continue  # ignore empty sentences; leave effective_sentences unchanged
  *         for token in sent:
  *             word = vlookup[token] if token in vlookup else None             # <<<<<<<<<<<<<<
  *             if word is None:
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
  */
-      __pyx_t_7 = (__Pyx_PySequence_ContainsTF(__pyx_v_token, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 851, __pyx_L1_error)
+      __pyx_t_7 = (__Pyx_PySequence_ContainsTF(__pyx_v_token, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 866, __pyx_L1_error)
       if ((__pyx_t_7 != 0)) {
-        __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_v_token); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 851, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_v_token); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 866, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_10 = __pyx_t_11;
         __pyx_t_11 = 0;
@@ -7588,7 +7865,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
       __Pyx_XDECREF_SET(__pyx_v_word, __pyx_t_10);
       __pyx_t_10 = 0;
 
-      /* "gensim2/models/word2vec_inner.pyx":852
+      /* "gensim2/models/word2vec_inner.pyx":867
  *         for token in sent:
  *             word = vlookup[token] if token in vlookup else None
  *             if word is None:             # <<<<<<<<<<<<<<
@@ -7599,7 +7876,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
       __pyx_t_6 = (__pyx_t_7 != 0);
       if (__pyx_t_6) {
 
-        /* "gensim2/models/word2vec_inner.pyx":853
+        /* "gensim2/models/word2vec_inner.pyx":868
  *             word = vlookup[token] if token in vlookup else None
  *             if word is None:
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window             # <<<<<<<<<<<<<<
@@ -7608,7 +7885,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
         goto __pyx_L6_continue;
 
-        /* "gensim2/models/word2vec_inner.pyx":852
+        /* "gensim2/models/word2vec_inner.pyx":867
  *         for token in sent:
  *             word = vlookup[token] if token in vlookup else None
  *             if word is None:             # <<<<<<<<<<<<<<
@@ -7617,7 +7894,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":854
+      /* "gensim2/models/word2vec_inner.pyx":869
  *             if word is None:
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
  *             if c.sample and word.sample_int < random_int32(&c.next_random):             # <<<<<<<<<<<<<<
@@ -7630,20 +7907,20 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
         __pyx_t_6 = __pyx_t_7;
         goto __pyx_L10_bool_binop_done;
       }
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_sample_int); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 854, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_sample_int); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 869, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_11 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_f_7gensim2_6models_14word2vec_inner_random_int32((&__pyx_v_c.next_random))); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 854, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_f_7gensim2_6models_14word2vec_inner_random_int32((&__pyx_v_c.next_random))); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 869, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_12 = PyObject_RichCompare(__pyx_t_10, __pyx_t_11, Py_LT); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 854, __pyx_L1_error)
+      __pyx_t_12 = PyObject_RichCompare(__pyx_t_10, __pyx_t_11, Py_LT); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 869, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 854, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 869, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_6 = __pyx_t_7;
       __pyx_L10_bool_binop_done:;
       if (__pyx_t_6) {
 
-        /* "gensim2/models/word2vec_inner.pyx":855
+        /* "gensim2/models/word2vec_inner.pyx":870
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
  *             if c.sample and word.sample_int < random_int32(&c.next_random):
  *                 continue             # <<<<<<<<<<<<<<
@@ -7652,7 +7929,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
         goto __pyx_L6_continue;
 
-        /* "gensim2/models/word2vec_inner.pyx":854
+        /* "gensim2/models/word2vec_inner.pyx":869
  *             if word is None:
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
  *             if c.sample and word.sample_int < random_int32(&c.next_random):             # <<<<<<<<<<<<<<
@@ -7661,20 +7938,20 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":856
+      /* "gensim2/models/word2vec_inner.pyx":871
  *             if c.sample and word.sample_int < random_int32(&c.next_random):
  *                 continue
  *             c.indexes[effective_words] = word.index             # <<<<<<<<<<<<<<
  *             if c.hs:
  *                 c.codelens[effective_words] = <int>len(word.code)
  */
-      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_index); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 856, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_index); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 871, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
-      __pyx_t_13 = __Pyx_PyInt_As_npy_uint32(__pyx_t_12); if (unlikely((__pyx_t_13 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 856, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyInt_As_npy_uint32(__pyx_t_12); if (unlikely((__pyx_t_13 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 871, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       (__pyx_v_c.indexes[__pyx_v_effective_words]) = __pyx_t_13;
 
-      /* "gensim2/models/word2vec_inner.pyx":857
+      /* "gensim2/models/word2vec_inner.pyx":872
  *                 continue
  *             c.indexes[effective_words] = word.index
  *             if c.hs:             # <<<<<<<<<<<<<<
@@ -7684,46 +7961,46 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
       __pyx_t_6 = (__pyx_v_c.hs != 0);
       if (__pyx_t_6) {
 
-        /* "gensim2/models/word2vec_inner.pyx":858
+        /* "gensim2/models/word2vec_inner.pyx":873
  *             c.indexes[effective_words] = word.index
  *             if c.hs:
  *                 c.codelens[effective_words] = <int>len(word.code)             # <<<<<<<<<<<<<<
  *                 c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
  */
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 858, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 873, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_14 = PyObject_Length(__pyx_t_12); if (unlikely(__pyx_t_14 == ((Py_ssize_t)-1))) __PYX_ERR(0, 858, __pyx_L1_error)
+        __pyx_t_14 = PyObject_Length(__pyx_t_12); if (unlikely(__pyx_t_14 == ((Py_ssize_t)-1))) __PYX_ERR(0, 873, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         (__pyx_v_c.codelens[__pyx_v_effective_words]) = ((int)__pyx_t_14);
 
-        /* "gensim2/models/word2vec_inner.pyx":859
+        /* "gensim2/models/word2vec_inner.pyx":874
  *             if c.hs:
  *                 c.codelens[effective_words] = <int>len(word.code)
  *                 c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)             # <<<<<<<<<<<<<<
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *             effective_words += 1
  */
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 859, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 874, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 859, __pyx_L1_error)
+        if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 874, __pyx_L1_error)
         (__pyx_v_c.codes[__pyx_v_effective_words]) = ((__pyx_t_5numpy_uint8_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_12)));
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-        /* "gensim2/models/word2vec_inner.pyx":860
+        /* "gensim2/models/word2vec_inner.pyx":875
  *                 c.codelens[effective_words] = <int>len(word.code)
  *                 c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)             # <<<<<<<<<<<<<<
  *             effective_words += 1
  *             if effective_words == MAX_SENTENCE_LEN:
  */
-        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_point); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 860, __pyx_L1_error)
+        __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_point); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 875, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_12);
-        if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 860, __pyx_L1_error)
+        if (!(likely(((__pyx_t_12) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_12, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 875, __pyx_L1_error)
         (__pyx_v_c.points[__pyx_v_effective_words]) = ((__pyx_t_5numpy_uint32_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_12)));
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-        /* "gensim2/models/word2vec_inner.pyx":857
+        /* "gensim2/models/word2vec_inner.pyx":872
  *                 continue
  *             c.indexes[effective_words] = word.index
  *             if c.hs:             # <<<<<<<<<<<<<<
@@ -7732,7 +8009,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":861
+      /* "gensim2/models/word2vec_inner.pyx":876
  *                 c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *             effective_words += 1             # <<<<<<<<<<<<<<
@@ -7741,7 +8018,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
       __pyx_v_effective_words = (__pyx_v_effective_words + 1);
 
-      /* "gensim2/models/word2vec_inner.pyx":862
+      /* "gensim2/models/word2vec_inner.pyx":877
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *             effective_words += 1
  *             if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -7751,7 +8028,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
       __pyx_t_6 = ((__pyx_v_effective_words == 0x2710) != 0);
       if (__pyx_t_6) {
 
-        /* "gensim2/models/word2vec_inner.pyx":863
+        /* "gensim2/models/word2vec_inner.pyx":878
  *             effective_words += 1
  *             if effective_words == MAX_SENTENCE_LEN:
  *                 break  # TODO: log warning, tally overflow?             # <<<<<<<<<<<<<<
@@ -7760,7 +8037,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
         goto __pyx_L7_break;
 
-        /* "gensim2/models/word2vec_inner.pyx":862
+        /* "gensim2/models/word2vec_inner.pyx":877
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *             effective_words += 1
  *             if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -7769,7 +8046,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":850
+      /* "gensim2/models/word2vec_inner.pyx":865
  *         if not sent:
  *             continue  # ignore empty sentences; leave effective_sentences unchanged
  *         for token in sent:             # <<<<<<<<<<<<<<
@@ -7781,7 +8058,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
     __pyx_L7_break:;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "gensim2/models/word2vec_inner.pyx":868
+    /* "gensim2/models/word2vec_inner.pyx":883
  *         # across sentence boundaries.
  *         # indices of sentence number X are between <sentence_idx[X], sentence_idx[X])
  *         effective_sentences += 1             # <<<<<<<<<<<<<<
@@ -7790,7 +8067,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
     __pyx_v_effective_sentences = (__pyx_v_effective_sentences + 1);
 
-    /* "gensim2/models/word2vec_inner.pyx":869
+    /* "gensim2/models/word2vec_inner.pyx":884
  *         # indices of sentence number X are between <sentence_idx[X], sentence_idx[X])
  *         effective_sentences += 1
  *         c.sentence_idx[effective_sentences] = effective_words             # <<<<<<<<<<<<<<
@@ -7799,7 +8076,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
     (__pyx_v_c.sentence_idx[__pyx_v_effective_sentences]) = __pyx_v_effective_words;
 
-    /* "gensim2/models/word2vec_inner.pyx":871
+    /* "gensim2/models/word2vec_inner.pyx":886
  *         c.sentence_idx[effective_sentences] = effective_words
  * 
  *         if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -7809,7 +8086,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
     __pyx_t_6 = ((__pyx_v_effective_words == 0x2710) != 0);
     if (__pyx_t_6) {
 
-      /* "gensim2/models/word2vec_inner.pyx":872
+      /* "gensim2/models/word2vec_inner.pyx":887
  * 
  *         if effective_words == MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?             # <<<<<<<<<<<<<<
@@ -7818,7 +8095,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
       goto __pyx_L4_break;
 
-      /* "gensim2/models/word2vec_inner.pyx":871
+      /* "gensim2/models/word2vec_inner.pyx":886
  *         c.sentence_idx[effective_sentences] = effective_words
  * 
  *         if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -7827,7 +8104,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
     }
 
-    /* "gensim2/models/word2vec_inner.pyx":847
+    /* "gensim2/models/word2vec_inner.pyx":862
  *     vlookup = model.wv.vocab
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:             # <<<<<<<<<<<<<<
@@ -7839,7 +8116,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":875
+  /* "gensim2/models/word2vec_inner.pyx":890
  * 
  *     # precompute "reduced window" offsets in a single randint() call
  *     for i, item in enumerate(model.random.randint(0, c.window, effective_words)):             # <<<<<<<<<<<<<<
@@ -7847,14 +8124,14 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  * 
  */
   __pyx_t_15 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 875, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_random); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 890, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_randint); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 875, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_randint); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 890, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_c.window); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 875, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_c.window); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 890, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_effective_words); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 875, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyInt_From_int(__pyx_v_effective_words); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 890, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __pyx_t_10 = NULL;
   __pyx_t_16 = 0;
@@ -7871,7 +8148,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_12)) {
     PyObject *__pyx_temp[4] = {__pyx_t_10, __pyx_int_0, __pyx_t_1, __pyx_t_11};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_16, 3+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 875, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_16, 3+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 890, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7881,7 +8158,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_12)) {
     PyObject *__pyx_temp[4] = {__pyx_t_10, __pyx_int_0, __pyx_t_1, __pyx_t_11};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_16, 3+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 875, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_12, __pyx_temp+1-__pyx_t_16, 3+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 890, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7889,7 +8166,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
   } else
   #endif
   {
-    __pyx_t_17 = PyTuple_New(3+__pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 875, __pyx_L1_error)
+    __pyx_t_17 = PyTuple_New(3+__pyx_t_16); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 890, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
     if (__pyx_t_10) {
       __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -7903,7 +8180,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
     PyTuple_SET_ITEM(__pyx_t_17, 2+__pyx_t_16, __pyx_t_11);
     __pyx_t_1 = 0;
     __pyx_t_11 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_17, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 875, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_12, __pyx_t_17, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 890, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
   }
@@ -7912,9 +8189,9 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
     __pyx_t_12 = __pyx_t_3; __Pyx_INCREF(__pyx_t_12); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 875, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 890, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
-    __pyx_t_5 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 875, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_12)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 890, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -7922,17 +8199,17 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
       if (likely(PyList_CheckExact(__pyx_t_12))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_12)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 875, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_12, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 890, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_12, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 875, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_12, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 890, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_12)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 875, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_12, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 890, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_12, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 875, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_12, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 890, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -7942,7 +8219,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 875, __pyx_L1_error)
+          else __PYX_ERR(0, 890, __pyx_L1_error)
         }
         break;
       }
@@ -7953,17 +8230,17 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
     __pyx_v_i = __pyx_t_15;
     __pyx_t_15 = (__pyx_t_15 + 1);
 
-    /* "gensim2/models/word2vec_inner.pyx":876
+    /* "gensim2/models/word2vec_inner.pyx":891
  *     # precompute "reduced window" offsets in a single randint() call
  *     for i, item in enumerate(model.random.randint(0, c.window, effective_words)):
  *         c.reduced_windows[i] = item             # <<<<<<<<<<<<<<
  * 
  *     # release GIL & train on all sentences
  */
-    __pyx_t_13 = __Pyx_PyInt_As_npy_uint32(__pyx_v_item); if (unlikely((__pyx_t_13 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 876, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyInt_As_npy_uint32(__pyx_v_item); if (unlikely((__pyx_t_13 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 891, __pyx_L1_error)
     (__pyx_v_c.reduced_windows[__pyx_v_i]) = __pyx_t_13;
 
-    /* "gensim2/models/word2vec_inner.pyx":875
+    /* "gensim2/models/word2vec_inner.pyx":890
  * 
  *     # precompute "reduced window" offsets in a single randint() call
  *     for i, item in enumerate(model.random.randint(0, c.window, effective_words)):             # <<<<<<<<<<<<<<
@@ -7973,7 +8250,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
   }
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":879
+  /* "gensim2/models/word2vec_inner.pyx":894
  * 
  *     # release GIL & train on all sentences
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -7988,7 +8265,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
       #endif
       /*try:*/ {
 
-        /* "gensim2/models/word2vec_inner.pyx":880
+        /* "gensim2/models/word2vec_inner.pyx":895
  *     # release GIL & train on all sentences
  *     with nogil:
  *         for sent_idx in range(effective_sentences):             # <<<<<<<<<<<<<<
@@ -8000,7 +8277,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
         for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_16; __pyx_t_18+=1) {
           __pyx_v_sent_idx = __pyx_t_18;
 
-          /* "gensim2/models/word2vec_inner.pyx":881
+          /* "gensim2/models/word2vec_inner.pyx":896
  *     with nogil:
  *         for sent_idx in range(effective_sentences):
  *             idx_start = c.sentence_idx[sent_idx]             # <<<<<<<<<<<<<<
@@ -8009,7 +8286,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
           __pyx_v_idx_start = (__pyx_v_c.sentence_idx[__pyx_v_sent_idx]);
 
-          /* "gensim2/models/word2vec_inner.pyx":882
+          /* "gensim2/models/word2vec_inner.pyx":897
  *         for sent_idx in range(effective_sentences):
  *             idx_start = c.sentence_idx[sent_idx]
  *             idx_end = c.sentence_idx[sent_idx + 1]             # <<<<<<<<<<<<<<
@@ -8018,7 +8295,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
           __pyx_v_idx_end = (__pyx_v_c.sentence_idx[(__pyx_v_sent_idx + 1)]);
 
-          /* "gensim2/models/word2vec_inner.pyx":883
+          /* "gensim2/models/word2vec_inner.pyx":898
  *             idx_start = c.sentence_idx[sent_idx]
  *             idx_end = c.sentence_idx[sent_idx + 1]
  *             for i in range(idx_start, idx_end):             # <<<<<<<<<<<<<<
@@ -8030,7 +8307,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
           for (__pyx_t_21 = __pyx_v_idx_start; __pyx_t_21 < __pyx_t_20; __pyx_t_21+=1) {
             __pyx_v_i = __pyx_t_21;
 
-            /* "gensim2/models/word2vec_inner.pyx":884
+            /* "gensim2/models/word2vec_inner.pyx":899
  *             idx_end = c.sentence_idx[sent_idx + 1]
  *             for i in range(idx_start, idx_end):
  *                 j = i - c.window + c.reduced_windows[i]             # <<<<<<<<<<<<<<
@@ -8039,7 +8316,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
             __pyx_v_j = ((__pyx_v_i - __pyx_v_c.window) + (__pyx_v_c.reduced_windows[__pyx_v_i]));
 
-            /* "gensim2/models/word2vec_inner.pyx":885
+            /* "gensim2/models/word2vec_inner.pyx":900
  *             for i in range(idx_start, idx_end):
  *                 j = i - c.window + c.reduced_windows[i]
  *                 if j < idx_start:             # <<<<<<<<<<<<<<
@@ -8049,7 +8326,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
             __pyx_t_6 = ((__pyx_v_j < __pyx_v_idx_start) != 0);
             if (__pyx_t_6) {
 
-              /* "gensim2/models/word2vec_inner.pyx":886
+              /* "gensim2/models/word2vec_inner.pyx":901
  *                 j = i - c.window + c.reduced_windows[i]
  *                 if j < idx_start:
  *                     j = idx_start             # <<<<<<<<<<<<<<
@@ -8058,7 +8335,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
               __pyx_v_j = __pyx_v_idx_start;
 
-              /* "gensim2/models/word2vec_inner.pyx":885
+              /* "gensim2/models/word2vec_inner.pyx":900
  *             for i in range(idx_start, idx_end):
  *                 j = i - c.window + c.reduced_windows[i]
  *                 if j < idx_start:             # <<<<<<<<<<<<<<
@@ -8067,7 +8344,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":887
+            /* "gensim2/models/word2vec_inner.pyx":902
  *                 if j < idx_start:
  *                     j = idx_start
  *                 k = i + c.window + 1 - c.reduced_windows[i]             # <<<<<<<<<<<<<<
@@ -8076,7 +8353,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
             __pyx_v_k = (((__pyx_v_i + __pyx_v_c.window) + 1) - (__pyx_v_c.reduced_windows[__pyx_v_i]));
 
-            /* "gensim2/models/word2vec_inner.pyx":888
+            /* "gensim2/models/word2vec_inner.pyx":903
  *                     j = idx_start
  *                 k = i + c.window + 1 - c.reduced_windows[i]
  *                 if k > idx_end:             # <<<<<<<<<<<<<<
@@ -8086,7 +8363,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
             __pyx_t_6 = ((__pyx_v_k > __pyx_v_idx_end) != 0);
             if (__pyx_t_6) {
 
-              /* "gensim2/models/word2vec_inner.pyx":889
+              /* "gensim2/models/word2vec_inner.pyx":904
  *                 k = i + c.window + 1 - c.reduced_windows[i]
  *                 if k > idx_end:
  *                     k = idx_end             # <<<<<<<<<<<<<<
@@ -8095,7 +8372,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
               __pyx_v_k = __pyx_v_idx_end;
 
-              /* "gensim2/models/word2vec_inner.pyx":888
+              /* "gensim2/models/word2vec_inner.pyx":903
  *                     j = idx_start
  *                 k = i + c.window + 1 - c.reduced_windows[i]
  *                 if k > idx_end:             # <<<<<<<<<<<<<<
@@ -8104,7 +8381,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":890
+            /* "gensim2/models/word2vec_inner.pyx":905
  *                 if k > idx_end:
  *                     k = idx_end
  *                 if c.hs:             # <<<<<<<<<<<<<<
@@ -8114,7 +8391,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
             __pyx_t_6 = (__pyx_v_c.hs != 0);
             if (__pyx_t_6) {
 
-              /* "gensim2/models/word2vec_inner.pyx":891
+              /* "gensim2/models/word2vec_inner.pyx":906
  *                     k = idx_end
  *                 if c.hs:
  *                     w2v_fast_sentence_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.word_locks, c.compute_loss, &c.running_training_loss)             # <<<<<<<<<<<<<<
@@ -8123,7 +8400,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
               __pyx_f_7gensim2_6models_14word2vec_inner_w2v_fast_sentence_cbow_hs((__pyx_v_c.points[__pyx_v_i]), (__pyx_v_c.codes[__pyx_v_i]), __pyx_v_c.codelens, __pyx_v_c.neu1, __pyx_v_c.syn0, __pyx_v_c.syn1, __pyx_v_c.size, __pyx_v_c.indexes, __pyx_v_c.alpha, __pyx_v_c.work, __pyx_v_i, __pyx_v_j, __pyx_v_k, __pyx_v_c.cbow_mean, __pyx_v_c.word_locks, __pyx_v_c.compute_loss, (&__pyx_v_c.running_training_loss));
 
-              /* "gensim2/models/word2vec_inner.pyx":890
+              /* "gensim2/models/word2vec_inner.pyx":905
  *                 if k > idx_end:
  *                     k = idx_end
  *                 if c.hs:             # <<<<<<<<<<<<<<
@@ -8132,7 +8409,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":892
+            /* "gensim2/models/word2vec_inner.pyx":907
  *                 if c.hs:
  *                     w2v_fast_sentence_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.word_locks, c.compute_loss, &c.running_training_loss)
  *                 if c.negative:             # <<<<<<<<<<<<<<
@@ -8142,7 +8419,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
             __pyx_t_6 = (__pyx_v_c.negative != 0);
             if (__pyx_t_6) {
 
-              /* "gensim2/models/word2vec_inner.pyx":893
+              /* "gensim2/models/word2vec_inner.pyx":908
  *                     w2v_fast_sentence_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.word_locks, c.compute_loss, &c.running_training_loss)
  *                 if c.negative:
  *                     c.next_random = w2v_fast_sentence_cbow_neg(c.negative, c.cum_table, c.cum_table_len, c.codelens, c.neu1, c.syn0, c.syn1neg, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)             # <<<<<<<<<<<<<<
@@ -8151,7 +8428,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  */
               __pyx_v_c.next_random = __pyx_f_7gensim2_6models_14word2vec_inner_w2v_fast_sentence_cbow_neg(__pyx_v_c.negative, __pyx_v_c.cum_table, __pyx_v_c.cum_table_len, __pyx_v_c.codelens, __pyx_v_c.neu1, __pyx_v_c.syn0, __pyx_v_c.syn1neg, __pyx_v_c.size, __pyx_v_c.indexes, __pyx_v_c.alpha, __pyx_v_c.work, __pyx_v_i, __pyx_v_j, __pyx_v_k, __pyx_v_c.cbow_mean, __pyx_v_c.next_random, __pyx_v_c.word_locks, __pyx_v_c.compute_loss, (&__pyx_v_c.running_training_loss));
 
-              /* "gensim2/models/word2vec_inner.pyx":892
+              /* "gensim2/models/word2vec_inner.pyx":907
  *                 if c.hs:
  *                     w2v_fast_sentence_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.word_locks, c.compute_loss, &c.running_training_loss)
  *                 if c.negative:             # <<<<<<<<<<<<<<
@@ -8163,7 +8440,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
         }
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":879
+      /* "gensim2/models/word2vec_inner.pyx":894
  * 
  *     # release GIL & train on all sentences
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -8182,19 +8459,19 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
       }
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":895
+  /* "gensim2/models/word2vec_inner.pyx":910
  *                     c.next_random = w2v_fast_sentence_cbow_neg(c.negative, c.cum_table, c.cum_table_len, c.codelens, c.neu1, c.syn0, c.syn1neg, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)
  * 
  *     model.running_training_loss = c.running_training_loss             # <<<<<<<<<<<<<<
  *     return effective_words
  * 
  */
-  __pyx_t_12 = PyFloat_FromDouble(__pyx_v_c.running_training_loss); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 895, __pyx_L1_error)
+  __pyx_t_12 = PyFloat_FromDouble(__pyx_v_c.running_training_loss); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 910, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_model, __pyx_n_s_running_training_loss, __pyx_t_12) < 0) __PYX_ERR(0, 895, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_model, __pyx_n_s_running_training_loss, __pyx_t_12) < 0) __PYX_ERR(0, 910, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":896
+  /* "gensim2/models/word2vec_inner.pyx":911
  * 
  *     model.running_training_loss = c.running_training_loss
  *     return effective_words             # <<<<<<<<<<<<<<
@@ -8202,13 +8479,13 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_12 = __Pyx_PyInt_From_int(__pyx_v_effective_words); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 896, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyInt_From_int(__pyx_v_effective_words); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 911, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __pyx_r = __pyx_t_12;
   __pyx_t_12 = 0;
   goto __pyx_L0;
 
-  /* "gensim2/models/word2vec_inner.pyx":811
+  /* "gensim2/models/word2vec_inner.pyx":826
  * 
  * 
  * def train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss):             # <<<<<<<<<<<<<<
@@ -8237,7 +8514,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_2train_batch_cbow(CY
   return __pyx_r;
 }
 
-/* "gensim2/models/word2vec_inner.pyx":899
+/* "gensim2/models/word2vec_inner.pyx":914
  * 
  * 
  * def score_sentence_sg(model, sentence, _work):             # <<<<<<<<<<<<<<
@@ -8284,17 +8561,17 @@ static PyObject *__pyx_pw_7gensim2_6models_14word2vec_inner_5score_sentence_sg(P
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_sentence)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("score_sentence_sg", 1, 3, 3, 1); __PYX_ERR(0, 899, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("score_sentence_sg", 1, 3, 3, 1); __PYX_ERR(0, 914, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_work)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("score_sentence_sg", 1, 3, 3, 2); __PYX_ERR(0, 899, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("score_sentence_sg", 1, 3, 3, 2); __PYX_ERR(0, 914, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "score_sentence_sg") < 0)) __PYX_ERR(0, 899, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "score_sentence_sg") < 0)) __PYX_ERR(0, 914, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -8309,7 +8586,7 @@ static PyObject *__pyx_pw_7gensim2_6models_14word2vec_inner_5score_sentence_sg(P
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("score_sentence_sg", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 899, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("score_sentence_sg", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 914, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("gensim2.models.word2vec_inner.score_sentence_sg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8354,52 +8631,52 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("score_sentence_sg", 0);
 
-  /* "gensim2/models/word2vec_inner.pyx":923
+  /* "gensim2/models/word2vec_inner.pyx":938
  *     """
  *     cdef Word2VecConfig c
  *     c.syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))             # <<<<<<<<<<<<<<
  *     c.size = model.wv.vector_size
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 923, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 938, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_vectors); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 923, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_vectors); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 938, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 923, __pyx_L1_error)
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 938, __pyx_L1_error)
   __pyx_v_c.syn0 = ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_2)));
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":924
+  /* "gensim2/models/word2vec_inner.pyx":939
  *     cdef Word2VecConfig c
  *     c.syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))
  *     c.size = model.wv.vector_size             # <<<<<<<<<<<<<<
  * 
  *     c.window = model.window
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 924, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 939, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_vector_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 924, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_vector_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 939, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 924, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 939, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c.size = __pyx_t_3;
 
-  /* "gensim2/models/word2vec_inner.pyx":926
+  /* "gensim2/models/word2vec_inner.pyx":941
  *     c.size = model.wv.vector_size
  * 
  *     c.window = model.window             # <<<<<<<<<<<<<<
  * 
  *     cdef int i, j, k
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_window); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 926, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_window); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 941, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 926, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_3 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 941, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c.window = __pyx_t_3;
 
-  /* "gensim2/models/word2vec_inner.pyx":929
+  /* "gensim2/models/word2vec_inner.pyx":944
  * 
  *     cdef int i, j, k
  *     cdef long result = 0             # <<<<<<<<<<<<<<
@@ -8408,48 +8685,48 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
   __pyx_v_result = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":932
+  /* "gensim2/models/word2vec_inner.pyx":947
  *     cdef int sentence_len
  * 
  *     c.syn1 = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1))             # <<<<<<<<<<<<<<
  * 
  *     # convert Python structures to primitive types, so we can release the GIL
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_trainables); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 932, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_trainables); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 947, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_syn1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 932, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_syn1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 947, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 932, __pyx_L1_error)
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 947, __pyx_L1_error)
   __pyx_v_c.syn1 = ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_2)));
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":935
+  /* "gensim2/models/word2vec_inner.pyx":950
  * 
  *     # convert Python structures to primitive types, so we can release the GIL
  *     c.work = <REAL_t *>np.PyArray_DATA(_work)             # <<<<<<<<<<<<<<
  * 
  *     vlookup = model.wv.vocab
  */
-  if (!(likely(((__pyx_v__work) == Py_None) || likely(__Pyx_TypeTest(__pyx_v__work, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 935, __pyx_L1_error)
+  if (!(likely(((__pyx_v__work) == Py_None) || likely(__Pyx_TypeTest(__pyx_v__work, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 950, __pyx_L1_error)
   __pyx_v_c.work = ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__work)));
 
-  /* "gensim2/models/word2vec_inner.pyx":937
+  /* "gensim2/models/word2vec_inner.pyx":952
  *     c.work = <REAL_t *>np.PyArray_DATA(_work)
  * 
  *     vlookup = model.wv.vocab             # <<<<<<<<<<<<<<
  *     i = 0
  *     for token in sentence:
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 937, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 952, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_vocab); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 937, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_vocab); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 952, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_vlookup = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":938
+  /* "gensim2/models/word2vec_inner.pyx":953
  * 
  *     vlookup = model.wv.vocab
  *     i = 0             # <<<<<<<<<<<<<<
@@ -8458,7 +8735,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
   __pyx_v_i = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":939
+  /* "gensim2/models/word2vec_inner.pyx":954
  *     vlookup = model.wv.vocab
  *     i = 0
  *     for token in sentence:             # <<<<<<<<<<<<<<
@@ -8469,26 +8746,26 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
     __pyx_t_1 = __pyx_v_sentence; __Pyx_INCREF(__pyx_t_1); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_sentence); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 939, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_sentence); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 954, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 939, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 954, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_5)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 939, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 954, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 939, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 954, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 939, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 954, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 939, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 954, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -8498,7 +8775,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 939, __pyx_L1_error)
+          else __PYX_ERR(0, 954, __pyx_L1_error)
         }
         break;
       }
@@ -8507,16 +8784,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
     __Pyx_XDECREF_SET(__pyx_v_token, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "gensim2/models/word2vec_inner.pyx":940
+    /* "gensim2/models/word2vec_inner.pyx":955
  *     i = 0
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None             # <<<<<<<<<<<<<<
  *         if word is None:
  *             continue  # should drop the
  */
-    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_v_token, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 940, __pyx_L1_error)
+    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_v_token, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 955, __pyx_L1_error)
     if ((__pyx_t_6 != 0)) {
-      __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_v_token); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 940, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_v_token); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 955, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_2 = __pyx_t_7;
       __pyx_t_7 = 0;
@@ -8527,7 +8804,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
     __Pyx_XDECREF_SET(__pyx_v_word, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "gensim2/models/word2vec_inner.pyx":941
+    /* "gensim2/models/word2vec_inner.pyx":956
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:             # <<<<<<<<<<<<<<
@@ -8538,7 +8815,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
     __pyx_t_8 = (__pyx_t_6 != 0);
     if (__pyx_t_8) {
 
-      /* "gensim2/models/word2vec_inner.pyx":942
+      /* "gensim2/models/word2vec_inner.pyx":957
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:
  *             continue  # should drop the             # <<<<<<<<<<<<<<
@@ -8547,7 +8824,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
       goto __pyx_L3_continue;
 
-      /* "gensim2/models/word2vec_inner.pyx":941
+      /* "gensim2/models/word2vec_inner.pyx":956
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:             # <<<<<<<<<<<<<<
@@ -8556,59 +8833,59 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
     }
 
-    /* "gensim2/models/word2vec_inner.pyx":943
+    /* "gensim2/models/word2vec_inner.pyx":958
  *         if word is None:
  *             continue  # should drop the
  *         c.indexes[i] = word.index             # <<<<<<<<<<<<<<
  *         c.codelens[i] = <int>len(word.code)
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 943, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 958, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_9 = __Pyx_PyInt_As_npy_uint32(__pyx_t_2); if (unlikely((__pyx_t_9 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 943, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_As_npy_uint32(__pyx_t_2); if (unlikely((__pyx_t_9 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 958, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     (__pyx_v_c.indexes[__pyx_v_i]) = __pyx_t_9;
 
-    /* "gensim2/models/word2vec_inner.pyx":944
+    /* "gensim2/models/word2vec_inner.pyx":959
  *             continue  # should drop the
  *         c.indexes[i] = word.index
  *         c.codelens[i] = <int>len(word.code)             # <<<<<<<<<<<<<<
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 944, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 959, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 944, __pyx_L1_error)
+    __pyx_t_10 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 959, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     (__pyx_v_c.codelens[__pyx_v_i]) = ((int)__pyx_t_10);
 
-    /* "gensim2/models/word2vec_inner.pyx":945
+    /* "gensim2/models/word2vec_inner.pyx":960
  *         c.indexes[i] = word.index
  *         c.codelens[i] = <int>len(word.code)
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)             # <<<<<<<<<<<<<<
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *         result += 1
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 945, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 960, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 945, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 960, __pyx_L1_error)
     (__pyx_v_c.codes[__pyx_v_i]) = ((__pyx_t_5numpy_uint8_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_2)));
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "gensim2/models/word2vec_inner.pyx":946
+    /* "gensim2/models/word2vec_inner.pyx":961
  *         c.codelens[i] = <int>len(word.code)
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)             # <<<<<<<<<<<<<<
  *         result += 1
  *         i += 1
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_point); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 946, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_point); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 961, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 946, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 961, __pyx_L1_error)
     (__pyx_v_c.points[__pyx_v_i]) = ((__pyx_t_5numpy_uint32_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_2)));
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "gensim2/models/word2vec_inner.pyx":947
+    /* "gensim2/models/word2vec_inner.pyx":962
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *         result += 1             # <<<<<<<<<<<<<<
@@ -8617,7 +8894,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
     __pyx_v_result = (__pyx_v_result + 1);
 
-    /* "gensim2/models/word2vec_inner.pyx":948
+    /* "gensim2/models/word2vec_inner.pyx":963
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *         result += 1
  *         i += 1             # <<<<<<<<<<<<<<
@@ -8626,7 +8903,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
     __pyx_v_i = (__pyx_v_i + 1);
 
-    /* "gensim2/models/word2vec_inner.pyx":949
+    /* "gensim2/models/word2vec_inner.pyx":964
  *         result += 1
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -8636,7 +8913,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
     __pyx_t_8 = ((__pyx_v_i == 0x2710) != 0);
     if (__pyx_t_8) {
 
-      /* "gensim2/models/word2vec_inner.pyx":950
+      /* "gensim2/models/word2vec_inner.pyx":965
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?             # <<<<<<<<<<<<<<
@@ -8645,7 +8922,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
       goto __pyx_L4_break;
 
-      /* "gensim2/models/word2vec_inner.pyx":949
+      /* "gensim2/models/word2vec_inner.pyx":964
  *         result += 1
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -8654,7 +8931,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
     }
 
-    /* "gensim2/models/word2vec_inner.pyx":939
+    /* "gensim2/models/word2vec_inner.pyx":954
  *     vlookup = model.wv.vocab
  *     i = 0
  *     for token in sentence:             # <<<<<<<<<<<<<<
@@ -8666,7 +8943,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":951
+  /* "gensim2/models/word2vec_inner.pyx":966
  *         if i == MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?
  *     sentence_len = i             # <<<<<<<<<<<<<<
@@ -8675,7 +8952,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
   __pyx_v_sentence_len = __pyx_v_i;
 
-  /* "gensim2/models/word2vec_inner.pyx":954
+  /* "gensim2/models/word2vec_inner.pyx":969
  * 
  *     # release GIL & train on the sentence
  *     c.work[0] = 0.0             # <<<<<<<<<<<<<<
@@ -8684,7 +8961,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
   (__pyx_v_c.work[0]) = 0.0;
 
-  /* "gensim2/models/word2vec_inner.pyx":956
+  /* "gensim2/models/word2vec_inner.pyx":971
  *     c.work[0] = 0.0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -8699,7 +8976,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
       #endif
       /*try:*/ {
 
-        /* "gensim2/models/word2vec_inner.pyx":957
+        /* "gensim2/models/word2vec_inner.pyx":972
  * 
  *     with nogil:
  *         for i in range(sentence_len):             # <<<<<<<<<<<<<<
@@ -8711,7 +8988,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
         for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
           __pyx_v_i = __pyx_t_12;
 
-          /* "gensim2/models/word2vec_inner.pyx":958
+          /* "gensim2/models/word2vec_inner.pyx":973
  *     with nogil:
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:             # <<<<<<<<<<<<<<
@@ -8721,7 +8998,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
           __pyx_t_8 = (((__pyx_v_c.codelens[__pyx_v_i]) == 0) != 0);
           if (__pyx_t_8) {
 
-            /* "gensim2/models/word2vec_inner.pyx":959
+            /* "gensim2/models/word2vec_inner.pyx":974
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:
  *                 continue             # <<<<<<<<<<<<<<
@@ -8730,7 +9007,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
             goto __pyx_L10_continue;
 
-            /* "gensim2/models/word2vec_inner.pyx":958
+            /* "gensim2/models/word2vec_inner.pyx":973
  *     with nogil:
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:             # <<<<<<<<<<<<<<
@@ -8739,7 +9016,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
           }
 
-          /* "gensim2/models/word2vec_inner.pyx":960
+          /* "gensim2/models/word2vec_inner.pyx":975
  *             if c.codelens[i] == 0:
  *                 continue
  *             j = i - c.window             # <<<<<<<<<<<<<<
@@ -8748,7 +9025,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
           __pyx_v_j = (__pyx_v_i - __pyx_v_c.window);
 
-          /* "gensim2/models/word2vec_inner.pyx":961
+          /* "gensim2/models/word2vec_inner.pyx":976
  *                 continue
  *             j = i - c.window
  *             if j < 0:             # <<<<<<<<<<<<<<
@@ -8758,7 +9035,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
           __pyx_t_8 = ((__pyx_v_j < 0) != 0);
           if (__pyx_t_8) {
 
-            /* "gensim2/models/word2vec_inner.pyx":962
+            /* "gensim2/models/word2vec_inner.pyx":977
  *             j = i - c.window
  *             if j < 0:
  *                 j = 0             # <<<<<<<<<<<<<<
@@ -8767,7 +9044,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
             __pyx_v_j = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":961
+            /* "gensim2/models/word2vec_inner.pyx":976
  *                 continue
  *             j = i - c.window
  *             if j < 0:             # <<<<<<<<<<<<<<
@@ -8776,7 +9053,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
           }
 
-          /* "gensim2/models/word2vec_inner.pyx":963
+          /* "gensim2/models/word2vec_inner.pyx":978
  *             if j < 0:
  *                 j = 0
  *             k = i + c.window + 1             # <<<<<<<<<<<<<<
@@ -8785,7 +9062,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
           __pyx_v_k = ((__pyx_v_i + __pyx_v_c.window) + 1);
 
-          /* "gensim2/models/word2vec_inner.pyx":964
+          /* "gensim2/models/word2vec_inner.pyx":979
  *                 j = 0
  *             k = i + c.window + 1
  *             if k > sentence_len:             # <<<<<<<<<<<<<<
@@ -8795,7 +9072,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
           __pyx_t_8 = ((__pyx_v_k > __pyx_v_sentence_len) != 0);
           if (__pyx_t_8) {
 
-            /* "gensim2/models/word2vec_inner.pyx":965
+            /* "gensim2/models/word2vec_inner.pyx":980
  *             k = i + c.window + 1
  *             if k > sentence_len:
  *                 k = sentence_len             # <<<<<<<<<<<<<<
@@ -8804,7 +9081,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
             __pyx_v_k = __pyx_v_sentence_len;
 
-            /* "gensim2/models/word2vec_inner.pyx":964
+            /* "gensim2/models/word2vec_inner.pyx":979
  *                 j = 0
  *             k = i + c.window + 1
  *             if k > sentence_len:             # <<<<<<<<<<<<<<
@@ -8813,7 +9090,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
           }
 
-          /* "gensim2/models/word2vec_inner.pyx":966
+          /* "gensim2/models/word2vec_inner.pyx":981
  *             if k > sentence_len:
  *                 k = sentence_len
  *             for j in range(j, k):             # <<<<<<<<<<<<<<
@@ -8825,7 +9102,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
           for (__pyx_t_15 = __pyx_v_j; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
             __pyx_v_j = __pyx_t_15;
 
-            /* "gensim2/models/word2vec_inner.pyx":967
+            /* "gensim2/models/word2vec_inner.pyx":982
  *                 k = sentence_len
  *             for j in range(j, k):
  *                 if j == i or c.codelens[j] == 0:             # <<<<<<<<<<<<<<
@@ -8843,7 +9120,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
             __pyx_L18_bool_binop_done:;
             if (__pyx_t_8) {
 
-              /* "gensim2/models/word2vec_inner.pyx":968
+              /* "gensim2/models/word2vec_inner.pyx":983
  *             for j in range(j, k):
  *                 if j == i or c.codelens[j] == 0:
  *                     continue             # <<<<<<<<<<<<<<
@@ -8852,7 +9129,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
               goto __pyx_L15_continue;
 
-              /* "gensim2/models/word2vec_inner.pyx":967
+              /* "gensim2/models/word2vec_inner.pyx":982
  *                 k = sentence_len
  *             for j in range(j, k):
  *                 if j == i or c.codelens[j] == 0:             # <<<<<<<<<<<<<<
@@ -8861,7 +9138,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  */
             }
 
-            /* "gensim2/models/word2vec_inner.pyx":969
+            /* "gensim2/models/word2vec_inner.pyx":984
  *                 if j == i or c.codelens[j] == 0:
  *                     continue
  *                 score_pair_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.work)             # <<<<<<<<<<<<<<
@@ -8875,7 +9152,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
         }
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":956
+      /* "gensim2/models/word2vec_inner.pyx":971
  *     c.work[0] = 0.0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -8894,7 +9171,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
       }
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":971
+  /* "gensim2/models/word2vec_inner.pyx":986
  *                 score_pair_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.work)
  * 
  *     return c.work[0]             # <<<<<<<<<<<<<<
@@ -8902,13 +9179,13 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
  * cdef void score_pair_sg_hs(
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((__pyx_v_c.work[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 971, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((__pyx_v_c.work[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 986, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "gensim2/models/word2vec_inner.pyx":899
+  /* "gensim2/models/word2vec_inner.pyx":914
  * 
  * 
  * def score_sentence_sg(model, sentence, _work):             # <<<<<<<<<<<<<<
@@ -8932,7 +9209,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_4score_sentence_sg(C
   return __pyx_r;
 }
 
-/* "gensim2/models/word2vec_inner.pyx":973
+/* "gensim2/models/word2vec_inner.pyx":988
  *     return c.work[0]
  * 
  * cdef void score_pair_sg_hs(             # <<<<<<<<<<<<<<
@@ -8953,7 +9230,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
   int __pyx_t_5;
   long __pyx_t_6;
 
-  /* "gensim2/models/word2vec_inner.pyx":979
+  /* "gensim2/models/word2vec_inner.pyx":994
  * 
  *     cdef long long b
  *     cdef long long row1 = word2_index * size, row2, sgn             # <<<<<<<<<<<<<<
@@ -8962,7 +9239,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
  */
   __pyx_v_row1 = (__pyx_v_word2_index * __pyx_v_size);
 
-  /* "gensim2/models/word2vec_inner.pyx":982
+  /* "gensim2/models/word2vec_inner.pyx":997
  *     cdef REAL_t f
  * 
  *     for b in range(codelen):             # <<<<<<<<<<<<<<
@@ -8974,7 +9251,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_b = __pyx_t_3;
 
-    /* "gensim2/models/word2vec_inner.pyx":983
+    /* "gensim2/models/word2vec_inner.pyx":998
  * 
  *     for b in range(codelen):
  *         row2 = word_point[b] * size             # <<<<<<<<<<<<<<
@@ -8983,7 +9260,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
  */
     __pyx_v_row2 = ((__pyx_v_word_point[__pyx_v_b]) * __pyx_v_size);
 
-    /* "gensim2/models/word2vec_inner.pyx":984
+    /* "gensim2/models/word2vec_inner.pyx":999
  *     for b in range(codelen):
  *         row2 = word_point[b] * size
  *         f = our_dot(&size, &syn0[row1], &ONE, &syn1[row2], &ONE)             # <<<<<<<<<<<<<<
@@ -8992,7 +9269,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
  */
     __pyx_v_f = __pyx_v_7gensim2_6models_14word2vec_inner_our_dot((&__pyx_v_size), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_7gensim2_6models_14word2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_7gensim2_6models_14word2vec_inner_ONE));
 
-    /* "gensim2/models/word2vec_inner.pyx":985
+    /* "gensim2/models/word2vec_inner.pyx":1000
  *         row2 = word_point[b] * size
  *         f = our_dot(&size, &syn0[row1], &ONE, &syn1[row2], &ONE)
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1             # <<<<<<<<<<<<<<
@@ -9001,7 +9278,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
  */
     __pyx_v_sgn = __Pyx_pow_long(-1L, ((long)(__pyx_v_word_code[__pyx_v_b])));
 
-    /* "gensim2/models/word2vec_inner.pyx":986
+    /* "gensim2/models/word2vec_inner.pyx":1001
  *         f = our_dot(&size, &syn0[row1], &ONE, &syn1[row2], &ONE)
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn             # <<<<<<<<<<<<<<
@@ -9010,7 +9287,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
  */
     __pyx_v_f = (__pyx_v_f * __pyx_v_sgn);
 
-    /* "gensim2/models/word2vec_inner.pyx":987
+    /* "gensim2/models/word2vec_inner.pyx":1002
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -9028,7 +9305,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "gensim2/models/word2vec_inner.pyx":988
+      /* "gensim2/models/word2vec_inner.pyx":1003
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:
  *             continue             # <<<<<<<<<<<<<<
@@ -9037,7 +9314,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
  */
       goto __pyx_L3_continue;
 
-      /* "gensim2/models/word2vec_inner.pyx":987
+      /* "gensim2/models/word2vec_inner.pyx":1002
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -9046,7 +9323,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
  */
     }
 
-    /* "gensim2/models/word2vec_inner.pyx":989
+    /* "gensim2/models/word2vec_inner.pyx":1004
  *         if f <= -MAX_EXP or f >= MAX_EXP:
  *             continue
  *         f = LOG_TABLE[<int>((f + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
@@ -9055,7 +9332,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
  */
     __pyx_v_f = (__pyx_v_7gensim2_6models_14word2vec_inner_LOG_TABLE[((int)((__pyx_v_f + 6.0) * 83.0))]);
 
-    /* "gensim2/models/word2vec_inner.pyx":990
+    /* "gensim2/models/word2vec_inner.pyx":1005
  *             continue
  *         f = LOG_TABLE[<int>((f + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *         work[0] += f             # <<<<<<<<<<<<<<
@@ -9067,7 +9344,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
     __pyx_L3_continue:;
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":973
+  /* "gensim2/models/word2vec_inner.pyx":988
  *     return c.work[0]
  * 
  * cdef void score_pair_sg_hs(             # <<<<<<<<<<<<<<
@@ -9078,7 +9355,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_sg_hs(__pyx_t_5
   /* function exit code */
 }
 
-/* "gensim2/models/word2vec_inner.pyx":992
+/* "gensim2/models/word2vec_inner.pyx":1007
  *         work[0] += f
  * 
  * def score_sentence_cbow(model, sentence, _work, _neu1):             # <<<<<<<<<<<<<<
@@ -9128,23 +9405,23 @@ static PyObject *__pyx_pw_7gensim2_6models_14word2vec_inner_7score_sentence_cbow
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_sentence)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("score_sentence_cbow", 1, 4, 4, 1); __PYX_ERR(0, 992, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("score_sentence_cbow", 1, 4, 4, 1); __PYX_ERR(0, 1007, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_work)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("score_sentence_cbow", 1, 4, 4, 2); __PYX_ERR(0, 992, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("score_sentence_cbow", 1, 4, 4, 2); __PYX_ERR(0, 1007, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_neu1)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("score_sentence_cbow", 1, 4, 4, 3); __PYX_ERR(0, 992, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("score_sentence_cbow", 1, 4, 4, 3); __PYX_ERR(0, 1007, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "score_sentence_cbow") < 0)) __PYX_ERR(0, 992, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "score_sentence_cbow") < 0)) __PYX_ERR(0, 1007, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -9161,7 +9438,7 @@ static PyObject *__pyx_pw_7gensim2_6models_14word2vec_inner_7score_sentence_cbow
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("score_sentence_cbow", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 992, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("score_sentence_cbow", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 1007, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("gensim2.models.word2vec_inner.score_sentence_cbow", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -9203,65 +9480,65 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("score_sentence_cbow", 0);
 
-  /* "gensim2/models/word2vec_inner.pyx":1019
+  /* "gensim2/models/word2vec_inner.pyx":1034
  *     cdef Word2VecConfig c
  * 
  *     c.cbow_mean = model.cbow_mean             # <<<<<<<<<<<<<<
  *     c.syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))
  *     c.size = model.wv.vector_size
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_cbow_mean); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1019, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_cbow_mean); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1034, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1019, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1034, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c.cbow_mean = __pyx_t_2;
 
-  /* "gensim2/models/word2vec_inner.pyx":1020
+  /* "gensim2/models/word2vec_inner.pyx":1035
  * 
  *     c.cbow_mean = model.cbow_mean
  *     c.syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))             # <<<<<<<<<<<<<<
  *     c.size = model.wv.vector_size
  *     c.window = model.window
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1020, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1035, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_vectors); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1020, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_vectors); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1035, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1020, __pyx_L1_error)
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1035, __pyx_L1_error)
   __pyx_v_c.syn0 = ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":1021
+  /* "gensim2/models/word2vec_inner.pyx":1036
  *     c.cbow_mean = model.cbow_mean
  *     c.syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))
  *     c.size = model.wv.vector_size             # <<<<<<<<<<<<<<
  *     c.window = model.window
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1021, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1036, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_vector_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1021, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_vector_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1036, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1021, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1036, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c.size = __pyx_t_2;
 
-  /* "gensim2/models/word2vec_inner.pyx":1022
+  /* "gensim2/models/word2vec_inner.pyx":1037
  *     c.syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))
  *     c.size = model.wv.vector_size
  *     c.window = model.window             # <<<<<<<<<<<<<<
  * 
  *     cdef int i, j, k
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_window); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1022, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_window); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1037, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1022, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 1037, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c.window = __pyx_t_2;
 
-  /* "gensim2/models/word2vec_inner.pyx":1025
+  /* "gensim2/models/word2vec_inner.pyx":1040
  * 
  *     cdef int i, j, k
  *     cdef long result = 0             # <<<<<<<<<<<<<<
@@ -9270,58 +9547,58 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
   __pyx_v_result = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":1027
+  /* "gensim2/models/word2vec_inner.pyx":1042
  *     cdef long result = 0
  * 
  *     c.syn1 = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1))             # <<<<<<<<<<<<<<
  * 
  *     # convert Python structures to primitive types, so we can release the GIL
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_trainables); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1027, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_trainables); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1042, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_syn1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1027, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_syn1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1042, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1027, __pyx_L1_error)
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1042, __pyx_L1_error)
   __pyx_v_c.syn1 = ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":1030
+  /* "gensim2/models/word2vec_inner.pyx":1045
  * 
  *     # convert Python structures to primitive types, so we can release the GIL
  *     c.work = <REAL_t *>np.PyArray_DATA(_work)             # <<<<<<<<<<<<<<
  *     c.neu1 = <REAL_t *>np.PyArray_DATA(_neu1)
  * 
  */
-  if (!(likely(((__pyx_v__work) == Py_None) || likely(__Pyx_TypeTest(__pyx_v__work, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1030, __pyx_L1_error)
+  if (!(likely(((__pyx_v__work) == Py_None) || likely(__Pyx_TypeTest(__pyx_v__work, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1045, __pyx_L1_error)
   __pyx_v_c.work = ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__work)));
 
-  /* "gensim2/models/word2vec_inner.pyx":1031
+  /* "gensim2/models/word2vec_inner.pyx":1046
  *     # convert Python structures to primitive types, so we can release the GIL
  *     c.work = <REAL_t *>np.PyArray_DATA(_work)
  *     c.neu1 = <REAL_t *>np.PyArray_DATA(_neu1)             # <<<<<<<<<<<<<<
  * 
  *     vlookup = model.wv.vocab
  */
-  if (!(likely(((__pyx_v__neu1) == Py_None) || likely(__Pyx_TypeTest(__pyx_v__neu1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1031, __pyx_L1_error)
+  if (!(likely(((__pyx_v__neu1) == Py_None) || likely(__Pyx_TypeTest(__pyx_v__neu1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1046, __pyx_L1_error)
   __pyx_v_c.neu1 = ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__neu1)));
 
-  /* "gensim2/models/word2vec_inner.pyx":1033
+  /* "gensim2/models/word2vec_inner.pyx":1048
  *     c.neu1 = <REAL_t *>np.PyArray_DATA(_neu1)
  * 
  *     vlookup = model.wv.vocab             # <<<<<<<<<<<<<<
  *     i = 0
  *     for token in sentence:
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1033, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_model, __pyx_n_s_wv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1048, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_vocab); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1033, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_vocab); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1048, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_vlookup = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":1034
+  /* "gensim2/models/word2vec_inner.pyx":1049
  * 
  *     vlookup = model.wv.vocab
  *     i = 0             # <<<<<<<<<<<<<<
@@ -9330,7 +9607,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
   __pyx_v_i = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":1035
+  /* "gensim2/models/word2vec_inner.pyx":1050
  *     vlookup = model.wv.vocab
  *     i = 0
  *     for token in sentence:             # <<<<<<<<<<<<<<
@@ -9341,26 +9618,26 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
     __pyx_t_1 = __pyx_v_sentence; __Pyx_INCREF(__pyx_t_1); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_sentence); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1035, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_sentence); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1050, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1035, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1050, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_5)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 1035, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 1050, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1035, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1050, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 1035, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_3); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 1050, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1035, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1050, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -9370,7 +9647,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 1035, __pyx_L1_error)
+          else __PYX_ERR(0, 1050, __pyx_L1_error)
         }
         break;
       }
@@ -9379,16 +9656,16 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
     __Pyx_XDECREF_SET(__pyx_v_token, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "gensim2/models/word2vec_inner.pyx":1036
+    /* "gensim2/models/word2vec_inner.pyx":1051
  *     i = 0
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None             # <<<<<<<<<<<<<<
  *         if word is None:
  *             continue  # for score, should this be a default negative value?
  */
-    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_v_token, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 1036, __pyx_L1_error)
+    __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_v_token, __pyx_v_vlookup, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 1051, __pyx_L1_error)
     if ((__pyx_t_6 != 0)) {
-      __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_v_token); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1036, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetItem(__pyx_v_vlookup, __pyx_v_token); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1051, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_3 = __pyx_t_7;
       __pyx_t_7 = 0;
@@ -9399,7 +9676,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
     __Pyx_XDECREF_SET(__pyx_v_word, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "gensim2/models/word2vec_inner.pyx":1037
+    /* "gensim2/models/word2vec_inner.pyx":1052
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:             # <<<<<<<<<<<<<<
@@ -9410,7 +9687,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
     __pyx_t_8 = (__pyx_t_6 != 0);
     if (__pyx_t_8) {
 
-      /* "gensim2/models/word2vec_inner.pyx":1038
+      /* "gensim2/models/word2vec_inner.pyx":1053
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:
  *             continue  # for score, should this be a default negative value?             # <<<<<<<<<<<<<<
@@ -9419,7 +9696,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
       goto __pyx_L3_continue;
 
-      /* "gensim2/models/word2vec_inner.pyx":1037
+      /* "gensim2/models/word2vec_inner.pyx":1052
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:             # <<<<<<<<<<<<<<
@@ -9428,59 +9705,59 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
     }
 
-    /* "gensim2/models/word2vec_inner.pyx":1039
+    /* "gensim2/models/word2vec_inner.pyx":1054
  *         if word is None:
  *             continue  # for score, should this be a default negative value?
  *         c.indexes[i] = word.index             # <<<<<<<<<<<<<<
  *         c.codelens[i] = <int>len(word.code)
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1039, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1054, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_9 = __Pyx_PyInt_As_npy_uint32(__pyx_t_3); if (unlikely((__pyx_t_9 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 1039, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_As_npy_uint32(__pyx_t_3); if (unlikely((__pyx_t_9 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 1054, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     (__pyx_v_c.indexes[__pyx_v_i]) = __pyx_t_9;
 
-    /* "gensim2/models/word2vec_inner.pyx":1040
+    /* "gensim2/models/word2vec_inner.pyx":1055
  *             continue  # for score, should this be a default negative value?
  *         c.indexes[i] = word.index
  *         c.codelens[i] = <int>len(word.code)             # <<<<<<<<<<<<<<
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1040, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1055, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_10 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1040, __pyx_L1_error)
+    __pyx_t_10 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1055, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     (__pyx_v_c.codelens[__pyx_v_i]) = ((int)__pyx_t_10);
 
-    /* "gensim2/models/word2vec_inner.pyx":1041
+    /* "gensim2/models/word2vec_inner.pyx":1056
  *         c.indexes[i] = word.index
  *         c.codelens[i] = <int>len(word.code)
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)             # <<<<<<<<<<<<<<
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *         result += 1
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1041, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_code); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1056, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1041, __pyx_L1_error)
+    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1056, __pyx_L1_error)
     (__pyx_v_c.codes[__pyx_v_i]) = ((__pyx_t_5numpy_uint8_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "gensim2/models/word2vec_inner.pyx":1042
+    /* "gensim2/models/word2vec_inner.pyx":1057
  *         c.codelens[i] = <int>len(word.code)
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)             # <<<<<<<<<<<<<<
  *         result += 1
  *         i += 1
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_point); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1042, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_point); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1057, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1042, __pyx_L1_error)
+    if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 1057, __pyx_L1_error)
     (__pyx_v_c.points[__pyx_v_i]) = ((__pyx_t_5numpy_uint32_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "gensim2/models/word2vec_inner.pyx":1043
+    /* "gensim2/models/word2vec_inner.pyx":1058
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *         result += 1             # <<<<<<<<<<<<<<
@@ -9489,7 +9766,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
     __pyx_v_result = (__pyx_v_result + 1);
 
-    /* "gensim2/models/word2vec_inner.pyx":1044
+    /* "gensim2/models/word2vec_inner.pyx":1059
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *         result += 1
  *         i += 1             # <<<<<<<<<<<<<<
@@ -9498,7 +9775,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
     __pyx_v_i = (__pyx_v_i + 1);
 
-    /* "gensim2/models/word2vec_inner.pyx":1045
+    /* "gensim2/models/word2vec_inner.pyx":1060
  *         result += 1
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -9508,7 +9785,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
     __pyx_t_8 = ((__pyx_v_i == 0x2710) != 0);
     if (__pyx_t_8) {
 
-      /* "gensim2/models/word2vec_inner.pyx":1046
+      /* "gensim2/models/word2vec_inner.pyx":1061
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?             # <<<<<<<<<<<<<<
@@ -9517,7 +9794,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
       goto __pyx_L4_break;
 
-      /* "gensim2/models/word2vec_inner.pyx":1045
+      /* "gensim2/models/word2vec_inner.pyx":1060
  *         result += 1
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -9526,7 +9803,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
     }
 
-    /* "gensim2/models/word2vec_inner.pyx":1035
+    /* "gensim2/models/word2vec_inner.pyx":1050
  *     vlookup = model.wv.vocab
  *     i = 0
  *     for token in sentence:             # <<<<<<<<<<<<<<
@@ -9538,7 +9815,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":1047
+  /* "gensim2/models/word2vec_inner.pyx":1062
  *         if i == MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?
  *     sentence_len = i             # <<<<<<<<<<<<<<
@@ -9547,7 +9824,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
   __pyx_v_sentence_len = __pyx_v_i;
 
-  /* "gensim2/models/word2vec_inner.pyx":1050
+  /* "gensim2/models/word2vec_inner.pyx":1065
  * 
  *     # release GIL & train on the sentence
  *     c.work[0] = 0.0             # <<<<<<<<<<<<<<
@@ -9556,7 +9833,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
   (__pyx_v_c.work[0]) = 0.0;
 
-  /* "gensim2/models/word2vec_inner.pyx":1051
+  /* "gensim2/models/word2vec_inner.pyx":1066
  *     # release GIL & train on the sentence
  *     c.work[0] = 0.0
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -9571,7 +9848,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
       #endif
       /*try:*/ {
 
-        /* "gensim2/models/word2vec_inner.pyx":1052
+        /* "gensim2/models/word2vec_inner.pyx":1067
  *     c.work[0] = 0.0
  *     with nogil:
  *         for i in range(sentence_len):             # <<<<<<<<<<<<<<
@@ -9583,7 +9860,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
         for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
           __pyx_v_i = __pyx_t_12;
 
-          /* "gensim2/models/word2vec_inner.pyx":1053
+          /* "gensim2/models/word2vec_inner.pyx":1068
  *     with nogil:
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:             # <<<<<<<<<<<<<<
@@ -9593,7 +9870,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
           __pyx_t_8 = (((__pyx_v_c.codelens[__pyx_v_i]) == 0) != 0);
           if (__pyx_t_8) {
 
-            /* "gensim2/models/word2vec_inner.pyx":1054
+            /* "gensim2/models/word2vec_inner.pyx":1069
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:
  *                 continue             # <<<<<<<<<<<<<<
@@ -9602,7 +9879,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
             goto __pyx_L10_continue;
 
-            /* "gensim2/models/word2vec_inner.pyx":1053
+            /* "gensim2/models/word2vec_inner.pyx":1068
  *     with nogil:
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:             # <<<<<<<<<<<<<<
@@ -9611,7 +9888,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
           }
 
-          /* "gensim2/models/word2vec_inner.pyx":1055
+          /* "gensim2/models/word2vec_inner.pyx":1070
  *             if c.codelens[i] == 0:
  *                 continue
  *             j = i - c.window             # <<<<<<<<<<<<<<
@@ -9620,7 +9897,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
           __pyx_v_j = (__pyx_v_i - __pyx_v_c.window);
 
-          /* "gensim2/models/word2vec_inner.pyx":1056
+          /* "gensim2/models/word2vec_inner.pyx":1071
  *                 continue
  *             j = i - c.window
  *             if j < 0:             # <<<<<<<<<<<<<<
@@ -9630,7 +9907,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
           __pyx_t_8 = ((__pyx_v_j < 0) != 0);
           if (__pyx_t_8) {
 
-            /* "gensim2/models/word2vec_inner.pyx":1057
+            /* "gensim2/models/word2vec_inner.pyx":1072
  *             j = i - c.window
  *             if j < 0:
  *                 j = 0             # <<<<<<<<<<<<<<
@@ -9639,7 +9916,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
             __pyx_v_j = 0;
 
-            /* "gensim2/models/word2vec_inner.pyx":1056
+            /* "gensim2/models/word2vec_inner.pyx":1071
  *                 continue
  *             j = i - c.window
  *             if j < 0:             # <<<<<<<<<<<<<<
@@ -9648,7 +9925,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
           }
 
-          /* "gensim2/models/word2vec_inner.pyx":1058
+          /* "gensim2/models/word2vec_inner.pyx":1073
  *             if j < 0:
  *                 j = 0
  *             k = i + c.window + 1             # <<<<<<<<<<<<<<
@@ -9657,7 +9934,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
           __pyx_v_k = ((__pyx_v_i + __pyx_v_c.window) + 1);
 
-          /* "gensim2/models/word2vec_inner.pyx":1059
+          /* "gensim2/models/word2vec_inner.pyx":1074
  *                 j = 0
  *             k = i + c.window + 1
  *             if k > sentence_len:             # <<<<<<<<<<<<<<
@@ -9667,7 +9944,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
           __pyx_t_8 = ((__pyx_v_k > __pyx_v_sentence_len) != 0);
           if (__pyx_t_8) {
 
-            /* "gensim2/models/word2vec_inner.pyx":1060
+            /* "gensim2/models/word2vec_inner.pyx":1075
  *             k = i + c.window + 1
  *             if k > sentence_len:
  *                 k = sentence_len             # <<<<<<<<<<<<<<
@@ -9676,7 +9953,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
             __pyx_v_k = __pyx_v_sentence_len;
 
-            /* "gensim2/models/word2vec_inner.pyx":1059
+            /* "gensim2/models/word2vec_inner.pyx":1074
  *                 j = 0
  *             k = i + c.window + 1
  *             if k > sentence_len:             # <<<<<<<<<<<<<<
@@ -9685,7 +9962,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  */
           }
 
-          /* "gensim2/models/word2vec_inner.pyx":1061
+          /* "gensim2/models/word2vec_inner.pyx":1076
  *             if k > sentence_len:
  *                 k = sentence_len
  *             score_pair_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.work, i, j, k, c.cbow_mean)             # <<<<<<<<<<<<<<
@@ -9697,7 +9974,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
         }
       }
 
-      /* "gensim2/models/word2vec_inner.pyx":1051
+      /* "gensim2/models/word2vec_inner.pyx":1066
  *     # release GIL & train on the sentence
  *     c.work[0] = 0.0
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -9716,7 +9993,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
       }
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":1063
+  /* "gensim2/models/word2vec_inner.pyx":1078
  *             score_pair_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.work, i, j, k, c.cbow_mean)
  * 
  *     return c.work[0]             # <<<<<<<<<<<<<<
@@ -9724,13 +10001,13 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
  * cdef void score_pair_cbow_hs(
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble((__pyx_v_c.work[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1063, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble((__pyx_v_c.work[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1078, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "gensim2/models/word2vec_inner.pyx":992
+  /* "gensim2/models/word2vec_inner.pyx":1007
  *         work[0] += f
  * 
  * def score_sentence_cbow(model, sentence, _work, _neu1):             # <<<<<<<<<<<<<<
@@ -9754,7 +10031,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_6score_sentence_cbow
   return __pyx_r;
 }
 
-/* "gensim2/models/word2vec_inner.pyx":1065
+/* "gensim2/models/word2vec_inner.pyx":1080
  *     return c.work[0]
  * 
  * cdef void score_pair_cbow_hs(             # <<<<<<<<<<<<<<
@@ -9778,7 +10055,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
   PY_LONG_LONG __pyx_t_6;
   long __pyx_t_7;
 
-  /* "gensim2/models/word2vec_inner.pyx":1076
+  /* "gensim2/models/word2vec_inner.pyx":1091
  *     cdef int m
  * 
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))             # <<<<<<<<<<<<<<
@@ -9787,7 +10064,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
   (void)(memset(__pyx_v_neu1, 0, (__pyx_v_size * (sizeof(__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t)))));
 
-  /* "gensim2/models/word2vec_inner.pyx":1077
+  /* "gensim2/models/word2vec_inner.pyx":1092
  * 
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))
  *     count = <REAL_t>0.0             # <<<<<<<<<<<<<<
@@ -9796,7 +10073,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
   __pyx_v_count = ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t)0.0);
 
-  /* "gensim2/models/word2vec_inner.pyx":1078
+  /* "gensim2/models/word2vec_inner.pyx":1093
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))
  *     count = <REAL_t>0.0
  *     for m in range(j, k):             # <<<<<<<<<<<<<<
@@ -9808,7 +10085,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
   for (__pyx_t_3 = __pyx_v_j; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_m = __pyx_t_3;
 
-    /* "gensim2/models/word2vec_inner.pyx":1079
+    /* "gensim2/models/word2vec_inner.pyx":1094
  *     count = <REAL_t>0.0
  *     for m in range(j, k):
  *         if m == i or codelens[m] == 0:             # <<<<<<<<<<<<<<
@@ -9826,7 +10103,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "gensim2/models/word2vec_inner.pyx":1080
+      /* "gensim2/models/word2vec_inner.pyx":1095
  *     for m in range(j, k):
  *         if m == i or codelens[m] == 0:
  *             continue             # <<<<<<<<<<<<<<
@@ -9835,7 +10112,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
       goto __pyx_L3_continue;
 
-      /* "gensim2/models/word2vec_inner.pyx":1079
+      /* "gensim2/models/word2vec_inner.pyx":1094
  *     count = <REAL_t>0.0
  *     for m in range(j, k):
  *         if m == i or codelens[m] == 0:             # <<<<<<<<<<<<<<
@@ -9844,7 +10121,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
     }
 
-    /* "gensim2/models/word2vec_inner.pyx":1082
+    /* "gensim2/models/word2vec_inner.pyx":1097
  *             continue
  *         else:
  *             count += ONEF             # <<<<<<<<<<<<<<
@@ -9854,7 +10131,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
     /*else*/ {
       __pyx_v_count = (__pyx_v_count + __pyx_v_7gensim2_6models_14word2vec_inner_ONEF);
 
-      /* "gensim2/models/word2vec_inner.pyx":1083
+      /* "gensim2/models/word2vec_inner.pyx":1098
  *         else:
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)             # <<<<<<<<<<<<<<
@@ -9866,7 +10143,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
     __pyx_L3_continue:;
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":1084
+  /* "gensim2/models/word2vec_inner.pyx":1099
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):             # <<<<<<<<<<<<<<
@@ -9876,7 +10153,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
   __pyx_t_4 = ((__pyx_v_count > ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t)0.5)) != 0);
   if (__pyx_t_4) {
 
-    /* "gensim2/models/word2vec_inner.pyx":1085
+    /* "gensim2/models/word2vec_inner.pyx":1100
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count             # <<<<<<<<<<<<<<
@@ -9885,7 +10162,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
     __pyx_v_inv_count = (__pyx_v_7gensim2_6models_14word2vec_inner_ONEF / __pyx_v_count);
 
-    /* "gensim2/models/word2vec_inner.pyx":1084
+    /* "gensim2/models/word2vec_inner.pyx":1099
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):             # <<<<<<<<<<<<<<
@@ -9894,7 +10171,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":1086
+  /* "gensim2/models/word2vec_inner.pyx":1101
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count
  *     if cbow_mean:             # <<<<<<<<<<<<<<
@@ -9904,7 +10181,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
   __pyx_t_4 = (__pyx_v_cbow_mean != 0);
   if (__pyx_t_4) {
 
-    /* "gensim2/models/word2vec_inner.pyx":1087
+    /* "gensim2/models/word2vec_inner.pyx":1102
  *         inv_count = ONEF/count
  *     if cbow_mean:
  *         sscal(&size, &inv_count, neu1, &ONE)             # <<<<<<<<<<<<<<
@@ -9913,7 +10190,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
     __pyx_v_7gensim2_6models_14word2vec_inner_sscal((&__pyx_v_size), (&__pyx_v_inv_count), __pyx_v_neu1, (&__pyx_v_7gensim2_6models_14word2vec_inner_ONE));
 
-    /* "gensim2/models/word2vec_inner.pyx":1086
+    /* "gensim2/models/word2vec_inner.pyx":1101
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count
  *     if cbow_mean:             # <<<<<<<<<<<<<<
@@ -9922,7 +10199,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":1089
+  /* "gensim2/models/word2vec_inner.pyx":1104
  *         sscal(&size, &inv_count, neu1, &ONE)
  * 
  *     for b in range(codelens[i]):             # <<<<<<<<<<<<<<
@@ -9934,7 +10211,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
   for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_2; __pyx_t_6+=1) {
     __pyx_v_b = __pyx_t_6;
 
-    /* "gensim2/models/word2vec_inner.pyx":1090
+    /* "gensim2/models/word2vec_inner.pyx":1105
  * 
  *     for b in range(codelens[i]):
  *         row2 = word_point[b] * size             # <<<<<<<<<<<<<<
@@ -9943,7 +10220,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
     __pyx_v_row2 = ((__pyx_v_word_point[__pyx_v_b]) * __pyx_v_size);
 
-    /* "gensim2/models/word2vec_inner.pyx":1091
+    /* "gensim2/models/word2vec_inner.pyx":1106
  *     for b in range(codelens[i]):
  *         row2 = word_point[b] * size
  *         f = our_dot(&size, neu1, &ONE, &syn1[row2], &ONE)             # <<<<<<<<<<<<<<
@@ -9952,7 +10229,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
     __pyx_v_f = __pyx_v_7gensim2_6models_14word2vec_inner_our_dot((&__pyx_v_size), __pyx_v_neu1, (&__pyx_v_7gensim2_6models_14word2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_7gensim2_6models_14word2vec_inner_ONE));
 
-    /* "gensim2/models/word2vec_inner.pyx":1092
+    /* "gensim2/models/word2vec_inner.pyx":1107
  *         row2 = word_point[b] * size
  *         f = our_dot(&size, neu1, &ONE, &syn1[row2], &ONE)
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1             # <<<<<<<<<<<<<<
@@ -9961,7 +10238,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
     __pyx_v_sgn = __Pyx_pow_long(-1L, ((long)(__pyx_v_word_code[__pyx_v_b])));
 
-    /* "gensim2/models/word2vec_inner.pyx":1093
+    /* "gensim2/models/word2vec_inner.pyx":1108
  *         f = our_dot(&size, neu1, &ONE, &syn1[row2], &ONE)
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn             # <<<<<<<<<<<<<<
@@ -9970,7 +10247,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
     __pyx_v_f = (__pyx_v_f * __pyx_v_sgn);
 
-    /* "gensim2/models/word2vec_inner.pyx":1094
+    /* "gensim2/models/word2vec_inner.pyx":1109
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -9988,7 +10265,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
     __pyx_L13_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "gensim2/models/word2vec_inner.pyx":1095
+      /* "gensim2/models/word2vec_inner.pyx":1110
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:
  *             continue             # <<<<<<<<<<<<<<
@@ -9997,7 +10274,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
       goto __pyx_L10_continue;
 
-      /* "gensim2/models/word2vec_inner.pyx":1094
+      /* "gensim2/models/word2vec_inner.pyx":1109
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -10006,7 +10283,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
     }
 
-    /* "gensim2/models/word2vec_inner.pyx":1096
+    /* "gensim2/models/word2vec_inner.pyx":1111
  *         if f <= -MAX_EXP or f >= MAX_EXP:
  *             continue
  *         f = LOG_TABLE[<int>((f + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
@@ -10015,7 +10292,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
  */
     __pyx_v_f = (__pyx_v_7gensim2_6models_14word2vec_inner_LOG_TABLE[((int)((__pyx_v_f + 6.0) * 83.0))]);
 
-    /* "gensim2/models/word2vec_inner.pyx":1097
+    /* "gensim2/models/word2vec_inner.pyx":1112
  *             continue
  *         f = LOG_TABLE[<int>((f + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *         work[0] += f             # <<<<<<<<<<<<<<
@@ -10027,7 +10304,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
     __pyx_L10_continue:;
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":1065
+  /* "gensim2/models/word2vec_inner.pyx":1080
  *     return c.work[0]
  * 
  * cdef void score_pair_cbow_hs(             # <<<<<<<<<<<<<<
@@ -10038,7 +10315,7 @@ static void __pyx_f_7gensim2_6models_14word2vec_inner_score_pair_cbow_hs(__pyx_t
   /* function exit code */
 }
 
-/* "gensim2/models/word2vec_inner.pyx":1100
+/* "gensim2/models/word2vec_inner.pyx":1115
  * 
  * 
  * def init():             # <<<<<<<<<<<<<<
@@ -10077,7 +10354,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("init", 0);
 
-  /* "gensim2/models/word2vec_inner.pyx":1116
+  /* "gensim2/models/word2vec_inner.pyx":1131
  * 
  *     cdef int i
  *     cdef float *x = [<float>10.0]             # <<<<<<<<<<<<<<
@@ -10087,7 +10364,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
   __pyx_t_1[0] = ((float)10.0);
   __pyx_v_x = __pyx_t_1;
 
-  /* "gensim2/models/word2vec_inner.pyx":1117
+  /* "gensim2/models/word2vec_inner.pyx":1132
  *     cdef int i
  *     cdef float *x = [<float>10.0]
  *     cdef float *y = [<float>0.01]             # <<<<<<<<<<<<<<
@@ -10097,7 +10374,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
   __pyx_t_2[0] = ((float)0.01);
   __pyx_v_y = __pyx_t_2;
 
-  /* "gensim2/models/word2vec_inner.pyx":1118
+  /* "gensim2/models/word2vec_inner.pyx":1133
  *     cdef float *x = [<float>10.0]
  *     cdef float *y = [<float>0.01]
  *     cdef float expected = <float>0.1             # <<<<<<<<<<<<<<
@@ -10106,7 +10383,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
   __pyx_v_expected = ((float)0.1);
 
-  /* "gensim2/models/word2vec_inner.pyx":1119
+  /* "gensim2/models/word2vec_inner.pyx":1134
  *     cdef float *y = [<float>0.01]
  *     cdef float expected = <float>0.1
  *     cdef int size = 1             # <<<<<<<<<<<<<<
@@ -10115,7 +10392,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
   __pyx_v_size = 1;
 
-  /* "gensim2/models/word2vec_inner.pyx":1124
+  /* "gensim2/models/word2vec_inner.pyx":1139
  * 
  *     # build the sigmoid table
  *     for i in range(EXP_TABLE_SIZE):             # <<<<<<<<<<<<<<
@@ -10125,7 +10402,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
   for (__pyx_t_3 = 0; __pyx_t_3 < 0x3E8; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "gensim2/models/word2vec_inner.pyx":1125
+    /* "gensim2/models/word2vec_inner.pyx":1140
  *     # build the sigmoid table
  *     for i in range(EXP_TABLE_SIZE):
  *         EXP_TABLE[i] = <REAL_t>exp((i / <REAL_t>EXP_TABLE_SIZE * 2 - 1) * MAX_EXP)             # <<<<<<<<<<<<<<
@@ -10134,7 +10411,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
     (__pyx_v_7gensim2_6models_14word2vec_inner_EXP_TABLE[__pyx_v_i]) = ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t)exp(((((__pyx_v_i / ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t)0x3E8)) * 2.0) - 1.0) * 6.0)));
 
-    /* "gensim2/models/word2vec_inner.pyx":1126
+    /* "gensim2/models/word2vec_inner.pyx":1141
  *     for i in range(EXP_TABLE_SIZE):
  *         EXP_TABLE[i] = <REAL_t>exp((i / <REAL_t>EXP_TABLE_SIZE * 2 - 1) * MAX_EXP)
  *         EXP_TABLE[i] = <REAL_t>(EXP_TABLE[i] / (EXP_TABLE[i] + 1))             # <<<<<<<<<<<<<<
@@ -10143,7 +10420,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
     (__pyx_v_7gensim2_6models_14word2vec_inner_EXP_TABLE[__pyx_v_i]) = ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t)((__pyx_v_7gensim2_6models_14word2vec_inner_EXP_TABLE[__pyx_v_i]) / ((__pyx_v_7gensim2_6models_14word2vec_inner_EXP_TABLE[__pyx_v_i]) + 1.0)));
 
-    /* "gensim2/models/word2vec_inner.pyx":1127
+    /* "gensim2/models/word2vec_inner.pyx":1142
  *         EXP_TABLE[i] = <REAL_t>exp((i / <REAL_t>EXP_TABLE_SIZE * 2 - 1) * MAX_EXP)
  *         EXP_TABLE[i] = <REAL_t>(EXP_TABLE[i] / (EXP_TABLE[i] + 1))
  *         LOG_TABLE[i] = <REAL_t>log( EXP_TABLE[i] )             # <<<<<<<<<<<<<<
@@ -10153,7 +10430,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
     (__pyx_v_7gensim2_6models_14word2vec_inner_LOG_TABLE[__pyx_v_i]) = ((__pyx_t_7gensim2_6models_14word2vec_inner_REAL_t)log((__pyx_v_7gensim2_6models_14word2vec_inner_EXP_TABLE[__pyx_v_i])));
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":1130
+  /* "gensim2/models/word2vec_inner.pyx":1145
  * 
  *     # check whether sdot returns double or float
  *     d_res = dsdot(&size, x, &ONE, y, &ONE)             # <<<<<<<<<<<<<<
@@ -10162,7 +10439,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
   __pyx_v_d_res = __pyx_v_7gensim2_6models_14word2vec_inner_dsdot((&__pyx_v_size), __pyx_v_x, (&__pyx_v_7gensim2_6models_14word2vec_inner_ONE), __pyx_v_y, (&__pyx_v_7gensim2_6models_14word2vec_inner_ONE));
 
-  /* "gensim2/models/word2vec_inner.pyx":1131
+  /* "gensim2/models/word2vec_inner.pyx":1146
  *     # check whether sdot returns double or float
  *     d_res = dsdot(&size, x, &ONE, y, &ONE)
  *     p_res = <float *>&d_res             # <<<<<<<<<<<<<<
@@ -10171,7 +10448,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
   __pyx_v_p_res = ((float *)(&__pyx_v_d_res));
 
-  /* "gensim2/models/word2vec_inner.pyx":1132
+  /* "gensim2/models/word2vec_inner.pyx":1147
  *     d_res = dsdot(&size, x, &ONE, y, &ONE)
  *     p_res = <float *>&d_res
  *     if abs(d_res - expected) < 0.0001:             # <<<<<<<<<<<<<<
@@ -10181,7 +10458,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
   __pyx_t_4 = ((fabs((__pyx_v_d_res - __pyx_v_expected)) < 0.0001) != 0);
   if (__pyx_t_4) {
 
-    /* "gensim2/models/word2vec_inner.pyx":1133
+    /* "gensim2/models/word2vec_inner.pyx":1148
  *     p_res = <float *>&d_res
  *     if abs(d_res - expected) < 0.0001:
  *         our_dot = our_dot_double             # <<<<<<<<<<<<<<
@@ -10190,7 +10467,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
     __pyx_v_7gensim2_6models_14word2vec_inner_our_dot = __pyx_f_7gensim2_6models_14word2vec_inner_our_dot_double;
 
-    /* "gensim2/models/word2vec_inner.pyx":1134
+    /* "gensim2/models/word2vec_inner.pyx":1149
  *     if abs(d_res - expected) < 0.0001:
  *         our_dot = our_dot_double
  *         our_saxpy = saxpy             # <<<<<<<<<<<<<<
@@ -10199,7 +10476,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
     __pyx_v_7gensim2_6models_14word2vec_inner_our_saxpy = __pyx_v_7gensim2_6models_14word2vec_inner_saxpy;
 
-    /* "gensim2/models/word2vec_inner.pyx":1135
+    /* "gensim2/models/word2vec_inner.pyx":1150
  *         our_dot = our_dot_double
  *         our_saxpy = saxpy
  *         return 0  # double             # <<<<<<<<<<<<<<
@@ -10211,7 +10488,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
     __pyx_r = __pyx_int_0;
     goto __pyx_L0;
 
-    /* "gensim2/models/word2vec_inner.pyx":1132
+    /* "gensim2/models/word2vec_inner.pyx":1147
  *     d_res = dsdot(&size, x, &ONE, y, &ONE)
  *     p_res = <float *>&d_res
  *     if abs(d_res - expected) < 0.0001:             # <<<<<<<<<<<<<<
@@ -10220,7 +10497,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":1136
+  /* "gensim2/models/word2vec_inner.pyx":1151
  *         our_saxpy = saxpy
  *         return 0  # double
  *     elif abs(p_res[0] - expected) < 0.0001:             # <<<<<<<<<<<<<<
@@ -10230,7 +10507,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
   __pyx_t_4 = ((fabsf(((__pyx_v_p_res[0]) - __pyx_v_expected)) < 0.0001) != 0);
   if (__pyx_t_4) {
 
-    /* "gensim2/models/word2vec_inner.pyx":1137
+    /* "gensim2/models/word2vec_inner.pyx":1152
  *         return 0  # double
  *     elif abs(p_res[0] - expected) < 0.0001:
  *         our_dot = our_dot_float             # <<<<<<<<<<<<<<
@@ -10239,7 +10516,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
     __pyx_v_7gensim2_6models_14word2vec_inner_our_dot = __pyx_f_7gensim2_6models_14word2vec_inner_our_dot_float;
 
-    /* "gensim2/models/word2vec_inner.pyx":1138
+    /* "gensim2/models/word2vec_inner.pyx":1153
  *     elif abs(p_res[0] - expected) < 0.0001:
  *         our_dot = our_dot_float
  *         our_saxpy = saxpy             # <<<<<<<<<<<<<<
@@ -10248,7 +10525,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
     __pyx_v_7gensim2_6models_14word2vec_inner_our_saxpy = __pyx_v_7gensim2_6models_14word2vec_inner_saxpy;
 
-    /* "gensim2/models/word2vec_inner.pyx":1139
+    /* "gensim2/models/word2vec_inner.pyx":1154
  *         our_dot = our_dot_float
  *         our_saxpy = saxpy
  *         return 1  # float             # <<<<<<<<<<<<<<
@@ -10260,7 +10537,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
     __pyx_r = __pyx_int_1;
     goto __pyx_L0;
 
-    /* "gensim2/models/word2vec_inner.pyx":1136
+    /* "gensim2/models/word2vec_inner.pyx":1151
  *         our_saxpy = saxpy
  *         return 0  # double
  *     elif abs(p_res[0] - expected) < 0.0001:             # <<<<<<<<<<<<<<
@@ -10269,7 +10546,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":1143
+  /* "gensim2/models/word2vec_inner.pyx":1158
  *         # neither => use cython loops, no BLAS
  *         # actually, the BLAS is so messed up we'll probably have segfaulted above and never even reach here
  *         our_dot = our_dot_noblas             # <<<<<<<<<<<<<<
@@ -10279,7 +10556,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
   /*else*/ {
     __pyx_v_7gensim2_6models_14word2vec_inner_our_dot = __pyx_f_7gensim2_6models_14word2vec_inner_our_dot_noblas;
 
-    /* "gensim2/models/word2vec_inner.pyx":1144
+    /* "gensim2/models/word2vec_inner.pyx":1159
  *         # actually, the BLAS is so messed up we'll probably have segfaulted above and never even reach here
  *         our_dot = our_dot_noblas
  *         our_saxpy = our_saxpy_noblas             # <<<<<<<<<<<<<<
@@ -10288,7 +10565,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
  */
     __pyx_v_7gensim2_6models_14word2vec_inner_our_saxpy = __pyx_f_7gensim2_6models_14word2vec_inner_our_saxpy_noblas;
 
-    /* "gensim2/models/word2vec_inner.pyx":1145
+    /* "gensim2/models/word2vec_inner.pyx":1160
  *         our_dot = our_dot_noblas
  *         our_saxpy = our_saxpy_noblas
  *         return 2             # <<<<<<<<<<<<<<
@@ -10301,7 +10578,7 @@ static PyObject *__pyx_pf_7gensim2_6models_14word2vec_inner_8init(CYTHON_UNUSED 
     goto __pyx_L0;
   }
 
-  /* "gensim2/models/word2vec_inner.pyx":1100
+  /* "gensim2/models/word2vec_inner.pyx":1115
  * 
  * 
  * def init():             # <<<<<<<<<<<<<<
@@ -12810,6 +13087,7 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
+  {&__pyx_kp_s_E, __pyx_k_E, sizeof(__pyx_k_E), 0, 0, 1, 0},
   {&__pyx_n_s_EXP_TABLE, __pyx_k_EXP_TABLE, sizeof(__pyx_k_EXP_TABLE), 0, 0, 1, 1},
   {&__pyx_n_s_FAST_VERSION, __pyx_k_FAST_VERSION, sizeof(__pyx_k_FAST_VERSION), 0, 0, 1, 1},
   {&__pyx_kp_u_Format_string_allocated_too_shor, __pyx_k_Format_string_allocated_too_shor, sizeof(__pyx_k_Format_string_allocated_too_shor), 0, 1, 0, 0},
@@ -12817,6 +13095,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
   {&__pyx_n_s_MAX_WORDS_IN_BATCH, __pyx_k_MAX_WORDS_IN_BATCH, sizeof(__pyx_k_MAX_WORDS_IN_BATCH), 0, 0, 1, 1},
   {&__pyx_kp_u_Non_native_byte_order_not_suppor, __pyx_k_Non_native_byte_order_not_suppor, sizeof(__pyx_k_Non_native_byte_order_not_suppor), 0, 1, 0, 0},
+  {&__pyx_kp_s_P, __pyx_k_P, sizeof(__pyx_k_P), 0, 0, 1, 0},
   {&__pyx_n_s_REAL, __pyx_k_REAL, sizeof(__pyx_k_REAL), 0, 0, 1, 1},
   {&__pyx_n_s_RuntimeError, __pyx_k_RuntimeError, sizeof(__pyx_k_RuntimeError), 0, 0, 1, 1},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
@@ -12825,6 +13104,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 0},
   {&__pyx_n_s_alpha, __pyx_k_alpha, sizeof(__pyx_k_alpha), 0, 0, 1, 1},
   {&__pyx_n_s_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1, 1},
+  {&__pyx_n_s_c_index, __pyx_k_c_index, sizeof(__pyx_k_c_index), 0, 0, 1, 1},
   {&__pyx_n_s_cbow_mean, __pyx_k_cbow_mean, sizeof(__pyx_k_cbow_mean), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_code, __pyx_k_code, sizeof(__pyx_k_code), 0, 0, 1, 1},
@@ -12875,6 +13155,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_our_saxpy, __pyx_k_our_saxpy, sizeof(__pyx_k_our_saxpy), 0, 0, 1, 1},
   {&__pyx_n_s_p_res, __pyx_k_p_res, sizeof(__pyx_k_p_res), 0, 0, 1, 1},
   {&__pyx_n_s_point, __pyx_k_point, sizeof(__pyx_k_point), 0, 0, 1, 1},
+  {&__pyx_n_s_pwords, __pyx_k_pwords, sizeof(__pyx_k_pwords), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_capi, __pyx_k_pyx_capi, sizeof(__pyx_k_pyx_capi), 0, 0, 1, 1},
   {&__pyx_n_s_r, __pyx_k_r, sizeof(__pyx_k_r), 0, 0, 1, 1},
   {&__pyx_n_s_rand_sizes, __pyx_k_rand_sizes, sizeof(__pyx_k_rand_sizes), 0, 0, 1, 1},
@@ -12905,6 +13186,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_syn1, __pyx_k_syn1, sizeof(__pyx_k_syn1), 0, 0, 1, 1},
   {&__pyx_n_s_syn1neg, __pyx_k_syn1neg, sizeof(__pyx_k_syn1neg), 0, 0, 1, 1},
   {&__pyx_n_s_sys, __pyx_k_sys, sizeof(__pyx_k_sys), 0, 0, 1, 1},
+  {&__pyx_n_s_t_index, __pyx_k_t_index, sizeof(__pyx_k_t_index), 0, 0, 1, 1},
   {&__pyx_n_s_t_start, __pyx_k_t_start, sizeof(__pyx_k_t_start), 0, 0, 1, 1},
   {&__pyx_n_s_target, __pyx_k_target, sizeof(__pyx_k_target), 0, 0, 1, 1},
   {&__pyx_kp_s_target_phrase_mistmatch, __pyx_k_target_phrase_mistmatch, sizeof(__pyx_k_target_phrase_mistmatch), 0, 0, 1, 0},
@@ -12933,7 +13215,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(0, 37, __pyx_L1_error)
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 131, __pyx_L1_error)
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 875, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 890, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 272, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 855, __pyx_L1_error)
   return 0;
@@ -13040,58 +13322,58 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *     """Update skip-gram model by training on a batch of sentences.
  */
-  __pyx_tuple__12 = PyTuple_Pack(32, __pyx_n_s_model, __pyx_n_s_sentences, __pyx_n_s_alpha, __pyx_n_s_work, __pyx_n_s_compute_loss, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_effective_words, __pyx_n_s_effective_sentences, __pyx_n_s_sent_idx, __pyx_n_s_idx_start, __pyx_n_s_idx_end, __pyx_n_s_id2word, __pyx_n_s_vlookup, __pyx_n_s_sent, __pyx_n_s_end, __pyx_n_s_rand_sizes, __pyx_n_s_word, __pyx_n_s_targets, __pyx_n_s_t_start, __pyx_n_s_rand_window, __pyx_n_s_r, __pyx_n_s_right_con, __pyx_n_s_right_phrase, __pyx_n_s_context, __pyx_n_s_target, __pyx_n_s_con, __pyx_n_s_l, __pyx_n_s_left_con, __pyx_n_s_left_phrase); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 512, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(35, __pyx_n_s_model, __pyx_n_s_sentences, __pyx_n_s_alpha, __pyx_n_s_work, __pyx_n_s_compute_loss, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_effective_words, __pyx_n_s_effective_sentences, __pyx_n_s_sent_idx, __pyx_n_s_idx_start, __pyx_n_s_idx_end, __pyx_n_s_id2word, __pyx_n_s_vlookup, __pyx_n_s_sent, __pyx_n_s_end, __pyx_n_s_rand_sizes, __pyx_n_s_word, __pyx_n_s_targets, __pyx_n_s_pwords, __pyx_n_s_t_start, __pyx_n_s_rand_window, __pyx_n_s_t_index, __pyx_n_s_c_index, __pyx_n_s_r, __pyx_n_s_right_con, __pyx_n_s_right_phrase, __pyx_n_s_context, __pyx_n_s_target, __pyx_n_s_con, __pyx_n_s_l, __pyx_n_s_left_con, __pyx_n_s_left_phrase); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 512, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(5, 0, 32, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_gensim2_models_word2vec_inner_py, __pyx_n_s_train_batch_sg, 512, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 512, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(5, 0, 35, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_gensim2_models_word2vec_inner_py, __pyx_n_s_train_batch_sg, 512, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 512, __pyx_L1_error)
 
-  /* "gensim2/models/word2vec_inner.pyx":811
+  /* "gensim2/models/word2vec_inner.pyx":826
  * 
  * 
  * def train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss):             # <<<<<<<<<<<<<<
  *     """Update CBOW model by training on a batch of sentences.
  * 
  */
-  __pyx_tuple__14 = PyTuple_Pack(20, __pyx_n_s_model, __pyx_n_s_sentences, __pyx_n_s_alpha, __pyx_n_s_work, __pyx_n_s_neu1, __pyx_n_s_compute_loss, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_effective_words, __pyx_n_s_effective_sentences, __pyx_n_s_sent_idx, __pyx_n_s_idx_start, __pyx_n_s_idx_end, __pyx_n_s_vlookup, __pyx_n_s_sent, __pyx_n_s_token, __pyx_n_s_word, __pyx_n_s_item); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 811, __pyx_L1_error)
+  __pyx_tuple__14 = PyTuple_Pack(20, __pyx_n_s_model, __pyx_n_s_sentences, __pyx_n_s_alpha, __pyx_n_s_work, __pyx_n_s_neu1, __pyx_n_s_compute_loss, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_effective_words, __pyx_n_s_effective_sentences, __pyx_n_s_sent_idx, __pyx_n_s_idx_start, __pyx_n_s_idx_end, __pyx_n_s_vlookup, __pyx_n_s_sent, __pyx_n_s_token, __pyx_n_s_word, __pyx_n_s_item); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 826, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(6, 0, 20, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_gensim2_models_word2vec_inner_py, __pyx_n_s_train_batch_cbow, 811, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 811, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(6, 0, 20, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_gensim2_models_word2vec_inner_py, __pyx_n_s_train_batch_cbow, 826, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 826, __pyx_L1_error)
 
-  /* "gensim2/models/word2vec_inner.pyx":899
+  /* "gensim2/models/word2vec_inner.pyx":914
  * 
  * 
  * def score_sentence_sg(model, sentence, _work):             # <<<<<<<<<<<<<<
  *     """Obtain likelihood score for a single sentence in a fitted skip-gram representation.
  * 
  */
-  __pyx_tuple__16 = PyTuple_Pack(12, __pyx_n_s_model, __pyx_n_s_sentence, __pyx_n_s_work, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_result, __pyx_n_s_sentence_len, __pyx_n_s_vlookup, __pyx_n_s_token, __pyx_n_s_word); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 899, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(12, __pyx_n_s_model, __pyx_n_s_sentence, __pyx_n_s_work, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_result, __pyx_n_s_sentence_len, __pyx_n_s_vlookup, __pyx_n_s_token, __pyx_n_s_word); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 914, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(3, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_gensim2_models_word2vec_inner_py, __pyx_n_s_score_sentence_sg, 899, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 899, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(3, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_gensim2_models_word2vec_inner_py, __pyx_n_s_score_sentence_sg, 914, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 914, __pyx_L1_error)
 
-  /* "gensim2/models/word2vec_inner.pyx":992
+  /* "gensim2/models/word2vec_inner.pyx":1007
  *         work[0] += f
  * 
  * def score_sentence_cbow(model, sentence, _work, _neu1):             # <<<<<<<<<<<<<<
  *     """Obtain likelihood score for a single sentence in a fitted CBOW representation.
  * 
  */
-  __pyx_tuple__18 = PyTuple_Pack(13, __pyx_n_s_model, __pyx_n_s_sentence, __pyx_n_s_work, __pyx_n_s_neu1, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_result, __pyx_n_s_vlookup, __pyx_n_s_token, __pyx_n_s_word, __pyx_n_s_sentence_len); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 992, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(13, __pyx_n_s_model, __pyx_n_s_sentence, __pyx_n_s_work, __pyx_n_s_neu1, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_result, __pyx_n_s_vlookup, __pyx_n_s_token, __pyx_n_s_word, __pyx_n_s_sentence_len); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 1007, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(4, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_gensim2_models_word2vec_inner_py, __pyx_n_s_score_sentence_cbow, 992, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 992, __pyx_L1_error)
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(4, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_gensim2_models_word2vec_inner_py, __pyx_n_s_score_sentence_cbow, 1007, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 1007, __pyx_L1_error)
 
-  /* "gensim2/models/word2vec_inner.pyx":1100
+  /* "gensim2/models/word2vec_inner.pyx":1115
  * 
  * 
  * def init():             # <<<<<<<<<<<<<<
  *     """Precompute function `sigmoid(x) = 1 / (1 + exp(-x))`, for x values discretized into table EXP_TABLE.
  *      Also calculate log(sigmoid(x)) into LOG_TABLE.
  */
-  __pyx_tuple__20 = PyTuple_Pack(7, __pyx_n_s_i, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_expected, __pyx_n_s_size, __pyx_n_s_d_res, __pyx_n_s_p_res); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 1100, __pyx_L1_error)
+  __pyx_tuple__20 = PyTuple_Pack(7, __pyx_n_s_i, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_expected, __pyx_n_s_size, __pyx_n_s_d_res, __pyx_n_s_p_res); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 1115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
-  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_gensim2_models_word2vec_inner_py, __pyx_n_s_init, 1100, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 1100, __pyx_L1_error)
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_gensim2_models_word2vec_inner_py, __pyx_n_s_init, 1115, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 1115, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -13770,74 +14052,74 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_train_batch_sg, __pyx_t_2) < 0) __PYX_ERR(0, 512, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":811
+  /* "gensim2/models/word2vec_inner.pyx":826
  * 
  * 
  * def train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss):             # <<<<<<<<<<<<<<
  *     """Update CBOW model by training on a batch of sentences.
  * 
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7gensim2_6models_14word2vec_inner_3train_batch_cbow, NULL, __pyx_n_s_gensim2_models_word2vec_inner); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 811, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7gensim2_6models_14word2vec_inner_3train_batch_cbow, NULL, __pyx_n_s_gensim2_models_word2vec_inner); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 826, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_train_batch_cbow, __pyx_t_2) < 0) __PYX_ERR(0, 811, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_train_batch_cbow, __pyx_t_2) < 0) __PYX_ERR(0, 826, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":899
+  /* "gensim2/models/word2vec_inner.pyx":914
  * 
  * 
  * def score_sentence_sg(model, sentence, _work):             # <<<<<<<<<<<<<<
  *     """Obtain likelihood score for a single sentence in a fitted skip-gram representation.
  * 
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7gensim2_6models_14word2vec_inner_5score_sentence_sg, NULL, __pyx_n_s_gensim2_models_word2vec_inner); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 899, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7gensim2_6models_14word2vec_inner_5score_sentence_sg, NULL, __pyx_n_s_gensim2_models_word2vec_inner); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 914, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_score_sentence_sg, __pyx_t_2) < 0) __PYX_ERR(0, 899, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_score_sentence_sg, __pyx_t_2) < 0) __PYX_ERR(0, 914, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":992
+  /* "gensim2/models/word2vec_inner.pyx":1007
  *         work[0] += f
  * 
  * def score_sentence_cbow(model, sentence, _work, _neu1):             # <<<<<<<<<<<<<<
  *     """Obtain likelihood score for a single sentence in a fitted CBOW representation.
  * 
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7gensim2_6models_14word2vec_inner_7score_sentence_cbow, NULL, __pyx_n_s_gensim2_models_word2vec_inner); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 992, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7gensim2_6models_14word2vec_inner_7score_sentence_cbow, NULL, __pyx_n_s_gensim2_models_word2vec_inner); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1007, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_score_sentence_cbow, __pyx_t_2) < 0) __PYX_ERR(0, 992, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_score_sentence_cbow, __pyx_t_2) < 0) __PYX_ERR(0, 1007, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":1100
+  /* "gensim2/models/word2vec_inner.pyx":1115
  * 
  * 
  * def init():             # <<<<<<<<<<<<<<
  *     """Precompute function `sigmoid(x) = 1 / (1 + exp(-x))`, for x values discretized into table EXP_TABLE.
  *      Also calculate log(sigmoid(x)) into LOG_TABLE.
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7gensim2_6models_14word2vec_inner_9init, NULL, __pyx_n_s_gensim2_models_word2vec_inner); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1100, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_7gensim2_6models_14word2vec_inner_9init, NULL, __pyx_n_s_gensim2_models_word2vec_inner); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_init, __pyx_t_2) < 0) __PYX_ERR(0, 1100, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_init, __pyx_t_2) < 0) __PYX_ERR(0, 1115, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":1147
+  /* "gensim2/models/word2vec_inner.pyx":1162
  *         return 2
  * 
  * FAST_VERSION = init()  # initialize the module             # <<<<<<<<<<<<<<
  * MAX_WORDS_IN_BATCH = MAX_SENTENCE_LEN
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1147, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1147, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FAST_VERSION, __pyx_t_7) < 0) __PYX_ERR(0, 1147, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_FAST_VERSION, __pyx_t_7) < 0) __PYX_ERR(0, 1162, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "gensim2/models/word2vec_inner.pyx":1148
+  /* "gensim2/models/word2vec_inner.pyx":1163
  * 
  * FAST_VERSION = init()  # initialize the module
  * MAX_WORDS_IN_BATCH = MAX_SENTENCE_LEN             # <<<<<<<<<<<<<<
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_MAX_WORDS_IN_BATCH, __pyx_int_10000) < 0) __PYX_ERR(0, 1148, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_MAX_WORDS_IN_BATCH, __pyx_int_10000) < 0) __PYX_ERR(0, 1163, __pyx_L1_error)
 
   /* "gensim2/models/word2vec_inner.pyx":1
  * #!/usr/bin/env cython             # <<<<<<<<<<<<<<

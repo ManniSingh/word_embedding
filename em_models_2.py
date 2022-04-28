@@ -40,12 +40,14 @@ os.makedirs('data/', exist_ok=True)
 # parse wiki dump
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',lower=True) # Orignal
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='EM',lower=True)
+wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='PEM',lower=True)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='DEP',lower=True,pos=False,loc=False)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='UNS',lower=True,pos=False,loc=False)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='UNSEM',lower=True,pos=False,loc=False)
 
 #sv.save(wiki_sentences,"wiki_sentences") # orignal
 #sv.save(wiki_sentences,"wiki_sentences_em")
+sv.save(wiki_sentences,"wiki_sentences_pem")
 
 
 # # Phrase mining
@@ -61,8 +63,8 @@ os.makedirs('data/', exist_ok=True)
 # # Train procedure
 
 
-sentences = sv.load("wiki_sentences_em") #New
-
+#sentences = sv.load("wiki_sentences_em") #New
+sentences = sv.load("wiki_sentences_pem") #New
 #sentences = sv.load("wiki_sentences_spx") #New
 #sentences = sv.load("wiki_sentences") #New
 
@@ -72,6 +74,8 @@ for sent in sentences:
     break
 
 print("Minimum length of token:",sentences.wiki.token_min_len)
+
+sys.exit()
 
 logging.info('Training model %s', 'spxM100w5')
 model = word2vec.Word2Vec(sentences, window=5, sg=1, hs=0, negative=5, size=300, sample=1e-3, workers=40, iter=5, min_count=100)

@@ -563,6 +563,7 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
                 continue
             #Collecting phrase words in a list
             targets = list() 
+            pwords = list()
             if sent[i] == '[':
                 t_start = i
                 i+=1
@@ -572,7 +573,10 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
                 while sent[i] != ']': 
                     #if sent[i] in vlookup and sent[i][0].isupper() and sent[i][1:].islower(): #SP (capital words only)
                     if sent[i] in vlookup:
-                        targets.append(vlookup[sent[i]].index)
+                        if '#E' in sent[i]:
+                            targets.append(vlookup[sent[i]].index)
+                        if '#P' in sent[i]:
+                            pwords.append(vlookup[sent[i]].index)
                     i+=1
                     if i>=end:
                         break
@@ -607,7 +611,18 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
             #    print(model.wv.index2word[t])
             #sys.exit()
             #####
-            
+            # phrase word embeddings
+            if len(pwords)>1:
+                for t_index in pwords:
+                    for c_index in pwords:
+                        if t_index != c_index:
+                            c.indexes[effective_words] = t_index
+                            c.contexts[effective_words] = c_index
+                            effective_words += 1 
+                        if effective_words >= MAX_SENTENCE_LEN:
+                            break
+                if effective_words >= MAX_SENTENCE_LEN:
+                                break
             #print("right context")
             j = i #window boundary pos (Global window counter)
             r = i+1  

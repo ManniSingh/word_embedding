@@ -1,0 +1,628 @@
+[2022-04-28 10:54:52,249] Parsing wiki corpus Altered...
+[2022-04-28 10:54:52,249] utils.py line 55, Pattern altered to include [ and ] ...
+/home/manni/ner-s2s/word_embedding/wiki.py
+/home/manni/ner-s2s/word_embedding/localgensim/gensim2/models/word2vec.py
+[2022-04-28 10:54:53,800] adding document #0 to Dictionary(0 unique tokens: [])
+[2022-04-28 10:56:12,359] adding document #10000 to Dictionary(890316 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 10:57:25,249] adding document #20000 to Dictionary(1270935 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 10:58:25,702] adding document #30000 to Dictionary(1536925 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 10:59:20,198] adding document #40000 to Dictionary(1762497 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 10:59:59,912] adding document #50000 to Dictionary(1920633 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:00:22,235] adding document #60000 to Dictionary(1955437 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:00:41,928] adding document #70000 to Dictionary(1989457 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:01:03,505] discarding 20128 tokens: [('élitism#E', 1), ('élitism#P', 1), ('goknur', 1), ('gorsek#E', 1), ('gorsek#P', 1), ('farfan#E', 1), ('farfan#P', 1), ('gedamke#E', 1), ('gedamke#P', 1), ('kaady#E', 1)]...
+[2022-04-28 11:01:03,505] keeping 2000000 tokens which were in no less than 0 and no more than 80000 (=100.0%) documents
+[2022-04-28 11:01:06,958] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:01:06,986] adding document #80000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:01:51,590] discarding 136629 tokens: [('jagellon#E', 1), ('jagellon#P', 1), ('kungshatt', 1), ('lovö', 1), ('lovö#E', 1), ('lovö#P', 1), ('lovön', 1), ('långa', 1), ('nockebybron#E', 1), ('nockebybron#P', 1)]...
+[2022-04-28 11:01:51,591] keeping 2000000 tokens which were in no less than 0 and no more than 90000 (=100.0%) documents
+[2022-04-28 11:01:55,166] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:01:55,234] adding document #90000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:02:53,254] discarding 202376 tokens: [('schelpenkar', 1), ('silveris', 1), ('teekenmaatschappij', 1), ('verdwenen', 1), ('yiayr', 1), ('zweefvlieg#E', 1), ('zweefvlieg#P', 1), ('oosterduinse', 1), ('binkhorst#E', 1), ('binkhorst#P', 1)]...
+[2022-04-28 11:02:53,254] keeping 2000000 tokens which were in no less than 0 and no more than 100000 (=100.0%) documents
+[2022-04-28 11:02:56,961] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:02:57,041] adding document #100000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:03:47,923] discarding 176632 tokens: [('jipsingboermussel#E', 1), ('jipsingboermussel#P', 1), ('jipsingboertange#E', 1), ('jipsingboertange#P', 1), ('jipsingbourtange', 1), ('jipsinghuizen', 1), ('jipsinghuizen#E', 1), ('jipsinghuizen#P', 1), ('lammerweg#E', 1), ('lammerweg#P', 1)]...
+[2022-04-28 11:03:47,923] keeping 2000000 tokens which were in no less than 0 and no more than 110000 (=100.0%) documents
+[2022-04-28 11:03:51,477] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:03:51,572] adding document #110000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:04:39,374] discarding 165626 tokens: [('geoeffectiveness', 1), ('geophysicae', 1), ('hepad', 1), ('lesur', 1), ('moldwin', 1), ('nairas', 1), ('nowcast', 1), ('ruffenach', 1), ('schwenn', 1), ('siscoe#E', 1)]...
+[2022-04-28 11:04:39,375] keeping 2000000 tokens which were in no less than 0 and no more than 120000 (=100.0%) documents
+[2022-04-28 11:04:42,992] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:04:43,060] adding document #120000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:05:28,090] discarding 154570 tokens: [('rezistor', 1), ('volara#E', 1), ('volara#P', 1), ('cascademedicalcenter', 1), ('anneas', 1), ('ascuaga', 1), ('boydstun', 1), ('hovdey#E', 1), ('hovdey#P', 1), ('kdzy#E', 1)]...
+[2022-04-28 11:05:28,091] keeping 2000000 tokens which were in no less than 0 and no more than 130000 (=100.0%) documents
+[2022-04-28 11:05:31,664] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:05:31,729] adding document #130000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:06:21,946] discarding 170328 tokens: [('kbov#P', 1), ('keoughs#E', 1), ('keoughs#P', 1), ('kibs#E', 1), ('kibs#P', 1), ('kmmt#E', 1), ('kmmt#P', 1), ('krhv#E', 1), ('krhv#P', 1), ('ksrw#E', 1)]...
+[2022-04-28 11:06:21,946] keeping 2000000 tokens which were in no less than 0 and no more than 140000 (=100.0%) documents
+[2022-04-28 11:06:25,594] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:06:25,687] adding document #140000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:07:08,974] discarding 184696 tokens: [('shelve#P', 1), ('sprivers#E', 1), ('sprivers#P', 1), ('stagshaw#E', 1), ('stagshaw#P', 1), ('staward#E', 1), ('staward#P', 1), ('stoneacre#E', 1), ('stoneacre#P', 1), ('watermeads#E', 1)]...
+[2022-04-28 11:07:08,975] keeping 2000000 tokens which were in no less than 0 and no more than 150000 (=100.0%) documents
+[2022-04-28 11:07:12,606] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:07:12,675] adding document #150000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:07:56,704] discarding 175189 tokens: [('internetradio', 1), ('kanaalduik', 1), ('kloostereind', 1), ('loskraan', 1), ('nieky#E', 1), ('nieky#P', 1), ('oranjebuurt', 1), ('overbrug', 1), ('rijpelberg', 1), ('rijpelberg#E', 1)]...
+[2022-04-28 11:07:56,705] keeping 2000000 tokens which were in no less than 0 and no more than 160000 (=100.0%) documents
+[2022-04-28 11:08:00,813] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:08:00,900] adding document #160000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:08:42,622] discarding 154437 tokens: [('epicydes#P', 1), ('herbessus#E', 1), ('herbessus#P', 1), ('insubrians', 1), ('layeen', 1), ('layenes', 1), ('layène', 1), ('libasse', 1), ('limamou', 1), ('mandione', 1)]...
+[2022-04-28 11:08:42,622] keeping 2000000 tokens which were in no less than 0 and no more than 170000 (=100.0%) documents
+[2022-04-28 11:08:46,191] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:08:46,255] adding document #170000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:09:26,813] discarding 132732 tokens: [('mordalup#E', 1), ('mordalup#P', 1), ('mordette#E', 1), ('mordette#P', 1), ('mortijinup#E', 1), ('mortijinup#P', 1), ('mournucking#E', 1), ('mournucking#P', 1), ('mungaroona#E', 1), ('mungaroona#P', 1)]...
+[2022-04-28 11:09:26,813] keeping 2000000 tokens which were in no less than 0 and no more than 180000 (=100.0%) documents
+[2022-04-28 11:09:30,504] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:09:30,567] adding document #180000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:10:10,709] discarding 143264 tokens: [('yarpole#P', 1), ('zeals', 1), ('aegidio', 1), ('liddall', 1), ('trefnant', 1), ('commentarie', 1), ('garlandes', 1), ('logicke', 1), ('mathematikes', 1), ('polystephanos', 1)]...
+[2022-04-28 11:10:10,710] keeping 2000000 tokens which were in no less than 0 and no more than 190000 (=100.0%) documents
+[2022-04-28 11:10:14,753] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:10:14,823] adding document #190000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:10:51,503] discarding 139556 tokens: [('vicknair', 1), ('adagria', 1), ('leatherwoods', 1), ('bouleur', 1), ('chaussette', 1), ('gatte#E', 1), ('gatte#P', 1), ('gumpoint#E', 1), ('gumpoint#P', 1), ('mowata#E', 1)]...
+[2022-04-28 11:10:51,503] keeping 2000000 tokens which were in no less than 0 and no more than 200000 (=100.0%) documents
+[2022-04-28 11:10:55,224] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:10:55,291] adding document #200000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:11:31,410] discarding 124917 tokens: [('ouézy#P', 1), ('parfouru#E', 1), ('parfouru#P', 1), ('perrières#E', 1), ('perrières#P', 1), ('pertheville#E', 1), ('pertheville#P', 1), ('pipard#E', 1), ('pipard#P', 1), ('pontfol#E', 1)]...
+[2022-04-28 11:11:31,410] keeping 2000000 tokens which were in no less than 0 and no more than 210000 (=100.0%) documents
+[2022-04-28 11:11:35,018] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:11:35,084] adding document #210000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:12:12,092] discarding 117979 tokens: [('rabiabad#E', 1), ('rabiabad#P', 1), ('tuţu', 1), ('buariki', 1), ('tekanuea#E', 1), ('tekanuea#P', 1), ('uekera', 1), ('ukupanipo', 1), ('ulupoka', 1), ('lupesoliai#E', 1)]...
+[2022-04-28 11:12:12,092] keeping 2000000 tokens which were in no less than 0 and no more than 220000 (=100.0%) documents
+[2022-04-28 11:12:15,684] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:12:15,743] adding document #220000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:12:53,953] discarding 128905 tokens: [('electionmemory', 1), ('eudravigilance#E', 1), ('eudravigilance#P', 1), ('intergovernmentalist#E', 1), ('intergovernmentalist#P', 1), ('membereea', 1), ('abandomnent', 1), ('amazink', 1), ('amza', 1), ('andiyazi', 1)]...
+[2022-04-28 11:12:53,956] keeping 2000000 tokens which were in no less than 0 and no more than 230000 (=100.0%) documents
+[2022-04-28 11:12:57,837] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:12:57,902] adding document #230000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:13:32,210] discarding 130132 tokens: [('laybah', 1), ('massurreal#E', 1), ('massurreal#P', 1), ('tressillian', 1), ('broomsbury', 1), ('rict#E', 1), ('rict#P', 1), ('shugborow', 1), ('undertenant', 1), ('bethwin', 1)]...
+[2022-04-28 11:13:32,211] keeping 2000000 tokens which were in no less than 0 and no more than 240000 (=100.0%) documents
+[2022-04-28 11:13:35,898] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:13:35,966] adding document #240000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:14:12,059] discarding 121267 tokens: [('bengell#E', 1), ('bengell#P', 1), ('birkheuer#E', 1), ('birkheuer#P', 1), ('bozano#E', 1), ('bozano#P', 1), ('brigagão#E', 1), ('brigagão#P', 1), ('cauã#E', 1), ('cauã#P', 1)]...
+[2022-04-28 11:14:12,060] keeping 2000000 tokens which were in no less than 0 and no more than 250000 (=100.0%) documents
+[2022-04-28 11:14:15,813] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:14:15,879] adding document #250000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:14:51,254] discarding 118387 tokens: [('anadarkos', 1), ('anadarkos#E', 1), ('anadarkos#P', 1), ('tawakonis', 1), ('zipperlandville#E', 1), ('zipperlandville#P', 1), ('brambeletts', 1), ('cadodaquious', 1), ('duffau#E', 1), ('duffau#P', 1)]...
+[2022-04-28 11:14:51,255] keeping 2000000 tokens which were in no less than 0 and no more than 260000 (=100.0%) documents
+[2022-04-28 11:14:55,232] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:14:55,318] adding document #260000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:15:29,406] discarding 114783 tokens: [('tlapallan', 1), ('tlillan', 1), ('conservándolas', 1), ('nahuaque', 1), ('naoaque', 1), ('nauaque', 1), ('sustentándolas', 1), ('tloque', 1), ('tloquenahuaque', 1), ('ilhuicacihuātl', 1)]...
+[2022-04-28 11:15:29,406] keeping 2000000 tokens which were in no less than 0 and no more than 270000 (=100.0%) documents
+[2022-04-28 11:15:33,145] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:15:33,214] adding document #270000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:16:12,049] discarding 124258 tokens: [('septwolves#E', 1), ('septwolves#P', 1), ('shensu#E', 1), ('shensu#P', 1), ('shuangshi#E', 1), ('shuangshi#P', 1), ('tức', 1), ('weihuimiao', 1), ('xiashen', 1), ('xiashen#E', 1)]...
+[2022-04-28 11:16:12,050] keeping 2000000 tokens which were in no less than 0 and no more than 280000 (=100.0%) documents
+[2022-04-28 11:16:15,888] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:16:15,960] adding document #280000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:16:48,602] discarding 115116 tokens: [('cynibald', 1), ('dodshon#E', 1), ('dodshon#P', 1), ('lansil', 1), ('loncastre', 1), ('lrgs#E', 1), ('lrgs#P', 1), ('lungess', 1), ('lunium', 1), ('lutube', 1)]...
+[2022-04-28 11:16:48,602] keeping 2000000 tokens which were in no less than 0 and no more than 290000 (=100.0%) documents
+[2022-04-28 11:16:52,200] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:16:52,263] adding document #290000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:17:26,754] discarding 125933 tokens: [('andarta#P', 1), ('andrasta', 1), ('anacul', 1), ('anextiomarus', 1), ('anextlo', 1), ('anextlomara', 1), ('anextlomarus', 1), ('anextlomāros', 1), ('ecfrpc', 1), ('andúnë', 1)]...
+[2022-04-28 11:17:26,754] keeping 2000000 tokens which were in no less than 0 and no more than 300000 (=100.0%) documents
+[2022-04-28 11:17:30,654] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:17:30,728] adding document #300000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:18:02,114] discarding 118528 tokens: [('giby#E', 1), ('giby#P', 1), ('gorangpo#E', 1), ('gorangpo#P', 1), ('hawizah', 1), ('herkulesfürdő#E', 1), ('herkulesfürdő#P', 1), ('ioanina#E', 1), ('ioanina#P', 1), ('kapelsche', 1)]...
+[2022-04-28 11:18:02,115] keeping 2000000 tokens which were in no less than 0 and no more than 310000 (=100.0%) documents
+[2022-04-28 11:18:05,729] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:18:05,794] adding document #310000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:18:37,719] discarding 124991 tokens: [('hueca', 1), ('jaideliz', 1), ('jalova', 1), ('jalovita', 1), ('milivi', 1), ('narganes', 1), ('pyrodinium#E', 1), ('pyrodinium#P', 1), ('saínz', 1), ('vieques_from_air', 1)]...
+[2022-04-28 11:18:37,719] keeping 2000000 tokens which were in no less than 0 and no more than 320000 (=100.0%) documents
+[2022-04-28 11:18:41,519] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:18:41,592] adding document #320000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:19:13,862] discarding 112896 tokens: [('équarrissage', 1), ('austreibung#E', 1), ('austreibung#P', 1), ('bucklige#E', 1), ('bucklige#P', 1), ('degele#E', 1), ('degele#P', 1), ('ehrenbaum#E', 1), ('ehrenbaum#P', 1), ('finanzen#E', 1)]...
+[2022-04-28 11:19:13,863] keeping 2000000 tokens which were in no less than 0 and no more than 330000 (=100.0%) documents
+[2022-04-28 11:19:17,572] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:19:17,645] adding document #330000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:19:46,815] discarding 104849 tokens: [('dirkon#P', 1), ('pinspeck#E', 1), ('pinspeck#P', 1), ('solarigraphy#E', 1), ('solarigraphy#P', 1), ('blackgem#E', 1), ('blackgem#P', 1), ('detections#E', 1), ('detections#P', 1), ('dooshkevieh', 1)]...
+[2022-04-28 11:19:46,815] keeping 2000000 tokens which were in no less than 0 and no more than 340000 (=100.0%) documents
+[2022-04-28 11:19:50,552] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:19:50,617] adding document #340000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:20:19,822] discarding 94654 tokens: [('kmud', 1), ('luffenholtz', 1), ('lumberlands', 1), ('redcrest#E', 1), ('redcrest#P', 1), ('tolowot', 1), ('tolowot#E', 1), ('tolowot#P', 1), ('weediquette#E', 1), ('weediquette#P', 1)]...
+[2022-04-28 11:20:19,822] keeping 2000000 tokens which were in no less than 0 and no more than 350000 (=100.0%) documents
+[2022-04-28 11:20:23,490] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:20:23,558] adding document #350000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:20:52,686] discarding 104195 tokens: [('zethar#P', 1), ('zibia#E', 1), ('zibia#P', 1), ('zidkijah#E', 1), ('zidkijah#P', 1), ('zidon#E', 1), ('zidon#P', 1), ('zidonians#E', 1), ('zidonians#P', 1), ('ziha#E', 1)]...
+[2022-04-28 11:20:52,686] keeping 2000000 tokens which were in no less than 0 and no more than 360000 (=100.0%) documents
+[2022-04-28 11:20:56,426] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:20:56,491] adding document #360000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:21:25,456] discarding 89897 tokens: [('στροφή#P', 1), ('epodical', 1), ('epodon', 1), ('στρέφω', 1), ('στροφὴ', 1), ('ὰντὶ', 1), ('briselli', 1), ('brévignon', 1), ('meiff', 1), ('spoletto', 1)]...
+[2022-04-28 11:21:25,457] keeping 2000000 tokens which were in no less than 0 and no more than 370000 (=100.0%) documents
+[2022-04-28 11:21:28,936] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:21:28,998] adding document #370000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:21:58,295] discarding 97651 tokens: [('vaporator', 1), ('agadzhanova', 1), ('apskaft', 1), ('awaycaboose', 1), ('bronenosets', 1), ('corazzata#E', 1), ('corazzata#P', 1), ('ditzky', 1), ('fydhws', 1), ('gomorov', 1)]...
+[2022-04-28 11:21:58,296] keeping 2000000 tokens which were in no less than 0 and no more than 380000 (=100.0%) documents
+[2022-04-28 11:22:01,958] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:22:02,027] adding document #380000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:22:30,314] discarding 94856 tokens: [('nympholeptic#E', 1), ('nympholeptic#P', 1), ('ofmultiple', 1), ('pentelici', 1), ('phusin', 1), ('pigwiggina', 1), ('præterita#E', 1), ('præterita#P', 1), ('raficq', 1), ('raphelite#E', 1)]...
+[2022-04-28 11:22:30,315] keeping 2000000 tokens which were in no less than 0 and no more than 390000 (=100.0%) documents
+[2022-04-28 11:22:33,830] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:22:33,892] adding document #390000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:23:04,045] discarding 89735 tokens: [('にほんとう', 1), ('わきざし', 1), ('倭刀', 1), ('八卦刀', 1), ('南刀', 1), ('大太刀', 1), ('小太刀', 1), ('忍者刀', 1), ('木剣', 1), ('柳針刀', 1)]...
+[2022-04-28 11:23:04,045] keeping 2000000 tokens which were in no less than 0 and no more than 400000 (=100.0%) documents
+[2022-04-28 11:23:07,676] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:23:07,739] adding document #400000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:23:35,719] discarding 99350 tokens: [('vozinha', 1), ('cvao#E', 1), ('cvao#P', 1), ('cvoo#E', 1), ('cvoo#P', 1), ('indp#E', 1), ('indp#P', 1), ('inmg', 1), ('lameirão#E', 1), ('lameirão#P', 1)]...
+[2022-04-28 11:23:35,723] keeping 2000000 tokens which were in no less than 0 and no more than 410000 (=100.0%) documents
+[2022-04-28 11:23:39,357] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:23:39,426] adding document #410000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:24:09,395] discarding 113432 tokens: [('bvbo', 1), ('fortunates', 1), ('gosc', 1), ('heilpraktiker', 1), ('myofascia#E', 1), ('myofascia#P', 1), ('ocnz', 1), ('osteoegypt', 1), ('osteopaten', 1), ('osteopathes', 1)]...
+[2022-04-28 11:24:09,396] keeping 2000000 tokens which were in no less than 0 and no more than 420000 (=100.0%) documents
+[2022-04-28 11:24:12,962] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:24:13,028] adding document #420000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:24:41,230] discarding 96138 tokens: [('kanabensis', 1), ('laferr', 1), ('megathymus#E', 1), ('megathymus#P', 1), ('mixtecana#E', 1), ('mixtecana#P', 1), ('moundlily', 1), ('necopina#E', 1), ('necopina#P', 1), ('periculosa#E', 1)]...
+[2022-04-28 11:24:41,231] keeping 2000000 tokens which were in no less than 0 and no more than 430000 (=100.0%) documents
+[2022-04-28 11:24:44,925] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:24:44,995] adding document #430000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:25:14,148] discarding 97293 tokens: [('tangerian#P', 1), ('vespertino', 1), ('agamon', 1), ('baigong#E', 1), ('baigong#P', 1), ('darquea', 1), ('eiserner#E', 1), ('eiserner#P', 1), ('geofact#E', 1), ('geofact#P', 1)]...
+[2022-04-28 11:25:14,149] keeping 2000000 tokens which were in no less than 0 and no more than 440000 (=100.0%) documents
+[2022-04-28 11:25:17,852] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:25:17,920] adding document #440000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:25:46,648] discarding 100248 tokens: [('toqqa', 1), ('turkmenization#E', 1), ('turkmenization#P', 1), ('uyida', 1), ('uzbekturkish', 1), ('yaxshi', 1), ('ydigan', 1), ('yotir', 1), ('yozuviga', 1), ('öýünde', 1)]...
+[2022-04-28 11:25:46,648] keeping 2000000 tokens which were in no less than 0 and no more than 450000 (=100.0%) documents
+[2022-04-28 11:25:50,318] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:25:50,388] adding document #450000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:26:18,601] discarding 97268 tokens: [('decheng', 1), ('kamezō#E', 1), ('kamezō#P', 1), ('neotraditionalism', 1), ('youngseo', 1), ('我手寫我口', 1), ('文學改良芻議', 1), ('darrian#E', 1), ('darrian#P', 1), ('jisel#E', 1)]...
+[2022-04-28 11:26:18,602] keeping 2000000 tokens which were in no less than 0 and no more than 460000 (=100.0%) documents
+[2022-04-28 11:26:22,552] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:26:22,621] adding document #460000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:26:50,738] discarding 101257 tokens: [('centuryas', 1), ('otavalos#E', 1), ('otavalos#P', 1), ('piguchi', 1), ('waterfallology', 1), ('chibata#E', 1), ('chibata#P', 1), ('lurongyu#E', 1), ('lurongyu#P', 1), ('mmdd#E', 1)]...
+[2022-04-28 11:26:50,739] keeping 2000000 tokens which were in no less than 0 and no more than 470000 (=100.0%) documents
+[2022-04-28 11:26:54,468] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:26:54,535] adding document #470000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:27:21,860] discarding 88273 tokens: [('altacumbae#E', 1), ('altacumbae#P', 1), ('usilia', 1), ('cranberriesin', 1), ('archimbald', 1), ('aškəlōṯ', 1), ('innəḇê', 1), ('lāmōw', 1), ('miggep', 1), ('miššaḏmōṯ', 1)]...
+[2022-04-28 11:27:21,860] keeping 2000000 tokens which were in no less than 0 and no more than 480000 (=100.0%) documents
+[2022-04-28 11:27:25,531] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:27:25,600] adding document #480000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:27:53,661] discarding 103592 tokens: [('myzocallis#P', 1), ('nutchips', 1), ('ohenrymag', 1), ('outstrips#E', 1), ('outstrips#P', 1), ('pattoni#E', 1), ('pattoni#P', 1), ('pericarpus', 1), ('phytophthoric', 1), ('polyfag', 1)]...
+[2022-04-28 11:27:53,662] keeping 2000000 tokens which were in no less than 0 and no more than 490000 (=100.0%) documents
+[2022-04-28 11:27:57,202] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:27:57,302] adding document #490000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:28:24,500] discarding 88140 tokens: [('frithfield', 1), ('kilver', 1), ('malets#E', 1), ('malets#P', 1), ('sceaptun', 1), ('scoep', 1), ('uluert', 1), ('uniglumis', 1), ('withyhill#E', 1), ('withyhill#P', 1)]...
+[2022-04-28 11:28:24,501] keeping 2000000 tokens which were in no less than 0 and no more than 500000 (=100.0%) documents
+[2022-04-28 11:28:28,187] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:28:28,256] adding document #500000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:28:57,986] discarding 94113 tokens: [('suszczyński#P', 1), ('szlaski#E', 1), ('szlaski#P', 1), ('thereconstruction', 1), ('tumidajski#E', 1), ('tumidajski#P', 1), ('warsawcol', 1), ('westernwarsawcol', 1), ('zientarski#E', 1), ('zientarski#P', 1)]...
+[2022-04-28 11:28:57,986] keeping 2000000 tokens which were in no less than 0 and no more than 510000 (=100.0%) documents
+[2022-04-28 11:29:01,818] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:29:01,884] adding document #510000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:29:29,832] discarding 93093 tokens: [('imagawa_ryoshun#E', 1), ('imagawa_ryoshun#P', 1), ('inazuke', 1), ('iwamizudera', 1), ('juhappan#E', 1), ('juhappan#P', 1), ('kakumyō', 1), ('kanamoto', 1), ('kashoki', 1), ('kousaku', 1)]...
+[2022-04-28 11:29:29,833] keeping 2000000 tokens which were in no less than 0 and no more than 520000 (=100.0%) documents
+[2022-04-28 11:29:33,509] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:29:33,601] adding document #520000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:30:03,726] discarding 99871 tokens: [('phodilinae#P', 1), ('procellarid#E', 1), ('procellarid#P', 1), ('selenornithinae', 1), ('tytoninae', 1), ('bogun', 1), ('grizlehurst', 1), ('silkies#E', 1), ('silkies#P', 1), ('tacklepoles', 1)]...
+[2022-04-28 11:30:03,726] keeping 2000000 tokens which were in no less than 0 and no more than 530000 (=100.0%) documents
+[2022-04-28 11:30:07,367] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:30:07,440] adding document #530000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:30:34,473] discarding 89462 tokens: [('ธง', 1), ('นกฮ', 1), ('นสกฤตา', 1), ('นอากาศ', 1), ('นะโม', 1), ('นำ', 1), ('นเด', 1), ('นเหย', 1), ('นโม', 1), ('บปผฝ', 1)]...
+[2022-04-28 11:30:34,473] keeping 2000000 tokens which were in no less than 0 and no more than 540000 (=100.0%) documents
+[2022-04-28 11:30:38,139] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:30:38,217] adding document #540000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:31:05,860] discarding 96817 tokens: [('gelijkwaardig', 1), ('geloofsbelijdenis', 1), ('gereformeerden', 1), ('hette#E', 1), ('hette#P', 1), ('abendstunde', 1), ('achterloo', 1), ('monstervortrag', 1), ('nilluvavarege#E', 1), ('nilluvavarege#P', 1)]...
+[2022-04-28 11:31:05,860] keeping 2000000 tokens which were in no less than 0 and no more than 550000 (=100.0%) documents
+[2022-04-28 11:31:09,567] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:31:09,637] adding document #550000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:31:37,025] discarding 90860 tokens: [('doramectin#E', 1), ('ostertagi#E', 1), ('ostertagi#P', 1), ('ostertagia#E', 1), ('ostertagia#P', 1), ('parasiticides', 1), ('kaggle', 1), ('lipkus', 1), ('langerová', 1), ('mikelides', 1)]...
+[2022-04-28 11:31:37,025] keeping 2000000 tokens which were in no less than 0 and no more than 560000 (=100.0%) documents
+[2022-04-28 11:31:40,728] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:31:40,798] adding document #560000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:32:06,714] discarding 90846 tokens: [('ˈɛzrə', 1), ('cusnir', 1), ('decroly#P', 1), ('galofre', 1), ('gimnasiano', 1), ('heincke', 1), ('aharonoth#E', 1), ('bonnou', 1), ('gartheimer', 1), ('gartheimers', 1)]...
+[2022-04-28 11:32:06,714] keeping 2000000 tokens which were in no less than 0 and no more than 570000 (=100.0%) documents
+[2022-04-28 11:32:10,449] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:32:10,518] adding document #570000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:32:37,744] discarding 90708 tokens: [('boofe', 1), ('boofen', 1), ('flysheet', 1), ('flysheet#E', 1), ('flysheet#P', 1), ('groundsheets#E', 1), ('pofen', 1), ('bassing', 1), ('kytc#P', 1), ('giettaz', 1)]...
+[2022-04-28 11:32:37,745] keeping 2000000 tokens which were in no less than 0 and no more than 580000 (=100.0%) documents
+[2022-04-28 11:32:41,397] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:32:41,467] adding document #580000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:33:07,495] discarding 80059 tokens: [('tenerowicz', 1), ('sanziers', 1), ('acereros', 1), ('sesamoidectomy', 1), ('syndal', 1), ('onestep', 1), ('onestep#E', 1), ('supercolor', 1), ('anoda', 1), ('czata', 1)]...
+[2022-04-28 11:33:07,495] keeping 2000000 tokens which were in no less than 0 and no more than 590000 (=100.0%) documents
+[2022-04-28 11:33:11,114] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:33:11,213] adding document #590000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:33:36,752] discarding 81647 tokens: [('tetrach#P', 1), ('sassie', 1), ('snorkasaurus', 1), ('songshark', 1), ('banaoang#E', 1), ('banaoang#P', 1), ('bayquen', 1), ('bucloc#E', 1), ('bucloc#P', 1), ('daguioman#E', 1)]...
+[2022-04-28 11:33:36,752] keeping 2000000 tokens which were in no less than 0 and no more than 600000 (=100.0%) documents
+[2022-04-28 11:33:40,522] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:33:40,605] adding document #600000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:34:06,069] discarding 93441 tokens: [('keffler', 1), ('mckasy', 1), ('sarabeth', 1), ('chapainawabganj#E', 1), ('chapainawabganj#P', 1), ('keraunopathy#P', 1), ('neurocardiogenic#E', 1), ('neurocardiogenic#P', 1), ('sonje', 1), ('volpilhac', 1)]...
+[2022-04-28 11:34:06,069] keeping 2000000 tokens which were in no less than 0 and no more than 610000 (=100.0%) documents
+[2022-04-28 11:34:09,795] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:34:09,869] adding document #610000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:34:35,562] discarding 89421 tokens: [('bekhudi#E', 1), ('bekhudi#P', 1), ('chann#E', 1), ('godhuli', 1), ('hatya', 1), ('janbaaz#P', 1), ('khandaani#P', 1), ('kharbanda', 1), ('khushiyaan#E', 1), ('kulbhushan', 1)]...
+[2022-04-28 11:34:35,563] keeping 2000000 tokens which were in no less than 0 and no more than 620000 (=100.0%) documents
+[2022-04-28 11:34:39,253] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:34:39,351] adding document #620000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:35:05,997] discarding 87901 tokens: [('apele', 1), ('huper', 1), ('lifecrafts', 1), ('ituraean', 1), ('ktisas', 1), ('lusianiou', 1), ('mennaeus', 1), ('nymphaeus', 1), ('soterias', 1), ('gianone#P', 1)]...
+[2022-04-28 11:35:05,998] keeping 2000000 tokens which were in no less than 0 and no more than 630000 (=100.0%) documents
+[2022-04-28 11:35:09,572] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:35:09,638] adding document #630000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:35:34,230] discarding 86363 tokens: [('kannanuku', 1), ('kozjacka', 1), ('kaḷyāṇi#P', 1), ('kharaharapriya', 1), ('kuyil', 1), ('摩士小屋', 1), ('旅長', 1), ('bɛři', 1), ('isɩ', 1), ('kamusowa', 1)]...
+[2022-04-28 11:35:34,230] keeping 2000000 tokens which were in no less than 0 and no more than 640000 (=100.0%) documents
+[2022-04-28 11:35:37,978] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:35:38,049] adding document #640000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:36:03,479] discarding 86819 tokens: [('leiberman#P', 1), ('pocalypse', 1), ('valvil#P', 1), ('intrus', 1), ('moktar', 1), ('obliterator#E', 1), ('proffs', 1), ('ranarama#P', 1), ('robtek', 1), ('skyfighter', 1)]...
+[2022-04-28 11:36:03,479] keeping 2000000 tokens which were in no less than 0 and no more than 650000 (=100.0%) documents
+[2022-04-28 11:36:07,516] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:36:07,589] adding document #650000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:36:31,781] discarding 85850 tokens: [('drimane#E', 1), ('hydropiper', 1), ('marshpepper', 1), ('sukizuki', 1), ('紅蓼', 1), ('蓼食う虫も好き好き', 1), ('辣蓼', 1), ('phothirak', 1), ('phram#E', 1), ('ישראלית', 1)]...
+[2022-04-28 11:36:31,782] keeping 2000000 tokens which were in no less than 0 and no more than 660000 (=100.0%) documents
+[2022-04-28 11:36:35,536] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:36:35,606] adding document #660000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:36:59,488] discarding 78319 tokens: [('orston#E', 1), ('orston#P', 1), ('sempstress#E', 1), ('ghail', 1), ('jeewna#E', 1), ('jāṅgala', 1), ('kabirwala#E', 1), ('muzafargarh#P', 1), ('rajbana', 1), ('bengalense', 1)]...
+[2022-04-28 11:36:59,489] keeping 2000000 tokens which were in no less than 0 and no more than 670000 (=100.0%) documents
+[2022-04-28 11:37:03,244] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:37:03,314] adding document #670000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:37:27,391] discarding 80127 tokens: [('石抹孛迭兒', 1), ('蕭札剌', 1), ('說郛', 1), ('隆興和議', 1), ('bethleem#E', 1), ('bethleem#P', 1), ('frontcourts', 1), ('fontenc', 1), ('fäbodlivet', 1), ('gęslkallum', 1)]...
+[2022-04-28 11:37:27,392] keeping 2000000 tokens which were in no less than 0 and no more than 680000 (=100.0%) documents
+[2022-04-28 11:37:31,204] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:37:31,271] adding document #680000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:37:54,980] discarding 96680 tokens: [('miszczenkoi#P', 1), ('mortensenii#E', 1), ('mortensenii#P', 1), ('multibracteatus#E', 1), ('multibracteatus#P', 1), ('nitidioides#E', 1), ('nitidioides#P', 1), ('obcordatus', 1), ('orarius#E', 1), ('orarius#P', 1)]...
+[2022-04-28 11:37:54,981] keeping 2000000 tokens which were in no less than 0 and no more than 690000 (=100.0%) documents
+[2022-04-28 11:37:58,704] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:37:58,776] adding document #690000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:38:22,309] discarding 75955 tokens: [('tarabal', 1), ('accidnelty', 1), ('inputed', 1), ('advancedale', 1), ('wazmo#E', 1), ('wazmo#P', 1), ('qnan#E', 1), ('qnan#P', 1), ('untöt', 1), ('bergentina#E', 1)]...
+[2022-04-28 11:38:22,309] keeping 2000000 tokens which were in no less than 0 and no more than 700000 (=100.0%) documents
+[2022-04-28 11:38:26,084] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:38:26,166] adding document #700000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:38:50,934] discarding 80233 tokens: [('midenistis', 1), ('paremvoles', 1), ('phyrosun', 1), ('rationalistas', 1), ('razastarr#E', 1), ('razastarr#P', 1), ('relaesed', 1), ('thitis', 1), ('αγνωστοφοβία', 1), ('αναμέτρηση', 1)]...
+[2022-04-28 11:38:50,934] keeping 2000000 tokens which were in no less than 0 and no more than 710000 (=100.0%) documents
+[2022-04-28 11:38:54,703] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:38:54,777] adding document #710000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:39:19,241] discarding 111920 tokens: [('noowo', 1), ('noowunenno', 1), ('náwunena', 1), ('ooceinenno', 1), ('ookutoo', 1), ('oukutoo', 1), ('oxooheinen', 1), ('sohoet', 1), ('teebe', 1), ('teenehi', 1)]...
+[2022-04-28 11:39:19,241] keeping 2000000 tokens which were in no less than 0 and no more than 720000 (=100.0%) documents
+[2022-04-28 11:39:22,994] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:39:23,074] adding document #720000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:39:47,361] discarding 77025 tokens: [('motorring#E', 1), ('motorring#P', 1), ('sindingvej#E', 1), ('sindingvej#P', 1), ('karanmanli', 1), ('ballistospory#E', 1), ('ballistospory#P', 1), ('cartilagineus', 1), ('coneae', 1), ('endoptychum', 1)]...
+[2022-04-28 11:39:47,361] keeping 2000000 tokens which were in no less than 0 and no more than 730000 (=100.0%) documents
+[2022-04-28 11:39:51,267] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:39:51,338] adding document #730000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:40:16,738] discarding 81915 tokens: [('zachrysa#E', 1), ('zachrysa#P', 1), ('zametnuti', 1), ('zenzeroides#E', 1), ('zenzeroides#P', 1), ('桃仁', 1), ('asarense', 1), ('cepivorum#E', 1), ('cepivorum#P', 1), ('gripshover', 1)]...
+[2022-04-28 11:40:16,738] keeping 2000000 tokens which were in no less than 0 and no more than 740000 (=100.0%) documents
+[2022-04-28 11:40:20,376] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:40:20,442] adding document #740000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:40:45,611] discarding 104403 tokens: [('ahventen', 1), ('ajoissa', 1), ('annettu', 1), ('eikö', 1), ('englannissa', 1), ('epäröi', 1), ('epäröidä', 1), ('eräs', 1), ('espanjaan', 1), ('espoossa', 1)]...
+[2022-04-28 11:40:45,612] keeping 2000000 tokens which were in no less than 0 and no more than 750000 (=100.0%) documents
+[2022-04-28 11:40:49,437] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:40:49,525] adding document #750000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:41:15,260] discarding 81226 tokens: [('yintao', 1), ('sequoya#E', 1), ('sequoya#P', 1), ('cenciotti', 1), ('ankarette#E', 1), ('ankarette#P', 1), ('chamberlainship#E', 1), ('chamberlainship#P', 1), ('nevillfeast', 1), ('agrovoc', 1)]...
+[2022-04-28 11:41:15,261] keeping 2000000 tokens which were in no less than 0 and no more than 760000 (=100.0%) documents
+[2022-04-28 11:41:19,203] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:41:19,276] adding document #760000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:41:44,256] discarding 78676 tokens: [('tubesnouts', 1), ('wolffishes', 1), ('wrymouths', 1), ('zaniolepidoales', 1), ('zaniolepidoidea#E', 1), ('zaniolepidoidea#P', 1), ('dikeou', 1), ('woewurrong', 1), ('filamentaries', 1), ('lyrates', 1)]...
+[2022-04-28 11:41:44,256] keeping 2000000 tokens which were in no less than 0 and no more than 770000 (=100.0%) documents
+[2022-04-28 11:41:47,992] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:41:48,065] adding document #770000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:42:11,605] discarding 78609 tokens: [('lymne#E', 1), ('lymne#P', 1), ('queningate', 1), ('slbslive', 1), ('stuppington', 1), ('timeteam', 1), ('mukhars', 1), ('plascov', 1), ('sanjuks', 1), ('unccp#E', 1)]...
+[2022-04-28 11:42:11,605] keeping 2000000 tokens which were in no less than 0 and no more than 780000 (=100.0%) documents
+[2022-04-28 11:42:15,469] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:42:15,545] adding document #780000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:42:39,852] discarding 79916 tokens: [('earthatmosphere', 1), ('futureroleinglobalwarming', 1), ('juina#E', 1), ('juina#P', 1), ('polymerisable', 1), ('alferza', 1), ('axedres', 1), ('colōrem', 1), ('fenollar#E', 1), ('fenollar#P', 1)]...
+[2022-04-28 11:42:39,852] keeping 2000000 tokens which were in no less than 0 and no more than 790000 (=100.0%) documents
+[2022-04-28 11:42:43,830] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:42:43,901] adding document #790000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:43:08,160] discarding 82621 tokens: [('カモン#E', 1), ('カモン#P', 1), ('カレーだよ#E', 1), ('カレーだよ#P', 1), ('キャンディーは悪魔のささやき#E', 1), ('キャンディーは悪魔のささやき#P', 1), ('キラ#E', 1), ('キラ#P', 1), ('グルメなアイツ#E', 1), ('グルメなアイツ#P', 1)]...
+[2022-04-28 11:43:08,161] keeping 2000000 tokens which were in no less than 0 and no more than 800000 (=100.0%) documents
+[2022-04-28 11:43:12,011] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:43:12,087] adding document #800000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:43:35,406] discarding 70389 tokens: [('良泰親王', 1), ('行悟法親王', 1), ('anavarinos', 1), ('aqueductthe', 1), ('audoy#E', 1), ('audoy#P', 1), ('chandrinou', 1), ('chorathe', 1), ('englianos', 1), ('fallmereyer#E', 1)]...
+[2022-04-28 11:43:35,406] keeping 2000000 tokens which were in no less than 0 and no more than 810000 (=100.0%) documents
+[2022-04-28 11:43:39,312] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:43:39,395] adding document #810000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:44:02,786] discarding 82178 tokens: [('antōnymíā', 1), ('epírrhēma', 1), ('inflectable#E', 1), ('inflectable#P', 1), ('interjectio', 1), ('metokhḗ', 1), ('participium', 1), ('rhêma', 1), ('rhêma#E', 1), ('rhêma#P', 1)]...
+[2022-04-28 11:44:02,786] keeping 2000000 tokens which were in no less than 0 and no more than 820000 (=100.0%) documents
+[2022-04-28 11:44:06,549] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:44:06,623] adding document #820000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:44:30,787] discarding 81437 tokens: [('boystous', 1), ('bredibus', 1), ('brestyth', 1), ('calcacyon', 1), ('carlylle', 1), ('carpynge', 1), ('chocke', 1), ('churchily', 1), ('chynne', 1), ('dalyacyon', 1)]...
+[2022-04-28 11:44:30,787] keeping 2000000 tokens which were in no less than 0 and no more than 830000 (=100.0%) documents
+[2022-04-28 11:44:34,437] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:44:34,504] adding document #830000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:44:58,649] discarding 80945 tokens: [('marzymes', 1), ('morye', 1), ('murmans', 1), ('murmanskoye', 1), ('nofima', 1), ('norskhydro#E', 1), ('norskhydro#P', 1), ('norstruct', 1), ('olivita', 1), ('pechorskoye', 1)]...
+[2022-04-28 11:44:58,649] keeping 2000000 tokens which were in no less than 0 and no more than 840000 (=100.0%) documents
+[2022-04-28 11:45:02,471] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:45:02,543] adding document #840000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:45:27,972] discarding 79614 tokens: [('chuig', 1), ('roszman', 1), ('feasibilitythey', 1), ('intlinprog', 1), ('linprog', 1), ('multicommodity#E', 1), ('multicommodity#P', 1), ('openopt', 1), ('qoca#E', 1), ('qoca#P', 1)]...
+[2022-04-28 11:45:27,973] keeping 2000000 tokens which were in no less than 0 and no more than 850000 (=100.0%) documents
+[2022-04-28 11:45:31,668] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:45:31,736] adding document #850000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:45:54,811] discarding 80890 tokens: [('allpest', 1), ('permatreat', 1), ('pestkare', 1), ('trutech', 1), ('autorskie', 1), ('cywilne', 1), ('konstytucyjne', 1), ('podatkowe', 1), ('prasowe', 1), ('ustaw#E', 1)]...
+[2022-04-28 11:45:54,812] keeping 2000000 tokens which were in no less than 0 and no more than 860000 (=100.0%) documents
+[2022-04-28 11:45:58,656] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:45:58,728] adding document #860000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:46:22,345] discarding 79942 tokens: [('電脳少女', 1), ('parachutehistory', 1), ('garczegorze#P', 1), ('moeneeb#P', 1), ('nizaam#E', 1), ('fastelovendstrumm', 1), ('fläsch', 1), ('fooss', 1), ('fühlinger', 1), ('jeföhl', 1)]...
+[2022-04-28 11:46:22,345] keeping 2000000 tokens which were in no less than 0 and no more than 870000 (=100.0%) documents
+[2022-04-28 11:46:26,199] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:46:26,289] adding document #870000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:46:49,565] discarding 76549 tokens: [('kanvi#E', 1), ('kanvi#P', 1), ('lakhamgouda#P', 1), ('somavva', 1), ('veerashaiva', 1), ('generalview', 1), ('vegetablemarket', 1), ('caesaries', 1), ('caesus', 1), ('kêsa', 1)]...
+[2022-04-28 11:46:49,565] keeping 2000000 tokens which were in no less than 0 and no more than 880000 (=100.0%) documents
+[2022-04-28 11:46:53,401] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:46:53,473] adding document #880000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:47:17,550] discarding 86111 tokens: [('hogco', 1), ('khocharkhotin#P', 1), ('munahlāƛʼas', 1), ('parčahłi', 1), ('qona', 1), ('qʼacʼcʼola', 1), ('tiƛbakca', 1), ('tiƛki', 1), ('tlyadal#E', 1), ('tlyadal#P', 1)]...
+[2022-04-28 11:47:17,550] keeping 2000000 tokens which were in no less than 0 and no more than 890000 (=100.0%) documents
+[2022-04-28 11:47:21,372] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:47:21,445] adding document #890000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:47:44,464] discarding 76123 tokens: [('smooththroat#P', 1), ('smotherweed#E', 1), ('snakecotton#E', 1), ('sobria#P', 1), ('softhairy#E', 1), ('spidergrass#E', 1), ('spiderwisp#P', 1), ('spiralseed#P', 1), ('spirodela', 1), ('springparsley#P', 1)]...
+[2022-04-28 11:47:44,465] keeping 2000000 tokens which were in no less than 0 and no more than 900000 (=100.0%) documents
+[2022-04-28 11:47:48,279] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:47:48,357] adding document #900000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:48:11,078] discarding 70070 tokens: [('yugarabul#E', 1), ('suedecloth', 1), ('twinkleontheweb', 1), ('hockenos#E', 1), ('abcmynetworktv', 1), ('nahkota', 1), ('museke', 1), ('ninteenth', 1), ('pfii', 1), ('tsykarev', 1)]...
+[2022-04-28 11:48:11,078] keeping 2000000 tokens which were in no less than 0 and no more than 910000 (=100.0%) documents
+[2022-04-28 11:48:15,006] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:48:15,080] adding document #910000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:48:38,044] discarding 84489 tokens: [('rosemorran', 1), ('regimentos', 1), ('devadanapatti#P', 1), ('drubina#E', 1), ('lipas#E', 1), ('sātakaṇi', 1), ('ztraceného', 1), ('wangyan#E', 1), ('horseed', 1), ('siyad#P', 1)]...
+[2022-04-28 11:48:38,045] keeping 2000000 tokens which were in no less than 0 and no more than 920000 (=100.0%) documents
+[2022-04-28 11:48:41,859] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:48:41,932] adding document #920000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:49:05,529] discarding 71532 tokens: [('船越文夫', 1), ('藤原龍太', 1), ('藤堂拳', 1), ('譚飛腳', 1), ('車治五郎', 1), ('部員a', 1), ('金三角龍虎門', 1), ('金剛王', 1), ('金魚のフン#E', 1), ('金魚のフン#P', 1)]...
+[2022-04-28 11:49:05,529] keeping 2000000 tokens which were in no less than 0 and no more than 930000 (=100.0%) documents
+[2022-04-28 11:49:09,225] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:49:09,293] adding document #930000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:49:31,994] discarding 71275 tokens: [('rasaq', 1), ('nabeglavi#P', 1), ('stadlau#E', 1), ('stadlau#P', 1), ('nanpaya#E', 1), ('nanpaya#P', 1), ('wyllington', 1), ('foggin#E', 1), ('namoradze', 1), ('sfvw', 1)]...
+[2022-04-28 11:49:31,994] keeping 2000000 tokens which were in no less than 0 and no more than 940000 (=100.0%) documents
+[2022-04-28 11:49:35,698] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:49:35,766] adding document #940000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:49:59,170] discarding 71337 tokens: [('baizhou', 1), ('eythóra#E', 1), ('eythóra#P', 1), ('foyth#E', 1), ('foyth#P', 1), ('giarnni#E', 1), ('giarnni#P', 1), ('ikoné#E', 1), ('ikoné#P', 1), ('likoshane', 1)]...
+[2022-04-28 11:49:59,171] keeping 2000000 tokens which were in no less than 0 and no more than 950000 (=100.0%) documents
+[2022-04-28 11:50:03,058] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:50:03,131] adding document #950000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:50:26,734] discarding 74061 tokens: [('yamataika#P', 1), ('はるかなる朝', 1), ('アラメインの神殿', 1), ('ブルーシティー', 1), ('ヤマタイカ', 1), ('双葉社', 1), ('夜物語', 1), ('宗像教授伝奇考', 1), ('巨人たちの伝説', 1), ('鋼鉄のクイーン', 1)]...
+[2022-04-28 11:50:26,735] keeping 2000000 tokens which were in no less than 0 and no more than 960000 (=100.0%) documents
+[2022-04-28 11:50:30,571] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:50:30,641] adding document #960000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:50:53,986] discarding 67417 tokens: [('dissentaneas', 1), ('dlak', 1), ('gerulfi', 1), ('gerulphus', 1), ('imperiala#E', 1), ('imperiala#P', 1), ('inchaunted', 1), ('induantur', 1), ('kurtadam', 1), ('kveldulf#E', 1)]...
+[2022-04-28 11:50:53,987] keeping 2000000 tokens which were in no less than 0 and no more than 970000 (=100.0%) documents
+[2022-04-28 11:50:57,827] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:50:57,899] adding document #970000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:51:21,758] discarding 74216 tokens: [('jorvic', 1), ('mullaghboden', 1), ('varagians', 1), ('veðrafjǫrðr#E', 1), ('veðrafjǫrðr#P', 1), ('świelubie', 1), ('brinkhous', 1), ('carboxyglutamyl', 1), ('menaquinones', 1), ('periostin#E', 1)]...
+[2022-04-28 11:51:21,759] keeping 2000000 tokens which were in no less than 0 and no more than 980000 (=100.0%) documents
+[2022-04-28 11:51:25,666] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:51:25,737] adding document #980000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:51:49,924] discarding 80689 tokens: [('empaneled#E', 1), ('empaneled#P', 1), ('improvidently#E', 1), ('improvidently#P', 1), ('skifos', 1), ('superlegislature', 1), ('vignera', 1), ('ofcommon', 1), ('afederal', 1), ('andsustainability#E', 1)]...
+[2022-04-28 11:51:49,924] keeping 2000000 tokens which were in no less than 0 and no more than 990000 (=100.0%) documents
+[2022-04-28 11:51:53,838] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:51:53,911] adding document #990000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:52:15,506] discarding 72902 tokens: [('sъto', 1), ('tocharica', 1), ('tocharų', 1), ('tokharienne', 1), ('tócharoi', 1), ('vikъ', 1), ('wärkänt', 1), ('wōhmaz', 1), ('xočo', 1), ('yamnayans#E', 1)]...
+[2022-04-28 11:52:15,507] keeping 2000000 tokens which were in no less than 0 and no more than 1000000 (=100.0%) documents
+[2022-04-28 11:52:19,403] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:52:19,475] adding document #1000000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:52:43,146] discarding 99209 tokens: [('tweedles#E', 1), ('tweedles#P', 1), ('ughs#E', 1), ('ughs#P', 1), ('chrestianoi', 1), ('chrestianos', 1), ('cuspius', 1), ('yelnitsky', 1), ('ardonirane', 1), ('beastiaries', 1)]...
+[2022-04-28 11:52:43,147] keeping 2000000 tokens which were in no less than 0 and no more than 1010000 (=100.0%) documents
+[2022-04-28 11:52:46,980] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:52:47,059] adding document #1010000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:53:10,227] discarding 79215 tokens: [('lucium#P', 1), ('nanodisperse', 1), ('nipponium#E', 1), ('nipponium#P', 1), ('nudat', 1), ('organotechnetium', 1), ('panormium', 1), ('pertechnate#E', 1), ('pertechnate#P', 1), ('polinium#E', 1)]...
+[2022-04-28 11:53:10,227] keeping 2000000 tokens which were in no less than 0 and no more than 1020000 (=100.0%) documents
+[2022-04-28 11:53:14,190] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:53:14,266] adding document #1020000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:53:37,599] discarding 86691 tokens: [('spere#P', 1), ('zaġāyah#E', 1), ('zaġāyah#P', 1), ('一曰漆枪', 1), ('三曰白杆枪', 1), ('二曰木枪', 1), ('四曰扑头枪', 1), ('小花枪', 1), ('矟', 1), ('oulie', 1)]...
+[2022-04-28 11:53:37,599] keeping 2000000 tokens which were in no less than 0 and no more than 1030000 (=100.0%) documents
+[2022-04-28 11:53:41,484] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:53:41,560] adding document #1030000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:54:03,994] discarding 73875 tokens: [('bernhartshöhe#E', 1), ('bernhartshöhe#P', 1), ('birkenkopf', 1), ('birkenkopf#E', 1), ('birkenkopf#P', 1), ('blickrichtung', 1), ('bopser', 1), ('botnang#E', 1), ('botnang#P', 1), ('bächer', 1)]...
+[2022-04-28 11:54:03,995] keeping 2000000 tokens which were in no less than 0 and no more than 1040000 (=100.0%) documents
+[2022-04-28 11:54:07,915] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:54:07,988] adding document #1040000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:54:30,494] discarding 81807 tokens: [('ingenui#P', 1), ('ingenuiles', 1), ('lesène', 1), ('liborii', 1), ('manumissi', 1), ('marklo#E', 1), ('marklo#P', 1), ('meginfrid', 1), ('pagii', 1), ('pelingthun', 1)]...
+[2022-04-28 11:54:30,494] keeping 2000000 tokens which were in no less than 0 and no more than 1050000 (=100.0%) documents
+[2022-04-28 11:54:34,354] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:54:34,443] adding document #1050000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:54:53,633] discarding 77872 tokens: [('gạc', 1), ('jannaral', 1), ('julmuner', 1), ('lewistonite', 1), ('podolite', 1), ('premininary', 1), ('reclaimedarea', 1), ('shinnan', 1), ('sprattly', 1), ('海語', 1)]...
+[2022-04-28 11:54:53,633] keeping 2000000 tokens which were in no less than 0 and no more than 1060000 (=100.0%) documents
+[2022-04-28 11:54:57,464] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:54:57,537] adding document #1060000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:55:20,460] discarding 99010 tokens: [('pamphorichthys#P', 1), ('phallichthys#E', 1), ('phallichthys#P', 1), ('phalloceros#E', 1), ('phalloceros#P', 1), ('phalloptychus#E', 1), ('phalloptychus#P', 1), ('phallotorynus#E', 1), ('phallotorynus#P', 1), ('plataplochilus#E', 1)]...
+[2022-04-28 11:55:20,461] keeping 2000000 tokens which were in no less than 0 and no more than 1070000 (=100.0%) documents
+[2022-04-28 11:55:24,284] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:55:24,359] adding document #1070000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:55:46,731] discarding 73354 tokens: [('hidderley', 1), ('moushmi#P', 1), ('paryse#E', 1), ('paryse#P', 1), ('seitler#P', 1), ('educație', 1), ('fizică', 1), ('führerstandarte#P', 1), ('marsjan', 1), ('najazd', 1)]...
+[2022-04-28 11:55:46,732] keeping 2000000 tokens which were in no less than 0 and no more than 1080000 (=100.0%) documents
+[2022-04-28 11:55:50,801] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:55:50,875] adding document #1080000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:56:14,120] discarding 75728 tokens: [('menot', 1), ('míngbiàn', 1), ('míngfàn', 1), ('míngsù', 1), ('māh#P', 1), ('mēnô#E', 1), ('negafook#P', 1), ('niúluó', 1), ('perendi#E', 1), ('píngwú', 1)]...
+[2022-04-28 11:56:14,120] keeping 2000000 tokens which were in no less than 0 and no more than 1090000 (=100.0%) documents
+[2022-04-28 11:56:17,987] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:56:18,063] adding document #1090000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:56:39,583] discarding 63959 tokens: [('نیلیسن', 1), ('پدیشهی', 1), ('battistina#E', 1), ('nonington', 1), ('apriyani#E', 1), ('kurtev', 1), ('pokazhi', 1), ('shirokov', 1), ('fiescho', 1), ('taodos', 1)]...
+[2022-04-28 11:56:39,583] keeping 2000000 tokens which were in no less than 0 and no more than 1100000 (=100.0%) documents
+[2022-04-28 11:56:43,392] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:56:43,463] adding document #1100000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:57:05,068] discarding 68780 tokens: [('cuafl#E', 1), ('kanayi#P', 1), ('kattoor', 1), ('vazhuthacaud', 1), ('readdick', 1), ('waeng', 1), ('กตะคร', 1), ('งยายทอง', 1), ('หนองแวง', 1), ('mjallby#E', 1)]...
+[2022-04-28 11:57:05,069] keeping 2000000 tokens which were in no less than 0 and no more than 1110000 (=100.0%) documents
+[2022-04-28 11:57:09,368] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:57:09,442] adding document #1110000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:57:30,944] discarding 66123 tokens: [('giandonato#P', 1), ('levari#E', 1), ('levari#P', 1), ('madozein#E', 1), ('madozein#P', 1), ('nwachi#E', 1), ('nwachi#P', 1), ('bacinsky', 1), ('küry', 1), ('utrechter', 1)]...
+[2022-04-28 11:57:30,945] keeping 2000000 tokens which were in no less than 0 and no more than 1120000 (=100.0%) documents
+[2022-04-28 11:57:34,784] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:57:34,853] adding document #1120000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:57:57,845] discarding 69186 tokens: [('南京天际线', 1), ('南京新街口', 1), ('马祥兴菜馆#E', 1), ('马祥兴菜馆#P', 1), ('ambraziunas#E', 1), ('ambraziunas#P', 1), ('aλai', 1), ('consonantisme', 1), ('elhä', 1), ('euraltaic', 1)]...
+[2022-04-28 11:57:57,846] keeping 2000000 tokens which were in no less than 0 and no more than 1130000 (=100.0%) documents
+[2022-04-28 11:58:01,767] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:58:01,844] adding document #1130000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:58:22,438] discarding 61051 tokens: [('consnsys', 1), ('librators#E', 1), ('librators#P', 1), ('croatization#E', 1), ('croatization#P', 1), ('semisacred', 1), ('serbization#E', 1), ('serbization#P', 1), ('declinaisons', 1), ('epocham', 1)]...
+[2022-04-28 11:58:22,439] keeping 2000000 tokens which were in no less than 0 and no more than 1140000 (=100.0%) documents
+[2022-04-28 11:58:26,306] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:58:26,378] adding document #1140000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:58:46,981] discarding 63708 tokens: [('bingman#E', 1), ('bingman#P', 1), ('boecher', 1), ('skiatook', 1), ('haying#E', 1), ('haying#P', 1), ('duodenography#E', 1), ('duodenography#P', 1), ('archercenter', 1), ('tatooche', 1)]...
+[2022-04-28 11:58:46,982] keeping 2000000 tokens which were in no less than 0 and no more than 1150000 (=100.0%) documents
+[2022-04-28 11:58:50,973] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:58:51,046] adding document #1150000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:59:10,194] discarding 65314 tokens: [('nasjonalisme', 1), ('inlaws', 1), ('teychenné#E', 1), ('teychenné#P', 1), ('kqec#P', 1), ('kqeh#E', 1), ('kqeh#P', 1), ('eccellente', 1), ('kqsl#P', 1), ('estembat', 1)]...
+[2022-04-28 11:59:10,194] keeping 2000000 tokens which were in no less than 0 and no more than 1160000 (=100.0%) documents
+[2022-04-28 11:59:14,073] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:59:14,147] adding document #1160000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:59:35,761] discarding 74293 tokens: [('succer', 1), ('succker', 1), ('suxorz', 1), ('suxxor', 1), ('winzored', 1), ('яz', 1), ('grandmentor#E', 1), ('grandmentor#P', 1), ('rushmark', 1), ('unfridge', 1)]...
+[2022-04-28 11:59:35,761] keeping 2000000 tokens which were in no less than 0 and no more than 1170000 (=100.0%) documents
+[2022-04-28 11:59:39,711] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:59:39,786] adding document #1170000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 11:59:58,991] discarding 63856 tokens: [('ardilea', 1), ('guenoa#E', 1), ('guenoa#P', 1), ('güenoa#E', 1), ('güenoa#P', 1), ('minuane', 1), ('minuanes', 1), ('aboosa#E', 1), ('abraria#E', 1), ('archinal#E', 1)]...
+[2022-04-28 11:59:58,991] keeping 2000000 tokens which were in no less than 0 and no more than 1180000 (=100.0%) documents
+[2022-04-28 12:00:02,839] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:00:02,909] adding document #1180000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:00:25,074] discarding 68340 tokens: [('calvity#E', 1), ('calvity#P', 1), ('calvous#E', 1), ('calvous#P', 1), ('camisade#E', 1), ('camisade#P', 1), ('campestral#E', 1), ('campestral#P', 1), ('cancellate#E', 1), ('cancellate#P', 1)]...
+[2022-04-28 12:00:25,075] keeping 2000000 tokens which were in no less than 0 and no more than 1190000 (=100.0%) documents
+[2022-04-28 12:00:28,987] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:00:29,062] adding document #1190000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:00:50,259] discarding 63134 tokens: [('theatrium', 1), ('ušinskas#E', 1), ('ušinskas#P', 1), ('valuskis', 1), ('vbagÿſte', 1), ('viada#E', 1), ('viada#P', 1), ('vizgirda', 1), ('škarnulytė#E', 1), ('škarnulytė#P', 1)]...
+[2022-04-28 12:00:50,260] keeping 2000000 tokens which were in no less than 0 and no more than 1200000 (=100.0%) documents
+[2022-04-28 12:00:54,248] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:00:54,333] adding document #1200000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:01:16,467] discarding 68453 tokens: [('munshhiram', 1), ('prithvipath', 1), ('ranipokhari', 1), ('sankata#E', 1), ('sankata#P', 1), ('shukraraj', 1), ('taragaon', 1), ('tarakeshwor#E', 1), ('tarakeshwor#P', 1), ('trolleybusses#E', 1)]...
+[2022-04-28 12:01:16,467] keeping 2000000 tokens which were in no less than 0 and no more than 1210000 (=100.0%) documents
+[2022-04-28 12:01:20,374] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:01:20,448] adding document #1210000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:01:43,089] discarding 68131 tokens: [('merile#E', 1), ('merile#P', 1), ('mochoek', 1), ('mogori', 1), ('mogori#E', 1), ('mogori#P', 1), ('mosonik', 1), ('motirenik', 1), ('motiryoot', 1), ('mugenik', 1)]...
+[2022-04-28 12:01:43,090] keeping 2000000 tokens which were in no less than 0 and no more than 1220000 (=100.0%) documents
+[2022-04-28 12:01:47,161] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:01:47,237] adding document #1220000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:02:08,782] discarding 71330 tokens: [('mcmickens#E', 1), ('geocat', 1), ('geonetwork', 1), ('oseticus#E', 1), ('wallisellen', 1), ('paradorensis#P', 1), ('kulkul', 1), ('polchaninovae#P', 1), ('pseudofrontata#P', 1), ('quoylei#P', 1)]...
+[2022-04-28 12:02:08,782] keeping 2000000 tokens which were in no less than 0 and no more than 1230000 (=100.0%) documents
+[2022-04-28 12:02:12,644] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:02:12,714] adding document #1230000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:02:33,916] discarding 72153 tokens: [('jatata#E', 1), ('naciff#E', 1), ('saipura#E', 1), ('slbt', 1), ('slda', 1), ('slei', 1), ('slgn', 1), ('slgp', 1), ('slje', 1), ('sljn', 1)]...
+[2022-04-28 12:02:33,917] keeping 2000000 tokens which were in no less than 0 and no more than 1240000 (=100.0%) documents
+[2022-04-28 12:02:37,825] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:02:37,901] adding document #1240000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:02:59,866] discarding 71897 tokens: [('lorbé#P', 1), ('perbes#E', 1), ('prioriño#P', 1), ('teixido#E', 1), ('vendimia#P', 1), ('somtymes', 1), ('鷹王', 1), ('hanimefendi', 1), ('matbaa', 1), ('seaf#P', 1)]...
+[2022-04-28 12:02:59,866] keeping 2000000 tokens which were in no less than 0 and no more than 1250000 (=100.0%) documents
+[2022-04-28 12:03:03,682] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:03:03,758] adding document #1250000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:03:25,498] discarding 67475 tokens: [('kapsokwony#E', 1), ('machabeus', 1), ('makhersin', 1), ('proteowizard#E', 1), ('letterfearn#E', 1), ('phùbaill', 1), ('knowstone#E', 1), ('patrian', 1), ('wvssac', 1), ('achavandra', 1)]...
+[2022-04-28 12:03:25,498] keeping 2000000 tokens which were in no less than 0 and no more than 1260000 (=100.0%) documents
+[2022-04-28 12:03:29,681] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:03:29,756] adding document #1260000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:03:51,006] discarding 80407 tokens: [('harlanellison', 1), ('hellison', 1), ('rabnick', 1), ('remarq', 1), ('webderland', 1), ('evliyâ#E', 1), ('evliyâ#P', 1), ('فن', 1), ('polepiece#E', 1), ('polepiece#P', 1)]...
+[2022-04-28 12:03:51,006] keeping 2000000 tokens which were in no less than 0 and no more than 1270000 (=100.0%) documents
+[2022-04-28 12:03:54,952] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:03:55,062] adding document #1270000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:04:16,032] discarding 73122 tokens: [('būti#P', 1), ('chīe', 1), ('eisí', 1), ('esmén', 1), ('estert', 1), ('eímai', 1), ('eímaste', 1), ('eís', 1), ('eísai', 1), ('fèmba', 1)]...
+[2022-04-28 12:04:16,033] keeping 2000000 tokens which were in no less than 0 and no more than 1280000 (=100.0%) documents
+[2022-04-28 12:04:19,956] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:04:20,031] adding document #1280000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:04:41,148] discarding 65698 tokens: [('gámma', 1), ('gutturia', 1), ('kropfband', 1), ('kröpfner', 1), ('secretional', 1), ('uninodular', 1), ('coldersuch', 1), ('faceso', 1), ('gesätze', 1), ('allouma', 1)]...
+[2022-04-28 12:04:41,148] keeping 2000000 tokens which were in no less than 0 and no more than 1290000 (=100.0%) documents
+[2022-04-28 12:04:45,103] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:04:45,178] adding document #1290000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:05:06,183] discarding 64479 tokens: [('祝妳幸福', 1), ('mvf', 1), ('promax#E', 1), ('tiffeny', 1), ('qikiqtarjuak', 1), ('nely', 1), ('nely#E', 1), ('nely#P', 1), ('latial#E', 1), ('latial#P', 1)]...
+[2022-04-28 12:05:06,184] keeping 2000000 tokens which were in no less than 0 and no more than 1300000 (=100.0%) documents
+[2022-04-28 12:05:09,962] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:05:10,032] adding document #1300000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:05:30,735] discarding 66309 tokens: [('bechdol#E', 1), ('bechdol#P', 1), ('billionhungry', 1), ('billonhungry', 1), ('changchui#E', 1), ('changchui#P', 1), ('endinghunger', 1), ('gipb', 1), ('harcharik#E', 1), ('harcharik#P', 1)]...
+[2022-04-28 12:05:30,735] keeping 2000000 tokens which were in no less than 0 and no more than 1310000 (=100.0%) documents
+[2022-04-28 12:05:35,663] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:05:35,740] adding document #1310000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:05:57,420] discarding 68768 tokens: [('平平子', 1), ('昭登親王', 1), ('深観', 1), ('清仁親王', 1), ('藤原姚子', 1), ('藤原忯子', 1), ('藤原諟子', 1), ('覚源', 1), ('一条家', 1), ('aterballeto', 1)]...
+[2022-04-28 12:05:57,420] keeping 2000000 tokens which were in no less than 0 and no more than 1320000 (=100.0%) documents
+[2022-04-28 12:06:01,206] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:06:01,277] adding document #1320000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:06:22,312] discarding 56953 tokens: [('elhassan', 1), ('elmahdi', 1), ('elrahim#E', 1), ('elrahim#P', 1), ('fadullah', 1), ('gafari', 1), ('homid', 1), ('khiry', 1), ('salaah', 1), ('zakrra#E', 1)]...
+[2022-04-28 12:06:22,312] keeping 2000000 tokens which were in no less than 0 and no more than 1330000 (=100.0%) documents
+[2022-04-28 12:06:26,291] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:06:26,364] adding document #1330000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:06:47,154] discarding 66514 tokens: [('okonopolis', 1), ('rugaria', 1), ('selestrean', 1), ('sereatha', 1), ('shosara', 1), ('stulaami', 1), ('sufik', 1), ('travar', 1), ('ulkman', 1), ('ulkmen', 1)]...
+[2022-04-28 12:06:47,154] keeping 2000000 tokens which were in no less than 0 and no more than 1340000 (=100.0%) documents
+[2022-04-28 12:06:51,220] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:06:51,294] adding document #1340000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:07:12,768] discarding 64478 tokens: [('espondilus', 1), ('inherital', 1), ('jubones', 1), ('mataje', 1), ('mdlock', 1), ('otonga', 1), ('putomayo', 1), ('senecyt#E', 1), ('senecyt#P', 1), ('shyris#E', 1)]...
+[2022-04-28 12:07:12,769] keeping 2000000 tokens which were in no less than 0 and no more than 1350000 (=100.0%) documents
+[2022-04-28 12:07:16,565] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:07:16,635] adding document #1350000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:07:38,729] discarding 71059 tokens: [('tsacheva#E', 1), ('tsacheva#P', 1), ('tsetska#E', 1), ('tsetska#P', 1), ('mcmaken', 1), ('mcmaken#E', 1), ('mcmaken#P', 1), ('yound', 1), ('childstar', 1), ('posterthe', 1)]...
+[2022-04-28 12:07:38,729] keeping 2000000 tokens which were in no less than 0 and no more than 1360000 (=100.0%) documents
+[2022-04-28 12:07:42,703] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:07:42,779] adding document #1360000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:08:03,797] discarding 70426 tokens: [('duks#P', 1), ('natone', 1), ('ipaas', 1), ('voogd', 1), ('dubanayev', 1), ('faridun', 1), ('yatimov', 1), ('biswokarma#E', 1), ('fudong#E', 1), ('ademoyega#E', 1)]...
+[2022-04-28 12:08:03,798] keeping 2000000 tokens which were in no less than 0 and no more than 1370000 (=100.0%) documents
+[2022-04-28 12:08:07,584] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:08:07,655] adding document #1370000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:08:29,245] discarding 66910 tokens: [('semno', 1), ('kyrksæterøra#E', 1), ('kyrksæterøra#P', 1), ('valvisciolo', 1), ('latinitatis#P', 1), ('recentis#E', 1), ('recentis#P', 1), ('huaixtita#E', 1), ('tonefloat', 1), ('alsindi', 1)]...
+[2022-04-28 12:08:29,245] keeping 2000000 tokens which were in no less than 0 and no more than 1380000 (=100.0%) documents
+[2022-04-28 12:08:33,458] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:08:33,533] adding document #1380000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:08:54,966] discarding 82691 tokens: [('akademicheskoye#E', 1), ('rischbieths', 1), ('combès', 1), ('galeote', 1), ('monkóka', 1), ('ochisirisa', 1), ('acastocephala#P', 1), ('agnostoglossa', 1), ('alemtejoia', 1), ('allobodochus#P', 1)]...
+[2022-04-28 12:08:54,967] keeping 2000000 tokens which were in no less than 0 and no more than 1390000 (=100.0%) documents
+[2022-04-28 12:08:58,996] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:08:59,073] adding document #1390000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:09:19,314] discarding 58965 tokens: [('kanonizácia', 1), ('αγιοκατάταξη', 1), ('канонизација', 1), ('კანონიზაცია', 1), ('ἁγιοκατάταξις', 1), ('aminocarboxylic#E', 1), ('aminocarboxylic#P', 1), ('carbonatoms', 1), ('carboxyfuran#E', 1), ('carboxyfuran#P', 1)]...
+[2022-04-28 12:09:19,315] keeping 2000000 tokens which were in no less than 0 and no more than 1400000 (=100.0%) documents
+[2022-04-28 12:09:23,317] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:09:23,394] adding document #1400000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:09:43,737] discarding 63350 tokens: [('廿#P', 1), ('廿三', 1), ('廿個', 1), ('廿幾', 1), ('弌#E', 1), ('弌#P', 1), ('弍#E', 1), ('弍#P', 1), ('弎#E', 1), ('弎#P', 1)]...
+[2022-04-28 12:09:43,737] keeping 2000000 tokens which were in no less than 0 and no more than 1410000 (=100.0%) documents
+[2022-04-28 12:09:48,203] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:09:48,280] adding document #1410000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:10:09,459] discarding 64236 tokens: [('bibemi#E', 1), ('dathina#E', 1), ('eshrefids#P', 1), ('fatagar#E', 1), ('gimma#E', 1), ('irqa#E', 1), ('kitangonya#E', 1), ('kontcha#E', 1), ('kontcha#P', 1), ('kotokolia#E', 1)]...
+[2022-04-28 12:10:09,461] keeping 2000000 tokens which were in no less than 0 and no more than 1420000 (=100.0%) documents
+[2022-04-28 12:10:13,412] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:10:13,483] adding document #1420000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:10:33,797] discarding 57516 tokens: [('dubtribe', 1), ('anuies', 1), ('aplicaciones', 1), ('quinzanne', 1), ('investigadores#E', 1), ('investigadores#P', 1), ('yuewan', 1), ('coelobrocha#P', 1), ('dasguptae#P', 1), ('gephyropaga#E', 1)]...
+[2022-04-28 12:10:33,798] keeping 2000000 tokens which were in no less than 0 and no more than 1430000 (=100.0%) documents
+[2022-04-28 12:10:38,072] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:10:38,145] adding document #1430000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:10:59,596] discarding 64750 tokens: [('ɢe', 1), ('ɢːwinʡv', 1), ('ʒan¹', 1), ('ʒwhárī', 1), ('ˈd', 1), ('носта', 1), ('рыбеже', 1), ('rohlehr#E', 1), ('ushingo', 1), ('salaway', 1)]...
+[2022-04-28 12:10:59,596] keeping 2000000 tokens which were in no less than 0 and no more than 1440000 (=100.0%) documents
+[2022-04-28 12:11:03,490] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:11:03,561] adding document #1440000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:11:23,385] discarding 69976 tokens: [('lamingtoun#E', 1), ('lamingtoun#P', 1), ('mammore#E', 1), ('mammore#P', 1), ('mckye#E', 1), ('mckye#P', 1), ('ormestoun#E', 1), ('ormestoun#P', 1), ('palgown#E', 1), ('palgown#P', 1)]...
+[2022-04-28 12:11:23,385] keeping 2000000 tokens which were in no less than 0 and no more than 1450000 (=100.0%) documents
+[2022-04-28 12:11:27,323] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:11:27,395] adding document #1450000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:11:48,896] discarding 68255 tokens: [('godded', 1), ('iroppoi', 1), ('musig#E', 1), ('headboy', 1), ('whps', 1), ('whpsians', 1), ('khilgaon#P', 1), ('chraspedops#E', 1), ('chraspedops#P', 1), ('perchten#E', 1)]...
+[2022-04-28 12:11:48,897] keeping 2000000 tokens which were in no less than 0 and no more than 1460000 (=100.0%) documents
+[2022-04-28 12:11:52,811] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:11:52,888] adding document #1460000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:12:12,878] discarding 66713 tokens: [('manucho#E', 1), ('griolet', 1), ('griolet#E', 1), ('griolet#P', 1), ('jaizawi#P', 1), ('mangdewadi', 1), ('wagholi', 1), ('jr佐世保線北方駅', 1), ('raganidhi', 1), ('sampūrṇa', 1)]...
+[2022-04-28 12:12:12,878] keeping 2000000 tokens which were in no less than 0 and no more than 1470000 (=100.0%) documents
+[2022-04-28 12:12:16,809] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:12:16,898] adding document #1470000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:12:37,159] discarding 70724 tokens: [('nêrdevan', 1), ('nîsk', 1), ('balsamie', 1), ('swines#P', 1), ('taciturne', 1), ('toccare', 1), ('uccidermi', 1), ('valdosa', 1), ('vanders#P', 1), ('venantino#P', 1)]...
+[2022-04-28 12:12:37,159] keeping 2000000 tokens which were in no less than 0 and no more than 1480000 (=100.0%) documents
+[2022-04-28 12:12:41,190] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:12:41,266] adding document #1480000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:13:01,341] discarding 59583 tokens: [('מי', 1), ('נעים', 1), ('סביבון', 1), ('ζαοου', 1), ('χορανου', 1), ('bedmap', 1), ('glaciovolcanism#E', 1), ('glaciovolcanism#P', 1), ('terraweb', 1), ('skiways', 1)]...
+[2022-04-28 12:13:01,342] keeping 2000000 tokens which were in no less than 0 and no more than 1490000 (=100.0%) documents
+[2022-04-28 12:13:05,311] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:13:05,381] adding document #1490000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:13:25,295] discarding 73166 tokens: [('archiei', 1), ('arkhos', 1), ('educationruth', 1), ('blindism#E', 1), ('blindism#P', 1), ('bdrf', 1), ('typicalalbedo', 1), ('aanother', 1), ('amodern', 1), ('boeotioan', 1)]...
+[2022-04-28 12:13:25,296] keeping 2000000 tokens which were in no less than 0 and no more than 1500000 (=100.0%) documents
+[2022-04-28 12:13:29,367] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:13:29,458] adding document #1500000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:13:50,748] discarding 63550 tokens: [('mariyan#E', 2), ('mariyan#P', 2), ('sarbakov#E', 2), ('sarbakov#P', 2), ('stoynev#E', 2), ('stoynev#P', 2), ('vitomir#E', 2), ('vitomir#P', 2), ('zagorčić#E', 2), ('zagorčić#P', 2)]...
+[2022-04-28 12:13:50,749] keeping 2000000 tokens which were in no less than 0 and no more than 1510000 (=100.0%) documents
+[2022-04-28 12:13:54,758] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:13:54,833] adding document #1510000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:14:19,162] discarding 73245 tokens: [('octeract#P', 2), ('checkerboarded', 2), ('obet', 2), ('kukeiha', 2), ('kukeiha#E', 2), ('kukeiha#P', 2), ('motoaki#E', 2), ('motoaki#P', 2), ('古川もとあきstation', 2), ('bundar', 2)]...
+[2022-04-28 12:14:19,163] keeping 2000000 tokens which were in no less than 0 and no more than 1520000 (=100.0%) documents
+[2022-04-28 12:14:22,950] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:14:23,023] adding document #1520000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:14:42,898] discarding 57119 tokens: [('sasumata#P', 2), ('yarka', 2), ('samlart', 2), ('samlbind', 2), ('samlcore', 2), ('samlresponse', 2), ('urlencoded', 2), ('mileševska', 2), ('čubura', 2), ('simcopter', 2)]...
+[2022-04-28 12:14:42,898] keeping 2000000 tokens which were in no less than 0 and no more than 1530000 (=100.0%) documents
+[2022-04-28 12:14:47,001] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:14:47,086] adding document #1530000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:15:07,425] discarding 59919 tokens: [('mosasauridae#P', 2), ('plotosaurus#E', 2), ('plotosaurus#P', 2), ('russellosaurus#E', 2), ('russellosaurus#P', 2), ('샤랄라', 2), ('sapristi', 2), ('skanadian#E', 2), ('skanadian#P', 2), ('という名の誇り', 2)]...
+[2022-04-28 12:15:07,426] keeping 2000000 tokens which were in no less than 0 and no more than 1540000 (=100.0%) documents
+[2022-04-28 12:15:11,483] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:15:11,554] adding document #1540000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:15:31,942] discarding 63361 tokens: [('hippotion', 2), ('parâng', 2), ('șureanu#E', 2), ('șureanu#P', 2), ('annexy#E', 2), ('annexy#P', 2), ('lagoyete#E', 2), ('lagoyete#P', 2), ('homeopener', 2), ('wiklins', 2)]...
+[2022-04-28 12:15:31,942] keeping 2000000 tokens which were in no less than 0 and no more than 1550000 (=100.0%) documents
+[2022-04-28 12:15:35,786] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:15:35,856] adding document #1550000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:15:59,016] discarding 65121 tokens: [('tengyue#P', 2), ('yaqi#E', 2), ('yaqi#P', 2), ('云南丽江东巴', 2), ('安徽九方', 2), ('河北雪驰', 2), ('青岛黎明', 2), ('mystocks', 2), ('jauhojärvi#E', 2), ('jauhojärvi#P', 2)]...
+[2022-04-28 12:15:59,017] keeping 2000000 tokens which were in no less than 0 and no more than 1560000 (=100.0%) documents
+[2022-04-28 12:16:03,030] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:16:03,107] adding document #1560000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:16:22,116] discarding 63046 tokens: [('prendes', 2), ('acualiques#E', 2), ('acualiques#P', 2), ('aelariques#E', 2), ('aelariques#P', 2), ('aeturiques#E', 2), ('aeturiques#P', 2), ('arquioci#E', 2), ('arquioci#P', 2), ('bocouriques#E', 2)]...
+[2022-04-28 12:16:22,116] keeping 2000000 tokens which were in no less than 0 and no more than 1570000 (=100.0%) documents
+[2022-04-28 12:16:26,065] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:16:26,137] adding document #1570000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:16:44,016] discarding 54464 tokens: [('nacaratti#E', 2), ('nacaratti#P', 2), ('vipperow#E', 2), ('vipperow#P', 2), ('landova#E', 2), ('landova#P', 2), ('rosasco', 2), ('withrowel', 2), ('ungainliness', 2), ('alzahra#E', 2)]...
+[2022-04-28 12:16:44,017] keeping 2000000 tokens which were in no less than 0 and no more than 1580000 (=100.0%) documents
+[2022-04-28 12:16:48,259] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:16:48,337] adding document #1580000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:17:09,668] discarding 68480 tokens: [('monguzzi#E', 2), ('monguzzi#P', 2), ('bretos#E', 2), ('bretos#P', 2), ('joysagar#E', 2), ('joysagar#P', 2), ('talatal#E', 2), ('talatal#P', 2), ('mausolo', 2), ('granditer', 2)]...
+[2022-04-28 12:17:09,668] keeping 2000000 tokens which were in no less than 0 and no more than 1590000 (=100.0%) documents
+[2022-04-28 12:17:13,797] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:17:13,872] adding document #1590000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:17:36,703] discarding 63159 tokens: [('wouro', 2), ('saré#E', 2), ('saré#P', 2), ('vélingara', 2), ('thiamène', 2), ('sagatta', 2), ('kanène', 2), ('kébémer', 2), ('mérina', 2), ('ndiob', 2)]...
+[2022-04-28 12:17:36,703] keeping 2000000 tokens which were in no less than 0 and no more than 1600000 (=100.0%) documents
+[2022-04-28 12:17:40,822] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:17:40,898] adding document #1600000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:18:01,213] discarding 58637 tokens: [('tiphares', 2), ('zapan', 2), ('poppys#E', 2), ('poppys#P', 2), ('ecklon', 2), ('itineraria#E', 2), ('itineraria#P', 2), ('armellada', 2), ('maracá', 2), ('matallana', 2)]...
+[2022-04-28 12:18:01,214] keeping 2000000 tokens which were in no less than 0 and no more than 1610000 (=100.0%) documents
+[2022-04-28 12:18:05,309] resulting dictionary: Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
+[2022-04-28 12:18:05,383] adding document #1610000 to Dictionary(2000000 unique tokens: ['[', ']', 'a', 'a#E', 'a#P']...)
