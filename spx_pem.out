@@ -1,0 +1,12 @@
+/home/manni/ner-s2s/word_embedding/wiki.py
+/home/manni/ner-s2s/word_embedding/localgensim/gensim2/models/word2vec.py
+Sample sentence:
+[2022-04-29 10:25:05,867] Training model spxM100w5
+[2022-04-29 10:25:05,870] collecting all words and their counts
+['anarchism', 'is', 'a', '[', 'political#E', 'philosophy#E', 'political#P', 'philosophy#P', ']', 'and', '[', 'movement#E', 'movement#P', ']', 'that', 'is', 'sceptical', 'of', '[', 'authority#E', 'authority#P', ']', 'and', 'rejects', 'all', 'involuntary', 'coercive', 'forms', 'of', '[', 'hierarchy#E', 'hierarchy#P', ']', 'anarchism', 'calls', 'for', 'the', 'abolition', 'of', 'the', '[', 'state#E', 'state#P', ']', 'which', 'it', 'holds', 'to', 'be', 'unnecessary', 'undesirable', 'and', 'harmful', 'as', 'a', 'historically', '[', 'left#E', 'wing#E', 'left#P', 'wing#P', ']', 'movement', 'placed', 'on', 'the', 'farthest', 'left', 'of', 'the', '[', 'political#E', 'spectrum#E', 'political#P', 'spectrum#P', ']', 'it', 'is', 'usually', 'described', 'alongside', '[', 'libertarian#E', 'marxism#E', 'libertarian#P', 'marxism#P', ']', 'as', 'the', '[', 'libertarian#E', 'libertarian#P', ']', 'wing', '[', 'libertarian#E', 'socialism#E', 'libertarian#P', 'socialism#P', ']', 'of', 'the', '[', 'socialist#E', 'movement#E', 'socialist#P', 'movement#P', ']', 'and', 'has', 'a', 'strong', 'historical', 'association', 'with', '[', 'anti#E', 'capitalism#E', 'anti#P', 'capitalism#P', ']', 'and', '[', 'socialism#E', 'socialism#P', ']', '[', 'humans#E', 'humans#P', ']', 'lived', 'in', 'societies', 'without', 'formal', 'hierarchies', 'long', 'before', 'the', 'establishment', 'of', 'formal', 'states', '[', 'realm#E', 'realm#P', ']', 's', 'or', '[']
+Minimum length of token: 1
+[2022-04-29 10:25:07,999] PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+[2022-04-29 10:25:46,333] PROGRESS: at sentence #10000, processed 43906701 words, keeping 890316 word types
+[2022-04-29 10:26:22,966] PROGRESS: at sentence #20000, processed 83699826 words, keeping 1270935 word types
+[2022-04-29 10:26:50,491] PROGRESS: at sentence #30000, processed 114982863 words, keeping 1536925 word types
+[2022-04-29 10:27:15,906] PROGRESS: at sentence #40000, processed 142934820 words, keeping 1762497 word types

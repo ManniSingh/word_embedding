@@ -40,14 +40,14 @@ os.makedirs('data/', exist_ok=True)
 # parse wiki dump
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',lower=True) # Orignal
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='EM',lower=True)
-wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='PEM',lower=True)
+#wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='PEM',lower=True)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='DEP',lower=True,pos=False,loc=False)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='UNS',lower=True,pos=False,loc=False)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='UNSEM',lower=True,pos=False,loc=False)
 
 #sv.save(wiki_sentences,"wiki_sentences") # orignal
 #sv.save(wiki_sentences,"wiki_sentences_em")
-sv.save(wiki_sentences,"wiki_sentences_pem")
+#sv.save(wiki_sentences,"wiki_sentences_pem")
 
 
 # # Phrase mining
@@ -75,7 +75,6 @@ for sent in sentences:
 
 print("Minimum length of token:",sentences.wiki.token_min_len)
 
-sys.exit()
 
 logging.info('Training model %s', 'spxM100w5')
 model = word2vec.Word2Vec(sentences, window=5, sg=1, hs=0, negative=5, size=300, sample=1e-3, workers=40, iter=5, min_count=100)
@@ -108,9 +107,10 @@ logging.info('Training done.')
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_spx2_mc100_epoch5_300_ent_static_w3.txt'
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_spx2_mc100_epoch5_300_uns.txt'
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_spx2_mc100_epoch5_300_unsem.txt'
-emb_file = '/home/manni/embs/en_wiki_spx_mc100_epoch5_300_em_w5_2.txt'
+#emb_file = '/home/manni/embs/en_wiki_spx_mc100_epoch5_300_em_w5_2.txt'
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_spx2_mc100_epoch5_300_uns_w1.txt'
 #emb_file = '/home/manni/embs/en_wiki_w2v_mc100_epoch5_300.txt'
+emb_file = '/home/manni/embs/en_wiki_spx_mc100_epoch5_300_pem.txt'
 
 vocab = model.wv.vocab
 
