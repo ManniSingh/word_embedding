@@ -397,6 +397,84 @@ def tokenizeEM(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN
     sentence = keyword_processor.replace_keywords(sent)
     return sentence.split()
 
+def tokenizeNEM(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, lower=True):
+    sentence =  [utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore')
+               if token_min_len <= len(token) <= token_max_len and not token.startswith('_')]
+    #Tagging Entity words
+    starters = list()
+    enders = list()
+    for i,word in enumerate(sentence):
+        if word == '[':
+            starters.append(i)
+        if word == ']':
+            if not enders:
+                enders.append(i)
+            elif starters and i>starters[-1] and i>enders[-1]:
+                enders.append(i)
+    if len(starters)!=len(enders):
+        return []
+    index = 0
+    total = len(starters)
+    for i,j in zip(starters,enders):
+        offset = j-i-1
+        _i = i+offset
+        _j = j+offset
+        del sentence[i]
+        sentence[_i]='['
+        if index+1 < total and starters[index+1] <= _j:
+            #print(sentence[i:j],starters[index+1],i,j,_i,_j)
+            sentence = sentence[:_i+1]+[']']+sentence[_i+1:]
+            index+=1
+            continue
+        sentence = sentence[:_j]+[']']+sentence[_j:]
+        index+=1
+    #clean nested phrases
+    sentence_ = sentence
+    sentence = list()
+    try:
+        bracket = 0
+        i = 0
+        while i < len(sentence_):
+            if sentence_[i] == '[':
+                sentence.append(sentence_[i])
+                bracket+=1
+                i+=1
+                while bracket != 0:
+                    if sentence_[i] == '[':
+                        bracket+=1
+                        i+=1
+                        continue
+                    elif sentence_[i] == ']':
+                        bracket-=1
+                        i+=1
+                        continue
+                    else:
+                        sentence.append(sentence_[i])
+                        i+=1
+                else:
+                    sentence.append(']')
+            else:
+                sentence.append(sentence_[i])
+                i+=1
+    except:
+        pass
+    '''
+    if len(sentence)>20:
+        print('------------')
+        print(sentence[:200])
+    '''
+    keyword_processor = KeywordProcessor()
+    sent = ' '.join(sentence)
+    ents = set(re.findall(r'\[\s[\w\s]+\]',sent))
+    _ents = [ent.replace(' ','#E ') for ent in ents]
+    ents_ = [ent.replace('[#E','[') for ent in _ents]
+    res = list()
+    for i,ent in enumerate(ents):
+        keyword_processor.add_keyword(ent, ents_[i])    
+    sentence = keyword_processor.replace_keywords(sent)
+    sentence = sentence.split()
+    return sentence
+
 def tokenizePEM(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, lower=True):
     sentence =  [utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore')
                if token_min_len <= len(token) <= token_max_len and not token.startswith('_')]
@@ -826,11 +904,14 @@ class WikiCorpus(TextCorpus):
         if processes is None:
             processes = max(1, multiprocessing.cpu_count() - 1)
         self.processes = processes
+        #self.processes = 1
         self.lemmatize = lemmatize
         if tokenizer_func == '':
             self.tokenizer_func = tokenize
         elif tokenizer_func == 'EM':
             self.tokenizer_func = tokenizeEM
+        elif tokenizer_func == 'NEM':
+            self.tokenizer_func = tokenizeNEM
         elif tokenizer_func == 'PEM':
             self.tokenizer_func = tokenizePEM
         elif tokenizer_func == 'DEP':

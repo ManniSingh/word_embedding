@@ -561,7 +561,6 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
                 continue
             if c.sample and word.sample_int < random_int32(&c.next_random):
                 continue
-            # wordvec method
             #Collecting phrase words in a list
             targets = list() 
             pwords = list()
@@ -791,19 +790,11 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
             if effective_words >= MAX_SENTENCE_LEN:
                 break
             #print("\n")
-        '''
-        # Newly added
-        i = 0
-        while i<end:
-            word = vlookup[sent[i]] if sent[i] in vlookup else None
-            if word is None:
-                i+=1 
-                continue
-            if c.sample and word.sample_int < random_int32(&c.next_random):
-                continue
-        '''
         effective_sentences += 1
+        #print("\n")
+        #print("sen_len:",len(c.sentence_idx)," max:",MAX_SENTENCE_LEN)
         c.sentence_idx[effective_sentences] = effective_words #The last index
+        #print("effective sents:",effective_sentences)
 
         if effective_words >= MAX_SENTENCE_LEN:
             break  # TODO: log warning, tally overflow?

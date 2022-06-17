@@ -41,6 +41,7 @@ os.makedirs('data/', exist_ok=True)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',lower=True) # Orignal
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='EM',lower=True)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='PEM',lower=True)
+#wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='NEM',lower=True)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='DEP',lower=True,pos=False,loc=False)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='UNS',lower=True,pos=False,loc=False)
 #wiki_sentences = w.WikiSentences(WIKIXML, 'en',tokenizer_func='UNSEM',lower=True,pos=False,loc=False)
@@ -48,6 +49,8 @@ os.makedirs('data/', exist_ok=True)
 #sv.save(wiki_sentences,"wiki_sentences") # orignal
 #sv.save(wiki_sentences,"wiki_sentences_em")
 #sv.save(wiki_sentences,"wiki_sentences_pem")
+#sv.save(wiki_sentences,"wiki_sentences_nem")
+#sv.save(wiki_sentences,"wiki_sentences_pem_sample")
 
 
 # # Phrase mining
@@ -64,7 +67,9 @@ os.makedirs('data/', exist_ok=True)
 
 
 #sentences = sv.load("wiki_sentences_em") #New
-sentences = sv.load("wiki_sentences_pem") #New
+#sentences = sv.load("wiki_sentences_pem") #New
+sentences = sv.load("wiki_sentences_nem") #New
+#sentences = sv.load("wiki_sentences_pem_sample")
 #sentences = sv.load("wiki_sentences_spx") #New
 #sentences = sv.load("wiki_sentences") #New
 
@@ -75,10 +80,10 @@ for sent in sentences:
 
 print("Minimum length of token:",sentences.wiki.token_min_len)
 
-
 logging.info('Training model %s', 'spxM100w5')
 model = word2vec.Word2Vec(sentences, window=5, sg=1, hs=0, negative=5, size=300, sample=1e-3, workers=40, iter=5, min_count=100)
 logging.info('Training done.')
+
 
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_SPX2_mc1_epoch5_300_filtered_sample.txt'
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_w2v_mc1_epoch5_300_sample.txt'
@@ -110,7 +115,8 @@ logging.info('Training done.')
 #emb_file = '/home/manni/embs/en_wiki_spx_mc100_epoch5_300_em_w5_2.txt'
 #emb_file = '/mnt/nfs/resdata0/manni/wiki/en_wiki_spx2_mc100_epoch5_300_uns_w1.txt'
 #emb_file = '/home/manni/embs/en_wiki_w2v_mc100_epoch5_300.txt'
-emb_file = '/home/manni/embs/en_wiki_spx_mc100_epoch5_300_pem.txt'
+#emb_file = '/home/manni/embs/en_wiki_spx_mc100_epoch5_300_pem.txt'
+emb_file = '/home/manni/embs/en_wiki_spx_mc100_epoch5_300_nem.txt'
 
 vocab = model.wv.vocab
 
@@ -128,4 +134,5 @@ with open(emb_file, 'w', encoding='utf-8') as f:
     for word in tqdm(vocab, position=0):
         f.write('%s %s\n' % (word, ' '.join([str(v) for v in model.wv[word]])))
 logging.info('Done')
+
 
