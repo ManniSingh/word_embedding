@@ -51,39 +51,6 @@ class WikiSentences:
         self.lang = lang
     def __iter__(self):
         for sentence in self.wiki.get_texts():
-            '''
-            sentence_ = sentence
-            #clean nested phrases
-            sentence = list()
-            try:
-                bracket = 0
-                i = 0
-                while i < len(sentence_):
-                    if sentence_[i] == '[':
-                        sentence.append(sentence_[i])
-                        bracket+=1
-                        i+=1
-                        while bracket != 0:
-                            if sentence_[i] == '[':
-                                bracket+=1
-                                i+=1
-                                continue
-                            elif sentence_[i] == ']':
-                                bracket-=1
-                                i+=1
-                                continue
-                            else:
-                                sentence.append(sentence_[i])
-                                i+=1
-                        else:
-                            sentence.append(']')
-                    else:
-                        sentence.append(sentence_[i])
-                        i+=1
-            except:
-                pass
-            assert ' ' not in sentence
-            '''
             if self.lang == 'zh':
                 yield list(jieba.cut(''.join(sentence), cut_all=False))
             else:
