@@ -56,7 +56,7 @@ ARTICLE_MIN_WORDS = 50
 
 # default thresholds for lengths of individual tokens
 TOKEN_MIN_LEN = 1
-TOKEN_MAX_LEN = 30
+TOKEN_MAX_LEN = 40
 
 RE_P0 = re.compile(r'<!--.*?-->', re.DOTALL | re.UNICODE)
 """Comments."""
@@ -272,7 +272,7 @@ def remove_markup(text, promote_remaining=True, simplify_links=True):
 
         # remove empty mark-up
         text = text.replace('[]', '')
-        text = text.replace('[[', '[').replace(']]', ']')
+        text = text.replace('[[', '[').replace(']]', ']') 
         # stop if nothing changed between two iterations or after a fixed number of iterations
         if old == text or iters > 2:
             break

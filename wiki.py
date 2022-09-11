@@ -3,7 +3,7 @@ import logging
 import math
 import os
 import requests
-import spacy
+#import spacy
 #nlp = spacy.load("en_core_web_sm")
 #change word.dep_ to word.pos_ for POS instead
 #import nltk
@@ -12,8 +12,7 @@ import spacy
 import re
 import sys
 
-from localgensim.gensim2.corpora.wikicorpus2 import WikiCorpus
-#from localgensim.gensim2.corpora.wikicorpus import WikiCorpus
+from localgensim.gensim2.corpora.wikicorpus import WikiCorpus
 from tqdm import tqdm
 
 
@@ -43,11 +42,10 @@ def download_wiki_dump(lang, path):
 class WikiSentences:
     # reference: https://github.com/LasseRegin/gensim-word2vec-model/blob/master/train.py
     # loc = 'lr'| 'num'
-    def __init__(self, wiki_dump_path, lang, lower=False, tokenizer_func=''):
-        logging.info('Parsing wiki corpus Altered...')
-        logging.info('utils.py line 55, Pattern altered to include [ and ] ...')
-        #self.wiki = WikiCorpus(wiki_dump_path,lower=lower) # orignal
-        self.wiki = WikiCorpus(wiki_dump_path,lower=lower,tokenizer_func=tokenizer_func) # modified
+    def __init__(self, wiki_dump_path, lang, lower=False):
+        #logging.info('Parsing wiki corpus Altered...')
+        #logging.info('utils.py line 55, Pattern altered to include [ and ] ...')
+        self.wiki = WikiCorpus(wiki_dump_path,lower=lower) # orignal
         self.lang = lang
     def __iter__(self):
         for sentence in self.wiki.get_texts():

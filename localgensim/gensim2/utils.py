@@ -51,8 +51,8 @@ if sys.version_info[0] >= 3:
 
 logger = logging.getLogger(__name__)
 
-
-PAT_ALPHABETIC = re.compile(r'(((?![\d])[\w\[\]])+)', re.UNICODE)
+PAT_ALPHABETIC = re.compile(r'(((?![\d])\w)+)', re.UNICODE)
+#PAT_ALPHABETIC = re.compile(r'(((?![\d])[\w\[\]])+)', re.UNICODE)
 RE_HTML_ENTITY = re.compile(r'&(#?)([xX]?)(\w{1,8});', re.UNICODE)
 
 NO_CYTHON = RuntimeError(
@@ -261,6 +261,7 @@ def tokenize(text, lowercase=False, deacc=False, encoding='utf8', errors="strict
         [u'Nic', u'nemuze', u'letet', u'rychlosti', u'vyssi', u'nez', u'tisic', u'kilometru', u'za', u'sekundu']
 
     """
+    #print("using local gensim...")
     lowercase = lowercase or to_lower or lower
     text = to_unicode(text, encoding, errors=errors)
     if lowercase:

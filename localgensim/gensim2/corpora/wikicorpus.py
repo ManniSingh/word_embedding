@@ -43,7 +43,7 @@ ARTICLE_MIN_WORDS = 50
 
 # default thresholds for lengths of individual tokens
 TOKEN_MIN_LEN = 1
-TOKEN_MAX_LEN = 20
+TOKEN_MAX_LEN = 40
 
 RE_P0 = re.compile(r'<!--.*?-->', re.DOTALL | re.UNICODE)
 """Comments."""
@@ -266,7 +266,7 @@ def remove_markup(text, promote_remaining=True, simplify_links=True):
      
     
     if promote_remaining:
-        text = text.replace('[', ' [ ').replace(']', ' ] ')  
+        text = text.replace('[', ' [ ').replace(']', ' ] ')  # promote all remaining markup to plain text
 
     return text
 
@@ -637,7 +637,6 @@ class WikiCorpus(TextCorpus):
 
         if dictionary is None:
             self.dictionary = Dictionary(self.get_texts())
-            #self.dictionary.save(fname.split('/')[-1].split('-')[0])
         else:
             self.dictionary = dictionary
 
