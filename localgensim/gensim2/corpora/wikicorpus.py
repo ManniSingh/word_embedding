@@ -39,6 +39,7 @@ from six import raise_from
 logger = logging.getLogger(__name__)
 
 ARTICLE_MIN_WORDS = 50
+ARTICLE_CUT_OFF = 1000
 """Ignore shorter articles (after full preprocessing)."""
 
 # default thresholds for lengths of individual tokens
@@ -366,7 +367,7 @@ def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, 
     return [
         utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore')
         if token_min_len <= len(token) <= token_max_len and not token.startswith('_')
-    ]
+    ][:ARTICLE_CUT_OFF]
 
 
 def get_namespace(tag):
