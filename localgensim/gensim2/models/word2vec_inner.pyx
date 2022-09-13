@@ -9,14 +9,9 @@
 # Licensed under the GNU LGPL v2.1 - http://www.gnu.org/licenses/lgpl.html
 
 """Optimized cython functions for training :class:`~gensim.models.word2vec.Word2Vec` model."""
-
-##### spx (working) ##########
-## inclusive
-#08.09.2021
-#changed method train_batch_sg(...) only!!
-
-
-import sys
+'''
+dropout disabled
+'''
 
 import cython
 import numpy as np
@@ -27,10 +22,6 @@ from libc.math cimport exp
 from libc.math cimport log
 from libc.string cimport memset
 
-from random import getrandbits
-
-import random
-
 # scipy <= 0.15
 try:
     from scipy.linalg.blas import fblas
@@ -40,7 +31,7 @@ except ImportError:
 
 REAL = np.float32
 
-DEF MAX_SENTENCE_LEN = 10000
+DEF MAX_SENTENCE_LEN = 5000
 
 cdef scopy_ptr scopy=<scopy_ptr>PyCObject_AsVoidPtr(fblas.scopy._cpointer)  # y = x
 cdef saxpy_ptr saxpy=<saxpy_ptr>PyCObject_AsVoidPtr(fblas.saxpy._cpointer)  # y += alpha * x
@@ -510,7 +501,6 @@ cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1
 
 
 def train_batch_sg(model, sentences, alpha, _work, compute_loss):
-   
     """Update skip-gram model by training on a batch of sentences.
 
     Called internally from :meth:`~gensim.models.word2vec.Word2Vec.train`.
@@ -542,294 +532,61 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
 
     init_w2v_config(&c, model, alpha, compute_loss, _work)
 
-    #print("AltCon Version....")
+
     # prepare C structures so we can go "full C" and release the Python GIL
-    #model.wv.index2word[161] = 'york'
-    id2word = model.wv.index2word
     vlookup = model.wv.vocab
     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
     for sent in sentences:
         if not sent:
             continue  # ignore empty sentences; leave effective_sentences unchanged
-        i=0
-        end = len(sent)
-        rand_sizes = model.random.randint(0, c.window, end) # Random sizes of window reduction, orignal gensim code!
-        while i<end:
-            word = vlookup[sent[i]] if sent[i] in vlookup else None
+        for token in sent:
+            word = vlookup[token] if token in vlookup else None
             if word is None:
-                i+=1 
-                continue
+                continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
             if c.sample and word.sample_int < random_int32(&c.next_random):
                 continue
-            # wordvec method
-            #Collecting phrase words in a list
-            targets = list() 
-            pwords = list()
-            if sent[i] == '[':
-                t_start = i
-                i+=1
-                #print("Phrase Start:",t_start)
-                if i>=end:
-                    break
-                while sent[i] != ']': 
-                    #if sent[i] in vlookup and sent[i][0].isupper() and sent[i][1:].islower(): #SP (capital words only)
-                    if sent[i] in vlookup:
-                        if '#E' in sent[i]:
-                            targets.append(vlookup[sent[i]].index)
-                        if '#P' in sent[i]:
-                            pwords.append(vlookup[sent[i]].index)
-                    i+=1
-                    if i>=end:
-                        break
-                #i is ']' now 
-                if i<end:
-                    assert sent[i]==']',"target phrase mistmatch"
-                #print("Phrase end:",i)
-            else:
-                # X exclusive case
-                #i+=1
-                #continue
-                # uncomment below 2 lines in case of non-exclusive and comment out above 2 lines!
-                targets.append(word.index)
-                t_start = i
-            if i>=end:
-                break
-            #print(targets)
-            if not targets or len(targets)>5:
-            #if not targets or len(targets) < 2 or len(targets) > 5: # Strict N-gram phrase where N>=2.
-            #if len(targets) != 2:  # Strict N-gram phrase where N=2.
-                i+=1
-                continue
-            #print(i,len(rand_sizes))
-            rand_window = rand_sizes[i] # Random size of window reduction
-            #print(rand_window)
-            #print("index=",i)
-            #print("rand=",rand_window)
-            #print("win=",i + c.window - rand_window)
-            
-            ## DEBUG
-            #for t in targets:
-            #    print(model.wv.index2word[t])
-            #sys.exit()
-            #####
-            # phrase word embeddings
-            if len(pwords)>1:
-                for t_index in pwords:
-                    for c_index in pwords:
-                        if t_index != c_index:
-                            c.indexes[effective_words] = t_index
-                            c.contexts[effective_words] = c_index
-                            effective_words += 1 
-                        if effective_words >= MAX_SENTENCE_LEN:
-                            break
-                    if effective_words >= MAX_SENTENCE_LEN:
-                        break
-            if effective_words >= MAX_SENTENCE_LEN:
-                break
-            #print("right context")
-            j = i #window boundary pos (Global window counter)
-            r = i+1  
-            while j < (i + c.window - rand_window): 
-            #while j < (i + c.window): # incase of no random window reduction
-                if r<end:
-                    right_con = sent[r]
-                    if right_con not in vlookup :
-                        r+=1
-                        j+=1
-                        continue
-                    ###### static context #######
-                    '''
-                    if right_con in '[]':
-                        r+=1
-                        j+=1
-                        continue
-                    for target in targets:      
-                        c.indexes[effective_words] = target
-                        c.contexts[effective_words] = vlookup[right_con].index
-                        effective_words += 1 
-                        if effective_words >= MAX_SENTENCE_LEN:
-                            break
-                    if effective_words >= MAX_SENTENCE_LEN:
-                        break
-                    r+=1
-                    j+=1
-                    continue
-                    '''
-                    ###### dynamic context ######
-                    if right_con == '[':
-                        r+=1
-                        if r>=end :
-                            break
-                        right_phrase = list()
-                        while sent[r] != ']':
-                            #if sent[r] in vlookup and sent[r][0].isupper() and sent[r][1:].islower(): #SP (capital words)
-                            if sent[r] in vlookup :
-                                right_phrase.append(vlookup[sent[r]].index)
-                            r+=1
-                            if r>=end :
-                                break
-                        if right_phrase and len(right_phrase)<=5:
-                            #Random word in the context phrase!
-                            #context = [random.choice(right_phrase)]
-                            # all words in the right context 
-                            context = right_phrase
-                            for target in targets:
-                                for con in context:
-                                    c.indexes[effective_words] = target
-                                    c.contexts[effective_words] = con
-                                    #print("target:",id2word[target],"context:",id2word[context])
-                                    effective_words += 1 
-                                    if effective_words >= MAX_SENTENCE_LEN:
-                                        break
-                                if effective_words >= MAX_SENTENCE_LEN:
-                                        break
-                        if effective_words >= MAX_SENTENCE_LEN:
-                            break
-                        r+=1 # word after ']'
-                    else:
-                        context = vlookup[right_con].index
-                        for target in targets:
-                            c.indexes[effective_words] = target
-                            c.contexts[effective_words] = context
-                            #print("target:",id2word[target],"context:",id2word[context])
-                            effective_words += 1 
-                            if effective_words >= MAX_SENTENCE_LEN:
-                                #print("Sentence break")
-                                break
-                        if effective_words >= MAX_SENTENCE_LEN:
-                            break  
-                        r+=1
-                else:
-                    break
-                j+=1
-            #print("right=",j)
-            if effective_words >= MAX_SENTENCE_LEN:
-                break
-            
-            #Debug
-            #i+=1 ####################
-            #continue #################
-            #print("win=",t_start - c.window + rand_window)
-            #print("left context")
-            l = t_start-1
-            j = t_start #window boundary pos (Global window counter)  
-            while j > (t_start - c.window + rand_window):
-            #while j > (t_start - c.window):
-                if l>=0:
-                    left_con = sent[l]
-                    if left_con not in vlookup :
-                        l-=1
-                        j-=1
-                        continue
-                    ###### static context #######
-                    '''
-                    if left_con in '[]':
-                        l-=1
-                        j-=1
-                        continue
-                    for target in targets:      
-                        c.indexes[effective_words] = target
-                        c.contexts[effective_words] = vlookup[left_con].index
-                        effective_words += 1 
-                        if effective_words >= MAX_SENTENCE_LEN:
-                            break
-                    if effective_words >= MAX_SENTENCE_LEN:
-                        break
-                    l-=1
-                    j-=1
-                    continue
-                    '''
-                    ###### dynamic context ######
-                    if left_con == ']':
-                        l-=1
-                        if l<0:
-                            break
-                        left_phrase = list()
-                        while sent[l] != '[':
-                            #if sent[l] in vlookup and sent[l][0].isupper() and sent[l][1:].islower(): #SP (capital words)
-                            if sent[l] in vlookup :
-                                left_phrase.append(vlookup[sent[l]].index)
-                            l-=1
-                            if l<0:
-                                break
-                        if left_phrase and len(left_phrase)<=5:
-                            # a random word in context phrase
-                            #context = [random.choice(left_phrase)]
-                            # all words in left phrase
-                            context = left_phrase
-                            for target in targets:
-                                for con in context:
-                                    c.indexes[effective_words] = target
-                                    c.contexts[effective_words] = con
-                                    #print("target:",id2word[target],"context:",id2word[context])
-                                    effective_words += 1 
-                                    if effective_words >= MAX_SENTENCE_LEN:
-                                        break
-                                if effective_words >= MAX_SENTENCE_LEN:
-                                        break
-                        if effective_words >= MAX_SENTENCE_LEN:
-                            break  
-                        l-=1 # word before '['
-                    else:
-                        context = vlookup[left_con].index
-                        for target in targets:
-                            c.indexes[effective_words] = target
-                            c.contexts[effective_words] = context
-                            #print("target:",id2word[target],"context:",id2word[context])
-                            effective_words += 1 
-                            if effective_words >= MAX_SENTENCE_LEN:
-                                break
-                        if effective_words >= MAX_SENTENCE_LEN:
-                            break
-                        l-=1
-                else:
-                    break
-                j-=1  
-            #print("left=",j)
-            #sys.exit(0)
-            i+=1
-            if effective_words >= MAX_SENTENCE_LEN:
-                break
-            #print("\n")
-        '''
-        # Newly added
-        i = 0
-        while i<end:
-            word = vlookup[sent[i]] if sent[i] in vlookup else None
-            if word is None:
-                i+=1 
-                continue
-            if c.sample and word.sample_int < random_int32(&c.next_random):
-                continue
-        '''
-        effective_sentences += 1
-        c.sentence_idx[effective_sentences] = effective_words #The last index
+            c.indexes[effective_words] = word.index
+            if c.hs:
+                c.codelens[effective_words] = <int>len(word.code)
+                c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)
+                c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
+            effective_words += 1
+            if effective_words == MAX_SENTENCE_LEN:
+                break  # TODO: log warning, tally overflow?
 
-        if effective_words >= MAX_SENTENCE_LEN:
+        # keep track of which words go into which sentence, so we don't train
+        # across sentence boundaries.
+        # indices of sentence number X are between <sentence_idx[X], sentence_idx[X])
+        effective_sentences += 1
+        c.sentence_idx[effective_sentences] = effective_words
+
+        if effective_words == MAX_SENTENCE_LEN:
             break  # TODO: log warning, tally overflow?
-        #sys.exit(0)
-    
-    #print("all finished:",effective_words)
-    #print("\n")
+
     # precompute "reduced window" offsets in a single randint() call
-    # (low, high, size)
-    ## comment out if altcon
     #for i, item in enumerate(model.random.randint(0, c.window, effective_words)):
     #    c.reduced_windows[i] = item
-    
-    assert effective_words <= MAX_SENTENCE_LEN
-    
+
     # release GIL & train on all sentences
     with nogil:
         for sent_idx in range(effective_sentences):
             idx_start = c.sentence_idx[sent_idx]
             idx_end = c.sentence_idx[sent_idx + 1]
             for i in range(idx_start, idx_end):
-                # Normal case: c.indexes[i], c.contexts[i]
-                # Reverse case: c.contexts[i], c.indexes[i]
-                c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg, c.size,
-                                                         c.indexes[i], c.contexts[i], c.alpha, c.work, c.next_random,
-                                                         c.word_locks, c.compute_loss, &c.running_training_loss)
+                j = i - c.window #+ c.reduced_windows[i]
+                if j < idx_start:
+                    j = idx_start
+                k = i + c.window + 1 #- c.reduced_windows[i]
+                if k > idx_end:
+                    k = idx_end
+                for j in range(j, k):
+                    if j == i:
+                        continue
+                    if c.hs:
+                        w2v_fast_sentence_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.alpha, c.work, c.word_locks, c.compute_loss, &c.running_training_loss)
+                    if c.negative:
+                        c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg, c.size, c.indexes[i], c.indexes[j], c.alpha, c.work, c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)
+
     model.running_training_loss = c.running_training_loss
     return effective_words
 

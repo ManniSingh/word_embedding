@@ -35,16 +35,28 @@ from gensim.corpora.textcorpus import TextCorpus
 
 from six import raise_from
 
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+lemmatizer = WordNetLemmatizer()
+stops = set(stopwords.words('english'))
+
+import sys
+sys.path.append("../../imports/")
+import saver as sv
+
+word2desc = sv.load("word2desc")
+
 
 logger = logging.getLogger(__name__)
 
 ARTICLE_MIN_WORDS = 50
-ARTICLE_CUT_OFF = 1000
+ARTICLE_CUT_OFF = 5000
 """Ignore shorter articles (after full preprocessing)."""
 
 # default thresholds for lengths of individual tokens
 TOKEN_MIN_LEN = 1
 TOKEN_MAX_LEN = 40
+WINDOW = 10
 
 RE_P0 = re.compile(r'<!--.*?-->', re.DOTALL | re.UNICODE)
 """Comments."""
@@ -364,12 +376,27 @@ def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, 
 
     """
     # TODO maybe ignore tokens with non-latin characters? (no chinese, arabic, russian etc.)
-    return [
-        utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore')
-        if token_min_len <= len(token) <= token_max_len and not token.startswith('_')
-    ][:ARTICLE_CUT_OFF]
-
-
+    tokens = [ utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore') 
+              if token_min_len <= len(token) <= token_max_len and not token.startswith('_')][:ARTICLE_CUT_OFF]
+    tokens = [lemmatizer.lemmatize(w) for w in tokens]
+    tokens = [w for w in tokens if w not in stops]
+    to_replace = dict()
+    for i,token in enumerate(tokens):
+        if token in word2desc:
+            nnl = set(tokens[i-WINDOW:i]+tokens[i+1:i+WINDOW+1])
+            maxi = 0
+            maxi_index = -1
+            for j,_nnl in enumerate(word2desc[token]):
+                overlap = len(_nnl&nnl)
+                if overlap>maxi:
+                    maxi = overlap
+                    maxi_index = j
+            if maxi_index>0:
+                to_replace[i]=token+'#'+str(maxi_index)
+    for k,v in to_replace.items():
+        tokens[k]=v
+    return tokens
+    
 def get_namespace(tag):
     """Get the namespace of tag.
 

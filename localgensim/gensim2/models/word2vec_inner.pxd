@@ -59,7 +59,6 @@ cdef struct Word2VecConfig:
 
     int codelens[MAX_SENTENCE_LEN]
     np.uint32_t indexes[MAX_SENTENCE_LEN]
-    np.uint32_t contexts[MAX_SENTENCE_LEN]
     np.uint32_t reduced_windows[MAX_SENTENCE_LEN]
     int sentence_idx[MAX_SENTENCE_LEN + 1]
 

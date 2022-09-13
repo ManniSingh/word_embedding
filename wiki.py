@@ -43,7 +43,7 @@ class WikiSentences:
     # reference: https://github.com/LasseRegin/gensim-word2vec-model/blob/master/train.py
     # loc = 'lr'| 'num'
     def __init__(self, wiki_dump_path, lang, lower=False):
-        #logging.info('Parsing wiki corpus Altered...')
+        logging.info('Parsing wiki corpus Altered...')
         #logging.info('utils.py line 55, Pattern altered to include [ and ] ...')
         self.wiki = WikiCorpus(wiki_dump_path,lower=lower) # orignal
         self.lang = lang

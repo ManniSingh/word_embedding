@@ -147,7 +147,7 @@ except ImportError:
     print('failed... fall back to plain numpy (20-80x slower training than the above)')
     sys.exit(1)
     FAST_VERSION = -1
-    MAX_WORDS_IN_BATCH = 10000
+    MAX_WORDS_IN_BATCH = 5000
 
     def train_batch_sg(model, sentences, alpha, work=None, compute_loss=False):
         """Update skip-gram model by training on a sequence of sentences.
