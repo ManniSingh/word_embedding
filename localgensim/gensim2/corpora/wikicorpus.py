@@ -50,7 +50,6 @@ word2desc = sv.load("word2desc")
 logger = logging.getLogger(__name__)
 
 ARTICLE_MIN_WORDS = 50
-ARTICLE_CUT_OFF = 5000
 """Ignore shorter articles (after full preprocessing)."""
 
 # default thresholds for lengths of individual tokens
@@ -377,7 +376,7 @@ def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, 
     """
     # TODO maybe ignore tokens with non-latin characters? (no chinese, arabic, russian etc.)
     tokens = [ utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore') 
-              if token_min_len <= len(token) <= token_max_len and not token.startswith('_')][:ARTICLE_CUT_OFF]
+              if token_min_len <= len(token) <= token_max_len and not token.startswith('_')]
     tokens = [lemmatizer.lemmatize(w) for w in tokens]
     tokens = [w for w in tokens if w not in stops]
     to_replace = dict()

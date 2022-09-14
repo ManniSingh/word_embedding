@@ -31,7 +31,7 @@ except ImportError:
 
 REAL = np.float32
 
-DEF MAX_SENTENCE_LEN = 5000
+DEF MAX_SENTENCE_LEN = 20000
 
 cdef scopy_ptr scopy=<scopy_ptr>PyCObject_AsVoidPtr(fblas.scopy._cpointer)  # y = x
 cdef saxpy_ptr saxpy=<saxpy_ptr>PyCObject_AsVoidPtr(fblas.saxpy._cpointer)  # y += alpha * x

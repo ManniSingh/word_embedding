@@ -38,7 +38,7 @@ DEF EXP_TABLE_SIZE = 1000
 DEF MAX_EXP = 6
 cdef REAL_t[EXP_TABLE_SIZE] EXP_TABLE
 
-DEF MAX_SENTENCE_LEN = 10000
+DEF MAX_SENTENCE_LEN = 20000
 
 # function implementations swapped based on BLAS detected in word2vec_inner.pyx init()
 ctypedef REAL_t (*our_dot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil
