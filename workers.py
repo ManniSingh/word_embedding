@@ -5,6 +5,8 @@ Multiprocessing helper for eval notebook.
 import numpy as np
 from scipy.stats import pearsonr
 from scipy.stats import spearmanr
+from multiprocessing import Pool
+from tqdm import tqdm
 
 def avg_sim(w1,w2,model,verbose=False,maxsim=False):
     range_ = list()
@@ -36,22 +38,35 @@ def avg_sim(w1,w2,model,verbose=False,maxsim=False):
         return max(sims), range_
     else:
         return sum(sims)/div, range_
-  
-def get_corrs(lines,model):
-    sims = list()
-    scores = list()
-    for line in lines:
-        line = line.split()
-        if not line or len(line)>3:
-            continue
-        sim, _ = avg_sim(line[0],line[1],model)
-        if sim:
-            score = float(line[2])
-            sims.append(sim)
-            scores.append(score)
-    assert len(sims)==len(scores) and len(sims)>0
-    coverage = round((len(sims)/len(lines))*100,2)
-    pcorr, _ = pearsonr(sims, scores)
-    scorr, _ = spearmanr(sims, scores)
+    
+def get_score(line,model,maxsim):
+    line = line.split()
+    if not line or len(line)>3:
+        return 0
+    sim, _ = avg_sim(line[0],line[1],model,maxsim=maxsim)
+    return sim
+    
+def get_scores(lines,model,maxsim):
+    with Pool(processes=20) as pool:
+        results = list(pool.apply_async(get_score, args=(line,model,maxsim)) for line in lines)
+        results = [r.get() for r in results]
+    return results
+ 
+def get_corrs(ds,model,maxsim=False):
+    with open(ds) as fin:
+        name = ds.split('/')[-1].split('.')[0]
+        lines = fin.readlines()
+        _sims = get_scores(lines,model,maxsim)
+        sims = list()
+        scores = list()
+        for i,sim in enumerate(_sims):
+            if sim!=0:
+                score = float(lines[i].split()[2])
+                sims.append(sim)
+                scores.append(score)
+        assert len(sims)==len(scores) and len(sims)>0
+        coverage = round((len(sims)/len(lines))*100,2)
+        pcorr, _ = pearsonr(sims, scores)
+        scorr, _ = spearmanr(sims, scores)
     return '%.2f' % (pcorr*100),'%.2f' % (scorr*100), '%.2f' % (coverage)
     

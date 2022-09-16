@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "eval.py", line 1, in <module>
+    from gensim.models import KeyedVectors
+ImportError: No module named 'gensim'
