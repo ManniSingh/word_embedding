@@ -532,64 +532,109 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
 
     init_w2v_config(&c, model, alpha, compute_loss, _work)
 
-
     # prepare C structures so we can go "full C" and release the Python GIL
+    #id2word = model.wv.index2word
     vlookup = model.wv.vocab
     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
     for sent in sentences:
         if not sent:
-            continue  # ignore empty sentences; leave effective_sentences unchanged
-        for token in sent:
-            word = vlookup[token] if token in vlookup else None
+            continue  # ignore empty sentences; leave effective_sentences unchanged    
+        i=0
+        end = len(sent)
+        #rand_sizes = model.random.randint(0, c.window, end) # Random sizes of window reduction, orignal gensim code!
+        rand_sizes = model.random.randint(5, c.window, end) # reduced to minimum 5
+        while i<end:
+            word = vlookup[sent[i]] if sent[i] in vlookup else None
             if word is None:
-                continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
+                i+=1 
+                continue
             if c.sample and word.sample_int < random_int32(&c.next_random):
                 continue
-            c.indexes[effective_words] = word.index
-            if c.hs:
-                c.codelens[effective_words] = <int>len(word.code)
-                c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)
-                c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
-            effective_words += 1
-            if effective_words == MAX_SENTENCE_LEN:
-                break  # TODO: log warning, tally overflow?
-
-        # keep track of which words go into which sentence, so we don't train
-        # across sentence boundaries.
-        # indices of sentence number X are between <sentence_idx[X], sentence_idx[X])
+            if i>=end:
+                break
+            target = word.index
+            rand_window = rand_sizes[i]
+            #find overlapping indexes
+            common_indexes = list()
+            for r in range(i+1,i+c.window+1):
+                if r >= end:
+                    break
+                right_con = sent[r]
+                if '§' in right_con:
+                    right_con = right_con.split('§')[0]
+                if right_con not in vlookup :
+                    continue
+                common_indexes.append(vlookup[right_con].index)
+            for l in range(i-c.window,i):
+                if l < 0:
+                    break
+                left_con = sent[l]
+                if '§' in left_con:
+                    left_con = left_con.split('§')[0]
+                if left_con not in vlookup :
+                    continue
+                common_indexes.append(vlookup[left_con].index)
+            for index in common_indexes:
+                c.indexes[effective_words] = target
+                c.contexts[effective_words] = index
+                effective_words += 1 
+                if effective_words >= MAX_SENTENCE_LEN:
+                    break
+            if effective_words >= MAX_SENTENCE_LEN:
+                break
+            #right context
+            for r in range(i+1,i+c.window+1-rand_window):
+                if r >= end:
+                    break
+                right_con = sent[r]
+                if '§' in right_con:
+                    right_con = right_con.split('§')[0]
+                if right_con not in vlookup :
+                    continue
+                c.indexes[effective_words] = target
+                c.contexts[effective_words] = vlookup[right_con].index
+                effective_words += 1 
+                if effective_words >= MAX_SENTENCE_LEN:
+                    break
+            if effective_words >= MAX_SENTENCE_LEN:
+                break
+            #left context
+            for l in range(i-c.window+rand_window,i):
+                if l < 0:
+                    break
+                left_con = sent[l]
+                if '§' in left_con:
+                    left_con = left_con.split('§')[0]
+                if left_con not in vlookup :
+                    continue
+                c.indexes[effective_words] = target
+                c.contexts[effective_words] = vlookup[left_con].index
+                effective_words += 1 
+                if effective_words >= MAX_SENTENCE_LEN:
+                    break
+            if effective_words >= MAX_SENTENCE_LEN:
+                break
+            i+=1 # go for the new target
         effective_sentences += 1
-        c.sentence_idx[effective_sentences] = effective_words
-
-        if effective_words == MAX_SENTENCE_LEN:
+        c.sentence_idx[effective_sentences] = effective_words #The last index
+        if effective_words >= MAX_SENTENCE_LEN:
             break  # TODO: log warning, tally overflow?
-
-    # precompute "reduced window" offsets in a single randint() call
-    #for i, item in enumerate(model.random.randint(0, c.window, effective_words)):
-    #    c.reduced_windows[i] = item
-
+        
+    assert effective_words <= MAX_SENTENCE_LEN
+    
     # release GIL & train on all sentences
     with nogil:
         for sent_idx in range(effective_sentences):
             idx_start = c.sentence_idx[sent_idx]
             idx_end = c.sentence_idx[sent_idx + 1]
             for i in range(idx_start, idx_end):
-                j = i - c.window #+ c.reduced_windows[i]
-                if j < idx_start:
-                    j = idx_start
-                k = i + c.window + 1 #- c.reduced_windows[i]
-                if k > idx_end:
-                    k = idx_end
-                for j in range(j, k):
-                    if j == i:
-                        continue
-                    if c.hs:
-                        w2v_fast_sentence_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.alpha, c.work, c.word_locks, c.compute_loss, &c.running_training_loss)
-                    if c.negative:
-                        c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg, c.size, c.indexes[i], c.indexes[j], c.alpha, c.work, c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)
-
+                # Normal case: c.indexes[i], c.contexts[i]
+                # Reverse case: c.contexts[i], c.indexes[i]
+                c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg, c.size,
+                                                         c.indexes[i], c.contexts[i], c.alpha, c.work, c.next_random,
+                                                         c.word_locks, c.compute_loss, &c.running_training_loss)
     model.running_training_loss = c.running_training_loss
     return effective_words
-
 
 def train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss):
     """Update CBOW model by training on a batch of sentences.

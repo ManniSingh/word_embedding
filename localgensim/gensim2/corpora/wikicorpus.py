@@ -351,7 +351,6 @@ def remove_file(s):
         s = s.replace(m, caption, 1)
     return s
 
-
 def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, lower=True):
     """Tokenize a piece of text from Wikipedia.
 
@@ -380,20 +379,42 @@ def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, 
     tokens = [lemmatizer.lemmatize(w) for w in tokens]
     tokens = [w for w in tokens if w not in stops]
     to_replace = dict()
+    o_to_replace = set()
+    max_overlap_list = list()
     for i,token in enumerate(tokens):
         if token in word2desc:
-            nnl = set(tokens[i-WINDOW:i]+tokens[i+1:i+WINDOW+1])
+            left = tokens[i-WINDOW:i]
+            right = tokens[i+1:i+WINDOW+1]
+            nnl = set(left+right)
             maxi = 0
             maxi_index = -1
+            swap_list = list()
             for j,_nnl in enumerate(word2desc[token]):
-                overlap = len(_nnl&nnl)
+                overlap_list = _nnl&nnl
+                overlap = len(overlap_list)
                 if overlap>maxi:
+                    max_overlap_list = overlap_list.copy()
                     maxi = overlap
                     maxi_index = j
-            if maxi_index>0:
+            if maxi_index>=0:
                 to_replace[i]=token+'#'+str(maxi_index)
+                for ow in max_overlap_list:
+                    if ow in left:
+                        _li=left.index(ow)
+                        li=i-(WINDOW-_li) # orignal index
+                        if li<0:
+                            continue
+                        o_to_replace.add(li)
+                    if ow in right:
+                        _ri=right.index(ow)
+                        ri=i+_ri+1 # orignal index
+                        if ri>i+WINDOW-1:
+                            continue
+                        o_to_replace.add(ri)
     for k,v in to_replace.items():
         tokens[k]=v
+    for k in o_to_replace:
+        tokens[k]=tokens[k]+'§'
     return tokens
     
 def get_namespace(tag):
@@ -655,6 +676,7 @@ class WikiCorpus(TextCorpus):
         if processes is None:
             processes = max(1, multiprocessing.cpu_count() - 1)
         self.processes = processes
+        #self.processes = 1
         self.lemmatize = lemmatize
         self.tokenizer_func = tokenizer_func
         self.article_min_tokens = article_min_tokens
