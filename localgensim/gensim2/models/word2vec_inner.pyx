@@ -582,6 +582,10 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
                     break
             if effective_words >= MAX_SENTENCE_LEN:
                 break
+            ############## context ignored
+            i+=1
+            continue
+            ############## context ignored
             #right context
             for r in range(i+1,i+c.window+1-rand_window):
                 if r >= end:
