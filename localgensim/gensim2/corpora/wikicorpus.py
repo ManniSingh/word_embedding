@@ -46,6 +46,10 @@ import saver as sv
 
 word2desc = sv.load("word2desc")
 
+import numpy as np
+import gensim.downloader as api
+
+model = api.load('word2vec-google-news-300')
 
 logger = logging.getLogger(__name__)
 
@@ -55,7 +59,7 @@ ARTICLE_MIN_WORDS = 50
 # default thresholds for lengths of individual tokens
 TOKEN_MIN_LEN = 1
 TOKEN_MAX_LEN = 40
-WINDOW = 10
+WINDOW = 3
 
 RE_P0 = re.compile(r'<!--.*?-->', re.DOTALL | re.UNICODE)
 """Comments."""
@@ -351,6 +355,38 @@ def remove_file(s):
         s = s.replace(m, caption, 1)
     return s
 
+def sense_vec(word,model):
+    '''
+    Parameters
+    ----------
+    word : str
+        Unicode or utf-8 encoded string.
+    model : KeyedVectors
+        gensim KeyedVectors object
+    Returns
+    -------
+    list
+        List of [Vector,Vector,....].
+    '''
+    dim = model.vector_size
+    v = list()
+    if word not in word2desc:
+        return [np.zeros(dim)]
+    for words in word2desc[word]:
+        if not words:
+            continue
+        _v = list()
+        for _word in words:
+            if _word in model.vocab:
+                _v.append(model.get_vector(_word))
+        if not _v:
+            continue
+        if not _v:
+            _v = [np.zeros(dim)]
+        _v = np.sum(_v,axis=0)
+        v.append(_v)
+    return v
+
 def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, lower=True):
     """Tokenize a piece of text from Wikipedia.
 
@@ -377,44 +413,31 @@ def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, 
     tokens = [ utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore') 
               if token_min_len <= len(token) <= token_max_len and not token.startswith('_')]
     tokens = [lemmatizer.lemmatize(w) for w in tokens]
-    tokens = [w for w in tokens if w not in stops]
     to_replace = dict()
-    o_to_replace = set()
-    max_overlap_list = list()
     for i,token in enumerate(tokens):
         if token in word2desc:
             left = tokens[i-WINDOW:i]
             right = tokens[i+1:i+WINDOW+1]
-            nnl = set(left+right)
+            context = set(left+right)
+            svecs = sense_vec(token,model)
             maxi = 0
-            maxi_index = -1
-            swap_list = list()
-            for j,_nnl in enumerate(word2desc[token]):
-                overlap_list = _nnl&nnl
-                overlap = len(overlap_list)
-                if overlap>maxi:
-                    max_overlap_list = overlap_list.copy()
-                    maxi = overlap
-                    maxi_index = j
-            if maxi_index>=0:
-                to_replace[i]=token+'#'+str(maxi_index)
-                for ow in max_overlap_list:
-                    if ow in left:
-                        _li=left.index(ow)
-                        li=i-(WINDOW-_li) # orignal index
-                        if li<0:
+            tag = -1 #index in wordsense
+            for si,v in enumerate(svecs):
+                for con in context:
+                    if con == token:
+                        continue
+                    _svecs = sense_vec(con,model)
+                    for sj,_v in enumerate(_svecs):
+                        if np.sum(_v)==0:
                             continue
-                        o_to_replace.add(li)
-                    if ow in right:
-                        _ri=right.index(ow)
-                        ri=i+_ri+1 # orignal index
-                        if ri>i+WINDOW-1:
-                            continue
-                        o_to_replace.add(ri)
+                        sim = model.cosine_similarities(v, [_v])[0]
+                        if sim>maxi:
+                            maxi = sim
+                            tag = si
+            if tag>=0:
+                to_replace[i]=token+'#'+str(tag)
     for k,v in to_replace.items():
         tokens[k]=v
-    for k in o_to_replace:
-        tokens[k]=tokens[k]+'§'
     return tokens
     
 def get_namespace(tag):
