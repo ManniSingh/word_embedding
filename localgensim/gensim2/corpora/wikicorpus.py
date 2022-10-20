@@ -357,6 +357,7 @@ def remove_file(s):
 
 def sense_vec(word,model):
     '''
+    Computes average vector from sense description. 
     Parameters
     ----------
     word : str
@@ -698,8 +699,8 @@ class WikiCorpus(TextCorpus):
         self.metadata = False
         if processes is None:
             processes = max(1, multiprocessing.cpu_count() - 1)
-        self.processes = processes
-        #self.processes = 1
+        #self.processes = processes
+        self.processes = 1
         self.lemmatize = lemmatize
         self.tokenizer_func = tokenizer_func
         self.article_min_tokens = article_min_tokens
