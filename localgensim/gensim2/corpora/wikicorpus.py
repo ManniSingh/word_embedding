@@ -30,7 +30,8 @@ from xml.etree.cElementTree import \
 
 from .. import utils
 # cannot import whole gensim.corpora, because that imports wikicorpus...
-from gensim.corpora.dictionary import Dictionary
+#from gensim.corpora.dictionary import Dictionary
+from localgensim.gensim2.corpora.dictionary import Dictionary
 from gensim.corpora.textcorpus import TextCorpus
 
 from six import raise_from
@@ -40,6 +41,9 @@ from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 stops = set(stopwords.words('english'))
 
+import warnings
+warnings.filterwarnings('ignore')
+
 import sys
 sys.path.append("../../imports/")
 import saver as sv
@@ -47,9 +51,14 @@ import saver as sv
 word2desc = sv.load("word2desc")
 
 import numpy as np
-import gensim.downloader as api
+from numba import jit
 
-model = api.load('word2vec-google-news-300')
+print('loading word2vec.....')
+from gensim.models import KeyedVectors
+model = KeyedVectors.load('/home/manni/embs/w2v.model')
+#w2v = '/home/manni/embs/word2vec-google-news-300.gz'
+#model = KeyedVectors.load_word2vec_format(w2v, binary=True)
+print('word2vec loaded!')
 
 logger = logging.getLogger(__name__)
 
@@ -57,7 +66,7 @@ ARTICLE_MIN_WORDS = 50
 """Ignore shorter articles (after full preprocessing)."""
 
 # default thresholds for lengths of individual tokens
-TOKEN_MIN_LEN = 1
+TOKEN_MIN_LEN = 2
 TOKEN_MAX_LEN = 40
 WINDOW = 3
 
@@ -355,9 +364,11 @@ def remove_file(s):
         s = s.replace(m, caption, 1)
     return s
 
+################### Custom functions #########################################
+
 def sense_vec(word,model):
     '''
-    Computes average vector from sense description. 
+    Computes average vectors from all sense descriptions. 
     Parameters
     ----------
     word : str
@@ -371,8 +382,9 @@ def sense_vec(word,model):
     '''
     dim = model.vector_size
     v = list()
+    pad = np.zeros((1, model.vector_size),dtype=np.float32)
     if word not in word2desc:
-        return [np.zeros(dim)]
+        return pad
     for words in word2desc[word]:
         if not words:
             continue
@@ -381,12 +393,95 @@ def sense_vec(word,model):
             if _word in model.vocab:
                 _v.append(model.get_vector(_word))
         if not _v:
-            continue
-        if not _v:
-            _v = [np.zeros(dim)]
+            _v = pad
         _v = np.sum(_v,axis=0)
         v.append(_v)
+    if len(v)<1:
+        return pad
+    assert np.asarray(v).ndim == 2, 'SenseVec is not 2D.'
     return v
+
+def get_max(tokens,WINDOW,model):
+    tmax = 0
+    for i,token in enumerate(tokens):
+        if token in word2desc:
+            tsvecs = sense_vec(token,model) # sense vectors for current token
+            _tmax=len(tsvecs)
+            if _tmax>tmax:
+                tmax=_tmax
+    return tmax
+
+def get_vecs(tokens,WINDOW,model):
+    tmax = get_max(tokens,WINDOW,model)
+    pad = np.zeros((model.vector_size),dtype=np.float32)
+    token_vecs = list()
+    token_con_vecs = list()
+    for i,token in enumerate(tokens):
+        if token in word2desc:
+            left = tokens[i-WINDOW:i]
+            right = tokens[i+1:i+WINDOW+1]
+            context = set(left+right)
+            tsvecs = sense_vec(token,model) # sense vectors for current token
+            tsvecs = tsvecs + [pad]*(tmax-len(tsvecs)) 
+            csvecs = list()
+            for j,con in enumerate(context):
+                if con == token:
+                    _csvecs = [pad]*tmax
+                    continue
+                _csvecs = sense_vec(con,model) # sense vectors for current context
+                _csvecs = np.asarray(_csvecs)
+                adder = np.asarray([pad]*(tmax-len(_csvecs)))
+                if len(adder)>0:
+                    _csvecs = np.concatenate((_csvecs, adder), axis=0)
+                csvecs.append(_csvecs)  
+        else:
+            tsvecs = [pad]*tmax
+            csvecs = [[pad]*tmax]*(WINDOW*2)
+        csvecs = csvecs + [[pad]*tmax]*((WINDOW*2)-len(csvecs)) 
+        assert len(csvecs)==WINDOW*2
+        token_vecs.append(tsvecs)
+        token_con_vecs.append(csvecs)
+    assert np.asarray(token_vecs).ndim == 3, 'token_vecs is not 3D, with shape:'+str(np.asarray(token_vecs).shape)+str(tokens)
+    return np.asarray(token_vecs),np.asarray(token_con_vecs)
+
+@jit(nopython=True)
+def get_tags(token_vecs,token_con_vecs):
+    #token_vecs,token_con_vecs = get_vecs(tokens,WINDOW,model)
+    to_replace = np.full((token_vecs.shape[0]), -1)
+    for i in range(token_vecs.shape[0]):
+        maxi = 0
+        tag = -1 #index in wordsense
+        tvecs = token_vecs[i] #current token sense vecs
+        # vecs for all context words for the current token
+        for wvecs in token_con_vecs[i]:
+            # current context word sense vecs
+            for vec in wvecs:
+                if np.sum(vec)==0:
+                    break
+                for j,tvec in enumerate(tvecs):
+                    if np.sum(tvec)==0:
+                        break
+                    norm = np.linalg.norm(tvec) * np.linalg.norm(vec)
+                    sim = np.dot(tvec,vec)/ norm
+                    if sim>maxi:
+                        maxi = sim
+                        tag = j 
+        to_replace[i]=tag
+    return to_replace
+
+def tokenise(tokens,WINDOW,model):
+    token_vecs,token_con_vecs = get_vecs(tokens,WINDOW,model)
+    try:
+        to_replace = get_tags(token_vecs,token_con_vecs)
+    except:
+        '-------'
+        print(token_vecs.shape)
+        print(token_con_vecs.shape)
+        '-------'
+        return []
+    return to_replace
+
+############################# Custom functions ends ##########################
 
 def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, lower=True):
     """Tokenize a piece of text from Wikipedia.
@@ -414,31 +509,12 @@ def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, 
     tokens = [ utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore') 
               if token_min_len <= len(token) <= token_max_len and not token.startswith('_')]
     tokens = [lemmatizer.lemmatize(w) for w in tokens]
-    to_replace = dict()
-    for i,token in enumerate(tokens):
-        if token in word2desc:
-            left = tokens[i-WINDOW:i]
-            right = tokens[i+1:i+WINDOW+1]
-            context = set(left+right)
-            svecs = sense_vec(token,model)
-            maxi = 0
-            tag = -1 #index in wordsense
-            for si,v in enumerate(svecs):
-                for con in context:
-                    if con == token:
-                        continue
-                    _svecs = sense_vec(con,model)
-                    for sj,_v in enumerate(_svecs):
-                        if np.sum(_v)==0:
-                            continue
-                        sim = model.cosine_similarities(v, [_v])[0]
-                        if sim>maxi:
-                            maxi = sim
-                            tag = si
-            if tag>=0:
-                to_replace[i]=token+'#'+str(tag)
-    for k,v in to_replace.items():
-        tokens[k]=v
+    if not tokens:
+        return tokens
+    to_replace = tokenise(tokens,WINDOW,model)
+    for i,v in enumerate(to_replace):
+        if v !=-1:
+            tokens[i]+='#'+str(v)
     return tokens
     
 def get_namespace(tag):
@@ -699,8 +775,8 @@ class WikiCorpus(TextCorpus):
         self.metadata = False
         if processes is None:
             processes = max(1, multiprocessing.cpu_count() - 1)
-        #self.processes = processes
-        self.processes = 1
+        self.processes = processes
+        #self.processes = 1
         self.lemmatize = lemmatize
         self.tokenizer_func = tokenizer_func
         self.article_min_tokens = article_min_tokens
