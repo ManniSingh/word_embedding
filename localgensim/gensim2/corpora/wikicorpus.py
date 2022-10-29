@@ -41,14 +41,13 @@ from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 stops = set(stopwords.words('english'))
 
+
 import warnings
 warnings.filterwarnings('ignore')
 
 import sys
 sys.path.append("../../imports/")
 import saver as sv
-
-word2desc = sv.load("word2desc")
 
 import numpy as np
 from numba import jit
@@ -59,6 +58,12 @@ model = KeyedVectors.load('/home/manni/embs/w2v.model')
 #w2v = '/home/manni/embs/word2vec-google-news-300.gz'
 #model = KeyedVectors.load_word2vec_format(w2v, binary=True)
 print('word2vec loaded!')
+
+#word2desc = sv.load("word2desc")
+sensevecs_dict = sv.load("sensevecs_dict")
+sensevecs = sv.load("sensevecs")
+max_numsenses = sv.load('max_numsenses')
+pad = np.zeros((max_numsenses, model.vector_size),dtype=np.float32)
 
 logger = logging.getLogger(__name__)
 
@@ -366,83 +371,23 @@ def remove_file(s):
 
 ################### Custom functions #########################################
 
-def sense_vec(word,model):
-    '''
-    Computes average vectors from all sense descriptions. 
-    Parameters
-    ----------
-    word : str
-        Unicode or utf-8 encoded string.
-    model : KeyedVectors
-        gensim KeyedVectors object
-    Returns
-    -------
-    list
-        List of [Vector,Vector,....].
-    '''
-    dim = model.vector_size
-    v = list()
-    pad = np.zeros((1, model.vector_size),dtype=np.float32)
-    if word not in word2desc:
-        return pad
-    for words in word2desc[word]:
-        if not words:
-            continue
-        _v = list()
-        for _word in words:
-            if _word in model.vocab:
-                _v.append(model.get_vector(_word))
-        if not _v:
-            _v = pad
-        _v = np.sum(_v,axis=0)
-        v.append(_v)
-    if len(v)<1:
-        return pad
-    assert np.asarray(v).ndim == 2, 'SenseVec is not 2D.'
-    return v
-
-def get_max(tokens,WINDOW,model):
-    tmax = 0
+def get_vecs(tokens,WINDOW,model,max_numsenses,pad):
+    token_vecs = np.ascontiguousarray(np.zeros((len(tokens),max_numsenses,model.vector_size),dtype=np.float32))
+    token_con_vecs = np.ascontiguousarray(np.zeros((len(tokens),WINDOW*2,max_numsenses,model.vector_size),dtype=np.float32))
     for i,token in enumerate(tokens):
-        if token in word2desc:
-            tsvecs = sense_vec(token,model) # sense vectors for current token
-            _tmax=len(tsvecs)
-            if _tmax>tmax:
-                tmax=_tmax
-    return tmax
-
-def get_vecs(tokens,WINDOW,model):
-    tmax = get_max(tokens,WINDOW,model)
-    pad = np.zeros((model.vector_size),dtype=np.float32)
-    token_vecs = list()
-    token_con_vecs = list()
-    for i,token in enumerate(tokens):
-        if token in word2desc:
+        if token in sensevecs_dict:
             left = tokens[i-WINDOW:i]
             right = tokens[i+1:i+WINDOW+1]
             context = set(left+right)
-            tsvecs = sense_vec(token,model) # sense vectors for current token
-            tsvecs = tsvecs + [pad]*(tmax-len(tsvecs)) 
-            csvecs = list()
+            context = [con for con in context if con in sensevecs_dict]
+            tsvecs = sensevecs[sensevecs_dict[token]]
+            #tsvecs = sense_vec(token,model,max_numsenses,pad)
+            token_vecs[i]=tsvecs
             for j,con in enumerate(context):
-                if con == token:
-                    _csvecs = [pad]*tmax
-                    continue
-                _csvecs = sense_vec(con,model) # sense vectors for current context
-                _csvecs = np.asarray(_csvecs)
-                adder = np.asarray([pad]*(tmax-len(_csvecs)))
-                if len(adder)>0:
-                    _csvecs = np.concatenate((_csvecs, adder), axis=0)
-                csvecs.append(_csvecs)  
-        else:
-            tsvecs = [pad]*tmax
-            csvecs = [[pad]*tmax]*(WINDOW*2)
-        csvecs = csvecs + [[pad]*tmax]*((WINDOW*2)-len(csvecs)) 
-        assert len(csvecs)==WINDOW*2
-        token_vecs.append(tsvecs)
-        token_con_vecs.append(csvecs)
-    assert np.asarray(token_vecs).ndim == 3, 'token_vecs is not 3D, with shape:'+str(np.asarray(token_vecs).shape)+str(tokens)
-    return np.asarray(token_vecs),np.asarray(token_con_vecs)
+                csvecs = sensevecs[sensevecs_dict[con]] # sense vectors for current context
+                #csvecs = sense_vec(con,model,max_numsenses,pad)
+                token_con_vecs[i][j]=csvecs
+    return np.ascontiguousarray(token_vecs),np.ascontiguousarray(token_con_vecs)
 
 @jit(nopython=True)
 def get_tags(token_vecs,token_con_vecs):
@@ -469,8 +414,8 @@ def get_tags(token_vecs,token_con_vecs):
         to_replace[i]=tag
     return to_replace
 
-def tokenise(tokens,WINDOW,model):
-    token_vecs,token_con_vecs = get_vecs(tokens,WINDOW,model)
+def tokenise(tokens,WINDOW,model,max_numsenses,pad):
+    token_vecs,token_con_vecs = get_vecs(tokens,WINDOW,model,max_numsenses,pad)
     try:
         to_replace = get_tags(token_vecs,token_con_vecs)
     except:
@@ -509,9 +454,10 @@ def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, 
     tokens = [ utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore') 
               if token_min_len <= len(token) <= token_max_len and not token.startswith('_')]
     tokens = [lemmatizer.lemmatize(w) for w in tokens]
+    tokens = [token for token in tokens if token not in stops]
     if not tokens:
         return tokens
-    to_replace = tokenise(tokens,WINDOW,model)
+    to_replace = tokenise(tokens,WINDOW,model,max_numsenses,pad)
     for i,v in enumerate(to_replace):
         if v !=-1:
             tokens[i]+='#'+str(v)
