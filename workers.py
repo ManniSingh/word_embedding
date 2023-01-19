@@ -95,23 +95,22 @@ def getBlist(synset):
     nodes.update(set(hyper))
     return nodes
 
-SOFT = False
 synset2index = dict()
-synset_descs = dict()
+synglink = dict()
+
 vocab = list(wn.all_synsets())
 
 
-def init_ss(s2i,sd,sft=False):
-    global SOFT,synset2index,synset_descs 
-    SOFT = sft
+def init_ss(s2i,sgl):
+    global synset2index,synglink 
     synset2index  = s2i
-    synset_descs   = sd
+    synglink   = sgl
 
 def getMvector(index):
     '''
     parameters:
     -----------
-    synset: nltk Wordnet Synset object
+    index : int 
     
     returns:
     --------
@@ -128,25 +127,13 @@ def getMvector(index):
     #connections.extend([lname.synset().name() for lemma in synset.lemmas() for lname in lemma.derivationally_related_forms()])
     #connections.extend([lname.synset().name() for lemma in synset.lemmas() for lname in lemma.pertainyms()])
     #connections.extend([lname.synset().name() for lemma in synset.lemmas() for lname in lemma.antonyms()])
+    slinks = synglink[synset.name()]
+    connections.extend(list(slinks))
     connections=set([synset2index[ss] for ss in connections])
     connections.remove(index)
-    out = dict()
+    n = len(connections)
     for i in connections:
-        out[i] = 1  
-    if not connections:
-        connections = list()
-        for word in synset_descs[index]:
-            mentions = [key for key in synset2index if key.startswith(word+'.')]
-            connections.extend(mentions)
-        connections=set([synset2index[ss] for ss in connections])
-        if index in connections:
-            connections.remove(index)
-        for i in connections:
-            if i not in out:
-                out[i] = 1  
-    n = sum(out.values())
-    for i,v in out.items():
-        vector[i]=v/n
+        vector[i]=1/n
     return vector
 
 var_dict = {}
