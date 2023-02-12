@@ -130,10 +130,10 @@ def getMvector(index):
     slinks = synglink[synset.name()]
     connections.extend(list(slinks))
     connections=set([synset2index[ss] for ss in connections])
-    connections.remove(index)
-    n = len(connections)
+    #connections.remove(index)
+    #n = len(connections)
     for i in connections:
-        vector[i]=1/n
+        vector[i]=1
     return vector
 
 var_dict = {}
