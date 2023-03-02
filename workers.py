@@ -4,6 +4,7 @@ from nltk.corpus import stopwords
 stopwords = stopwords.words('english')
 from nltk.stem import WordNetLemmatizer
 import numpy as np
+import sys
   
 lemmatizer = WordNetLemmatizer()
 
@@ -159,4 +160,27 @@ def getVec(index):
         P_t = (1-alpha)*P_0[index]+alpha*M*P_t
         P_t = P_t/P_t.sum()
     return np.float32(P_t)
+  
+import networkx as nx
+
+G = None
+
+def init_graph(graph):
+    global G
+    G = graph
+
+def getPPR(i):
+    pers = {i:1}
+    #nodelist = list(G)
+    #p = np.array([pers.get(n, 0) for n in nodelist], dtype=float)
+    #print('nodelist:',len(nodelist),nodelist[i],'pers:',pers,'sum:' , i, p[i], p.sum())
+    try:
+        pr = nx.pagerank(G, personalization=pers)
+    except:
+        print(' pers:', i, pers[i])
+        nodelist = list(G)
+        p = np.array([pers.get(n, 0) for n in nodelist], dtype=float)
+        print(' sum:' , i, p[i], p.sum())
+    return np.asarray(list(pr.values()))
+    
     
